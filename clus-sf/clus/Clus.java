@@ -97,6 +97,12 @@ public class Clus implements CMDLineArgsProvider {
 	protected Date m_StartDate = new Date();
 	protected boolean isxval = false;
 	protected CMDLineArgs m_CmdLine;
+	
+	// LS 10/11/2015
+	//protected boolean NOFILE = false;
+	//protected String dataTRA;
+	//protected String dataTST;
+	// LS 10/11/2015 END
 
 	public final void initialize(CMDLineArgs cargs,
 			ClusInductionAlgorithmType clss) throws IOException, ClusException {
@@ -191,6 +197,108 @@ public class Clus implements CMDLineArgsProvider {
 					+ " kB");
 		}
 	}
+	
+	// LS 10/11/2015
+	public final void initialize2(CMDLineArgs cargs,
+			ClusInductionAlgorithmType clss, String tra, String tst) throws IOException, ClusException {
+		
+		//this.NOFILE = true;
+		//this.dataTRA = tra;
+		//this.dataTST = tst;
+		
+		m_CmdLine = cargs;
+		m_Classifier = clss;
+		// Load resource info (this measures among others CPU time on Linux)
+		boolean test = m_Sett.getResourceInfoLoaded() == Settings.RESOURCE_INFO_LOAD_TEST;
+		ResourceInfo.loadLibrary(test);
+		// Load settings file
+		ARFFFile arff = null;
+		if(m_Sett.getVerbose() > 0) System.out.println("Loading '" + m_Sett.getAppName() + "'");
+		ClusRandom.initialize(m_Sett);
+		//ClusReader reader = new ClusReader(tra, m_Sett, true); // nothing happened with true so omitted
+		ClusReader reader = new ClusReader(tra, m_Sett);
+		if(m_Sett.getVerbose() > 0) System.out.println();
+		if (cargs.hasOption("c45")) {
+			if(m_Sett.getVerbose() > 0) System.out.println("Reading C45 .names/.data");
+		} else {
+			if(m_Sett.getVerbose() > 0) System.out.println("Reading ARFF Header");
+			arff = new ARFFFile(reader);
+			m_Schema = arff.read(m_Sett);
+		}
+		// Count rows and move to data segment
+		if(m_Sett.getVerbose() > 0) System.out.println();
+		if(m_Sett.getVerbose() > 0) System.out.println("Reading CSV Data");
+		// Updata schema based on settings
+		
+		m_Sett.updateTarget(m_Schema);
+		m_Schema.initializeSettings(m_Sett);
+		m_Sett.setTarget(m_Schema.getTarget().toString());
+		m_Sett.setDisabled(m_Schema.getDisabled().toString());
+		m_Sett.setClustering(m_Schema.getClustering().toString());
+		m_Sett.setDescriptive(m_Schema.getDescriptive().toString());
+
+		// Load data from file
+		if (ResourceInfo.isLibLoaded()) {
+			ClusStat.m_InitialMemory = ResourceInfo.getMemory();
+		}
+		ClusView view = m_Schema.createNormalView();
+		m_Data = view.readData(reader, m_Schema);
+		reader.close();
+		if(m_Sett.getVerbose() > 0) System.out.println("Found " + m_Data.getNbRows() + " rows");
+
+		if (getSettings().getNormalizeData() != Settings.NORMALIZE_DATA_NONE) {
+			if(m_Sett.getVerbose() > 0) System.out.println("Normalizing numerical data");
+			m_Data = returnNormalizedData(m_Data);
+		}
+
+		m_Schema.printInfo();
+		if (ResourceInfo.isLibLoaded()) {
+			ClusStat.m_LoadedMemory = ResourceInfo.getMemory();
+		}
+		if (getSettings().isRemoveMissingTarget()) {
+			m_Data = CriterionBasedSelection.removeMissingTarget(m_Data);
+			CriterionBasedSelection.clearMissingFlagTargetAttrs(m_Schema);
+		}
+
+		// Create induce
+		m_Induce = clss.createInduce(m_Schema, m_Sett, cargs);
+
+		// Preprocess and initialize induce
+		m_Sett.update(m_Schema);
+		// If not rule induction, reset some settings just to be sure
+		// in case rules from trees are used.
+		// I.e. this is used if the command line parameter is for decision trees
+		// but the transformation for rules is used.
+		// It is also possible to use command line parameter -rules and use
+		// trees as a covering method.
+		if (!m_Induce.getStatManager().isRuleInduceOnly())
+			m_Sett.disableRuleInduceParams();
+		// Set XVal field in Settings
+		if (isxval)
+			Settings.IS_XVAL = true;
+		
+		preprocess(); // necessary in order to link the labels to the class
+						// hierarchy in HMC (needs to be before
+						// m_Induce.initialize())
+		m_Induce.initialize();
+		initializeAttributeWeights(m_Data);
+		m_Induce.initializeHeuristic();
+		loadConstraintFile();
+		initializeSummary(clss);
+		if(m_Sett.getVerbose() > 0) System.out.println();
+		// Sample data
+		if (cargs.hasOption("sample")) {
+			String svalue = cargs.getOptionValue("sample");
+			sample(svalue);
+		}
+		if(m_Sett.getVerbose() > 0) System.out.println("Has missing values: " + m_Schema.hasMissing());
+		if (ResourceInfo.isLibLoaded()) {
+			System.out.println("Memory usage: loading data took "
+					+ (ClusStat.m_LoadedMemory - ClusStat.m_InitialMemory)
+					+ " kB");
+		}
+	}
+	//LS 10/11/2015 END
 
 	public void initialize(RowData data, ClusSchema schema, Settings sett,
 			ClusInductionAlgorithmType clss) throws IOException, ClusException {

@@ -46,7 +46,7 @@ public class ClusDecisionTree extends ClusInductionAlgorithmType {
 
 	public ClusDecisionTree(Clus clus) {
 		super(clus);
-	}
+	}	
 
 	public void printInfo() {
 		System.out.println("TDIDT");

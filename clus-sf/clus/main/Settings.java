@@ -847,10 +847,11 @@ public class Settings implements Serializable {
  * Section: Tree - Heuristic                                           *
  ***********************************************************************/
 
+	//LS 13/11/2015: added dummy
 	public final static String[] HEURISTICS = { "Default", "ReducedError",
 		"Gain", "GainRatio", "SSPD", "VarianceReduction", "MEstimate", "Morishita",
 		"DispersionAdt", "DispersionMlt", "RDispersionAdt", "RDispersionMlt",
-		"GeneticDistance", "SemiSupervised", "VarianceReductionMissing"};
+		"GeneticDistance", "SemiSupervised", "VarianceReductionMissing", "Dummy"};
 
 	public final static int HEURISTIC_DEFAULT = 0;
 	public final static int HEURISTIC_REDUCED_ERROR = 1;
@@ -869,6 +870,9 @@ public class Settings implements Serializable {
 	public final static int HEURISTIC_GENETIC_DISTANCE = 12;
 	public final static int HEURISTIC_SEMI_SUPERVISED = 13;
 	public final static int HEURISTIC_SS_REDUCTION_MISSING = 14;
+	//LS 13/11/2015
+	public final static int HEURISTIC_DUMMY = 15;
+	//LS 13/11/2015 END
 
 	public static int FTEST_LEVEL;
 	public static double FTEST_VALUE;

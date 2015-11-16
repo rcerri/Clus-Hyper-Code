@@ -45,6 +45,7 @@ public abstract class ClusInductionAlgorithmType {
 	// For each type of algorithm there should be a ClusClassifier object
 
 	protected Clus m_Clus;
+	
 
 	public ClusInductionAlgorithmType(Clus clus) {
 		m_Clus = clus;
