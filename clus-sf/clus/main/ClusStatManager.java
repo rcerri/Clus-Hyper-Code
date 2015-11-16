@@ -598,7 +598,8 @@ public class ClusStatManager implements Serializable {
 			return;
 		}
 		if (m_Mode == MODE_HIERARCHICAL) { // LS: 13/11/2015, add possibility to add other heuristics for hier (heuristics = splitting criterion)
-			if (getSettings().getHeuristic() == Settings.HEURISTIC_VARIANCE_REDUCTION) { //LS: added additional if-test
+			//if (getSettings().getHeuristic() == Settings.HEURISTIC_VARIANCE_REDUCTION) { //LS: added additional if-test
+			if (getSettings().getHeuristic() == Settings.HEURISTIC_DEFAULT) { //LS: added additional if-test
 				if (getSettings().getCompatibility() <= Settings.COMPATIBILITY_MLJ08) {
 					m_Heuristic = new VarianceReductionHeuristicCompatibility(createClusteringStat(), getClusteringWeights());
 				} else {
