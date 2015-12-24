@@ -598,9 +598,8 @@ public class ClusStatManager implements Serializable {
 			return;
 		}
 		if (m_Mode == MODE_HIERARCHICAL) { // LS: 13/11/2015, add possibility to add other heuristics for hier (heuristics = splitting criterion)
-			System.out.println(getSettings().getHeuristic());
+			//if (getSettings().getHeuristic() == Settings.HEURISTIC_VARIANCE_REDUCTION) { //LS: added additional if-test
 			if (getSettings().getHeuristic() == Settings.HEURISTIC_DEFAULT) { //LS: added additional if-test
-				System.out.println("!!!!!Then");
 				if (getSettings().getCompatibility() <= Settings.COMPATIBILITY_MLJ08) {
 					m_Heuristic = new VarianceReductionHeuristicCompatibility(createClusteringStat(), getClusteringWeights());
 				} else {
@@ -609,11 +608,9 @@ public class ClusStatManager implements Serializable {
 				getSettings().setHeuristic(Settings.HEURISTIC_VARIANCE_REDUCTION);
 			}
 			else { // LS: other heuristic than variance reduction
-				System.out.println("!!!!!Else");
 				if (getSettings().getHeuristic() == Settings.HEURISTIC_DUMMY) {
 					m_Heuristic = new DummyHeuristic(getClusteringWeights(), null);
 					getSettings().setHeuristic(Settings.HEURISTIC_DUMMY);
-					System.out.println("!!!!!Dummy heuristic selected");
 				}
 			}
 			return;

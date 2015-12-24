@@ -170,7 +170,7 @@ public class DepthFirstInduce extends ClusInductionAlgorithm {
 	}
 	
 	public void induce(ClusNode node, RowData data) {
-		//System.out.println("nonsparse induce");
+		System.out.println("nonsparse induce");
 		// Initialize selector and perform various stopping criteria
 		if (initSelectorAndStopCrit(node, data)) {
 			makeLeaf(node);
