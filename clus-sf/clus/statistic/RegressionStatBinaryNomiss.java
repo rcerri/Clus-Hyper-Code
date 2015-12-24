@@ -159,21 +159,16 @@ public class RegressionStatBinaryNomiss extends RegressionStatBase {
 	}
 
 	public double getSVarS(ClusAttributeWeights scale) {
-		System.out.println("svars");
 		double result = 0.0;
 		for (int i = 0; i < m_NbAttrs; i++) {
 			double n_tot = m_SumWeight;
 			double sv_tot = m_SumValues[i];
 			result += (sv_tot - sv_tot*sv_tot/n_tot)*scale.getWeight(m_Attrs[i]);
 		}
-		//return result / m_NbAttrs;
-		
-		double n_tot = m_SumWeight;
-		return (result / m_NbAttrs)/n_tot;
+		return result / m_NbAttrs;
 	}
 
 	public double getSVarSDiff(ClusAttributeWeights scale, ClusStatistic other) {
-		System.out.println("svarsdiff");
 		double result = 0.0;
 		RegressionStatBinaryNomiss or = (RegressionStatBinaryNomiss)other;
 		for (int i = 0; i < m_NbAttrs; i++) {
@@ -181,10 +176,7 @@ public class RegressionStatBinaryNomiss extends RegressionStatBase {
 			double sv_tot = m_SumValues[i] - or.m_SumValues[i];
 			result += (sv_tot - sv_tot*sv_tot/n_tot)*scale.getWeight(m_Attrs[i]);
 		}
-		//return result / m_NbAttrs;
-		
-		double n_tot = m_SumWeight - or.m_SumWeight;
-		return (result / m_NbAttrs)/n_tot;
+		return result / m_NbAttrs;
 	}
 
 	public String getString(StatisticPrintInfo info) {
