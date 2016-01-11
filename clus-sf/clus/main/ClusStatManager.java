@@ -612,7 +612,6 @@ public class ClusStatManager implements Serializable {
 				if (getSettings().getHeuristic() == Settings.HEURISTIC_DUMMY) {
 					m_Heuristic = new DummyHeuristic(getClusteringWeights(), null);
 					getSettings().setHeuristic(Settings.HEURISTIC_DUMMY);
-					System.out.println("!!!!!Dummy heuristic selected");
 				}
 			}
 			return;

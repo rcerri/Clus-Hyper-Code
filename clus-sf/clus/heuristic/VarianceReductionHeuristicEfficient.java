@@ -38,6 +38,7 @@ public class VarianceReductionHeuristicEfficient extends ClusHeuristic {
 	}
 
 	public double calcHeuristic(ClusStatistic tstat, ClusStatistic pstat, ClusStatistic missing) {
+		System.out.println("VRHE");
 		// Acceptable?
 		if (stopCriterion(tstat, pstat, missing)) {
 			return Double.NEGATIVE_INFINITY;
