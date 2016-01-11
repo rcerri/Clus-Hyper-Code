@@ -167,6 +167,7 @@ public class FTest {
 		return FTEST_SIG[Settings.FTEST_LEVEL];
 	}
 
+        //Doubts!
 	public static double calcVarianceReductionHeuristic(double n_tot, double ss_tot, double ss_sum) {
 		double value = ss_tot - ss_sum;
 		if (value < MathUtil.C1E_9) {
@@ -177,7 +178,7 @@ public class FTest {
 			// No F-test -> just return value
 			return value;
 		}
-		int n_2 = (int)Math.floor(n_tot - 2.0 + 0.5);
+		int n_2 = (int)Math.floor(n_tot - 2.0 + 0.5);//Cerri - Why?
 		if (n_2 <= 0) {
 			return Double.NEGATIVE_INFINITY;
 		} else {

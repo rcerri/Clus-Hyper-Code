@@ -45,8 +45,8 @@ import clus.data.type.*;
 import clus.data.attweights.*;
 import clus.error.ClusNumericError;
 
-public class RegressionStatBinaryNomiss extends RegressionStatBase {
-
+public class RegressionStatBinaryNomiss extends RegressionStatBase { 
+    
 	public final static long serialVersionUID = Settings.SERIAL_VERSION_ID;
 
 	public double[] m_SumValues;
@@ -158,7 +158,21 @@ public class RegressionStatBinaryNomiss extends RegressionStatBase {
 		return sv_tot - sv_tot*sv_tot/n_tot;
 	}
 
-	public double getSVarS(ClusAttributeWeights scale) {
+        //Compute |S|Var(S) for one attribute 
+	public double getSVarS(ClusAttributeWeights scale) {  
+            
+		double result = 0.0;
+		for (int i = 0; i < m_NbAttrs; i++) {
+			double n_tot = m_SumWeight;
+			double sv_tot = m_SumValues[i];
+			result += (sv_tot - sv_tot*sv_tot/n_tot)*scale.getWeight(m_Attrs[i]);
+		}
+		return result / m_NbAttrs;
+	}
+        
+        public double getSVarSLevel(ClusAttributeWeights scale) {
+  
+            
 		double result = 0.0;
 		for (int i = 0; i < m_NbAttrs; i++) {
 			double n_tot = m_SumWeight;

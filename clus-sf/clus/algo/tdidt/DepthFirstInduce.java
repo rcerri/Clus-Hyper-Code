@@ -169,6 +169,7 @@ public class DepthFirstInduce extends ClusInductionAlgorithm {
 		}
 	}
 	
+        //Start induction from here!
 	public void induce(ClusNode node, RowData data) {
 		//System.out.println("nonsparse induce");
 		// Initialize selector and perform various stopping criteria
@@ -180,6 +181,7 @@ public class DepthFirstInduce extends ClusInductionAlgorithm {
 		
 //		long start_time = System.currentTimeMillis();
 		
+                // Cerri - check is attribute is numeric or nominal
 		ClusAttrType[] attrs = getDescriptiveAttributes();
 		for (int i = 0; i < attrs.length; i++) {
 			ClusAttrType at = attrs[i];

@@ -133,6 +133,8 @@ public class FindBestTest {
 		m_Split.findRandomSplit(m_BestTest, at, rn);
 	}
 
+        //Cerri - If I understood, it shuffles data and sorts data with quick-sort
+        //        Here, it is already performing a test for a single variable
 	public void findNumeric(NumericAttrType at, RowData data) {
 		RowData sample = createSample(data);
 		DataTuple tuple;
@@ -147,8 +149,11 @@ public class FindBestTest {
 		int nb_rows = sample.getNbRows();
 		// Copy total statistic into corrected total
 		m_BestTest.copyTotal();
-		if (at.hasMissing()) {
+		if (at.hasMissing()) {//Cerri - checks if data has missing values
 			// Because of sorting, all missing values are in the front :-)
+                        // Cerri - treats all rows with missing values.
+                        //         After leaving loop, first will have the index of the fist instance
+                        //         with no missing values
 			while (first < nb_rows && at.isMissing(tuple = sample.getTuple(first))) {
 				m_BestTest.m_MissingStat.updateWeighted(tuple, first);
 				first++;
@@ -159,9 +164,10 @@ public class FindBestTest {
 		for (int i = first; i < nb_rows; i++) {
 			tuple = sample.getTuple(i);
 			double value = at.getNumeric(tuple);
-			if (value != prev) {
+			if (value != prev) { //Cerri - Is this comparison to avoid repetitive computations?
 				if (value != Double.NaN) {
 					// System.err.println("Value (>): " + value);
+                                        // Cerri - calls updateNumeric for every possible split point
 					m_BestTest.updateNumeric(value, at);
 				}
 				prev = value;

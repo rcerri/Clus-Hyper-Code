@@ -127,14 +127,17 @@ public class WHTDStatistic extends RegressionStatBinaryNomiss {
 		}
 	}
 
+        // Cerri - This method builds the binary vector for the instance (tuple)
+        //         It adds 1 do the positions corresponding to the classes of the instance
 	public void updateWeighted(DataTuple tuple, double weight) {
 		int sidx = m_Hier.getType().getArrayIndex();
-		ClassesTuple tp = (ClassesTuple)tuple.getObjVal(sidx);
-		m_SumWeight += weight;
+                
+		ClassesTuple tp = (ClassesTuple)tuple.getObjVal(sidx);//Cerri - gets the classes
+		m_SumWeight += weight;//Cerri - Why?
 		// Add one to the elements in the tuple, zero to the others
 		for (int j = 0; j < tp.getNbClasses(); j++) {
-			ClassesValue val = tp.getClass(j);
-			int idx = val.getIndex();
+			ClassesValue val = tp.getClass(j);//Cerri - Get class
+			int idx = val.getIndex();//Cerri - Get position of the class
 			// if (Settings.VERBOSE > 10) System.out.println("idx = "+idx+" weight = "+weight);
 			m_SumValues[idx] += weight;
 		}

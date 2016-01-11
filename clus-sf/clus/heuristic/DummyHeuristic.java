@@ -38,19 +38,22 @@ public class DummyHeuristic extends ClusHeuristic {
 	}
 
 	public double calcHeuristic(ClusStatistic tstat, ClusStatistic pstat, ClusStatistic missing) {
+            
+                System.out.println(tstat.getClass().getName());
 		// Acceptable?
-		if (stopCriterion(tstat, pstat, missing)) {
+		if (stopCriterion(tstat, pstat, missing)) { // Cerri - check the stop criterion
 			return Double.NEGATIVE_INFINITY;
-		}
+                }
+                                
 		// Compute |S|Var[S]
-		double ss_tot = tstat.getSVarS(m_ClusteringWeights);
-		double ss_pos = pstat.getSVarS(m_ClusteringWeights);
+		double ss_tot = tstat.getSVarS(m_ClusteringWeights); //total
+		double ss_pos = pstat.getSVarS(m_ClusteringWeights); //positive
 		double ss_neg = tstat.getSVarSDiff(m_ClusteringWeights, pstat);
 		// printInfo(ss_tot, ss_pos, ss_neg, pstat);
 		double value = FTest.calcVarianceReductionHeuristic(tstat.getTotalWeight(), ss_tot, ss_pos+ss_neg);
 		return Math.sqrt(value);
 	}
-
+        
 	public double calcHeuristic(ClusStatistic tstat, ClusStatistic[] pstat, int nbsplit) {
 		// Acceptable?
 		if (stopCriterion(tstat, pstat, nbsplit)) {

@@ -587,6 +587,7 @@ public class ClusStatManager implements Serializable {
 		}
 	}
 
+        //Cerri - Heuristic = split criterion
 	public void initHeuristic() throws ClusException {
 		// All rule learning heuristics should go here, except for rules from trees
 		if (isRuleInduceOnly() && !isTreeToRuleInduce()) {
@@ -672,6 +673,7 @@ public class ClusStatManager implements Serializable {
 		}
 	}
 
+        //Cerri - Stop criterion?
 	public void initStopCriterion() {
 		ClusStopCriterion stop = null;
 		int minEx = getSettings().getMinimalNbExamples();
