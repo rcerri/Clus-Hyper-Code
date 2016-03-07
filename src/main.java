@@ -48,22 +48,36 @@ public class main {
 		
 		
 		
-		myMeasures measure = ClusWrapper.evaluateIndividual(all);
+		myMeasures measure = ClusWrapper.evaluateIndividual(all,false);
 		
-		System.out.println("MAE: "+ measure.getMAE()[0]);
+		
+		System.out.println("\nTraining error: ");
+		System.out.println("MAE: "+ measure.getMAE()[0]);  // Give 0's, if false.
 		System.out.println("MSE: "+ measure.getMSE()[0]);
 		System.out.println("RMSE: "+ measure.getRMSE()[0]);
 		System.out.println("WRMSE: "+ measure.getWRMSE()[0]);
 		
+        System.out.println("\nTest error: ");
+		System.out.println("MAE: "+ measure.getMAE()[1]);
+		System.out.println("MSE: "+ measure.getMSE()[1]);
+		System.out.println("RMSE: "+ measure.getRMSE()[1]);
+		System.out.println("WRMSE: "+ measure.getWRMSE()[1]);
 		
-        measure = ClusWrapper.evaluateIndividual(independent);
+        measure = ClusWrapper.evaluateIndividual(independent,true);
 		
+        System.out.println("\nTraining error: ");
 		System.out.println("\nMAE: "+ measure.getMAE()[0]);
 		System.out.println("MSE: "+ measure.getMSE()[0]);
 		System.out.println("RMSE: "+ measure.getRMSE()[0]);
 		System.out.println("WRMSE: "+ measure.getWRMSE()[0]);
 		
-	
+        System.out.println("\nTest error: ");
+
+		System.out.println("\nMAE: "+ measure.getMAE()[1]);
+		System.out.println("MSE: "+ measure.getMSE()[1]);
+		System.out.println("RMSE: "+ measure.getRMSE()[1]);
+		System.out.println("WRMSE: "+ measure.getWRMSE()[1]);
+		
 	}
 
 }

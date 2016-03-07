@@ -69,7 +69,7 @@ public class ClusWrapper {
 	private static int FirstOutputIndex=0;
 	
 	
-	private static void createBaseConfigFile(String target) throws IOException{
+	private static void createBaseConfigFile(String target, boolean trainErrors) throws IOException{
 
 		
 		if(target.contains(",")) target = target.substring(0, target.length()-1); // I remove the last comma.
@@ -81,7 +81,11 @@ public class ClusWrapper {
 		cad += "File = "+train+"\n";
 		cad += "TestSet = "+test+"\n\n";
 		cad += "[Attributes]\nTarget = "+target+"\nDisable = "+disable+"\n"; // Disable = 17-30
-		cad += "[Output]\nWritePredictions = {Test}\nTrainErrors = No\nWriteModelFile = No\nWriteOutFile = Yes\n\n";
+		
+		if(trainErrors)
+			cad += "[Output]\nWritePredictions = {Test}\nTrainErrors = Yes\nWriteModelFile = No\nWriteOutFile = Yes\n\n";
+		else
+			cad += "[Output]\nWritePredictions = {Test}\nTrainErrors = No\nWriteModelFile = No\nWriteOutFile = Yes\n\n";
 
 		// System.out.println(cad);
 		bf.write(cad);
@@ -221,14 +225,67 @@ public class ClusWrapper {
 	/**
 	 * This function process the output from Clus, it return the measure you want: MAE, MSE, RMSE or Weighted RMSE
 	 * for a single classifier. 
+	 * 
+	 * If train == true, training errors are provided.
 	 */
-	public static double[][] processOutput(){
+	public static double[][][] processOutput(boolean train){
 		
 		
 		String cadena = Fichero.leeFichero(currentdir+"config.out");
 		StringTokenizer lineas = new StringTokenizer (cadena,"\n\r");
-
 		String linea = "";
+		double errors[][][]=new double[2][4][]; // dimension 0: tra/tst; dimension 1: MAE,MSE,RMSE,RMSE; dimension 2: Measures. 
+	
+				
+		if(train){
+			
+			while(!linea.equalsIgnoreCase("Training error")){linea = lineas.nextToken();}  
+			
+			String values[][] = new String[4][]; 
+			
+			while(!linea.equalsIgnoreCase("Mean absolute error (MAE)")){linea = lineas.nextToken();}
+			linea = lineas.nextToken(); // skip line default
+			linea = lineas.nextToken();
+			
+			String list = linea.substring(linea.indexOf('[')+1, linea.indexOf(']'));
+			values[0] = list.split(",");
+			
+			linea = lineas.nextToken(); // skip MSE line
+			linea = lineas.nextToken(); // skip line default
+			linea = lineas.nextToken();
+			
+			list = linea.substring(linea.indexOf('[')+1, linea.indexOf(']'));
+			values[1] = list.split(",");
+			
+			linea = lineas.nextToken(); // skip RMSE line
+			linea = lineas.nextToken(); // skip line default
+			linea = lineas.nextToken();
+			
+			list = linea.substring(linea.indexOf('[')+1, linea.indexOf(']'));
+			values[2] = list.split(",");
+			
+			
+			linea = lineas.nextToken(); // skip WRMSE line
+			linea = lineas.nextToken(); // skip line default
+			linea = lineas.nextToken();
+			
+			list = linea.substring(linea.indexOf('[')+1, linea.indexOf(']'));
+			values[3] = list.split(",");
+				
+			errors[0] = new double[4][values[0].length]; // for the four measures
+			
+			
+			for(int i=0; i<errors[0][0].length; i++){
+				errors[0][0][i] = Double.parseDouble(values[0][i]);
+				errors[0][1][i] = Double.parseDouble(values[1][i]);
+				errors[0][2][i] = Double.parseDouble(values[2][i]);
+				errors[0][3][i] = Double.parseDouble(values[3][i]);
+			 	//System.out.println(errors[0][i]);
+			}
+			
+		}
+		
+	
 		while(!linea.equalsIgnoreCase("Testing error")){linea = lineas.nextToken();}  // go ahead until Testing error (to make sure no training error is collected)	  
 		
 		String values[][] = new String[4][]; 
@@ -263,14 +320,14 @@ public class ClusWrapper {
 		values[3] = list.split(",");
 			
 		
-		double errors[][] = new double[4][values[0].length]; // for the four measures
+		errors[1] = new double[4][values[0].length]; // for the four measures // for the four measures
 		
-		for(int i=0; i<errors[0].length; i++){
-			errors[0][i] = Double.parseDouble(values[0][i]);
-			errors[1][i] = Double.parseDouble(values[1][i]);
-			errors[2][i] = Double.parseDouble(values[2][i]);
-			errors[3][i] = Double.parseDouble(values[3][i]);
-		 	//System.out.println(errors[0][i]);
+		for(int i=0; i<errors[1][0].length; i++){
+			errors[1][0][i] = Double.parseDouble(values[0][i]);
+			errors[1][1][i] = Double.parseDouble(values[1][i]);
+			errors[1][2][i] = Double.parseDouble(values[2][i]);
+			errors[1][3][i] = Double.parseDouble(values[3][i]);
+		 //	System.out.println(errors[1][2][i]);
 		}
 		
 		return errors;
@@ -288,7 +345,7 @@ public class ClusWrapper {
 		
 		FirstOutputIndex = Integer.parseInt(disable.split("-")[0]); // Compute the first index
 				
-		createBaseConfigFile(disable); // create initial config.s file
+		createBaseConfigFile(disable,false); // create initial config.s file
 		
 		String [] args;
 		args= new String[1];
@@ -349,7 +406,7 @@ public class ClusWrapper {
 				
 				if(!Classifier[j].equals("")){
 					// Create the proper config.s file:
-					createBaseConfigFile(Classifier[j]); // create initial config.s file
+					createBaseConfigFile(Classifier[j],false); // create initial config.s file  (I put False directly)
 					
 					// Run the classifier
 					runClassifier(args);
@@ -401,12 +458,14 @@ public class ClusWrapper {
 	 * 
 	 * Assumption: In this implementation I assumed that THERE IS NO OVERLAP between classifiers!
 	 * @param pop
+	 * @param train - if true the performance measures are given for both datasets (training and 'test'). If false, it just provides
+	 * the performance measures for the 'test' set.
 	 * @return
 	 * @throws IOException
 	 * @throws ClusException
 	 */
 	
-	public static myMeasures evaluateIndividual(int individual []) throws IOException, ClusException{
+	public static myMeasures evaluateIndividual(int individual [], boolean train) throws IOException, ClusException{
 		
 		myMeasures errorIndividuals = new myMeasures();
 		
@@ -434,31 +493,37 @@ public class ClusWrapper {
 
 		// 2nd, run every classifier.
 
-		double ErrorTarget[][] = new double [4][individual.length];  // one error per target.
+		double ErrorTarget[][][] = new double [2][4][individual.length];  // one error per target.
 
 
 		for (int j=0; j<MaxClassifiers;j++){
 
 			if(!Classifier[j].equals("")){
 				// Create the proper config.s file:
-				createBaseConfigFile(Classifier[j]); // create initial config.s file
+				createBaseConfigFile(Classifier[j],train); // create initial config.s file
 
 				// Run the classifier
 				runClassifier(args);
 
 				// Process outputs, for each target.
 				String targets[]=Classifier[j].split(",");
-				double errors[][] = new double [4][targets.length]; // one error per performance measure
-				errors= processOutput();
+				double errors[][][] = new double [2][4][targets.length]; // one error per performance measure, training and test
+				errors= processOutput(train);
 
 				
 				//System.out.println(individual.length+ ", "+FirstOutputIndex + "; "+Integer.parseInt(targets[0]));
 				// map these errors into ErrorTarget
-				for(int t=0; t<targets.length; t++){						
-					ErrorTarget[0][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][t]; // Assume targets start from FirstOutputIndex
-					ErrorTarget[1][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][t];
-					ErrorTarget[2][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[2][t];
-					ErrorTarget[3][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[3][t];
+				for(int t=0; t<targets.length; t++){			
+					if(train){
+						ErrorTarget[0][0][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][0][t]; // Assume targets start from FirstOutputIndex
+						ErrorTarget[0][1][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][1][t];
+						ErrorTarget[0][2][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][2][t];
+						ErrorTarget[0][3][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][3][t];
+					}
+					ErrorTarget[1][0][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][0][t]; // Assume targets start from FirstOutputIndex
+					ErrorTarget[1][1][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][1][t];
+					ErrorTarget[1][2][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][2][t];
+					ErrorTarget[1][3][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][3][t];
 				}
 			}
 		}
@@ -468,38 +533,43 @@ public class ClusWrapper {
 
 	//	System.out.print("ERRORs: ");
 
-		double averageError[]  = new double [4];
-		Arrays.fill(averageError, 0);
+		double averageTrainingError[]  = new double [4];
+		Arrays.fill(averageTrainingError, 0);
+
+		double averageTestError[]  = new double [4];
+		Arrays.fill(averageTestError, 0);
 
 		
-		for(int m=0; m<ErrorTarget.length; m++){
-			for(int e=0; e<ErrorTarget[0].length; e++){
+		for(int m=0; m<ErrorTarget[0].length; m++){
+			for(int e=0; e<ErrorTarget[0][0].length; e++){
 				
-				averageError[m]+= ErrorTarget[m][e];
-			//	System.out.print(ErrorTarget[m][e]+", ");
+				averageTrainingError[m]+= ErrorTarget[0][m][e];
+				averageTestError[m]+= ErrorTarget[1][m][e];
+
+				//System.out.print(ErrorTarget[0][m][e]+", ");
 			}
-		//	System.out.println("----");
+			//System.out.println("----");
 			
 		}
 
 		double [] measure= new double[2];
-		measure[0]= averageError[0]/ErrorTarget[0].length;
-		measure[1] = Double.NaN;
+		measure[0]= averageTrainingError[0]/ErrorTarget[0][0].length;
+		measure[1] = averageTestError[0]/ErrorTarget[1][0].length;
 		errorIndividuals.setMAE(measure);
 	
 		measure= new double[2];
-		measure[0]= averageError[1]/ErrorTarget[0].length;
-		measure[1] = Double.NaN;
+		measure[0]= averageTrainingError[1]/ErrorTarget[0][0].length;
+		measure[1] = averageTestError[1]/ErrorTarget[1][0].length;
 		errorIndividuals.setMSE(measure);
 		
 		measure= new double[2];
-		measure[0]= averageError[2]/ErrorTarget[0].length;
-		measure[1] = Double.NaN;
+		measure[0]= averageTrainingError[2]/ErrorTarget[0][0].length;
+		measure[1] = averageTestError[2]/ErrorTarget[1][0].length;
 		errorIndividuals.setRMSE(measure);
 		
 		measure= new double[2];
-		measure[0]= averageError[3]/ErrorTarget[0].length;
-		measure[1] = Double.NaN;
+		measure[0]= averageTrainingError[3]/ErrorTarget[0][0].length;
+		measure[1] = averageTestError[3]/ErrorTarget[1][0].length;
 		errorIndividuals.setWRMSE(measure);
 
 		// System.exit(1);
