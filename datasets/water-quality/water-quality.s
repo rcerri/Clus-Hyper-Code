@@ -6,8 +6,8 @@ TestSet = water-quality-test.arff
 Target = 17-30
 Disable = 17-30
 
-%[Output]
-%WritePredictions = Test
+[Output]
+WritePredictions = Test
 
 %[Ensemble]
 %Iterations = 500
