@@ -88,6 +88,19 @@ public class AbsoluteError extends ClusNumericError {
 		}
 		out.println(buf.toString());
 	}
+	
+	public String showModelError(int detail) {
+		NumberFormat fr = getFormat();
+		StringBuffer buf = new StringBuffer();
+		buf.append(showDoubleArray(m_AbsError, getNbExamples()));
+		if (m_Dim > 1) {
+			buf.append(": "+fr.format(getModelError()/getNbExamples()));
+		}
+		
+		
+		//out.println(buf.toString());
+		return buf.toString()+"\n";
+	}
 
 	public void showRelativeError(PrintWriter out, boolean detail) {
 		out.println(getPrefix() + RELATIVE_ERROR + RELATIVE_POSTFIX + showDoubleArray(m_AbsError, m_AbsDefError));

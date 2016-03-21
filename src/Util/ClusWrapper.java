@@ -75,6 +75,8 @@ public class ClusWrapper {
 	
 	private static boolean forest=false;
 
+	
+	private static String outputFile="";
 	/*
 	private static void createBaseConfigFile(String target, boolean trainErrors) throws IOException{
 
@@ -114,9 +116,9 @@ public class ClusWrapper {
 		cad += "[Attributes]\nTarget = "+target+"\nDisable = "+disable+"\n"; // Disable = 17-30
 		
 		if(trainErrors)
-			cad += "[Output]\nWritePredictions = {Test}\nTrainErrors = Yes\nWriteModelFile = No\nWriteOutFile = Yes\n\n";
+			cad += "[Output]\nTrainErrors = Yes\nWriteModelFile = No\nWriteOutFile = Yes\n\n"; //WritePredictions = {Test}
 		else
-			cad += "[Output]\nWritePredictions = {Test}\nTrainErrors = No\nWriteModelFile = No\nWriteOutFile = Yes\n\n";
+			cad += "[Output]\nTrainErrors = No\nWriteModelFile = No\nWriteOutFile = Yes\n\n"; //\nWritePredictions = {Test}
 
 					
 		return new ByteArrayInputStream(cad.getBytes(StandardCharsets.UTF_8));
@@ -217,8 +219,10 @@ public class ClusWrapper {
 		
 
 		// Run the classifier:
-		clus.singleRun(clss);
+		//clus.singleRun(clss);
+		outputFile= clus.singleRunNOFILES(clss); // to avoid writing any file.
 		
+		//System.out.println("Output file: "+outputFile);
 		
 		System.setOut(realSystemOut);
 	}
@@ -226,7 +230,7 @@ public class ClusWrapper {
 	/**
 	 * This function process the output from Clus, it return the measure you want: MAE, MSE, RMSE or Weighted RMSE
 	 * for a single classifier. 
-	 */
+	
 	public static double[] processOutput(String measure){
 		
 		
@@ -271,7 +275,7 @@ public class ClusWrapper {
 		
 		return errors;
 	}
-	
+	 */
 	
 	/**
 	 * This function process the output from Clus, it return the measure you want: MAE, MSE, RMSE or Weighted RMSE
@@ -282,7 +286,10 @@ public class ClusWrapper {
 	public static double[][][] processOutput(boolean train){
 		
 		
-		String cadena = Fichero.leeFichero(currentdir+"config.out");
+		//String cadena = Fichero.leeFichero(currentdir+"config.out");
+		String cadena = outputFile;
+		//System.out.println(cadena);
+		//System.exit(1);
 		StringTokenizer lineas = new StringTokenizer (cadena,"\n\r");
 		String linea = "";
 		double errors[][][]=new double[2][4][]; // dimension 0: tra/tst; dimension 1: MAE,MSE,RMSE,RMSE; dimension 2: Measures. 

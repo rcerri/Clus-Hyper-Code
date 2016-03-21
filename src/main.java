@@ -48,7 +48,7 @@ public class main {
 		
 		
 		// Isaac: why Clus fails with Trees without training error??
-		myMeasures measure = ClusWrapper.evaluateIndividual(all,false);
+		myMeasures measure = ClusWrapper.evaluateIndividual(all,true);
 		
 		
 		System.out.println("\nTraining error: ");
@@ -63,6 +63,7 @@ public class main {
 		System.out.println("RMSE: "+ measure.getRMSE()[1]);
 		System.out.println("WRMSE: "+ measure.getWRMSE()[1]);
 		
+		//System.exit(1);
 		
 				
         measure = ClusWrapper.evaluateIndividual(independent,true);

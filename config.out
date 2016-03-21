@@ -1,0 +1,1729 @@
+Clus run 'waterqual.arff'
+*************************
+
+Date: 3/21/16 10:21 AM
+File: config.out
+Attributes: 30 (input: 16, output: 1)
+Missing values: No
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+PruneSetMax = Infinity
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 17-30
+Clustering = 17-30
+Descriptive = 1-16
+Key = None
+Disable = None
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = No
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = Default
+M5PruningMult = 2.0
+1-SE-Rule = No
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 17-30
+Clustering = 17-30
+Descriptive = 1-16
+Key = None
+Disable = None
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = No
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 17
+Clustering = 17
+Descriptive = 1-16
+Key = None
+Disable = 18-30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 18
+Clustering = 18
+Descriptive = 1-16
+Key = None
+Disable = 17,19-30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 19
+Clustering = 19
+Descriptive = 1-16
+Key = None
+Disable = 17-18,20-30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 20
+Clustering = 20
+Descriptive = 1-16
+Key = None
+Disable = 17-19,21-30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 21
+Clustering = 21
+Descriptive = 1-16
+Key = None
+Disable = 17-20,22-30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 22
+Clustering = 22
+Descriptive = 1-16
+Key = None
+Disable = 17-21,23-30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 23
+Clustering = 23
+Descriptive = 1-16
+Key = None
+Disable = 17-22,24-30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 24
+Clustering = 24
+Descriptive = 1-16
+Key = None
+Disable = 17-23,25-30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 25
+Clustering = 25
+Descriptive = 1-16
+Key = None
+Disable = 17-24,26-30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 26
+Clustering = 26
+Descriptive = 1-16
+Key = None
+Disable = 17-25,27-30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 27
+Clustering = 27
+Descriptive = 1-16
+Key = None
+Disable = 17-26,28-30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 28
+Clustering = 28
+Descriptive = 1-16
+Key = None
+Disable = 17-27,29-30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 29
+Clustering = 29
+Descriptive = 1-16
+Key = None
+Disable = 17-28,30
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = ./datasets/water-quality/water-quality-train.arff
+TestSet = ./datasets/water-quality/water-quality-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 30
+Clustering = 30
+Descriptive = 1-16
+Key = None
+Disable = 17-29
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Test}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+WriteOutFile = Yes
+WriteModelFile = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+Run: 01
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.015 sec
+Pruning Time: 0 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 429 (Leaves: 215)
+     Pruned: Nodes = 13 (Leaves: 7)
+
+Training error
+--------------
+
+Number of examples: 842
+Mean absolute error (MAE)
+   Default        : [1.1642]
+   Original       : [0.192]
+   Pruned         : [1.0547]
+Mean squared error (MSE)
+   Default        : [2.2184]
+   Original       : [0.2144]
+   Pruned         : [1.8645]
+Root mean squared error (RMSE)
+   Default        : [1.4894]
+   Original       : [0.463]
+   Pruned         : [1.3655]
+Weighted root mean squared error (RMSE) (Weights [0.451])
+   Default        : [1]
+   Original       : [0.3109]
+   Pruned         : [0.9168]
+Pearson correlation coefficient
+   Default        : [0], Avg r^2: 0
+   Original       : [0.9505], Avg r^2: 0.9034
+   Pruned         : [0.3994], Avg r^2: 0.1596
+
+Testing error
+-------------
+
+Number of examples: 218
+Mean absolute error (MAE)
+   Default        : [1.0538]
+   Original       : [1.2737]
+   Pruned         : [0.8831]
+Mean squared error (MSE)
+   Default        : [1.3613]
+   Original       : [3.6809]
+   Pruned         : [1.3137]
+Root mean squared error (RMSE)
+   Default        : [1.1667]
+   Original       : [1.9186]
+   Pruned         : [1.1462]
+Weighted root mean squared error (RMSE) (Weights [0.451])
+   Default        : [0.7833]
+   Original       : [1.2881]
+   Pruned         : [0.7695]
+Pearson correlation coefficient
+   Default        : [�], Avg r^2: �
+   Original       : [-0.1153], Avg r^2: 0.0133
+   Pruned         : [0.1039], Avg r^2: 0.0108
+
+Default Model
+*************
+
+[1.009501]: 842
+
+Original Model
+**************
+
+std_temp > 2.25962039504358
++--yes: o2sat > 5.39937815500118
+|       +--yes: k2cr2o7 > 1.36760060392633
+|       |       +--yes: std_temp > 3.52578699571455
+|       |       |       +--yes: [0.5]: 2
+|       |       |       +--no:  [0]: 3
+|       |       +--no:  no3 > 4.63240928270737
+|       |               +--yes: [5]: 2
+|       |               +--no:  o2 > 4.5566483690313
+|       |                       +--yes: k2cr2o7 > 0.435145646703831
+|       |                       |       +--yes: kmno4 > 0.499982178337438
+|       |                       |       |       +--yes: k2cr2o7 > 0.583382075800741
+|       |                       |       |       |       +--yes: no2 > 0.345468929811465
+|       |                       |       |       |       |       +--yes: std_pH > 24.6228900302463
+|       |                       |       |       |       |       |       +--yes: [3]: 7
+|       |                       |       |       |       |       |       +--no:  [2]: 2
+|       |                       |       |       |       |       +--no:  std_temp > 4.12965106680379
+|       |                       |       |       |       |               +--yes: [4]: 2
+|       |                       |       |       |       |               +--no:  [5]: 2
+|       |                       |       |       |       +--no:  [1]: 3
+|       |                       |       |       +--no:  std_pH > 24.6228900302463
+|       |                       |       |               +--yes: k2cr2o7 > 0.482963849638318
+|       |                       |       |               |       +--yes: [0]: 6
+|       |                       |       |               |       +--no:  [1]: 4
+|       |                       |       |               +--no:  [2]: 2
+|       |                       |       +--no:  k2cr2o7 > 0.272563756726576
+|       |                       |               +--yes: nh4 > 0.0295328172497862
+|       |                       |               |       +--yes: nh4 > 0.0379707650354394
+|       |                       |               |       |       +--yes: std_pH > 25.2234483236669
+|       |                       |               |       |       |       +--yes: conduct > 3.5678890427928
+|       |                       |               |       |       |       |       +--yes: [3]: 2
+|       |                       |               |       |       |       |       +--no:  [5]: 6
+|       |                       |               |       |       |       +--no:  cl > 0.269133793202213
+|       |                       |               |       |       |               +--yes: k2cr2o7 > 0.306036498780717
+|       |                       |               |       |       |               |       +--yes: [3]: 5
+|       |                       |               |       |       |               |       +--no:  [0.5]: 2
+|       |                       |               |       |       |               +--no:  [4.333333]: 3
+|       |                       |               |       |       +--no:  [1.333333]: 3
+|       |                       |               |       +--no:  [5]: 4
+|       |                       |               +--no:  std_temp > 3.23359470325202
+|       |                       |                       +--yes: k2cr2o7 > 0.162581889977256
+|       |                       |                       |       +--yes: cl > 0.238079893986573
+|       |                       |                       |       |       +--yes: o2 > 4.76376874944182
+|       |                       |                       |       |       |       +--yes: [2]: 2
+|       |                       |                       |       |       |       +--no:  [0]: 3
+|       |                       |                       |       |       +--no:  [3]: 3
+|       |                       |                       |       +--no:  conduct > 2.35071856204838
+|       |                       |                       |               +--yes: [5]: 3
+|       |                       |                       |               +--no:  [4]: 2
+|       |                       |                       +--no:  o2 > 5.05373728201654
+|       |                       |                               +--yes: [0]: 3
+|       |                       |                               +--no:  [1]: 2
+|       |                       +--no:  o2 > 4.39095206470289
+|       |                               +--yes: conduct > 2.72237367067263
+|       |                               |       +--yes: [2]: 2
+|       |                               |       +--no:  kmno4 > 0.324312764326987
+|       |                               |               +--yes: [0]: 4
+|       |                               |               +--no:  [1]: 3
+|       |                               +--no:  std_temp > 4.36340490077381
+|       |                                       +--yes: [3]: 2
+|       |                                       +--no:  [2]: 2
+|       +--no:  bod > 0.637342989360402
+|               +--yes: k2cr2o7 > 4.74356573110111
+|               |       +--yes: [3]: 2
+|               |       +--no:  k2cr2o7 > 1.74058258681533
+|               |               +--yes: o2sat > 3.62332548901151
+|               |               |       +--yes: std_temp > 2.96088189695366
+|               |               |       |       +--yes: [3]: 2
+|               |               |       |       +--no:  [1.5]: 2
+|               |               |       +--no:  std_pH > 22.8212151499843
+|               |               |               +--yes: co2 > 0.0
+|               |               |               |       +--yes: [1]: 3
+|               |               |               |       +--no:  [0.333333]: 3
+|               |               |               +--no:  std_temp > 3.01932035544616
+|               |               |                       +--yes: [0.5]: 2
+|               |               |                       +--no:  [0]: 7
+|               |               +--no:  k2cr2o7 > 1.16198233130803
+|               |                       +--yes: [0]: 23
+|               |                       +--no:  sio2 > 0.900967148720717
+|               |                               +--yes: conduct > 3.64222006451765
+|               |                               |       +--yes: std_pH > 23.1214942966947
+|               |                               |       |       +--yes: std_temp > 3.70110237119207
+|               |                               |       |       |       +--yes: [1]: 3
+|               |                               |       |       |       +--no:  hardness > 5.43786390746007
+|               |                               |       |       |               +--yes: [1]: 2
+|               |                               |       |       |               +--no:  [0]: 2
+|               |                               |       |       +--no:  [0]: 3
+|               |                               |       +--no:  [0]: 10
+|               |                               +--no:  [2]: 2
+|               +--no:  o2 > 3.0653816300756
+|                       +--yes: hardness > 2.9947656301954
+|                       |       +--yes: co2 > 0.155396203392399
+|                       |       |       +--yes: no3 > 2.3929001592793
+|                       |       |       |       +--yes: std_temp > 2.45441525668527
+|                       |       |       |       |       +--yes: [0]: 2
+|                       |       |       |       |       +--no:  [4]: 2
+|                       |       |       |       +--no:  std_pH > 23.7220525901153
+|                       |       |       |               +--yes: [2]: 2
+|                       |       |       |               +--no:  sio2 > 0.589093904932776
+|                       |       |       |                       +--yes: kmno4 > 1.7296680764106
+|                       |       |       |                       |       +--yes: [1]: 4
+|                       |       |       |                       |       +--no:  o2sat > 3.88149855825312
+|                       |       |       |                       |               +--yes: std_temp > 4.36340490077381
+|                       |       |       |                       |               |       +--yes: [0.5]: 2
+|                       |       |       |                       |               |       +--no:  std_pH > 22.2206568565637
+|                       |       |       |                       |               |               +--yes: [0]: 22
+|                       |       |       |                       |               |               +--no:  [0.5]: 2
+|                       |       |       |                       |               +--no:  std_temp > 2.88296395229698
+|                       |       |       |                       |                       +--yes: [1]: 3
+|                       |       |       |                       |                       +--no:  [0.5]: 2
+|                       |       |       |                       +--no:  conduct > 3.2705649558934
+|                       |       |       |                               +--yes: [0.666667]: 3
+|                       |       |       |                               +--no:  [2]: 2
+|                       |       |       +--no:  no3 > 1.84069243021485
+|                       |       |               +--yes: no3 > 2.33154374493881
+|                       |       |               |       +--yes: nh4 > 0.291109198605035
+|                       |       |               |       |       +--yes: std_temp > 3.01932035544616
+|                       |       |               |       |       |       +--yes: [4]: 2
+|                       |       |               |       |       |       +--no:  [3]: 2
+|                       |       |               |       |       +--no:  po4 > 0.252613939142162
+|                       |       |               |       |               +--yes: conduct > 3.88379588512341
+|                       |       |               |       |               |       +--yes: [1]: 2
+|                       |       |               |       |               |       +--no:  std_temp > 2.80504600764031
+|                       |       |               |       |               |               +--yes: [0]: 8
+|                       |       |               |       |               |               +--no:  [0.5]: 2
+|                       |       |               |       |               +--no:  po4 > 0.0631534847855404
+|                       |       |               |       |                       +--yes: kmno4 > 0.513495210184396
+|                       |       |               |       |                       |       +--yes: [3]: 4
+|                       |       |               |       |                       |       +--no:  kmno4 > 0.351338828020902
+|                       |       |               |       |                       |               +--yes: std_temp > 2.59077165983445
+|                       |       |               |       |                       |               |       +--yes: std_temp > 3.0582793277745
+|                       |       |               |       |                       |               |       |       +--yes: [0.5]: 2
+|                       |       |               |       |                       |               |       |       +--no:  [2]: 2
+|                       |       |               |       |                       |               |       +--no:  [0]: 2
+|                       |       |               |       |                       |               +--no:  std_pH > 23.7220525901153
+|                       |       |               |       |                       |                       +--yes: [3]: 2
+|                       |       |               |       |                       |                       +--no:  [2]: 2
+|                       |       |               |       |                       +--no:  std_pH > 23.7220525901153
+|                       |       |               |       |                               +--yes: [0]: 4
+|                       |       |               |       |                               +--no:  [1]: 2
+|                       |       |               |       +--no:  o2 > 4.01813537996397
+|                       |       |               |               +--yes: no2 > 0.0575781549685776
+|                       |       |               |               |       +--yes: k2cr2o7 > 0.459054748171075
+|                       |       |               |               |       |       +--yes: std_pH > 24.0223317368256
+|                       |       |               |               |       |       |       +--yes: [0]: 5
+|                       |       |               |               |       |       |       +--no:  [1.333333]: 3
+|                       |       |               |               |       |       +--no:  conduct > 2.973240868994
+|                       |       |               |               |       |               +--yes: std_temp > 2.57129217367028
+|                       |       |               |               |       |               |       +--yes: [4]: 2
+|                       |       |               |               |       |               |       +--no:  [3]: 2
+|                       |       |               |               |       |               +--no:  conduct > 2.3785926951952
+|                       |       |               |               |       |                       +--yes: [0.666667]: 3
+|                       |       |               |               |       |                       +--no:  [3]: 2
+|                       |       |               |               |       +--no:  [5]: 2
+|                       |       |               |               +--no:  kmno4 > 0.783755847123551
+|                       |       |               |                       +--yes: [1.333333]: 3
+|                       |       |               |                       +--no:  conduct > 3.60505455365522
+|                       |       |               |                               +--yes: [5]: 2
+|                       |       |               |                               +--no:  std_temp > 2.7466075491478
+|                       |       |               |                                       +--yes: [3]: 8
+|                       |       |               |                                       +--no:  [4.333333]: 3
+|                       |       |               +--no:  po4 > 0.0210511615951802
+|                       |       |                       +--yes: bod > 0.150483761376762
+|                       |       |                       |       +--yes: conduct > 2.61087713808535
+|                       |       |                       |       |       +--yes: o2 > 4.34952798862079
+|                       |       |                       |       |       |       +--yes: std_temp > 3.07775881393867
+|                       |       |                       |       |       |       |       +--yes: [0]: 2
+|                       |       |                       |       |       |       |       +--no:  std_temp > 2.41545628435693
+|                       |       |                       |       |       |       |               +--yes: [3]: 7
+|                       |       |                       |       |       |       |               +--no:  [2]: 2
+|                       |       |                       |       |       |       +--no:  no2 > 0.403047084780043
+|                       |       |                       |       |       |               +--yes: kmno4 > 0.716190687888762
+|                       |       |                       |       |       |               |       +--yes: [1]: 7
+|                       |       |                       |       |       |               |       +--no:  po4 > 0.631534847855404
+|                       |       |                       |       |       |               |               +--yes: [1]: 2
+|                       |       |                       |       |       |               |               +--no:  [0]: 5
+|                       |       |                       |       |       |               +--no:  o2 > 3.64531869522504
+|                       |       |                       |       |       |                       +--yes: no3 > 1.34984111549089
+|                       |       |                       |       |       |                       |       +--yes: std_temp > 3.07775881393867
+|                       |       |                       |       |       |                       |       |       +--yes: [2]: 2
+|                       |       |                       |       |       |                       |       |       +--no:  [3]: 2
+|                       |       |                       |       |       |                       |       +--no:  std_temp > 2.49337422901361
+|                       |       |                       |       |       |                       |               +--yes: no3 > 1.13509366529916
+|                       |       |                       |       |       |                       |               |       +--yes: [0]: 5
+|                       |       |                       |       |       |                       |               |       +--no:  conduct > 3.05686326843445
+|                       |       |                       |       |       |                       |               |               +--yes: [1]: 5
+|                       |       |                       |       |       |                       |               |               +--no:  [0.5]: 2
+|                       |       |                       |       |       |                       |               +--no:  [1.666667]: 3
+|                       |       |                       |       |       |                       +--no:  [4.333333]: 3
+|                       |       |                       |       |       +--no:  o2sat > 4.40674721636535
+|                       |       |                       |       |               +--yes: std_pH > 24.6228900302463
+|                       |       |                       |       |               |       +--yes: o2 > 4.30810391253869
+|                       |       |                       |       |               |       |       +--yes: [0]: 2
+|                       |       |                       |       |               |       |       +--no:  [1]: 2
+|                       |       |                       |       |               |       +--no:  [0]: 8
+|                       |       |                       |       |               +--no:  std_temp > 2.61025114599862
+|                       |       |                       |       |                       +--yes: [1]: 2
+|                       |       |                       |       |                       +--no:  [3]: 2
+|                       |       |                       |       +--no:  hardness > 3.23119449573714
+|                       |       |                       |               +--yes: kmno4 > 0.310799732480029
+|                       |       |                       |               |       +--yes: o2 > 4.05955945604607
+|                       |       |                       |               |       |       +--yes: [3]: 2
+|                       |       |                       |               |       |       +--no:  bod > 0.132779789450084
+|                       |       |                       |               |       |               +--yes: std_temp > 3.3115126479087
+|                       |       |                       |               |       |               |       +--yes: [0.5]: 2
+|                       |       |                       |               |       |               |       +--no:  [1]: 2
+|                       |       |                       |               |       |               +--no:  [0]: 5
+|                       |       |                       |               |       +--no:  k2cr2o7 > 0.25821829584623
+|                       |       |                       |               |               +--yes: std_pH > 24.322610883536
+|                       |       |                       |               |               |       +--yes: [1]: 2
+|                       |       |                       |               |               |       +--no:  std_temp > 2.59077165983445
+|                       |       |                       |               |               |               +--yes: [0]: 2
+|                       |       |                       |               |               |               +--no:  [0.5]: 2
+|                       |       |                       |               |               +--no:  no3 > 0.797633386426435
+|                       |       |                       |               |                       +--yes: [0]: 13
+|                       |       |                       |               |                       +--no:  [0.5]: 2
+|                       |       |                       |               +--no:  [2]: 2
+|                       |       |                       +--no:  k2cr2o7 > 0.25821829584623
+|                       |       |                               +--yes: hardness > 3.66464741589701
+|                       |       |                               |       +--yes: std_pH > 24.6228900302463
+|                       |       |                               |       |       +--yes: [1]: 2
+|                       |       |                               |       |       +--no:  std_temp > 3.03879984161033
+|                       |       |                               |       |               +--yes: [2]: 2
+|                       |       |                               |       |               +--no:  [3]: 2
+|                       |       |                               |       +--no:  std_temp > 2.62973063216279
+|                       |       |                               |               +--yes: [0]: 5
+|                       |       |                               |               +--no:  [0.5]: 2
+|                       |       |                               +--no:  o2 > 4.14240760821028
+|                       |       |                                       +--yes: no2 > 0.0575781549685776
+|                       |       |                                       |       +--yes: [3]: 4
+|                       |       |                                       |       +--no:  std_temp > 2.62973063216279
+|                       |       |                                       |               +--yes: [5]: 2
+|                       |       |                                       |               +--no:  [4]: 2
+|                       |       |                                       +--no:  no2 > 0.0575781549685776
+|                       |       |                                               +--yes: [0]: 2
+|                       |       |                                               +--no:  [2]: 2
+|                       |       +--no:  k2cr2o7 > 0.272563756726576
+|                       |               +--yes: sio2 > 1.76728171479833
+|                       |               |       +--yes: [0.5]: 4
+|                       |               |       +--no:  o2 > 3.60389461914294
+|                       |               |               +--yes: [0]: 17
+|                       |               |               +--no:  [0.333333]: 3
+|                       |               +--no:  k2cr2o7 > 0.243872834965884
+|                       |                       +--yes: conduct > 2.01622896428655
+|                       |                       |       +--yes: [0.5]: 2
+|                       |                       |       +--no:  [3]: 2
+|                       |                       +--no:  kmno4 > 0.229721541398282
+|                       |                               +--yes: conduct > 1.89544105398367
+|                       |                               |       +--yes: [0.5]: 2
+|                       |                               |       +--no:  [0]: 7
+|                       |                               +--no:  o2 > 4.26667983645658
+|                       |                                       +--yes: [0]: 2
+|                       |                                       +--no:  [3]: 2
+|                       +--no:  k2cr2o7 > 0.774654887538689
+|                               +--yes: conduct > 3.36347873304946
+|                               |       +--yes: sio2 > 1.5593662189397
+|                               |       |       +--yes: std_temp > 4.05173312214711
+|                               |       |       |       +--yes: [1]: 2
+|                               |       |       |       +--no:  [0]: 2
+|                               |       |       +--no:  std_temp > 3.38943059256537
+|                               |       |               +--yes: [2]: 2
+|                               |       |               +--no:  [3]: 2
+|                               |       +--no:  [0]: 4
+|                               +--no:  cl > 0.486511087711693
+|                                       +--yes: conduct > 4.20899410516963
+|                                       |       +--yes: [5]: 4
+|                                       |       +--no:  o2 > 1.90550749977673
+|                                       |               +--yes: hardness > 4.4921484452931
+|                                       |               |       +--yes: [3]: 8
+|                                       |               |       +--no:  o2 > 2.85826124966509
+|                                       |               |               +--yes: [3]: 2
+|                                       |               |               +--no:  [5]: 4
+|                                       |               +--no:  [0.5]: 2
+|                                       +--no:  std_temp > 3.66214339886373
+|                                               +--yes: [3]: 2
+|                                               +--no:  std_temp > 3.11671778626701
+|                                                       +--yes: [0.5]: 2
+|                                                       +--no:  [0]: 2
++--no:  no3 > 4.63240928270737
+        +--yes: [3]: 3
+        +--no:  hardness > 3.19178968481352
+                +--yes: no3 > 1.04305904378841
+                |       +--yes: sio2 > 4.36622541303116
+                |       |       +--yes: [2.666667]: 3
+                |       |       +--no:  bod > 0.230151635046812
+                |       |               +--yes: std_temp > 0.954494822044271
+                |       |               |       +--yes: sio2 > 0.970272314006926
+                |       |               |       |       +--yes: [0]: 37
+                |       |               |       |       +--no:  k2cr2o7 > 1.21458235453597
+                |       |               |       |               +--yes: [1.5]: 2
+                |       |               |       |               +--no:  sio2 > 0.935619731363821
+                |       |               |       |                       +--yes: [1]: 2
+                |       |               |       |                       +--no:  sio2 > 0.797009400791403
+                |       |               |       |                               +--yes: conduct > 3.32631322218703
+                |       |               |       |                               |       +--yes: [1]: 2
+                |       |               |       |                               |       +--no:  [0]: 3
+                |       |               |       |                               +--no:  o2 > 2.89968532574719
+                |       |               |       |                                       +--yes: [0]: 15
+                |       |               |       |                                       +--no:  [0.333333]: 3
+                |       |               |       +--no:  no3 > 2.30086553776856
+                |       |               |               +--yes: conduct > 3.36347873304946
+                |       |               |               |       +--yes: [2]: 2
+                |       |               |               |       +--no:  no3 > 2.91442968117351
+                |       |               |               |               +--yes: std_temp > 0.876576877387596
+                |       |               |               |               |       +--yes: [0.5]: 2
+                |       |               |               |               |       +--no:  [0]: 3
+                |       |               |               |               +--no:  [1]: 4
+                |       |               |               +--no:  std_pH > 24.322610883536
+                |       |               |                       +--yes: [0]: 8
+                |       |               |                       +--no:  conduct > 2.96394949127839
+                |       |               |                               +--yes: [0]: 3
+                |       |               |                               +--no:  std_pH > 24.0223317368256
+                |       |               |                                       +--yes: [0.5]: 2
+                |       |               |                                       +--no:  [1]: 2
+                |       |               +--no:  hardness > 5.43786390746007
+                |       |                       +--yes: conduct > 3.73513384167371
+                |       |                       |       +--yes: po4 > 0.105255807975901
+                |       |                       |       |       +--yes: std_temp > 1.98690758874522
+                |       |                       |       |       |       +--yes: [3]: 2
+                |       |                       |       |       |       +--no:  [4]: 2
+                |       |                       |       |       +--no:  [1.666667]: 3
+                |       |                       |       +--no:  [0]: 3
+                |       |                       +--no:  bod > 0.212447663120134
+                |       |                               +--yes: no3 > 1.99408346606609
+                |       |                               |       +--yes: [0.333333]: 3
+                |       |                               |       +--no:  [3.666667]: 3
+                |       |                               +--no:  std_temp > 1.85055118559604
+                |       |                                       +--yes: o2sat > 4.97650847262269
+                |       |                                       |       +--yes: conduct > 3.01969775757203
+                |       |                                       |       |       +--yes: [2]: 2
+                |       |                                       |       |       +--no:  po4 > 0.0631534847855404
+                |       |                                       |       |               +--yes: [0]: 2
+                |       |                                       |       |               +--no:  [1]: 2
+                |       |                                       |       +--no:  conduct > 3.02898913528763
+                |       |                                       |               +--yes: kmno4 > 0.175669414010451
+                |       |                                       |               |       +--yes: [0]: 25
+                |       |                                       |               |       +--no:  std_temp > 2.04534604723772
+                |       |                                       |               |               +--yes: [0.5]: 2
+                |       |                                       |               |               +--no:  [0]: 3
+                |       |                                       |               +--no:  o2 > 4.30810391253869
+                |       |                                       |                       +--yes: no3 > 1.8713706373851
+                |       |                                       |                       |       +--yes: [0.5]: 2
+                |       |                                       |                       |       +--no:  [0]: 8
+                |       |                                       |                       +--no:  std_temp > 2.02586656107356
+                |       |                                       |                               +--yes: [1]: 2
+                |       |                                       |                               +--no:  [0.5]: 2
+                |       |                                       +--no:  o2 > 4.88804097768813
+                |       |                                               +--yes: no2 > 0.23031261987431
+                |       |                                               |       +--yes: no3 > 2.63832581664128
+                |       |                                               |       |       +--yes: [0]: 2
+                |       |                                               |       |       +--no:  [3]: 3
+                |       |                                               |       +--no:  conduct > 3.69796833081128
+                |       |                                               |               +--yes: [1.5]: 2
+                |       |                                               |               +--no:  sio2 > 0.381178409074149
+                |       |                                               |                       +--yes: no3 > 1.41119752983138
+                |       |                                               |                       |       +--yes: [0]: 22
+                |       |                                               |                       |       +--no:  o2 > 5.09516135809864
+                |       |                                               |                       |               +--yes: o2 > 5.34370581459125
+                |       |                                               |                       |               |       +--yes: [0.666667]: 3
+                |       |                                               |                       |               |       +--no:  [0]: 5
+                |       |                                               |                       |               +--no:  [1]: 2
+                |       |                                               |                       +--no:  [1]: 2
+                |       |                                               +--no:  o2sat > 4.42900351543791
+                |       |                                                       +--yes: cl > 0.320890291894947
+                |       |                                                       |       +--yes: co2 > 0.271943355936698
+                |       |                                                       |       |       +--yes: [0]: 3
+                |       |                                                       |       |       +--no:  std_temp > 1.48044094847683
+                |       |                                                       |       |               +--yes: [1]: 2
+                |       |                                                       |       |               +--no:  [2]: 2
+                |       |                                                       |       +--no:  [3]: 4
+                |       |                                                       +--no:  o2 > 4.22525576037448
+                |       |                                                               +--yes: nh4 > 0.0675035822852256
+                |       |                                                               |       +--yes: o2 > 4.39095206470289
+                |       |                                                               |       |       +--yes: [0]: 7
+                |       |                                                               |       |       +--no:  o2 > 4.30810391253869
+                |       |                                                               |       |               +--yes: [1]: 2
+                |       |                                                               |       |               +--no:  [0]: 2
+                |       |                                                               |       +--no:  [1.333333]: 3
+                |       |                                                               +--no:  std_pH > 24.0223317368256
+                |       |                                                                       +--yes: [0.5]: 2
+                |       |                                                                       +--no:  [2]: 3
+                |       +--no:  o2sat > 4.05064643120452
+                |               +--yes: o2 > 5.05373728201654
+                |               |       +--yes: conduct > 3.61434593137083
+                |               |       |       +--yes: std_temp > 0.545425612596726
+                |               |       |       |       +--yes: [3]: 2
+                |               |       |       |       +--no:  [2]: 2
+                |               |       |       +--no:  sio2 > 0.31187324378794
+                |               |       |               +--yes: [0]: 9
+                |               |       |               +--no:  [1]: 3
+                |               |       +--no:  nh4 > 0.0506276867139192
+                |               |               +--yes: kmno4 > 0.229721541398282
+                |               |               |       +--yes: conduct > 2.61087713808535
+                |               |               |       |       +--yes: [3]: 4
+                |               |               |       |       +--no:  [1.666667]: 3
+                |               |               |       +--no:  std_pH > 24.9231691769566
+                |               |               |               +--yes: [2]: 2
+                |               |               |               +--no:  o2sat > 4.42010099580888
+                |               |               |                       +--yes: [0]: 3
+                |               |               |                       +--no:  [1]: 2
+                |               |               +--no:  std_temp > 1.63627683779018
+                |               |                       +--yes: [4]: 2
+                |               |                       +--no:  [3]: 4
+                |               +--no:  no3 > 0.951024422277672
+                |                       +--yes: [2]: 2
+                |                       +--no:  [0]: 14
+                +--no:  o2sat > 5.01656981095329
+                        +--yes: o2 > 5.30228173850915
+                        |       +--yes: [0]: 5
+                        |       +--no:  [1.666667]: 3
+                        +--no:  hardness > 2.95536081927178
+                                +--yes: kmno4 > 0.24323457324524
+                                |       +--yes: [0]: 32
+                                |       +--no:  sio2 > 0.69305165286209
+                                |               +--yes: [1]: 2
+                                |               +--no:  [0]: 8
+                                +--no:  hardness > 2.83714638650091
+                                        +--yes: po4 > 0.0210511615951802
+                                        |       +--yes: std_pH > 23.7220525901153
+                                        |       |       +--yes: [1]: 3
+                                        |       |       +--no:  [0.5]: 2
+                                        |       +--no:  [0]: 2
+                                        +--no:  no3 > 0.582885936234702
+                                                +--yes: hardness > 1.81262130248669
+                                                |       +--yes: [0]: 17
+                                                |       +--no:  [0.333333]: 3
+                                                +--no:  hardness > 2.24607422264655
+                                                        +--yes: [1]: 2
+                                                        +--no:  [0]: 3
+
+Pruned Model
+************
+
+std_temp > 2.25962039504358
++--yes: o2sat > 5.39937815500118
+|       +--yes: [2.296703]: 91
+|       +--no:  [1.143229]: 384
++--no:  no3 > 4.63240928270737
+        +--yes: [3]: 3
+        +--no:  hardness > 3.19178968481352
+                +--yes: no3 > 1.04305904378841
+                |       +--yes: sio2 > 4.36622541303116
+                |       |       +--yes: [2.666667]: 3
+                |       |       +--no:  [0.488987]: 227
+                |       +--no:  [1.153846]: 52
+                +--no:  [0.170732]: 82
+
