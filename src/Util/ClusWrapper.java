@@ -1,20 +1,24 @@
 package Util;
 
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.StringTokenizer;
 
 import clus.Clus;
 import clus.algo.ClusInductionAlgorithmType;
+import clus.algo.tdidt.ClusDecisionTree;
 import clus.algo.tdidt.tune.CDTTuneFTest;
 import clus.ext.ensembles.ClusEnsembleClassifier;
 import clus.main.ClusOutput;
@@ -38,6 +42,7 @@ public class ClusWrapper {
 	// These variables help me to ignore the multiple outputs from Clus.. that are not really informative.
 	private static PrintStream realSystemOut = System.out;
 	private PrintStream realSystemErr = System.err;
+	
 	
 	private static class NullOutputStream extends OutputStream {
 		@Override
@@ -68,7 +73,9 @@ public class ClusWrapper {
 	
 	private static int FirstOutputIndex=0;
 	
-	
+	private static boolean forest=false;
+
+	/*
 	private static void createBaseConfigFile(String target, boolean trainErrors) throws IOException{
 
 		
@@ -92,6 +99,30 @@ public class ClusWrapper {
 		bf.close();
 
 	}
+	*/
+	
+	private static InputStream createInputStreamBaseConfigFile(String target, boolean trainErrors) throws IOException{
+		
+		
+		if(target.contains(",")) target = target.substring(0, target.length()-1); // I remove the last comma.
+		
+		String cad = "";
+
+		cad += "[Data]\n";
+		cad += "File = "+train+"\n";
+		cad += "TestSet = "+test+"\n\n";
+		cad += "[Attributes]\nTarget = "+target+"\nDisable = "+disable+"\n"; // Disable = 17-30
+		
+		if(trainErrors)
+			cad += "[Output]\nWritePredictions = {Test}\nTrainErrors = Yes\nWriteModelFile = No\nWriteOutFile = Yes\n\n";
+		else
+			cad += "[Output]\nWritePredictions = {Test}\nTrainErrors = No\nWriteModelFile = No\nWriteOutFile = Yes\n\n";
+
+					
+		return new ByteArrayInputStream(cad.getBytes(StandardCharsets.UTF_8));
+
+	}
+	
 	
 	
 	/**
@@ -100,7 +131,7 @@ public class ClusWrapper {
 	 */
 
 
-	public static void InitializeClus(String[] args) {
+	public static void InitializeClus(String[] args, InputStream configFile) {
 		try {
 			clus = new Clus();
 			Settings sett = clus.getSettings();
@@ -110,13 +141,23 @@ public class ClusWrapper {
 			if (cargs.allOK()) {
 				sett.setDate(new Date());
 				sett.setAppName(cargs.getMainArg(0));
-				clus.initSettings(cargs);
 				
-				sett.setEnsembleMode(true);
-				clss = new ClusEnsembleClassifier(clus);
-				if (sett.getFTestArray().isVector())
-					clss = new CDTTuneFTest(clss, sett.getFTestArray().getDoubleVector());
-
+				// clus.initSettings(cargs);
+				clus.initSettingsNOFILE(cargs, configFile);
+				
+				if (cargs.hasOption("forest")) {
+					sett.setEnsembleMode(true);
+					clss = new ClusEnsembleClassifier(clus);
+					if (sett.getFTestArray().isVector())
+						clss = new CDTTuneFTest(clss, sett.getFTestArray()
+								.getDoubleVector());
+				} else {
+					clss = new ClusDecisionTree(clus);
+					if (sett.getFTestArray().isVector())
+						clss = new CDTTuneFTest(clss, sett.getFTestArray()
+								.getDoubleVector());
+				}
+				
 				clus.initializeMultipleRuns(cargs, clss);
 				// clus.singleRun(clss);
 				
@@ -141,7 +182,7 @@ public class ClusWrapper {
 	}
 
 	
-	public static void runClassifier(String[] args) throws IOException, ClusException{
+	public static void runClassifier(String[] args, InputStream ConfigFile) throws IOException, ClusException{
 		
 		System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
 		
@@ -152,14 +193,24 @@ public class ClusWrapper {
 		
 		sett.setDate(new Date());
 		sett.setAppName(cargs.getMainArg(0));
-		clus.initSettings(cargs);
 		
-		sett.setEnsembleMode(true);
+		//clus.initSettings(cargs);
+		clus.initSettingsNOFILE(cargs, ConfigFile);
 		
-		clss = new ClusEnsembleClassifier(clus);
-		if (sett.getFTestArray().isVector())
-			clss = new CDTTuneFTest(clss, sett.getFTestArray().getDoubleVector());
 		
+		if (cargs.hasOption("forest")) {
+			sett.setEnsembleMode(true);
+			clss = new ClusEnsembleClassifier(clus);
+			if (sett.getFTestArray().isVector())
+				clss = new CDTTuneFTest(clss, sett.getFTestArray()
+						.getDoubleVector());
+		} else {
+			clss = new ClusDecisionTree(clus);
+			if (sett.getFTestArray().isVector())
+				clss = new CDTTuneFTest(clss, sett.getFTestArray()
+						.getDoubleVector());
+		}
+
 		
 		// modify specific specific targets
 		clus.modifyOutputTargets(cargs, clss); 
@@ -250,28 +301,44 @@ public class ClusWrapper {
 			String list = linea.substring(linea.indexOf('[')+1, linea.indexOf(']'));
 			values[0] = list.split(",");
 			
-			linea = lineas.nextToken(); // skip MSE line
+			//System.out.println(values[0][0]);
+			
+			while(!linea.equalsIgnoreCase("Mean squared error (MSE)")){linea = lineas.nextToken();}
+
+			// linea = lineas.nextToken(); // skip MSE line
 			linea = lineas.nextToken(); // skip line default
 			linea = lineas.nextToken();
 			
 			list = linea.substring(linea.indexOf('[')+1, linea.indexOf(']'));
 			values[1] = list.split(",");
+
+			//System.out.println(values[1][0]);
+			while(!linea.equalsIgnoreCase("Root mean squared error (RMSE)")){linea = lineas.nextToken();}
 			
-			linea = lineas.nextToken(); // skip RMSE line
+			//linea = lineas.nextToken(); // skip RMSE line
 			linea = lineas.nextToken(); // skip line default
 			linea = lineas.nextToken();
+
+			//System.out.println("linea: "+linea);
 			
 			list = linea.substring(linea.indexOf('[')+1, linea.indexOf(']'));
 			values[2] = list.split(",");
 			
+			//System.out.println(values[2][0]);
 			
-			linea = lineas.nextToken(); // skip WRMSE line
+			while(!linea.contains("Weighted root mean squared error (RMSE)")){linea = lineas.nextToken();}
+
+			
+			//linea = lineas.nextToken(); // skip WRMSE line
 			linea = lineas.nextToken(); // skip line default
 			linea = lineas.nextToken();
 			
+			
 			list = linea.substring(linea.indexOf('[')+1, linea.indexOf(']'));
 			values[3] = list.split(",");
-				
+
+			// System.out.println(values[3][0]);
+			
 			errors[0] = new double[4][values[0].length]; // for the four measures
 			
 			
@@ -297,22 +364,27 @@ public class ClusWrapper {
 		String list = linea.substring(linea.indexOf('[')+1, linea.indexOf(']'));
 		values[0] = list.split(",");
 		
-		linea = lineas.nextToken(); // skip MSE line
+		while(!linea.equalsIgnoreCase("Mean squared error (MSE)")){linea = lineas.nextToken();}
+		
+		// linea = lineas.nextToken(); // skip MSE line
 		linea = lineas.nextToken(); // skip line default
 		linea = lineas.nextToken();
 		
 		list = linea.substring(linea.indexOf('[')+1, linea.indexOf(']'));
 		values[1] = list.split(",");
 		
-		linea = lineas.nextToken(); // skip RMSE line
+		while(!linea.equalsIgnoreCase("Root mean squared error (RMSE)")){linea = lineas.nextToken();}
+
+//		linea = lineas.nextToken(); // skip RMSE line
 		linea = lineas.nextToken(); // skip line default
 		linea = lineas.nextToken();
 		
 		list = linea.substring(linea.indexOf('[')+1, linea.indexOf(']'));
 		values[2] = list.split(",");
 		
+		while(!linea.contains("Weighted root mean squared error (RMSE)")){linea = lineas.nextToken();}
 		
-		linea = lineas.nextToken(); // skip WRMSE line
+//		linea = lineas.nextToken(); // skip WRMSE line
 		linea = lineas.nextToken(); // skip line default
 		linea = lineas.nextToken();
 		
@@ -334,7 +406,7 @@ public class ClusWrapper {
 	}
 	
 	
-	public static void initialization(String trainName, String testName, String disableAtt) throws IOException{
+	public static void initialization(String trainName, String testName, String disableAtt, boolean Createforest) throws IOException{
 		
 		// Load the dataset only ONCE. 
 
@@ -342,17 +414,26 @@ public class ClusWrapper {
 		train = trainName;
 		test = testName;
 		disable = disableAtt;
+		forest = Createforest;
 		
 		FirstOutputIndex = Integer.parseInt(disable.split("-")[0]); // Compute the first index
 				
-		createBaseConfigFile(disable,false); // create initial config.s file
+		//createBaseConfigFile(disable,false); // create initial config.s file
+		InputStream configFile = createInputStreamBaseConfigFile(disable,false); // create initial config.s file
 		
 		String [] args;
-		args= new String[1];
-		args[0] = "config.s";    //options to run Clus.
+		
+		if(forest){
+			args= new String[2];
+			args[0] = "-forest";
+			args[1] = "config.s";
+		}else{
+			args= new String[1];
+			args[0] = "config.s";
+		}
 	
 		System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
-		InitializeClus(args); // load data into memory.
+		InitializeClus(args, configFile); // load data into memory.
 		System.setOut(realSystemOut);
 	}
 
@@ -364,7 +445,7 @@ public class ClusWrapper {
 	 * @return
 	 * @throws IOException
 	 * @throws ClusException
-	 */
+	 
 	
 	public static double[] evaluatePopulation(int pop [][], String measure) throws IOException, ClusException{
 		
@@ -450,7 +531,7 @@ public class ClusWrapper {
 		
 		return errorIndividuals;
 	}
-	
+	*/
 	
 	/**
 	 * Requires that the previous 'initalization function' is already run.
@@ -473,12 +554,19 @@ public class ClusWrapper {
 		if(individual==null) return null;
 		else if (individual.length<1) return null;
 		
-		String [] args;	args= new String[1]; args[0] = "config.s";    //options to run Clus.	
-				
+		String [] args;
+		
+		if(forest){
+			args= new String[2]; 	args[0] = "-forest"; args[1] = "config.s";    //options to run Clus with RandomForest
+		}else{
+			args= new String[1]; args[0] = "config.s";    //options to run Clus as a single tree
+		}
+								
 		// Start evaluation		
 		
 		int MaxClassifiers = individual.length; // The maximum number of classifiers would be equal to the size of the individual.
 
+		
 		String Classifier[] = new String [MaxClassifiers];//list of targets per classifier.
 
 		// evaluate an individual
@@ -499,11 +587,15 @@ public class ClusWrapper {
 		for (int j=0; j<MaxClassifiers;j++){
 
 			if(!Classifier[j].equals("")){
+				//System.out.println("Classifier[j]: "+Classifier[j]);
+
 				// Create the proper config.s file:
-				createBaseConfigFile(Classifier[j],train); // create initial config.s file
+				
+				// TODO: create a STring, instead of a file.
+				InputStream configFile = createInputStreamBaseConfigFile(Classifier[j],train);// createBaseConfigFile(Classifier[j],train); // create initial config.s file
 
 				// Run the classifier
-				runClassifier(args);
+				runClassifier(args, configFile);
 
 				// Process outputs, for each target.
 				String targets[]=Classifier[j].split(",");

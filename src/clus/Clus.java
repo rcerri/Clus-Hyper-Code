@@ -563,6 +563,10 @@ public final void initialize2(CMDLineArgs cargs,
 		m_Sett.initialize(cargs, true);
 	}
 
+	public final void initSettingsNOFILE(CMDLineArgs cargs, InputStream config) throws IOException {
+		m_Sett.initializeNOFILE(cargs, true,config);
+	}
+	
 	public final void initializeSummary(ClusInductionAlgorithmType clss) {
 		ClusStatManager mgr = m_Induce.getStatManager();
 		ClusErrorList error = mgr.createErrorMeasure(m_Score);
