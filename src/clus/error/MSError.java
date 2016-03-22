@@ -214,6 +214,25 @@ public class MSError extends ClusNumericError {
 		}
 		out.println(buf.toString());
 	}
+	
+	public String showModelError(int detail) {
+		NumberFormat fr = getFormat();
+		StringBuffer buf = new StringBuffer();
+		if (m_PrintAllComps) {
+			buf.append("[");
+			for (int i = 0; i < m_Dim; i++) {
+				if (i != 0) buf.append(",");
+				buf.append(fr.format(getModelErrorComponent(i)));
+			}
+			if (m_Dim > 1) buf.append("]: ");
+			else buf.append("]");
+		}
+		if (m_Dim > 1 || !m_PrintAllComps) {
+			buf.append(fr.format(getModelError()));
+		}
+		return buf.toString()+"\n";
+	}
+
 
 	public void showSummaryError(PrintWriter out, boolean detail) {
 		NumberFormat fr = getFormat();

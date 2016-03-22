@@ -54,6 +54,13 @@ public class INIFile extends INIFileSection {
 		tokens.close();
 	}
 
+	
+	public void load(InputStream configFile, char comment) throws FileNotFoundException, IOException {
+		MStreamTokenizer tokens = new MStreamTokenizer(configFile);
+		load(tokens, comment);
+		tokens.close();
+	}
+	
 	public void load(Reader reader, char comment) throws IOException {
 		MStreamTokenizer tokens = new MStreamTokenizer(reader);
 		load(tokens, comment);

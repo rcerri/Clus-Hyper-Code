@@ -189,10 +189,13 @@ public abstract class ClusError implements Serializable {
  ***************************************************************************/
 
 	public void showModelError(PrintWriter out, String bName, int detail) throws IOException {
+		//System.err.println("Here I am- function to write file");
         showModelError(out, detail);
 	}
 	
 	public void showModelError(PrintWriter out, int detail) {
+		//System.err.println("Here I am- function to write file");
+
 		for (int i = 0; i < m_Dim; i++) {
 			if (i != 0) out.print(", ");
 			out.print(getModelErrorComponent(i));
@@ -200,6 +203,25 @@ public abstract class ClusError implements Serializable {
 		out.println();
 	}
 
+	
+	public String showModelError(String bName, int detail) throws IOException {
+        return showModelError(detail);
+	}
+	
+	public String showModelError( int detail) {
+		//System.err.println("Here I am");
+
+		String out="[";
+		for (int i = 0; i < m_Dim; i++) {
+			if (i != 0) out+=", ";
+			out+=getModelErrorComponent(i);
+		}
+		out+="]\n";
+		
+		return out;
+	}
+
+	
 	public void showRelativeModelError(PrintWriter out, int detail) {
 		showModelError(out, detail);
 	}

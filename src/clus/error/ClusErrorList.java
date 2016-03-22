@@ -339,6 +339,66 @@ public class ClusErrorList implements Serializable {
 			}
 		}
 	}
+	
+	
+	public String showError(ClusModelInfoList models, int type, String bName) throws IOException {
+//		public void showError(ClusModelInfoList models, int type, PrintWriter out) throws IOException {
+			int nb = m_Error.size();
+			ClusModelInfo definf = models.getModelInfo(ClusModel.DEFAULT);
+			ClusErrorList defpar = definf.getError(type);
+			
+			String out = "Number of examples: "+defpar.getNbExamples()+"\n";
+			
+			int nb_models = models.getNbModels();
+			if (!checkCoverage(models, type, defpar.getNbExamples())) {
+				out+="Coverage:"+"\n";
+				for (int j = 0; j < nb_models; j++) {
+					ClusModelInfo inf = models.getModelInfo(j);
+					if (inf != null) {
+						ClusErrorList parent = inf.getError(type);
+						out+="  "+inf.getName()+": "+parent.getNbCover()+"\n";
+					}
+				}
+			}
+			for (int i = 0; i < nb; i++) {
+				ClusError err1 = getError(i);
+				
+				boolean has_models = false;
+				for (int j = 0; j < nb_models; j++) {
+					ClusModelInfo inf = models.getModelInfo(j);
+					if (inf != null && inf.getError(type).getErrorOrNull(i) != null) {
+						has_models = true;
+					}
+				}
+				if (has_models) {
+					out+=err1.getName()+"\n";
+					for (int j = 0; j < nb_models; j++) {
+						ClusModelInfo inf = models.getModelInfo(j);
+						if (inf != null) {
+							
+							
+							ClusError err2 = inf.getError(type).getError(i);//OrNull(i);
+							
+							//System.err.println("TYPE: "+type+ ", "+inf.getError(type).getError(i));
+							//System.exit(1);
+							
+							if (err2 != null) {
+								if (err2.isMultiLine()) {
+									out+="   "+inf.getName()+": ";
+								} else {
+									out+="   "+StringUtils.printStr(inf.getName(),15)+": ";
+								}
+								//err2.showModelError(out, ClusError.DETAIL_SMALL);
+								out+= err2.showModelError(bName,ClusError.DETAIL_SMALL);
+							}
+						}
+					}
+				}
+			}
+			
+			return out;
+		}
+	
 
 	public static void printExtraError(ClusModelInfoList models, int type, PrintWriter out) {
 		int ctr = 0;
@@ -361,6 +421,30 @@ public class ClusErrorList implements Serializable {
 		if (ctr != 0) out.println();
 	}
 
+	public static String printExtraError(ClusModelInfoList models, int type) {
+		int ctr = 0;
+		int nb_models = models.getNbModels();
+		
+		String out="";
+		for (int j = 0; j < nb_models; j++) {
+			ClusModelInfo inf = models.getModelInfo(j);
+			if (inf != null) {
+				ClusErrorList parent = inf.getExtraError(type);
+				if (parent != null && inf.hasModel()) {
+					int nb_err = parent.getNbErrors();
+					for (int i = 0; i < nb_err; i++) {
+						ClusError err = parent.getError(i);
+						out+=err.getName()+": "+StringUtils.printStr(inf.getName(),15)+": ";
+						out+=err.showModelError(ClusError.DETAIL_SMALL);
+						ctr++;
+					}
+				}
+			}
+		}
+		if (ctr != 0) out+="\n";
+		
+		return out;
+	}
 	public void showErrorBrief(ClusModelInfoList models, int type, PrintWriter out) {
 		int nb = m_Error.size();
 		for (int i = 0; i < nb; i++) {

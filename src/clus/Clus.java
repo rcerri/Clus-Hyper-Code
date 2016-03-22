@@ -563,6 +563,10 @@ public final void initialize2(CMDLineArgs cargs,
 		m_Sett.initialize(cargs, true);
 	}
 
+	public final void initSettingsNOFILE(CMDLineArgs cargs, InputStream config) throws IOException {
+		m_Sett.initializeNOFILE(cargs, true,config);
+	}
+	
 	public final void initializeSummary(ClusInductionAlgorithmType clss) {
 		ClusStatManager mgr = m_Induce.getStatManager();
 		ClusErrorList error = mgr.createErrorMeasure(m_Score);
@@ -1490,6 +1494,28 @@ public final void initialize2(CMDLineArgs cargs,
 		}
 	}
 
+	
+	public final String singleRunNOFILES(ClusInductionAlgorithmType clss)
+			throws IOException, ClusException {
+		ClusModelCollectionIO io = new ClusModelCollectionIO();
+		m_Summary.setTotalRuns(1);
+		//ClusRun run = singleRunMainNOFILES(clss, null);
+		String run = singleRunMainNOFILES(clss, null);
+/*		if (m_Sett.isWriteModelFile()) {
+			saveModels(run, io);
+			if (ClusEnsembleInduce.isOptimized()
+					&& (m_Sett.getNbBaggingSets().getVectorLength() > 1) && (m_Sett.getBagSelection().getIntVectorSorted()[0] < 1))
+				io.save(getSettings().getFileAbsolute(
+						m_Sett.getAppName() + "_"
+								+ ClusEnsembleInduce.getMaxNbBags() + "_.model"));
+			else
+				io.save(getSettings().getFileAbsolute(
+						m_Sett.getAppName() + ".model"));
+		}*/
+		
+		return run;
+	}
+	
 	/*
 	 * Run the prediction algorithm session once: train and possibly test and
 	 * exit.
@@ -1529,6 +1555,7 @@ public final void initialize2(CMDLineArgs cargs,
 				info.setTestError(test_err);
 			}
 		}
+		
 		calcExtraTrainingSetErrors(cr);
 		if (m_Sett.isWriteOutFile()) {
 			if (ClusEnsembleInduce.isOptimized()
@@ -1547,6 +1574,75 @@ public final void initialize2(CMDLineArgs cargs,
 		return cr;
 	}
 
+	/*
+	 * Run the prediction algorithm session once: train and possibly test and
+	 * exit.
+	 */
+	public final String singleRunMainNOFILES(ClusInductionAlgorithmType clss,
+			ClusSummary summ) throws IOException, ClusException {
+		// ClusOutput output = new ClusOutput(m_Sett.getAppName() + ".out",
+		// m_Schema, m_Sett);
+		ClusOutput output = null;
+		ClusRun cr = partitionData();
+		// Compute statistic on training data
+		getStatManager().computeTrainSetStat((RowData) cr.getTrainingSet());
+		// Used for exporting data to CN2 and Orange formats
+		/*
+		 * ARFFFile.writeCN2Data("train-all.exs", (RowData)cr.getTrainingSet());
+		 * ARFFFile.writeOrangeData("train-all.tab",
+		 * (RowData)cr.getTrainingSet()); ARFFFile.writeFRSHead("header.pl",
+		 * (RowData)cr.getTrainingSet(), true);
+		 * ARFFFile.writeFRSData("train-all.pl", (RowData)cr.getTrainingSet(),
+		 * true);
+		 ARFFFile.writeRData("trainDataForR.all.data",(RowData)cr.getTrainingSet()); 
+		 System.err.println("CHANGING DATA TO R FORMAT, REMOVE THIS CODE");
+		 */
+		// Induce model
+		induce(cr, clss);
+		if (summ == null) {
+			// E.g., rule-wise error measures
+			addModelErrorMeasures(cr);
+		}
+		// Calc error
+		calcError(cr, null, null);
+		if (summ != null) {
+			for (int i = 0; i < cr.getNbModels(); i++) {
+				ClusModelInfo info = cr.getModelInfo(i);
+				ClusModelInfo summ_info = summ.getModelInfo(i);
+				ClusErrorList test_err = summ_info.getTestError();
+				info.setTestError(test_err);
+			}
+		}
+		
+		
+		calcExtraTrainingSetErrors(cr);
+		if (m_Sett.isWriteOutFile()) {
+			if (ClusEnsembleInduce.isOptimized()
+					&& (m_Sett.getNbBaggingSets().getVectorLength() > 1) && (m_Sett.getBagSelection().getIntVectorSorted()[0] < 1))
+				output = new ClusOutput(m_Sett.getAppName() + "_"
+						+ ClusEnsembleInduce.getMaxNbBags() + "_.out", m_Schema,
+						m_Sett);
+			else
+				output = new ClusOutput(m_Sett.getAppName() + ".out", m_Schema,
+						m_Sett);
+			
+			//output.writeHeader();
+			//output.writeOutput(cr, true, m_Sett.isOutTrainError());
+			String outputString = output.getOutput(cr, true, m_Sett.isOutTrainError());
+			output.close();
+			
+			return outputString;
+			//
+			
+			
+		}
+		//clss.saveInformation(m_Sett.getAppName());
+		
+		return null;
+		
+	}
+
+	
 	public final XValMainSelection getXValSelection() throws IOException,
 			ClusException {
 		if (m_Sett.isLOOXVal()) {

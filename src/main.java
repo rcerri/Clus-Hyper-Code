@@ -32,7 +32,7 @@ public class main {
 		// Run this BEFORE the main loop of the GA,
 		// indicate: name of training and test datasets + range of output attributes (for Disable option)
 		
-		ClusWrapper.initialization(train, test, "17-30"); 	
+		ClusWrapper.initialization(train, test, "17-30",false); 	
 		
 		
 		// Run this as your fitness function. You can choose between MAE, MSE, RMSE or WRMSE as performance measure
@@ -47,8 +47,8 @@ public class main {
 		} */
 		
 		
-		
-		myMeasures measure = ClusWrapper.evaluateIndividual(all,false);
+		// Isaac: why Clus fails with Trees without training error??
+		myMeasures measure = ClusWrapper.evaluateIndividual(all,true);
 		
 		
 		System.out.println("\nTraining error: ");
@@ -63,6 +63,9 @@ public class main {
 		System.out.println("RMSE: "+ measure.getRMSE()[1]);
 		System.out.println("WRMSE: "+ measure.getWRMSE()[1]);
 		
+		//System.exit(1);
+		
+				
         measure = ClusWrapper.evaluateIndividual(independent,true);
 		
         System.out.println("\nTraining error: ");

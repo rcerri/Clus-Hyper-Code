@@ -2476,6 +2476,31 @@ public class Settings implements Serializable {
 		updateDataFile(getAppName() + ".arff");
 		initHierarchical();
 	}
+	
+	/**
+	 * Created by isaac to avoid generating multiple config files 
+	 * @param cargs
+	 * @param loads
+	 * @throws IOException
+	 */
+	public void initializeNOFILE(CMDLineArgs cargs, boolean loads, InputStream configFile) throws IOException {
+		create();
+		initNamedValues();
+		if (cargs != null) preprocess(cargs);
+		if (loads) {
+			try {
+				String fname = getFileAbsolute(getAppName() + ".s");
+				// m_Ini.load(fname, '%');
+				m_Ini.load(configFile, '%');
+			} catch (FileNotFoundException e) {
+				System.out.println("No settings file found");
+			}
+		}
+		if (cargs != null) process(cargs);
+		updateDataFile(getAppName() + ".arff");
+		initHierarchical();
+	}
+	
 
 	public void preprocess(CMDLineArgs cargs) {
 	}
