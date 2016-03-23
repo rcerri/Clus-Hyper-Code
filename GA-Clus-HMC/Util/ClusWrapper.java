@@ -121,6 +121,10 @@ public class ClusWrapper {
 			cad += "[Output]\nTrainErrors = No\nWriteModelFile = No\nWriteOutFile = Yes\n\n"; //\nWritePredictions = {Test}
 
 					
+		if(forest){
+			cad += "[Ensemble]\nIterations = 50 \nEnsembleMethod = RForest\n";
+		}
+					
 		return new ByteArrayInputStream(cad.getBytes(StandardCharsets.UTF_8));
 
 	}
