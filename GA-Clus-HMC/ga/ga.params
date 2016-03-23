@@ -3,11 +3,10 @@
 # See the file "LICENSE" for more information
 
 parent.0	= ../ec/simple/simple.params
-pop.subpop.0.size = 10
-generations = 5
+pop.subpop.0.size = 50
+generations = 500
 
 init = ga.mySimpleInitializer
-
 
 pop.subpop.0.species		= ec.vector.IntegerVectorSpecies
 pop.subpop.0.species.ind	= ec.vector.IntegerVectorIndividual

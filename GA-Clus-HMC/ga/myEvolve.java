@@ -143,10 +143,6 @@ public class myEvolve extends Evolve{
 			new File(Main.path+"Fold"+i+"/").mkdir();
 			Main.fwTest = new FileWriter(Main.path+"Fold"+i+"/resultado-fold"+i+".csv");
 			Main.fwAll = new FileWriter(Main.path+"Fold"+i+"/resultado-All-fold"+i+".csv");
-
-			new File(Main.path+"Fold"+i+"/ParetoFront/").mkdir();
-			
-
 			
 			Main.pwTest = new PrintWriter(Main.fwTest);
 			Main.pwAll = new PrintWriter(Main.fwAll);
