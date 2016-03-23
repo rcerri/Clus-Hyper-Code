@@ -130,7 +130,8 @@ public class myEvolve extends Evolve{
 		// it's usually small.
 
 
-		String[] measuresNames = {"Accuracy", "F-Measure", "Precision", "Recall", "Total Nodes", "Total Leaves", "Balance", "AUC", "Gmean", "AvgClassAccuracy"};
+		//String[] measuresNames = {"MAE", "MSE", "RMSE", "WRMSE", "Total Nodes", "Total Leaves", "Balance", "AUC", "Gmean", "AvgClassAccuracy"};
+		String[] measuresNames = {"MAE", "MSE", "RMSE"};
 		int nMeasures = measuresNames.length;
 		Main.measuresSingle = new double[3][nMeasures][Dataset.getNumFolds()][numJobs]; //  3 types  = Train, Validation and Test
 
@@ -149,8 +150,8 @@ public class myEvolve extends Evolve{
 			Main.pwTest = new PrintWriter(Main.fwTest);
 			Main.pwAll = new PrintWriter(Main.fwAll);
 
-			Main.pwTest.println("Accuracy,F-Measure,Precision,Recall,Total Nodes,Total Leaves,Balance,AUC,Gmean,AvgClassAccuracy");
-			Main.pwAll.println("Train Accuracy,Validation Accuracy,Test Accuracy,Train F-Measure,Validation F-Measure,Test F-Measure,Train Precision,Validation Precision,Test Precision,Train Recall,Validation Recall, Test Recall,Total Nodes,Total Leaves,Train Balance,Validation Balance,Test Balance, Train AUC, Validation AUC, Test AUC, Train Gmean, Validation Gmean, Test Gmean, Train AvgClassAccuracy, Validation AvgClassAccuracy, Test AvgClassAccuracy");
+			Main.pwTest.println("MAE,MSE,RMSE");
+			Main.pwAll.println("Train MAE,Validation MAE,Test MAE,Train MSE,Validation MSE,Test MSE,Train RMSE,Validation RMSE,Test RMSE");
 
 			for(int job = currentJob ; job < numJobs; job++){
 				try
@@ -193,8 +194,12 @@ public class myEvolve extends Evolve{
 				}
 
 			}
-			Main.pwTest.println("=average(A2:A"+(numJobs+1)+"),=average(B2:B"+(numJobs+1)+"),=average(C2:C"+(numJobs+1)+"),=average(D2:D"+(numJobs+1)+"),=average(E2:E"+(numJobs+1)+"),=average(F2:F"+(numJobs+1)+"),=average(G2:G"+(numJobs+1)+"),=average(H2:H"+(numJobs+1)+"),=average(I2:I"+(numJobs+1)+"),=average(J2:J"+(numJobs+1)+")");
-			Main.pwAll.println("=average(A2:A"+(numJobs+1)+"),=average(B2:B"+(numJobs+1)+"),=average(C2:C"+(numJobs+1)+"),=average(D2:D"+(numJobs+1)+"),=average(E2:E"+(numJobs+1)+"),=average(F2:F"+(numJobs+1)+"),=average(G2:G"+(numJobs+1)+"),=average(H2:H"+(numJobs+1)+"),=average(I2:I"+(numJobs+1)+"),=average(J2:J"+(numJobs+1)+"),=average(K2:K"+(numJobs+1)+"),=average(L2:L"+(numJobs+1)+"),=average(M2:M"+(numJobs+1)+"),=average(N2:N"+(numJobs+1)+"),=average(O2:O"+(numJobs+1)+"),=average(P2:P"+(numJobs+1)+"),=average(Q2:Q"+(numJobs+1)+"),=average(R2:R"+(numJobs+1)+"),=average(S2:S"+(numJobs+1)+"),=average(T2:T"+(numJobs+1)+"),=average(U2:U"+(numJobs+1)+"),=average(V2:V"+(numJobs+1)+"),=average(W2:W"+(numJobs+1)+"),=average(X2:X"+(numJobs+1)+"),=average(Y2:Y"+(numJobs+1)+"),=average(Z2:Z"+(numJobs+1)+")");
+			
+			//Main.pwTest.println("=average(A2:A"+(numJobs+1)+"),=average(B2:B"+(numJobs+1)+"),=average(C2:C"+(numJobs+1)+"),=average(D2:D"+(numJobs+1)+"),=average(E2:E"+(numJobs+1)+"),=average(F2:F"+(numJobs+1)+"),=average(G2:G"+(numJobs+1)+"),=average(H2:H"+(numJobs+1)+"),=average(I2:I"+(numJobs+1)+"),=average(J2:J"+(numJobs+1)+")");
+			//Main.pwAll.println("=average(A2:A"+(numJobs+1)+"),=average(B2:B"+(numJobs+1)+"),=average(C2:C"+(numJobs+1)+"),=average(D2:D"+(numJobs+1)+"),=average(E2:E"+(numJobs+1)+"),=average(F2:F"+(numJobs+1)+"),=average(G2:G"+(numJobs+1)+"),=average(H2:H"+(numJobs+1)+"),=average(I2:I"+(numJobs+1)+"),=average(J2:J"+(numJobs+1)+"),=average(K2:K"+(numJobs+1)+"),=average(L2:L"+(numJobs+1)+"),=average(M2:M"+(numJobs+1)+"),=average(N2:N"+(numJobs+1)+"),=average(O2:O"+(numJobs+1)+"),=average(P2:P"+(numJobs+1)+"),=average(Q2:Q"+(numJobs+1)+"),=average(R2:R"+(numJobs+1)+"),=average(S2:S"+(numJobs+1)+"),=average(T2:T"+(numJobs+1)+"),=average(U2:U"+(numJobs+1)+"),=average(V2:V"+(numJobs+1)+"),=average(W2:W"+(numJobs+1)+"),=average(X2:X"+(numJobs+1)+"),=average(Y2:Y"+(numJobs+1)+"),=average(Z2:Z"+(numJobs+1)+")");
+			Main.pwTest.println("=average(A2:A"+(numJobs+1)+"),=average(B2:B"+(numJobs+1)+"),=average(C2:C"+(numJobs+1)+")");
+			Main.pwAll.println("=average(A2:A"+(numJobs+1)+"),=average(B2:B"+(numJobs+1)+"),=average(C2:C"+(numJobs+1)+"),=average(D2:D"+(numJobs+1)+"),=average(E2:E"+(numJobs+1)+"),=average(F2:F"+(numJobs+1)+")");
+			
 
 			Main.pwTest.close();
 			Main.pwAll.close();

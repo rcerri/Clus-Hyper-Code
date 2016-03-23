@@ -25,8 +25,8 @@ public class main_test {
 		// Run this BEFORE the main loop of the GA,
 		// indicate: name of training and test datasets + range of output attributes (for Disable option)
 		
-		ClusWrapper.initialization(train, test, "17-30",false);	
-		myMeasures measures = ClusWrapper.evaluateIndividual(independent,true);
+		ClusWrapper.initialization(train, test, "17-30",true);	
+		myMeasures measures = ClusWrapper.evaluateIndividual(all,true);
 		//myMeasures measures = ClusWrapper.evaluateIndividual(independent,true);
 		
 		double mae[] = new double[3];
@@ -39,10 +39,14 @@ public class main_test {
 		
 		// Run this as your fitness function. You can choose between MAE, MSE, RMSE or WRMSE as performance measure
 				  
-		System.out.println("\nIndividuals average errors: ");
-		System.out.println("\nMAE: "+mae[1]);
-		System.out.println("\nMSE: "+mse[1]);
-		System.out.println("\nRMSE: "+rmse[1]);
-		System.out.println("\nWRMSE: "+rmse[1]);
+		System.out.println("\nTesting errors:: ");
+		System.out.println("MAE: "+mae[1]);
+		System.out.println("MSE: "+mse[1]);
+		System.out.println("RMSE: "+rmse[1]);
+		
+		System.out.println("\nTraining errors: ");
+		System.out.println("MAE: "+mae[0]);
+		System.out.println("MSE: "+mse[0]);
+		System.out.println("RMSE: "+rmse[0]);
 	}
 }

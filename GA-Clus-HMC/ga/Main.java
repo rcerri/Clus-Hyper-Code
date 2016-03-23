@@ -14,7 +14,7 @@ public class Main {
 	public static double measuresSingle[][][][]; // [train,validation or test] [measure] [execution] [fold]
 	public static double measuresMultiple[][][][][]; // [metaTraining,metaTest] -- [train or test] -- [measure] -- [execution] ... obs: nao tem resultado por folds
 	public static int fitnessType, fitnessAggregationScheme, metaTrainingEvaluationType, multiObjectiveType, numJobs, evaluationType;
-	public static boolean weightedMeasures;
+	public static boolean weightedMeasures, randomForest;
 	public static int startFold = 0;
 
 	/**
@@ -38,6 +38,7 @@ public class Main {
 		 * args[8] = index of the last target attribute
 		 */
 
+		randomForest = true;
 		targets = args[7] + "-" + args[8];
 		numJobs = Integer.valueOf(args[3]);
 		new Dataset(args[1]+args[0]+"/",args[0],Integer.valueOf(args[6]));
@@ -60,6 +61,7 @@ public class Main {
 		for (int i = 0; i < params.length; i++) {
 			parameters.set(params[i],values[i]);
 		}
+		
 		myEvolve.mainSingleDataset(parameters);
 	}
 }

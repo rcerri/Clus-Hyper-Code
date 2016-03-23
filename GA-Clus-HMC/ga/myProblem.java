@@ -4,6 +4,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import Util.ClusWrapper;
@@ -39,8 +41,8 @@ public class myProblem extends Problem implements SimpleProblemForm {
 		Main.pwTest = new PrintWriter(Main.fwTest);
 		Main.pwAll = new PrintWriter(Main.fwAll);
 
-		Main.pwTest.println("MAE,MSE,RMSE,WRMSE,Total Nodes,Total Leaves,Balance");
-		Main.pwAll.println("Train MAE,Validation MAE,Test MAE,Train MSE,Validation MSE,Test MSE,Train RMSE,Validation RMSE,Test RMSE,Train WRMSE,Validation WRMSE, Test WRMSE,Total Nodes,Total Leaves,Train Balance,Validation Balance,Test Balance,Train AUC,Validation AUC,Test AUC");
+		Main.pwTest.println("MAE,MSE,RMSE");
+		Main.pwAll.println("Train MAE,Validation MAE,Test MAE,Train MSE,Validation MSE,Test MSE,Train RMSE,Validation RMSE,Test RMSE");
 
 		double accuracy[][] = new double[3][numJobs];  // [0] = train; [1] = validation; [2] = test set  
 		double fmeasure[][] = new double[3][numJobs];
@@ -100,7 +102,6 @@ public class myProblem extends Problem implements SimpleProblemForm {
 
 	}
 
-
 	public void describe(final EvolutionState state,final Individual ind,final int subpopulation,final int threadnum,final int log){
 		IntegerVectorIndividual ind2 = (IntegerVectorIndividual)ind;
 		try {
@@ -113,6 +114,24 @@ public class myProblem extends Problem implements SimpleProblemForm {
 
 	}
 
+	private int[] genomeAdjustment(int[] genome) {
+		
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+		int newValue = 2;
+		map.put(genome[0],1);
+		for (int i = 1; i < genome.length; i++) {
+			if (map.containsKey(genome[i])) {
+				genome[i] = map.get(genome[i]);
+			}
+			else {
+				map.put(genome[i],newValue);
+				genome[i] = newValue;
+				newValue++;
+			}			
+		}
+		return genome;
+	}
 
 	/**Method for evaluating individuals **/
 	@Override
@@ -122,7 +141,10 @@ public class myProblem extends Problem implements SimpleProblemForm {
 			state.output.fatal("Whoa!  It's not an IntegerVectorIndividual!!!",null);
 		boolean isIdeal;
 		try {
+			
+			((IntegerVectorIndividual)ind).genome = genomeAdjustment(((IntegerVectorIndividual)ind).genome);			
 			int[] genome = ((IntegerVectorIndividual)ind).genome;
+
 			/*
 			System.out.print("Genome = ["+genome[0]);
 			for (int i = 1; i < genome.length; i++)
@@ -130,14 +152,15 @@ public class myProblem extends Problem implements SimpleProblemForm {
 			System.out.println("]");
 			*/
 			
-			ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff", Dataset.getPath()+Dataset.getFileName() + "-train.arff", Main.targets,false);
+			ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff", Dataset.getPath()+Dataset.getFileName() + "-train.arff", Main.targets,Main.randomForest);
 
-			myMeasures measures = ClusWrapper.evaluateIndividual(genome,true);
+			myMeasures measures = new myMeasures();
+			measures = ClusWrapper.evaluateIndividual(genome,true);
 
 			double mae = measures.getMAE()[1];
 			double mse = measures.getMSE()[1];
 			double rmse = measures.getRMSE()[1];
-			double wrmse = measures.getWRMSE()[1];
+			//double wrmse = measures.getWRMSE()[1];
 			
 			if(Main.fitnessType == 0){ // MAE fitness
 				if(Utils.eq(mae,0)) isIdeal = true;		
@@ -155,12 +178,6 @@ public class myProblem extends Problem implements SimpleProblemForm {
 				if(Utils.eq(rmse,0)) isIdeal = true;		
 				else	isIdeal = false;	
 				((SimpleFitness)ind.fitness).setFitness(state, ((float) 10000 - rmse), isIdeal);
-			}
-
-			else if (Main.fitnessType == 3) { //WRMSE fitness
-				if(Utils.eq(wrmse,0)) isIdeal = true;		
-				else	isIdeal = false;	
-				((SimpleFitness)ind.fitness).setFitness(state, ((float) 10000 - wrmse), isIdeal);
 			}
 
 			else {
@@ -199,38 +216,39 @@ public class myProblem extends Problem implements SimpleProblemForm {
 	public void evaluateBestIndividual(IntegerVectorIndividual ind, EvolutionState state) throws Exception{
 		int[] genome = ((IntegerVectorIndividual)ind).genome;
 		// ajustar com parametros "globais"
-		ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff",Dataset.getPath()+Dataset.getFileName() + "-train.arff", Main.targets,false);
-
+		//ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff",Dataset.getPath()+Dataset.getFileName() + "-train.arff", Main.targets,false);
+		ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff", Dataset.getPath()+Dataset.getFileName() + "-test.arff", Main.targets,Main.randomForest);
 		myMeasures measures = ClusWrapper.evaluateIndividual(genome,true);
 		double mae[] = new double[3];
 		double mse[] = new double[3];
 		double rmse[] = new double[3];
-		double wrmse[] = new double[3];
+		//double wrmse[] = new double[3];
 
-		mae[0] = measures.getMAE()[0]; mse[0] = measures.getMSE()[0]; rmse[0] = measures.getRMSE()[0]; wrmse[0] = measures.getWRMSE()[0];
-		mae[1] = measures.getMAE()[1]; mse[1] = measures.getMSE()[1]; rmse[1] = measures.getRMSE()[1]; wrmse[1] = measures.getWRMSE()[1];
-
-		ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff", Dataset.getPath()+Dataset.getFileName() + "-test.arff", Main.targets,false);
-		measures = ClusWrapper.evaluateIndividual(genome,true);
-
-		mae[2] = measures.getMAE()[1]; mse[2] = measures.getMSE()[1]; rmse[2] = measures.getRMSE()[1]; wrmse[2] = measures.getWRMSE()[1];
+		mae[0] = measures.getMAE()[0]; mse[0] = measures.getMSE()[0]; rmse[0] = measures.getRMSE()[0]; // wrmse[0] = measures.getWRMSE()[0];
+		mae[1] = measures.getMAE()[0]; mse[1] = measures.getMSE()[0]; rmse[1] = measures.getRMSE()[0]; // wrmse[1] = measures.getWRMSE()[0];
+		mae[2] = measures.getMAE()[1]; mse[2] = measures.getMSE()[1]; rmse[2] = measures.getRMSE()[1]; // wrmse[2] = measures.getWRMSE()[1];
+		
+		// mae[1] = measures.getMAE()[1]; mse[1] = measures.getMSE()[1]; rmse[1] = measures.getRMSE()[1]; wrmse[1] = measures.getWRMSE()[1];
+		// ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff", Dataset.getPath()+Dataset.getFileName() + "-test.arff", Main.targets,false);
+		// measures = ClusWrapper.evaluateIndividual(genome,true);
+		// mae[2] = measures.getMAE()[1]; mse[2] = measures.getMSE()[1]; rmse[2] = measures.getRMSE()[1]; wrmse[2] = measures.getWRMSE()[1];
 
 		for (int i = 0; i < 3; i++) {
 			Main.measuresSingle[i][0][Dataset.getCurrentFold()][(Integer)state.job[0]] = mae[i];
 			Main.measuresSingle[i][1][Dataset.getCurrentFold()][(Integer)state.job[0]] = mse[i];
 			Main.measuresSingle[i][2][Dataset.getCurrentFold()][(Integer)state.job[0]] = rmse[i];
-			Main.measuresSingle[i][3][Dataset.getCurrentFold()][(Integer)state.job[0]] = wrmse[i];	
+			//Main.measuresSingle[i][3][Dataset.getCurrentFold()][(Integer)state.job[0]] = wrmse[i];	
 		}
 
 		// Printing results
 
 		String test = new String();
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 3; i++)
 			test = test + Main.measuresSingle[2][i][Dataset.getCurrentFold()][(Integer)state.job[0]]+",";
 		Main.pwTest.println(test);
 
 		String full = new String();
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				full = full + Main.measuresSingle[j][i][Dataset.getCurrentFold()][(Integer)state.job[0]]+",";
 			}
