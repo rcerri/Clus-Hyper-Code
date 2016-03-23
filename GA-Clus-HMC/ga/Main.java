@@ -8,8 +8,8 @@ import ec.util.ParameterDatabase;
 
 public class Main {
 
-	public static FileWriter fwTest, fwAll, fwNew;
-	public static PrintWriter pwTest, pwAll, pwNew;
+	public static FileWriter fwTest, fwAll, fwNew, fFirstGen, fLastGen, fEvolution;
+	public static PrintWriter pwTest, pwAll, pwNew, pFirstGen, pLastGen, pEvolution;
 	public static String path, targets;
 	public static double measuresSingle[][][][]; // [train,validation or test] [measure] [execution] [fold]
 	public static double measuresMultiple[][][][][]; // [metaTraining,metaTest] -- [train or test] -- [measure] -- [execution] ... obs: nao tem resultado por folds
@@ -63,6 +63,7 @@ public class Main {
 		}
 		
 		myEvolve.mainSingleDataset(parameters);
+		
 	}
 }
 

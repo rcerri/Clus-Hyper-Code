@@ -145,8 +145,9 @@ public class myEvolve extends Evolve{
 			Main.fwAll = new FileWriter(Main.path+"Fold"+i+"/resultado-All-fold"+i+".csv");
 
 			new File(Main.path+"Fold"+i+"/ParetoFront/").mkdir();
+			
 
-
+			
 			Main.pwTest = new PrintWriter(Main.fwTest);
 			Main.pwAll = new PrintWriter(Main.fwAll);
 
@@ -156,6 +157,22 @@ public class myEvolve extends Evolve{
 			for(int job = currentJob ; job < numJobs; job++){
 				try
 				{
+					
+					Main.fFirstGen = new FileWriter(Main.path+"Fold"+i+"/firstGeneration_job"+job+".csv");
+					Main.pFirstGen = new PrintWriter(Main.fFirstGen);
+					
+					Main.fLastGen = new FileWriter(Main.path+"Fold"+i+"/lastGeneration_job"+job+".csv");
+					Main.pLastGen = new PrintWriter(Main.fLastGen);
+					
+					Main.fEvolution = new FileWriter(Main.path+"Fold"+i+"/Evolution_job"+job+".csv");
+					Main.pEvolution = new PrintWriter(Main.fEvolution);
+					
+					
+					Main.pFirstGen.println("Train MAE, Train MSE, Train RMSE, Test MAE, Test MSE, Test RMSE");
+					Main.pLastGen.println("Train MAE, Train MSE, Train RMSE, Test MAE, Test MSE, Test RMSE");
+					//Main.pEvolution.println("Train MAE, Train MSE, Train RMSE, Test MAE, Test MSE, Test RMSE");
+					Main.pEvolution.println("Generation, Fitness");
+					
 					// load the parameter database (reusing the very first if it exists)
 					if (parameters == null)
 						parameters = (ParameterDatabase) deepClone(original);
@@ -185,6 +202,10 @@ public class myEvolve extends Evolve{
 					state.run(EvolutionState.C_STARTED_FRESH);
 					cleanup(state);  // flush and close various streams, print out parameters if necessary
 					parameters = null;  // so we load a fresh database next time around
+					
+					Main.fFirstGen.close();
+					Main.fLastGen.close();
+					Main.fEvolution.close();
 				}
 				catch (Throwable e)  // such as an out of memory error caused by this job
 				{
@@ -205,6 +226,7 @@ public class myEvolve extends Evolve{
 			Main.pwAll.close();
 			Main.fwTest.close();
 			Main.fwAll.close();
+			
 		}
 
 		Main.fwTest = new FileWriter(Main.path+"/resultadoFinal.csv");

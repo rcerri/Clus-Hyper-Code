@@ -2,9 +2,12 @@
 # Licensed under the Academic Free License version 3.0
 # See the file "LICENSE" for more information
 
-parent.0		= ../ec/simple/simple.params
-pop.subpop.0.size = 20
-generations = 10
+parent.0	= ../ec/simple/simple.params
+pop.subpop.0.size = 10
+generations = 5
+
+init = ga.mySimpleInitializer
+
 
 pop.subpop.0.species		= ec.vector.IntegerVectorSpecies
 pop.subpop.0.species.ind	= ec.vector.IntegerVectorIndividual
@@ -33,6 +36,7 @@ select.tournament.size = 2
 breed.elite.0 = 5
 
 eval.problem            = ga.myProblem
+stat = ga.myStatistics
 
 breedthreads = 1
 evalthreads = 1

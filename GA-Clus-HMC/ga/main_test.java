@@ -14,18 +14,34 @@ public class main_test {
 
 	public static void main(String[] args) throws IOException, ClusException {
 		// TODO Auto-generated method stub
-		
-		int all[] = {1,1,1,1,1,1,1,1};
-		int independent[] = {1,2,3,4,5,6,7,8};  // 14 different classifiers.
+		/*
+		oes10 -> [299-314]
+		oes97 -> [264-279]
+		rf1 -> [65-72]
+		rf2 -> [577-584]
+		scm1d -> [281-296]
+		scm20d -> [62-77]
+		water-quality -> [17-30]
+		*/
 		
 		String dataFile = "water-quality";
 		String train = "/Users/basgalupp/Dropbox/datasets/Clus/regression/"+dataFile+"/"+dataFile+"-train.arff";
 		String test = "/Users/basgalupp/Dropbox/datasets/Clus/regression/"+dataFile+"/"+dataFile+"-test.arff";
+		int firstTarget = 17;
+		int lastTarget = 30;
 		
+		int nTargets = 1 + lastTarget - firstTarget; 
+		int all[] = new int[nTargets]; int independent[] = new int[nTargets];
+		
+		for (int i = 0; i < nTargets; i++) {
+			all[i] = 1;
+			independent[i] = i+1;
+		}
+
 		// Run this BEFORE the main loop of the GA,
 		// indicate: name of training and test datasets + range of output attributes (for Disable option)
 		
-		ClusWrapper.initialization(train, test, "17-30",true);	
+		ClusWrapper.initialization(train, test, String.valueOf(firstTarget)+"-"+String.valueOf(lastTarget),true);	
 		myMeasures measures = ClusWrapper.evaluateIndividual(all,true);
 		//myMeasures measures = ClusWrapper.evaluateIndividual(independent,true);
 		

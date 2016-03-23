@@ -3,21 +3,14 @@ package ga;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
-
 import Util.ClusWrapper;
 import Util.myMeasures;
-import weka.classifiers.Evaluation;
-import weka.classifiers.rules.ZeroR;
-import weka.core.Instances;
 import weka.core.Utils;
 import ec.EvolutionState;
 import ec.Individual;
 import ec.Problem;
-import ec.gp.koza.KozaFitness;
 import ec.simple.SimpleFitness;
 import ec.simple.SimpleProblemForm;
 import ec.vector.IntegerVectorIndividual;
@@ -28,8 +21,6 @@ public class myProblem extends Problem implements SimpleProblemForm {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-
 
 	public void finalResults() throws IOException {
 
@@ -187,7 +178,23 @@ public class myProblem extends Problem implements SimpleProblemForm {
 			}
 
 			ind.evaluated = true;
-
+			
+			int currentGen = (int)state.generation;
+			 
+			//System.out.println("current generation = "+currentGen);
+			//System.out.println("number of generations = "+state.numGenerations);
+			if( (currentGen == 0) || (currentGen == (state.numGenerations - 1)))  { // first job
+				
+				ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff", Dataset.getPath()+Dataset.getFileName() + "-test.arff", Main.targets,Main.randomForest);
+				measures = new myMeasures();
+				measures = ClusWrapper.evaluateIndividual(genome,true);
+				
+				if (currentGen == 0)
+					Main.pFirstGen.println(measures.getMAE()[0] +","+ measures.getMSE()[0] +"," +measures.getRMSE()[0] +","+ measures.getMAE()[1] +","+ measures.getMSE()[1] +"," +measures.getRMSE()[1]);
+				else {
+					Main.pLastGen.println(measures.getMAE()[0] +","+ measures.getMSE()[0] +"," +measures.getRMSE()[0] +","+ measures.getMAE()[1] +","+ measures.getMSE()[1] +"," +measures.getRMSE()[1]);
+				}
+			}
 
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
@@ -254,6 +261,9 @@ public class myProblem extends Problem implements SimpleProblemForm {
 			}
 		}
 		Main.pwAll.println(full);
+		
+		//Main.pEvolution.println(mae[0] +","+ mse[0] +","+ rmse[0] +","+ mae[1] +","+ mse[1] +","+ rmse[1]);
+		
 	}
 
 }
