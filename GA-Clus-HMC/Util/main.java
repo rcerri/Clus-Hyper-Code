@@ -22,14 +22,21 @@ public class main {
 		int all[] = {1,1,1,1,1,1,1,1};
 		int independent[] = {1,2,3,4,5,6,7,8};  // 14 different classifiers.
 		
-		int other[] = {1,1,1,4,5,2,2,2,9,10,11,3,3,3}; 
+		int other[] = {1,1,1,4,4,2,2,2}; 
+		int other2[] = {1,1,1,2,2,4,3,3}; 
+
 		
 		population[0] = all;
 		//population[1] = independent;
 		//population[2] = other;
 		
+		
+		/*
+		 * ***********************REGRESSION EXAMPLE************************
+		 */
+		
 		String train = "../datasets/regression/rf1/rf1-train.arff";
-		String test = "../datasets/regression/rf1/rf1-test.arff";
+		String test =  "../datasets/regression/rf1/rf1-test.arff";
 		
 		//rf1 -> [65-72]
 		// Run this BEFORE the main loop of the GA,
@@ -38,92 +45,54 @@ public class main {
 		ClusWrapper.initialization(train, test, "65-72",false); 	
 		
 
-		// brute force
-		// read file with all possible partitions for this particular problem
+		// Isaac: why Clus fails with Trees without training error??
+		myMeasures measure = ClusWrapper.evaluateIndividual(other,true);
 		
-		String cadena = Fichero.leeFichero("../potentialPartitions-RF1.txt");
-		//String cadena = Fichero.leeFichero("../prueba.txt");
-		StringTokenizer lineas = new StringTokenizer (cadena,"\n\r");
 		
-		String linea = "";
+		System.out.println("\nTraining error: ");
+		System.out.println("MAE: "+ measure.getMAE()[0]);  // Give 0's, if false.
+		System.out.println("MSE: "+ measure.getMSE()[0]);
+		System.out.println("RMSE: "+ measure.getRMSE()[0]);
+		System.out.println("WRMSE: "+ measure.getWRMSE()[0]);
 		
-		lineas.nextToken(); // skip first line
+        System.out.println("\nTest error: ");
+		System.out.println("MAE: "+ measure.getMAE()[1]);
+		System.out.println("MSE: "+ measure.getMSE()[1]);
+		System.out.println("RMSE: "+ measure.getRMSE()[1]);
+		System.out.println("WRMSE: "+ measure.getWRMSE()[1]);
 		
-		int cont=0;
 		
-		double minimumTRAError = Double.MAX_VALUE;
-		String betterTRAIndividual="";
-		
-		double minimumTSTError = Double.MAX_VALUE;
-		String betterTSTIndividual="";
-		
-		while (lineas.hasMoreElements()){
-			
-			
-			linea = lineas.nextToken();
-			
-			String clusters[] = linea.split(" ");
-			
-			int individual [] = new int[8];
-			
-			// System.out.println(linea);
-			
-			
-			for(int i=0; i<clusters.length; i++){
 				
-				if(clusters[i].contains(",")){
-					
-					String targets[] = clusters[i].split(",");
-					
-					for(int j=0; j< targets.length; j++){
-						// System.out.println(targets[j]);
-						individual[Integer.parseInt(targets[j])-1] = i+1;
-					}
-				}else{
-					
-					
-					individual[Integer.parseInt(clusters[i])-1] = i+1; 
-					
-				}
-			}
-			
-			System.out.print("\n Individual: ");
-			for(int i=0; i< individual.length; i++){
-				System.out.print(individual[i]+", ");
-			}
-			
-			System.out.println("");
-			// System.out.println("\n"+clusters.length);
-			
-			myMeasures measure = ClusWrapper.evaluateIndividual(individual,true);
-			
-			System.out.println("Training: " +measure.getMAE()[0]+ ","+measure.getMSE()[0]+","+measure.getRMSE()[0]+","+measure.getWRMSE()[0]);
-			System.out.println("Test: " +measure.getMAE()[1]+ ","+measure.getMSE()[1]+","+measure.getRMSE()[1]+","+measure.getWRMSE()[1]);
-			
-			
-			if(measure.getMAE()[0]<minimumTRAError){
-				minimumTRAError = measure.getMAE()[0];
-				betterTRAIndividual = linea;
-			}
-			
-			if(measure.getMAE()[1]<minimumTSTError){
-				minimumTSTError = measure.getMAE()[1];
-				betterTSTIndividual = linea;
-			}
-			
-			cont++;
-		}
+        measure = ClusWrapper.evaluateIndividual(other2,true);
 		
+        System.out.println("\nTraining error: ");
+		System.out.println("\nMAE: "+ measure.getMAE()[0]);
+		System.out.println("MSE: "+ measure.getMSE()[0]);
+		System.out.println("RMSE: "+ measure.getRMSE()[0]);
+		System.out.println("WRMSE: "+ measure.getWRMSE()[0]);
 		
-		System.out.println("\n\nThe best training individual is: "+betterTRAIndividual +  ";  error: "+minimumTRAError);
-		System.out.println("The best test individual is: "+betterTSTIndividual+  ";  error: "+minimumTSTError);
-		
-		// Run this as your fitness function. You can choose between MAE, MSE, RMSE or WRMSE as performance measure
+        System.out.println("\nTest error: ");
 
+		System.out.println("\nMAE: "+ measure.getMAE()[1]);
+		System.out.println("MSE: "+ measure.getMSE()[1]);
+		System.out.println("RMSE: "+ measure.getRMSE()[1]);
+		System.out.println("WRMSE: "+ measure.getWRMSE()[1]);
+		
 		
 		/*
+		 * ***********************CLASSIFICATION************************
+		 
+		
+		
+		train = "../datasets/classification/yeast/yeast-train.arff";
+		test =  "../datasets/classification/yeast/yeast-test.arff";
+		
+	
+		ClusWrapper.initialization(train, test, "103-117",false); 	
+		
+
 		// Isaac: why Clus fails with Trees without training error??
-		myMeasures measure = ClusWrapper.evaluateIndividual(all,true);
+		measure = ClusWrapper.evaluateIndividual(all,true);
 		
 		
 		System.out.println("\nTraining error: ");
@@ -156,6 +125,7 @@ public class main {
 		System.out.println("WRMSE: "+ measure.getWRMSE()[1]);
 		
 		*/
+		
 		
 	}
 

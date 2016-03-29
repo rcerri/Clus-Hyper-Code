@@ -45,8 +45,8 @@ for ($i=2;$i<=$nb_partitions;$i++) {
 
 @bell = qw(1 1 2 5 15 52 203 877 4140 21147 115975 678570 4213597 27644437 190899322 1382958545 10480142147 82864869804 682076806159 5832742205057);
 $nb_partitions_generated = @{$partitions[$nb_partitions]};
-print "all partitions with $nb_partitions elements:\n";
+#print "all partitions with $nb_partitions elements:\n";
 foreach $part (@{$partitions[$nb_partitions]}) {
     print "$part\n";
 }
-print "number of partitions generated: $nb_partitions_generated (check: Bell number = $bell[$nb_partitions])\n";
+#print "number of partitions generated: $nb_partitions_generated (check: Bell number = $bell[$nb_partitions])\n";
