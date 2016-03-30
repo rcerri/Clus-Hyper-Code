@@ -293,7 +293,8 @@ public class ClusErrorList implements Serializable {
 		return true;
 	}
 
-	public void showError(ClusModelInfoList models, int type, String bName, PrintWriter out) throws IOException {
+	// original method
+/*	public void showError(ClusModelInfoList models, int type, String bName, PrintWriter out) throws IOException {
 //	public void showError(ClusModelInfoList models, int type, PrintWriter out) throws IOException {
 		int nb = m_Error.size();
 		ClusModelInfo definf = models.getModelInfo(ClusModel.DEFAULT);
@@ -334,6 +335,64 @@ public class ClusErrorList implements Serializable {
 							//err2.showModelError(out, ClusError.DETAIL_SMALL);
 							err2.showModelError(out, bName, ClusError.DETAIL_SMALL);
 						}
+					}
+				}
+			}
+		}
+	}*/
+	
+	// original method, adapted by Celine
+	public void showError(ClusModelInfoList models, int type, String bName, PrintWriter out) throws IOException {
+		int nb = m_Error.size();
+		ClusModelInfo definf = models.getModelInfo(ClusModel.DEFAULT);
+		ClusErrorList defpar = definf.getError(type);
+		out.println("Number of examples: "+defpar.getNbExamples());
+		int nb_models = models.getNbModels();
+		if (!checkCoverage(models, type, defpar.getNbExamples())) {
+			out.println("Coverage:");
+			for (int j = 0; j < nb_models; j++) {
+				ClusModelInfo inf = models.getModelInfo(j);
+				if (inf != null) {
+					ClusErrorList parent = inf.getError(type);
+					out.println("  "+inf.getName()+": "+parent.getNbCover());
+				}
+			}
+		}
+		for (int i = 0; i < nb; i++) {
+			ClusError err1 = getError(i);
+			boolean has_models = false;
+			for (int j = 0; j < nb_models; j++) {
+				ClusModelInfo inf = models.getModelInfo(j);
+				if (inf != null && inf.getError(type).getErrorOrNull(i) != null) {
+					has_models = true;
+				}
+			}
+			if (has_models) {
+				out.println(err1.getName());
+				for (int j = 0; j < nb_models; j++) {
+					ClusModelInfo inf = models.getModelInfo(j);
+					if (inf != null) {
+						ClusError err2 = inf.getError(type).getErrorOrNull(i);
+						if (err2 != null) {
+							if (err2.isMultiLine()) {
+								out.print("   "+inf.getName()+": ");
+							} else {
+								out.print("   "+StringUtils.printStr(inf.getName(),15)+": ");
+							}
+							//err2.showModelError(out, ClusError.DETAIL_SMALL);
+							err2.showModelError(out, bName, ClusError.DETAIL_SMALL);
+						}
+					}
+				}
+			}
+			if (err1.getName()=="Accuracy") {
+				out.println("F1");
+				for (int j = 0; j < nb_models; j++) {
+					ClusModelInfo inf = models.getModelInfo(j);
+					if (inf != null) {
+						ClusError err2 = inf.getError(type).getErrorOrNull(i);
+						out.print("   "+inf.getName()+": ");
+						((ContingencyTable)err2).printF1(out);
 					}
 				}
 			}
