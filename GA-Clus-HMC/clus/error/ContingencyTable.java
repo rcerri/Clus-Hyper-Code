@@ -111,10 +111,28 @@ public class ContingencyTable extends ClusNominalError {
 		return 0.0;
 	}
 
+	public double calcF1(int k) {
+		double prec = calcPrecision(k);
+		double rec = calcRecall(k);
+		return (double) (2.0*prec*rec) / (prec+rec);
+	}
+	
+	// assuming that the contingency table has dimension 2!!
+	public double calcPrecision(int k) {
+		int[][] table = m_ContTable[k];
+		return (double) table[0][0]/(table[0][0]+table[1][0]);
+	}
+	
+	// assuming that the contingency table has dimension 2!!
+	public double calcRecall(int k) {
+		int[][] table = m_ContTable[k];
+		return (double) table[0][0]/(table[0][0]+table[0][1]);
+	}
+	
 	public double getModelErrorComponent(int i) {
 		return calcAccuracy(i);
 	}
-
+	
 	public double getModelComponent() {
 		double sum = 0.0;
 		for (int i = 0; i < m_Dim; i++) {
@@ -122,7 +140,7 @@ public class ContingencyTable extends ClusNominalError {
 		}
 		return sum/m_Dim;
 	}
-
+	
 	public void showAccuracy(PrintWriter out, int i) {
 		int nbcorr = calcNbCorrect(i);
 		int nbtot = calcNbTotal(i);
@@ -131,7 +149,7 @@ public class ContingencyTable extends ClusNominalError {
 		//+" = "+nbcorr+"/"+nbtot);
 		out.println();
 	}
-
+	
 	public void add(ClusError other) {
 		ContingencyTable cont = (ContingencyTable)other;
 		for (int i = 0; i < m_Dim; i++) {
@@ -145,16 +163,43 @@ public class ContingencyTable extends ClusNominalError {
 			}
 		}
 	}
-
+	
+	// original version
+ 	/*public void showModelError(PrintWriter out, int detail) {
+	 if (detail == DETAIL_VERY_SMALL) {
+	 out.print(getPrefix()+"[");
+	 for (int i = 0; i < m_Dim; i++) {
+	 if (i != 0) out.print(",");
+	 double acc = calcAccuracy(i);
+	 out.print(ClusFormat.SIX_AFTER_DOT.format(acc));
+	 }
+	 out.println("]");
+	 } else {
+	 for (int i = 0; i < m_Dim; i++) {
+	 out.println();
+	 out.println(getPrefix()+"Attribute: "+m_Attrs[i].getName());
+	 }
+	 }
+	 }*/
+	
+	
+	
+	// Celine adapted to work with ClusWrapper
 	public void showModelError(PrintWriter out, int detail) {
-		if (detail == DETAIL_VERY_SMALL) {
+		//if (detail == DETAIL_VERY_SMALL) {
+		if (true) {
 			out.print(getPrefix()+"[");
+			double avgacc = 0.0;
 			for (int i = 0; i < m_Dim; i++) {
 				if (i != 0) out.print(",");
 				double acc = calcAccuracy(i);
+				avgacc += acc;
 				out.print(ClusFormat.SIX_AFTER_DOT.format(acc));
 			}
-			out.println("]");
+			//out.println("]");
+			out.print("]: ");
+			avgacc = avgacc / m_Dim;
+			out.println(ClusFormat.SIX_AFTER_DOT.format(avgacc));	
 		} else {
 			for (int i = 0; i < m_Dim; i++) {
 				out.println();
@@ -163,7 +208,36 @@ public class ContingencyTable extends ClusNominalError {
 			}
 		}
 	}
-
+	
+	public void printF1(PrintWriter out) {
+		// if all targets are binary, then also print F1
+		boolean binary = true;
+		for (int i = 0; i < m_Dim; i++) {
+			int size = m_Attrs[i].getNbValuesInclMissing();
+			if (size != 2) binary = false;
+			// for binary data we can be sure that the '1' is in the first position and the '0' in the second
+			if (m_Attrs[i].getValueOrMissing(0) != "1") binary = false;
+			if (m_Attrs[i].getValueOrMissing(1) != "0") binary = false;
+		}
+		if (binary) {
+			out.print(getPrefix()+"[");
+			double avgF1 = 0.0;
+			for (int i = 0; i < m_Dim; i++) {
+				if (i != 0) out.print(",");
+				double f1 = calcF1(i);
+				avgF1 += f1;
+				if (((Double)f1).isNaN()) out.print("NaN");
+				else out.print(ClusFormat.SIX_AFTER_DOT.format(f1));
+			}
+			//out.println("]");
+			out.print("]: ");
+			avgF1 = avgF1 / m_Dim;
+			if (((Double)avgF1).isNaN()) out.println("NaN");
+			else out.println(ClusFormat.SIX_AFTER_DOT.format(avgF1));
+		}
+		else out.println();
+	}
+	
 	public int sumColumn(int[][] table, int j) {
 		int sum = 0;
 		for (int i = 0; i < table.length; i++)
