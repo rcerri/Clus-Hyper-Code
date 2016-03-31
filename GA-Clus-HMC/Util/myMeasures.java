@@ -9,6 +9,9 @@ public class myMeasures{
 	public double wrmse[] = new double[2];
 
 	
+	public double accuracy[] = new double[2];
+	public double f1[] = new double[2];
+	public double wmseNominal[] = new double[2];
 	
 	// add performance measures for regression problems
 	
@@ -68,5 +71,33 @@ public class myMeasures{
 	}
 
 	
+	public double[] getAccuracy() {
+		return accuracy;
+	}
+
+
+	public void setAccuracy(double[] accuracy) {
+		this.accuracy = accuracy;
+	}
+
+	public double[] getF1() {
+		return f1;
+	}
+
+
+	public void setF1(double[] f1) {
+		this.f1 = f1;
+	}
+	
+	
+	public double[] getWMSEnominal() {
+		return wmseNominal;
+	}
+
+
+	public void setWMSEnominal(double[] wmseNominal) {
+		this.wmseNominal = wmseNominal;
+	}
+
 }
 

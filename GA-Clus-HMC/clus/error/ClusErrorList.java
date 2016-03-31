@@ -343,6 +343,8 @@ public class ClusErrorList implements Serializable {
 	
 	// original method, adapted by Celine
 	public void showError(ClusModelInfoList models, int type, String bName, PrintWriter out) throws IOException {
+		
+		System.err.println("HERE I AM");
 		int nb = m_Error.size();
 		ClusModelInfo definf = models.getModelInfo(ClusModel.DEFAULT);
 		ClusErrorList defpar = definf.getError(type);
@@ -453,6 +455,19 @@ public class ClusErrorList implements Serializable {
 						}
 					}
 				}
+				
+				if (err1.getName()=="Classification Error") {
+					out+="F1\n";
+					for (int j = 0; j < nb_models; j++) {
+						ClusModelInfo inf = models.getModelInfo(j);
+						if (inf != null) {
+							ClusError err2 = inf.getError(type).getErrorOrNull(i);
+							out+="   "+inf.getName()+": ";
+							out+=((ContingencyTable)err2).printF1();
+						}
+					}
+				}
+				
 			}
 			
 			return out;

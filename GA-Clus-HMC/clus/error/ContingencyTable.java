@@ -238,6 +238,41 @@ public class ContingencyTable extends ClusNominalError {
 		else out.println();
 	}
 	
+	
+	
+	public String printF1() {
+		// if all targets are binary, then also print F1
+		String out="";
+		boolean binary = true;
+		for (int i = 0; i < m_Dim; i++) {
+			int size = m_Attrs[i].getNbValuesInclMissing();
+			if (size != 2) binary = false;
+			// for binary data we can be sure that the '1' is in the first position and the '0' in the second
+			if (m_Attrs[i].getValueOrMissing(0) != "1") binary = false;
+			if (m_Attrs[i].getValueOrMissing(1) != "0") binary = false;
+		}
+		if (binary) {
+			out+=getPrefix()+"[";
+			double avgF1 = 0.0;
+			for (int i = 0; i < m_Dim; i++) {
+				if (i != 0) out+=",";
+				double f1 = calcF1(i);
+				avgF1 += f1;
+				if (((Double)f1).isNaN()) out+="NaN";
+				else out+=ClusFormat.SIX_AFTER_DOT.format(f1);
+			}
+			//out.println("]");
+			out+="]: ";
+			avgF1 = avgF1 / m_Dim;
+			if (((Double)avgF1).isNaN()) out+="NaN\n";
+			else out+=ClusFormat.SIX_AFTER_DOT.format(avgF1)+"\n";
+		}
+		else out+="\n";
+		
+		return out;
+	}
+	
+	
 	public int sumColumn(int[][] table, int j) {
 		int sum = 0;
 		for (int i = 0; i < table.length; i++)
