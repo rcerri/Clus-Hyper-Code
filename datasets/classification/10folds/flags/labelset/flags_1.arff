@@ -1,0 +1,50 @@
+@relation flags_ml_1
+
+@attribute landmass character
+@attribute zone character
+@attribute area numeric
+@attribute population numeric
+@attribute language character
+@attribute religion character
+@attribute bars numeric
+@attribute stripes numeric
+@attribute colours numeric
+@attribute circles numeric
+@attribute crosses numeric
+@attribute saltires numeric
+@attribute quarters numeric
+@attribute sunstars numeric
+@attribute crescent character
+@attribute triangle character
+@attribute icon character
+@attribute animate character
+@attribute text character
+@attribute red {0,1}
+@attribute green {0,1}
+@attribute blue {0,1}
+@attribute yellow {0,1}
+@attribute white {0,1}
+@attribute black {0,1}
+@attribute orange {0,1}
+
+@data
+4,1,1001,  47,8,2,0,3,4,0,0,0,0,0,0,0,0,1,1,1,0,0,1,1,1,0
+6,1,   0,   0,1,1,0,0,7,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,1
+2,4,1139,  28,2,0,0,3,3,0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,0,0
+6,2,   0,   0,1,1,0,0,5,0,1,1,1,9,0,0,0,0,0,1,0,1,1,1,0,0
+6,2, 268,   2,1,1,0,0,3,0,1,1,1,4,0,0,0,0,0,1,0,1,0,1,0,0
+3,1,  84,   8,4,0,0,3,2,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0
+5,1,9561,1008,7,6,0,0,2,0,0,0,0,5,0,0,0,0,0,1,0,0,1,0,0,0
+2,3,1099,   6,2,0,0,3,3,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0
+4,1,2388,  20,8,2,2,0,3,0,0,0,0,1,1,0,0,0,0,1,1,0,0,1,0,0
+5,1, 804,  84,6,2,1,0,2,0,0,0,0,1,1,0,0,0,0,0,1,0,0,1,0,0
+2,3, 178,   3,2,0,0,9,3,0,0,0,1,1,0,0,0,0,0,0,0,1,1,1,0,0
+3,1,  41,   6,4,1,0,0,2,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0
+3,1, 132,  10,6,1,0,9,2,0,1,0,1,0,0,0,0,0,0,0,0,1,0,1,0,0
+6,2,7690,  15,1,1,0,0,3,0,1,1,1,6,0,0,0,0,0,1,0,1,0,1,0,0
+1,4,  28,   6,3,0,2,0,2,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0
+4,2,   2,   1,1,4,0,4,4,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0
+1,4,   0,   0,1,1,0,0,5,0,0,0,0,2,0,1,0,0,0,1,1,0,1,1,1,0
+1,4,   0,   0,1,1,0,0,4,0,0,0,0,0,0,1,0,0,0,0,0,1,1,1,1,0
+5,1, 288,   2,8,2,0,3,4,0,0,0,0,1,0,1,0,0,0,1,0,1,0,1,1,0
+6,3,   3,   0,1,1,0,0,3,0,0,0,1,5,0,0,0,0,0,1,0,1,0,1,0,0
