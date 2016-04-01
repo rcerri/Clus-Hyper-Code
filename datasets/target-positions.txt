@@ -1,5 +1,7 @@
 birds -> [261-279]
 corel5k -> [500-873]
+emotions -> [73-78]
+yeast -> [104-117]
 flags -> [20-26]
 genbase -> [1187-1213]
 mediamill -> [121-221]
