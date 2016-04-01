@@ -454,7 +454,7 @@ public class ClusWrapper {
 
 			String values[][] = new String[4][]; 
 
-			while(!linea.equalsIgnoreCase("Classification Error")){linea = lineas.nextToken();}
+			while(!linea.equalsIgnoreCase("Accuracy")){linea = lineas.nextToken();}
 			linea = lineas.nextToken(); // skip line default
 			if(!forest) linea = lineas.nextToken(); // to skip also ORIGINAL, and TAKE PRUNED. 
 			linea = lineas.nextToken();
@@ -508,7 +508,7 @@ public class ClusWrapper {
 
 		String values[][] = new String[4][]; 
 
-		while(!linea.equalsIgnoreCase("Classification Error")){linea = lineas.nextToken();}
+		while(!linea.equalsIgnoreCase("Accuracy")){linea = lineas.nextToken();}
 		linea = lineas.nextToken(); // skip line default
 		if(!forest) linea = lineas.nextToken(); // to skip also ORIGINAL, and TAKE PRUNED. 
 		linea = lineas.nextToken();

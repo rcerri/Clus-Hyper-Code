@@ -96,12 +96,12 @@ public class main {
 		
 		
 		System.out.println("\nTraining error: ");
-		System.out.println("Classification Error: "+ measure.getAccuracy()[0]);  // Give 0's, if false.
+		System.out.println("Accuracy: "+ measure.getAccuracy()[0]);  // Give 0's, if false.
 		System.out.println("F1: "+ measure.getF1()[0]);
 		System.out.println("WMSE nominal: "+ measure.getWMSEnominal()[0]);
 		
         System.out.println("\nTest error: ");
-		System.out.println("Classification Error: "+ measure.getAccuracy()[1]);  // Give 0's, if false.
+		System.out.println("Accuracy: "+ measure.getAccuracy()[1]);  // Give 0's, if false.
 		System.out.println("F1: "+ measure.getF1()[1]);
 		System.out.println("WMSE nominal: "+ measure.getWMSEnominal()[1]);
 		
@@ -110,12 +110,12 @@ public class main {
         measure = ClusWrapper.evaluateIndividualClassification(independent,true);
 		
 		System.out.println("\nTraining error: ");
-		System.out.println("Classification Error: "+ measure.getAccuracy()[0]);  // Give 0's, if false.
+		System.out.println("Accuracy: "+ measure.getAccuracy()[0]);  // Give 0's, if false.
 		System.out.println("F1: "+ measure.getF1()[0]);
 		System.out.println("WMSE nominal: "+ measure.getWMSEnominal()[0]);
 		
         System.out.println("\nTest error: ");
-		System.out.println("Classification Error: "+ measure.getAccuracy()[1]);  // Give 0's, if false.
+		System.out.println("Accuracy: "+ measure.getAccuracy()[1]);  // Give 0's, if false.
 		System.out.println("F1: "+ measure.getF1()[1]);
 		System.out.println("WMSE nominal: "+ measure.getWMSEnominal()[1]);
 		

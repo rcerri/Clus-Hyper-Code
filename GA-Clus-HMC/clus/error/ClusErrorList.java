@@ -456,7 +456,7 @@ public class ClusErrorList implements Serializable {
 					}
 				}
 				
-				if (err1.getName()=="Classification Error") {
+				if (err1.getName()=="Accuracy") {
 					out+="F1\n";
 					for (int j = 0; j < nb_models; j++) {
 						ClusModelInfo inf = models.getModelInfo(j);
