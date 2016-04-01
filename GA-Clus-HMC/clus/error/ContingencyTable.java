@@ -395,7 +395,9 @@ public class ContingencyTable extends ClusNominalError {
 	}
 
 	public String getName() {
-		return "Classification Error";
+		//return "Classification Error";
+		// Actually the accuracy is returned, not the error!
+		return "Accuracy";
 	}
 
 	public ClusError getErrorClone(ClusErrorList par) {
