@@ -39,14 +39,17 @@ public class mySimpleInitializer extends SimpleInitializer
 		Population p = setupPopulation(state, thread); 
 		p.populate(state, thread);
 
-		// inserting individuals [1...1] and [1 2 3 ... ntargets]
-		int size = ((IntegerVectorIndividual)p.subpops[0].individuals[0]).genome.length;
-		for (int i = 0; i < size; i++) {
-			((IntegerVectorIndividual)p.subpops[0].individuals[0]).genome[i] = 1;
-			((IntegerVectorIndividual)p.subpops[0].individuals[1]).genome[i] = i+1;
+		if (Main.initialPopBaselines == 1) { // inserting individuals [1...1] and [1 2 3 ... ntargets]
+			int size = ((IntegerVectorIndividual)p.subpops[0].individuals[0]).genome.length;
+			for (int i = 0; i < size; i++) {
+				((IntegerVectorIndividual)p.subpops[0].individuals[0]).genome[i] = 1;
+				((IntegerVectorIndividual)p.subpops[0].individuals[1]).genome[i] = i+1;
+			}
 		}
 		return p;
 	}
+
+
 
 	public Population setupPopulation(final EvolutionState state, int thread)
 	{

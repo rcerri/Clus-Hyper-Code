@@ -143,32 +143,45 @@ public class myEvolve extends Evolve{
 			new File(Main.path+"Fold"+i+"/").mkdir();
 			Main.fwTest = new FileWriter(Main.path+"Fold"+i+"/resultado-fold"+i+".csv");
 			Main.fwAll = new FileWriter(Main.path+"Fold"+i+"/resultado-All-fold"+i+".csv");
-			
+
 			Main.pwTest = new PrintWriter(Main.fwTest);
 			Main.pwAll = new PrintWriter(Main.fwAll);
 
-			Main.pwTest.println("MAE,MSE,RMSE");
-			Main.pwAll.println("Train MAE,Validation MAE,Test MAE,Train MSE,Validation MSE,Test MSE,Train RMSE,Validation RMSE,Test RMSE");
+			if (Main.mlTask == 1) {
+				Main.pwTest.println("Accuracy,F1,WMSEnominal");
+				Main.pwAll.println("Train Accuracy,Validation Accuracy,Test Accuracy,Train F1,Validation F1,Test F1,Train WMSEnominal,Validation WMSEnominal,Test WMSEnominal");
+			}
+			else {
+				Main.pwTest.println("MAE,MSE,RMSE");
+				Main.pwAll.println("Train MAE,Validation MAE,Test MAE,Train MSE,Validation MSE,Test MSE,Train RMSE,Validation RMSE,Test RMSE");
+			}
 
 			for(int job = currentJob ; job < numJobs; job++){
 				try
 				{
-					
+
 					Main.fFirstGen = new FileWriter(Main.path+"Fold"+i+"/firstGeneration_job"+job+".csv");
 					Main.pFirstGen = new PrintWriter(Main.fFirstGen);
-					
+
 					Main.fLastGen = new FileWriter(Main.path+"Fold"+i+"/lastGeneration_job"+job+".csv");
 					Main.pLastGen = new PrintWriter(Main.fLastGen);
-					
+
 					Main.fEvolution = new FileWriter(Main.path+"Fold"+i+"/Evolution_job"+job+".csv");
 					Main.pEvolution = new PrintWriter(Main.fEvolution);
-					
-					
-					Main.pFirstGen.println("Train MAE, Train MSE, Train RMSE, Test MAE, Test MSE, Test RMSE");
-					Main.pLastGen.println("Train MAE, Train MSE, Train RMSE, Test MAE, Test MSE, Test RMSE");
+
+
+					if (Main.mlTask == 1) { // classification
+						Main.pFirstGen.println("Train Accuracy, Train F1, Train WMSEnominal, Test Accuracy, Test F1, Test WMSEnominal");
+						Main.pLastGen.println("Train Accuracy, Train F1, Train WMSEnominal, Test Accuracy, Test F1, Test WMSEnominal");
+					}
+					else { // regression
+						Main.pFirstGen.println("Train MAE, Train MSE, Train RMSE, Test MAE, Test MSE, Test RMSE");
+						Main.pLastGen.println("Train MAE, Train MSE, Train RMSE, Test MAE, Test MSE, Test RMSE");
+					}
+
 					//Main.pEvolution.println("Train MAE, Train MSE, Train RMSE, Test MAE, Test MSE, Test RMSE");
 					Main.pEvolution.println("Generation, Fitness");
-					
+
 					// load the parameter database (reusing the very first if it exists)
 					if (parameters == null)
 						parameters = (ParameterDatabase) deepClone(original);
@@ -198,7 +211,7 @@ public class myEvolve extends Evolve{
 					state.run(EvolutionState.C_STARTED_FRESH);
 					cleanup(state);  // flush and close various streams, print out parameters if necessary
 					parameters = null;  // so we load a fresh database next time around
-					
+
 					Main.fFirstGen.close();
 					Main.fLastGen.close();
 					Main.fEvolution.close();
@@ -211,18 +224,18 @@ public class myEvolve extends Evolve{
 				}
 
 			}
-			
+
 			//Main.pwTest.println("=average(A2:A"+(numJobs+1)+"),=average(B2:B"+(numJobs+1)+"),=average(C2:C"+(numJobs+1)+"),=average(D2:D"+(numJobs+1)+"),=average(E2:E"+(numJobs+1)+"),=average(F2:F"+(numJobs+1)+"),=average(G2:G"+(numJobs+1)+"),=average(H2:H"+(numJobs+1)+"),=average(I2:I"+(numJobs+1)+"),=average(J2:J"+(numJobs+1)+")");
 			//Main.pwAll.println("=average(A2:A"+(numJobs+1)+"),=average(B2:B"+(numJobs+1)+"),=average(C2:C"+(numJobs+1)+"),=average(D2:D"+(numJobs+1)+"),=average(E2:E"+(numJobs+1)+"),=average(F2:F"+(numJobs+1)+"),=average(G2:G"+(numJobs+1)+"),=average(H2:H"+(numJobs+1)+"),=average(I2:I"+(numJobs+1)+"),=average(J2:J"+(numJobs+1)+"),=average(K2:K"+(numJobs+1)+"),=average(L2:L"+(numJobs+1)+"),=average(M2:M"+(numJobs+1)+"),=average(N2:N"+(numJobs+1)+"),=average(O2:O"+(numJobs+1)+"),=average(P2:P"+(numJobs+1)+"),=average(Q2:Q"+(numJobs+1)+"),=average(R2:R"+(numJobs+1)+"),=average(S2:S"+(numJobs+1)+"),=average(T2:T"+(numJobs+1)+"),=average(U2:U"+(numJobs+1)+"),=average(V2:V"+(numJobs+1)+"),=average(W2:W"+(numJobs+1)+"),=average(X2:X"+(numJobs+1)+"),=average(Y2:Y"+(numJobs+1)+"),=average(Z2:Z"+(numJobs+1)+")");
 			Main.pwTest.println("=average(A2:A"+(numJobs+1)+"),=average(B2:B"+(numJobs+1)+"),=average(C2:C"+(numJobs+1)+")");
 			Main.pwAll.println("=average(A2:A"+(numJobs+1)+"),=average(B2:B"+(numJobs+1)+"),=average(C2:C"+(numJobs+1)+"),=average(D2:D"+(numJobs+1)+"),=average(E2:E"+(numJobs+1)+"),=average(F2:F"+(numJobs+1)+")");
-			
+
 
 			Main.pwTest.close();
 			Main.pwAll.close();
 			Main.fwTest.close();
 			Main.fwAll.close();
-			
+
 		}
 
 		Main.fwTest = new FileWriter(Main.path+"/resultadoFinal.csv");
@@ -258,12 +271,12 @@ public class myEvolve extends Evolve{
 
 		String measuresTest = String.valueOf(Utils.mean(measures[0][2]));
 		String measuresAll = Utils.mean(measures[0][0]) + "," +Utils.mean(measures[0][1]) + "," + Utils.mean(measures[0][2]);
-		
+
 		for (int m = 1; m < measuresNames.length; m++) {
 			measuresTest += "," + Utils.mean(measures[m][2]);
 			measuresAll += "," + Utils.mean(measures[m][0]) + "," +Utils.mean(measures[m][1]) + "," + Utils.mean(measures[m][2]);
 		}
-		
+
 		Main.pwTest.println(measuresTest);
 		Main.pwAll.println(measuresAll);
 

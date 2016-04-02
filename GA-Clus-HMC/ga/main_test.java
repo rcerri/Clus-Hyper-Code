@@ -25,8 +25,8 @@ public class main_test {
 		*/
 		
 		String dataFile = "water-quality";
-		String train = "/Users/basgalupp/Dropbox/datasets/Clus/regression/"+dataFile+"/"+dataFile+"-train.arff";
-		String test = "/Users/basgalupp/Dropbox/datasets/Clus/regression/"+dataFile+"/"+dataFile+"-test.arff";
+		String train = "/Volumes/Dados/Dropbox/datasets/Clus/regression/"+dataFile+"/"+dataFile+"-train.arff";
+		String test = "/Volumes/Dados/Dropbox/datasets/Clus/regression/"+dataFile+"/"+dataFile+"-test.arff";
 		int firstTarget = 17;
 		int lastTarget = 30;
 		
@@ -41,7 +41,7 @@ public class main_test {
 		// Run this BEFORE the main loop of the GA,
 		// indicate: name of training and test datasets + range of output attributes (for Disable option)
 		
-		ClusWrapper.initialization(train, test, String.valueOf(firstTarget)+"-"+String.valueOf(lastTarget),true);	
+		ClusWrapper.initialization(train, test, String.valueOf(firstTarget)+"-"+String.valueOf(lastTarget),false);	
 		myMeasures measures = ClusWrapper.evaluateIndividual(all,true);
 		//myMeasures measures = ClusWrapper.evaluateIndividual(independent,true);
 		
@@ -56,13 +56,11 @@ public class main_test {
 		// Run this as your fitness function. You can choose between MAE, MSE, RMSE or WRMSE as performance measure
 				  
 		System.out.println("\nTesting errors:: ");
-		System.out.println("MAE: "+mae[1]);
-		System.out.println("MSE: "+mse[1]);
-		System.out.println("RMSE: "+rmse[1]);
+		System.out.println("MAE,MSE,RMSE");		
+		System.out.println(mae[1] +", "+ mse[1] +", "+ rmse[1]);
 		
 		System.out.println("\nTraining errors: ");
-		System.out.println("MAE: "+mae[0]);
-		System.out.println("MSE: "+mse[0]);
-		System.out.println("RMSE: "+rmse[0]);
+		System.out.println("MAE,MSE,RMSE");		
+		System.out.println(mae[0] +", "+ mse[0] +", "+ rmse[0]);
 	}
 }

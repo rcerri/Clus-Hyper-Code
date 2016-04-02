@@ -10,12 +10,12 @@ public class Main {
 
 	public static FileWriter fwTest, fwAll, fwNew, fFirstGen, fLastGen, fEvolution;
 	public static PrintWriter pwTest, pwAll, pwNew, pFirstGen, pLastGen, pEvolution;
-	public static String path, targets;
+	public static String path, targets,stratifiedMethod;
 	public static double measuresSingle[][][][]; // [train,validation or test] [measure] [execution] [fold]
 	public static double measuresMultiple[][][][][]; // [metaTraining,metaTest] -- [train or test] -- [measure] -- [execution] ... obs: nao tem resultado por folds
 	public static int fitnessType, fitnessAggregationScheme, metaTrainingEvaluationType, multiObjectiveType, numJobs, evaluationType;
 	public static boolean weightedMeasures, randomForest;
-	public static int startFold = 0;
+	public static int startFold = 0, initialPopBaselines, mlTask;
 
 	/**
 	 * @param args
@@ -36,12 +36,35 @@ public class Main {
 		 * args[6] = number of folds
 		 * args[7] = index of the first target attribute
 		 * args[8] = index of the last target attribute
+		 * args[9] = single tree (0) or randomForest (1)
+		 * args[10] =
+		 * 				0 = totally randomly initial population
+		 * 				1 = with baselines (all and independent) added in the first population
+		 * 
+		 * args[11] = ML task
+		 * 				0 = regression
+		 * 				1 = classification    
+		 * 
+		 * args[12] = if ML task = classification, stratified type
+		 * 				0 = labelset
+		 * 				1 = iterative
 		 */
-
-		randomForest = true;
+		
+		randomForest = Integer.valueOf(args[9]) == 0 ? false : true;
+		initialPopBaselines = Integer.valueOf(args[10]);
+		
 		targets = args[7] + "-" + args[8];
 		numJobs = Integer.valueOf(args[3]);
-		new Dataset(args[1]+args[0]+"/",args[0],Integer.valueOf(args[6]));
+		
+		mlTask = Integer.valueOf(args[11]); // 0 = regression, 1 = classification
+		if (mlTask == 1) { // classification
+			stratifiedMethod = Integer.valueOf(args[12]) == 0 ? "labelset" : "iterative";
+			new Dataset(args[1]+args[0]+"/"+stratifiedMethod+"/",args[0],Integer.valueOf(args[6]));
+		}
+		else {
+			new Dataset(args[1]+args[0]+"/",args[0],Integer.valueOf(args[6]));
+		}
+			
 		fitnessType = Integer.valueOf(args[4]);
 
 		path = args[2] + args[0] + "/";
