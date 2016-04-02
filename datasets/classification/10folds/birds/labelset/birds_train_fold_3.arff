@@ -257,7 +257,7 @@
 @attribute std_rect_height numeric
 @attribute mean_rect_volume numeric
 @attribute std_rect_volume numeric
-@attribute hasSegments string
+@attribute hasSegments {0,1}
 @attribute location {1,10,11,13,15,16,17,2,4,5,7,8}
 @attribute "Brown Creeper" {0,1}
 @attribute "Pacific Wren" {0,1}
