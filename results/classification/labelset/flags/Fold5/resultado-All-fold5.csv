@@ -1,0 +1,3 @@
+Train Accuracy,Validation Accuracy,Test Accuracy,Train F1,Validation F1,Test F1,Train WMSEnominal,Validation WMSEnominal,Test WMSEnominal
+0.8375510204081633,0.8375510204081633,0.6992481203007518,0.856142,0.856142,0.6760984285714287,0.567899677599418,0.567899677599418,1.307232274985931,
+=average(A2:A2),=average(B2:B2),=average(C2:C2),=average(D2:D2),=average(E2:E2),=average(F2:F2)

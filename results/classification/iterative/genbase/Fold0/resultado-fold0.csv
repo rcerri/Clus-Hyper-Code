@@ -1,0 +1,3 @@
+Accuracy,F1,WMSEnominal
+0.8967452300785635,NaN,1.0980486629693194,
+=average(A2:A2),=average(B2:B2),=average(C2:C2)
