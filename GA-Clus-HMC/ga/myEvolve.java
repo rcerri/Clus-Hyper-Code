@@ -139,7 +139,8 @@ public class myEvolve extends Evolve{
 
 		int startFold = Main.startFold;
 		for(int i = startFold; i < Dataset.getNumFolds(); i++){
-			Dataset.setCurrentFold(i);
+			Dataset.setCurrentFold(i);			
+			System.out.println("fold = "+i);
 			new File(Main.path+"Fold"+i+"/").mkdir();
 			Main.fwTest = new FileWriter(Main.path+"Fold"+i+"/resultado-fold"+i+".csv");
 			Main.fwAll = new FileWriter(Main.path+"Fold"+i+"/resultado-All-fold"+i+".csv");

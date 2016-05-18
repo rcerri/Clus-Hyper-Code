@@ -50,6 +50,7 @@ public class Main {
 		 * 				1 = iterative
 		 */
 		
+		
 		randomForest = Integer.valueOf(args[9]) == 0 ? false : true;
 		initialPopBaselines = Integer.valueOf(args[10]);
 		
@@ -59,7 +60,8 @@ public class Main {
 		mlTask = Integer.valueOf(args[11]); // 0 = regression, 1 = classification
 		if (mlTask == 1) { // classification
 			stratifiedMethod = Integer.valueOf(args[12]) == 0 ? "labelset" : "iterative";
-			new Dataset(args[1]+args[0]+"/"+stratifiedMethod+"/",args[0],Integer.valueOf(args[6]));
+			new Dataset(args[1]+stratifiedMethod+"/",args[0],Integer.valueOf(args[6]));
+			//new Dataset(args[1]+args[0]+"/"+stratifiedMethod+"/",args[0],Integer.valueOf(args[6]));
 		}
 		else {
 			new Dataset(args[1]+args[0]+"/",args[0],Integer.valueOf(args[6]));

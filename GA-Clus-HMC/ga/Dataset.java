@@ -12,8 +12,8 @@ public class Dataset {
 	
 	public Dataset(String path, String fileName, int nFolds) throws IOException{
 		this.path = path;
-		this.numFolds = nFolds;
 		this.fileName = fileName;
+		this.numFolds = nFolds;
 	}
 
 	

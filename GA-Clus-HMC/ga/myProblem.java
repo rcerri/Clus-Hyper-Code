@@ -143,11 +143,11 @@ public class myProblem extends Problem implements SimpleProblemForm {
 			System.out.println("]");
 			 */
 
-
 			int currentFold = Dataset.getCurrentFold();
+			
 			String trainSet = Dataset.getPath()+Dataset.getFileName() + "_train_fold_"+(currentFold+1)+".arff";
 			String testSet = Dataset.getPath()+Dataset.getFileName() + "_test_fold_"+(currentFold+1)+".arff";
-
+			
 			ClusWrapper.initialization(trainSet,trainSet, Main.targets,Main.randomForest);
 
 			//System.out.println("train set = "+trainSet);
@@ -161,7 +161,6 @@ public class myProblem extends Problem implements SimpleProblemForm {
 				double accuracy = measures.getAccuracy()[1];
 				double f1 = measures.getF1()[1];
 				double wmseNominal = measures.getWMSEnominal()[1];
-				//double wrmse = measures.getWRMSE()[1];
 
 				if(Main.fitnessType == 0){ // Accuracy fitness
 					if(Utils.eq(accuracy,1)) isIdeal = true;		

@@ -51,9 +51,10 @@ public class myStatistics extends SimpleStatistics
 {
 	/** Logs the best individual of the generation. */
 	boolean warned = false;
+	
+	@Override
 	public void postEvaluationStatistics(final EvolutionState state) {
-		super.postEvaluationStatistics(state);
-
+		//super.postEvaluationStatistics(state);
 		// for now we just print the best fitness per subpopulation.
 		Individual[] best_i = new Individual[state.population.subpops.length];  // quiets compiler complaints
 		for(int x=0;x<state.population.subpops.length;x++) {
