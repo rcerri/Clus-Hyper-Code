@@ -152,10 +152,17 @@ public class ClassesAttrType extends ClusAttrType {
 			if (getSettings().getHierType() == Settings.HIERTYPE_DAG) {
 				m_Hier.loadDAG(m_Labels);
 			} else {
+				System.out.println("total nb labels found: " + m_Labels.length);
+				IntervalCollection coll = new IntervalCollection(getSettings().getDisabledLabels());
+				boolean[] disabled = new boolean[m_Labels.length+1];
+				coll.toBits(disabled);
 				for (int i = 0; i < m_Labels.length; i++) {
 					if (!m_Labels[i].equals(ClassesValue.EMPTY_SET_INDICATOR)) {
-						ClassesValue val = new ClassesValue(m_Labels[i], m_Table);
-						m_Hier.addClass(val);
+						if (disabled[i+1] == false) {
+							System.out.println("adding label " + m_Labels[i]);
+							ClassesValue val = new ClassesValue(m_Labels[i], m_Table);
+							m_Hier.addClass(val);
+						}
 					}
 				}
 			}
@@ -189,15 +196,16 @@ public class ClassesAttrType extends ClusAttrType {
 			wrt.print((String)list.get(i));
 		}
 	}
-
+	
 	public class MySerializable extends ClusSerializable {
+
 
 		public boolean read(ClusReader data, DataTuple tuple) throws IOException {
 			String val = data.readString();
 			if (val == null) return false;
 			ClassesTuple ct;
 			try {
-				ct = new ClassesTuple(val, m_Table);
+				ct = new ClassesTuple(val, m_Table, m_Hier);
 				ct.setAllIntermediate(false);
 				tuple.setObjectVal(ct, getArrayIndex());
 			} catch (ClusException e) {

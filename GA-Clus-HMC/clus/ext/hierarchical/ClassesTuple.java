@@ -55,6 +55,35 @@ public class ClassesTuple implements Serializable {
 			if (tlen == 0) new ClusException("Number of classes should be >= 1");
 		}
 	}
+	
+	public ClassesTuple(String constr, StringTable table, ClassHierarchy hier) throws ClusException {
+		if (constr.equals(ClassesValue.EMPTY_SET_INDICATOR)) {
+			m_Tuple = new ClassesValue[0];
+		} else {
+			// first check how many labels there are that are not disabled
+			int count = 0;
+			StringTokenizer tokenstmp = new StringTokenizer(constr, "@");
+			while (tokenstmp.hasMoreTokens()) {
+				String str = tokenstmp.nextToken();
+				if (hier.getRoot().getByName(str) != null) {
+					count++;
+				}
+			}
+			if (count == 0) m_Tuple = new ClassesValue[0];
+			else {
+				int idx = 0;
+				StringTokenizer tokens = new StringTokenizer(constr, "@");
+				m_Tuple = new ClassesValue[count];
+				while (tokens.hasMoreTokens()) {
+					String str = tokens.nextToken();
+					if (hier.getRoot().getByName(str) != null) {
+						ClassesValue val = new ClassesValue(str, table);
+						m_Tuple[idx++] = val;
+					}
+				}
+			}
+		}
+	}
 
 	public ClassesTuple(int size) {
 		m_Tuple = new ClassesValue[size];
