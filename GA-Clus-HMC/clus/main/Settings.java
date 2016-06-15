@@ -1621,6 +1621,11 @@ public class Settings implements Serializable {
 	protected INIFileNominalOrDoubleOrVector m_RecallValues;
 	protected INIFileString m_HierEvalClasses;
 	protected static INIFileBool m_HierUseMEstimate;
+	protected INIFileString m_DisabledLabels;
+	
+	public String getDisabledLabels() {
+		return m_DisabledLabels.getValue();
+	}
 
 	public void setSectionHierarchicalEnabled(boolean enable) {
 		m_SectionHierarchical.setEnabled(enable);
@@ -2336,6 +2341,7 @@ public class Settings implements Serializable {
 		m_RecallValues.setNominal(0);		
 		m_SectionHierarchical.addNode(m_HierEvalClasses = new INIFileString("EvalClasses", NONE));
 		m_SectionHierarchical.addNode(m_HierUseMEstimate = new INIFileBool("MEstimate", false));
+		m_SectionHierarchical.addNode(m_DisabledLabels = new INIFileString("DisableLabels", NONE));
 		m_SectionHierarchical.setEnabled(false);
 		
 		
