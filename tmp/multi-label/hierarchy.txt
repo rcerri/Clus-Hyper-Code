@@ -1,0 +1,6 @@
+Hier #nodes: 4
+Hier classes by level: [1, 4]
+black: 43
+red: 111
+white: 86
+yellow: 66

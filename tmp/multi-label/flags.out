@@ -1,0 +1,176 @@
+Clus run flags_ml
+*****************
+
+Date: 6/15/16 3:05 PM
+File: flags.out
+Attributes: 20 (input: 19, output: 1)
+Missing values: No
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 0
+ResourceInfoLoaded = No
+
+[Data]
+File = flags-train.arff
+TestSet = flags-test.arff
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 20
+Clustering = 20
+Descriptive = 1-19
+Key = None
+Disable = None
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {None}
+ModelIDFiles = No
+WriteCurves = No
+OutputXMLModel = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = Default
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+[Hierarchical]
+Type = Tree
+Distance = WeightedEuclidean
+WType = ExpSumParentWeight
+WParam = 0.75
+HSeparator = .
+EmptySetIndicator = n
+OptimizeErrorMeasure = PooledAUPRC
+DefinitionFile = None
+NoRootPredictions = No
+PruneInSig = 0.0
+Bonferroni = No
+SingleLabel = No
+CalculateErrors = Yes
+ClassificationThreshold = None
+RecallValues = None
+EvalClasses = None
+MEstimate = No
+DisableLabels = 2-3,7
+
+[Ensemble]
+Iterations = 5
+EnsembleMethod = RForest
+VotingType = Majority
+SelectRandomSubspaces = 5
+PrintAllModels = No
+PrintAllModelFiles = No
+PrintPaths = No
+Optimize = No
+OOBestimate = No
+FeatureRanking = No
+WriteEnsemblePredictions = No
+EnsembleRandomDepth = No
+BagSelection = -1
+BagSize = 0
+
+Run: 01
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.196 sec
+Pruning Time: 0 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: FOREST with 5 models (Total nodes: 389 and leaves: 197)
+	 Model 1: Nodes = 73 (Leaves: 37)
+	 Model 2: Nodes = 83 (Leaves: 42)
+	 Model 3: Nodes = 77 (Leaves: 39)
+	 Model 4: Nodes = 75 (Leaves: 38)
+	 Model 5: Nodes = 81 (Leaves: 41)
+
+
+Training error
+--------------
+
+Number of examples: 129
+Hierarchical error measures
+   Original: 
+      Average AUROC:            0.9915863752941492
+      Average AUPRC:            0.9894182942148042
+      Average AUPRC (weighted): 0.9933350145877912
+      Pooled AUPRC:             0.992877219235772
+      0: black, AUROC: 0.991442, AUPRC: 0.972893, Freq: 0.24031
+      1: red, AUROC: 0.994231, AUPRC: 0.998615, Freq: 0.806202
+      2: white, AUROC: 0.990557, AUPRC: 0.996728, Freq: 0.736434
+      3: yellow, AUROC: 0.990116, AUPRC: 0.989437, Freq: 0.472868
+
+Testing error
+-------------
+
+Number of examples: 65
+Hierarchical error measures
+   Original: 
+      Average AUROC:            0.6780508567063188
+      Average AUPRC:            0.7345734185181099
+      Average AUPRC (weighted): 0.7592612085310677
+      Pooled AUPRC:             0.7722951632503171
+      0: black, AUROC: 0.806277, AUPRC: 0.653094, Freq: 0.323077
+      1: red, AUROC: 0.591837, AUPRC: 0.804537, Freq: 0.753846
+      2: white, AUROC: 0.593137, AUPRC: 0.81387, Freq: 0.784615
+      3: yellow, AUROC: 0.720952, AUPRC: 0.666793, Freq: 0.461538
+
+Default Model
+*************
+
+[0.24031,0.806202,0.736434,0.472868]: 129
+
+Original Model
+**************
+
+Forest with 5 models
+
