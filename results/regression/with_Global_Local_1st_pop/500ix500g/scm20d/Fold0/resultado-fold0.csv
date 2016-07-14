@@ -1,0 +1,3 @@
+MAE,MSE,RMSE
+208.48348125,72780.4856125,265.4595375,
+=average(A2:A2),=average(B2:B2),=average(C2:C2)
