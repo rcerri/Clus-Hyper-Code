@@ -544,6 +544,7 @@ public class Settings implements Serializable {
 	protected INIFileBool m_WriteCurves;	
 	protected INIFileBool m_WriteOutFile;
 	protected INIFileBool m_WriteModelFile;
+	protected INIFileBool m_OutputMultiLabelErrors;
 
 	public boolean isOutTrainError() {
 		return m_OutTrainErr.getValue();
@@ -654,6 +655,11 @@ public class Settings implements Serializable {
 
 	public int getBaggingSets() {
 		return m_SetsData.getValue();
+	}
+	
+	// added by celine to get AUROC/AUPRC errors in multi-target regression setting
+	public boolean isOutputMultiLabelErrors() {
+		return m_OutputMultiLabelErrors.getValue();
 	}
 
 /***********************************************************************
@@ -2229,7 +2235,8 @@ public class Settings implements Serializable {
 		output.addNode(m_OutputDatabaseQueries = new INIFileBool("OutputDatabaseQueries", false));
 		output.addNode(m_WriteOutFile = new INIFileBool("WriteOutFile", true));
 		output.addNode(m_WriteModelFile = new INIFileBool("WriteModelFile", true));
-
+		output.addNode(m_OutputMultiLabelErrors = new INIFileBool("OutputMultiLabelErrors", false));
+		
 		INIFileSection nominal = new INIFileSection("Nominal");
 		nominal.addNode(m_MEstimate = new INIFileDouble("MEstimate", 1.0));
 
