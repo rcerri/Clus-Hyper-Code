@@ -13,6 +13,10 @@ public class myMeasures{
 	public double f1[] = new double[2];
 	public double wmseNominal[] = new double[2];
 	
+	public double AUROC[] = new double [2];
+	
+	public double AUPRC[] = new double [2];
+
 	// add performance measures for regression problems
 	
 	public boolean problem = true; // true = classification  or   false = regression
@@ -99,5 +103,24 @@ public class myMeasures{
 		this.wmseNominal = wmseNominal;
 	}
 
+	
+	public double[] getAUROC() {
+		return AUROC;
+	}
+
+
+	public void setAUROC(double[] roc) {
+		this.AUROC = roc;
+	}
+	
+	public double[] getAUPRC() {
+		return AUPRC;
+	}
+
+
+	public void setAUPRC(double[] pr) {
+		this.AUPRC = pr;
+	}
+	
 }
 

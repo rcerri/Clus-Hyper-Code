@@ -85,6 +85,10 @@ public class MultiScoreWrapper extends ClusNumericError {
 	public void showModelError(PrintWriter out, int detail) {
 		m_Child.showModelError(out, detail);
 	}
+	
+	public String showModelError( int detail) {
+		return m_Child.showModelError( detail);
+	}
 
 //	public boolean hasSummary() {
 //		m_Child.hasSummary();

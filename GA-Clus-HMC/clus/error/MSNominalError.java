@@ -133,6 +133,26 @@ public class MSNominalError extends ClusNominalError {
 		}
 		out.println(buf.toString());
 	}
+	
+	public String showModelError(int detail) {
+		String out ="";
+		NumberFormat fr = getFormat();
+		StringBuffer buf = new StringBuffer();
+		if (m_PrintAllComps) {
+			buf.append("[");
+			for (int i = 0; i < m_Dim; i++) {
+				if (i != 0) buf.append(",");
+				buf.append(fr.format(getModelErrorComponent(i)));
+			}
+			if (m_Dim > 1) buf.append("]: ");
+			else buf.append("]");
+		}
+		if (m_Dim > 1 || !m_PrintAllComps) {
+			buf.append(fr.format(getModelError()));
+		}
+		out+=buf.toString();
+		return out;
+	}
 
 	public void showSummaryError(PrintWriter out, boolean detail) {
 		NumberFormat fr = getFormat();

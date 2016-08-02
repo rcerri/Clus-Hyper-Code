@@ -88,36 +88,43 @@ public class main {
 		String train = "../datasets/classification/flags/flags-train.arff";
 		String test =  "../datasets/classification/flags/flags-test.arff";
 		
-		ClusWrapper.initialization(train, test, "20-26",false); 	
+		ClusWrapper.initialization(train, test, "20-26",false, true); 	
 		
 
 		// Isaac: why Clus fails with Trees without training error??
 		myMeasures measure = ClusWrapper.evaluateIndividualClassification(all,true);
 		
 		
+		
 		System.out.println("\nTraining error: ");
-		System.out.println("Accuracy: "+ measure.getAccuracy()[0]);  // Give 0's, if false.
+		
+		System.out.println("AUROC: "+ measure.getAUROC()[0]); 
+		System.out.println("AUPRC: "+ measure.getAUPRC()[0]); 
+		/*System.out.println("Accuracy: "+ measure.getAccuracy()[0]);  // Give 0's, if false.
 		System.out.println("F1: "+ measure.getF1()[0]);
 		System.out.println("WMSE nominal: "+ measure.getWMSEnominal()[0]);
-		
+		*/
         System.out.println("\nTest error: ");
-		System.out.println("Accuracy: "+ measure.getAccuracy()[1]);  // Give 0's, if false.
+		System.out.println("AUROC: "+ measure.getAUROC()[1]); 
+		System.out.println("AUPRC: "+ measure.getAUPRC()[1]); 
+		/*System.out.println("Accuracy: "+ measure.getAccuracy()[1]);  // Give 0's, if false.
 		System.out.println("F1: "+ measure.getF1()[1]);
 		System.out.println("WMSE nominal: "+ measure.getWMSEnominal()[1]);
+		*/
 		
-		
+		System.out.println("\nIndependent");
 		
         measure = ClusWrapper.evaluateIndividualClassification(independent,true);
 		
-		System.out.println("\nTraining error: ");
-		System.out.println("Accuracy: "+ measure.getAccuracy()[0]);  // Give 0's, if false.
+		System.out.println("AUROC: "+ measure.getAUROC()[0]); 
+		System.out.println("AUPRC: "+ measure.getAUPRC()[0]); 
+		/*System.out.println("Accuracy: "+ measure.getAccuracy()[0]);  // Give 0's, if false.
 		System.out.println("F1: "+ measure.getF1()[0]);
 		System.out.println("WMSE nominal: "+ measure.getWMSEnominal()[0]);
-		
+		*/
         System.out.println("\nTest error: ");
-		System.out.println("Accuracy: "+ measure.getAccuracy()[1]);  // Give 0's, if false.
-		System.out.println("F1: "+ measure.getF1()[1]);
-		System.out.println("WMSE nominal: "+ measure.getWMSEnominal()[1]);
+		System.out.println("AUROC: "+ measure.getAUROC()[1]); 
+		System.out.println("AUPRC: "+ measure.getAUPRC()[1]); 
 		
 		
 		

@@ -118,6 +118,7 @@ public class MultiLabelError extends ClusNumericError {
 	}
 	
 	public void showModelError(PrintWriter out, String bName, int detail) throws IOException {
+		
 		NumberFormat fr1 = ClusFormat.SIX_AFTER_DOT;
 		computeAll();
 		out.println();
@@ -131,6 +132,27 @@ public class MultiLabelError extends ClusNumericError {
 		}
 
 	}
+	
+	public String showModelError(String bName, int detail) throws IOException {
+		
+		String out="\n";
+		NumberFormat fr1 = ClusFormat.SIX_AFTER_DOT;
+		computeAll();
+	
+		out+="      Average AUROC:            "+m_AverageAUROC+"\n";
+			
+		out+="      Average AUPRC:            "+m_AverageAUPRC+"\n";
+		out+="      Average AUPRC (weighted): "+m_WAvgAUPRC+"\n";
+		out+="      Pooled AUPRC:             "+m_PooledAUPRC+"\n";
+
+		if (detail != ClusError.DETAIL_VERY_SMALL) {
+			out+=printResults(fr1);
+		}
+		
+		return out;
+
+	}
+	
 
 	public void printResults(NumberFormat fr, PrintWriter out) {
 		for (int i = 0; i < m_Dim; i++) {
@@ -140,6 +162,18 @@ public class MultiLabelError extends ClusNumericError {
 			out.print(", Freq: "+fr.format(m_ClassWisePredictions[i].getFrequency()));
 			out.println();
 		}
+	}
+	
+	public String printResults(NumberFormat fr) {
+		String out="";
+		for (int i = 0; i < m_Dim; i++) {
+			out+="      "+ i + ": " + m_Attrs[i].getName()+": ";
+			out+=" AUROC: "+fr.format(m_ROCAndPRCurves[i].getAreaROC());
+			out+=", AUPRC: "+fr.format(m_ROCAndPRCurves[i].getAreaPR());
+			out+=", Freq: "+fr.format(m_ClassWisePredictions[i].getFrequency());
+			out+="\n";
+		}
+		return out;
 	}
 	
 	public ClusError getErrorClone(ClusErrorList par) {
