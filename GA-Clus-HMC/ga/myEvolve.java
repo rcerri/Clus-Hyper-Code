@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
+import Util.ClusWrapper;
 import ec.EvolutionState;
 import ec.Evolve;
 import ec.util.Output;
@@ -139,7 +140,17 @@ public class myEvolve extends Evolve{
 
 		int startFold = Main.startFold;
 		for(int i = startFold; i < Dataset.getNumFolds(); i++){
-			Dataset.setCurrentFold(i);			
+			Dataset.setCurrentFold(i);
+			
+			String trainSet = Dataset.getPath()+Dataset.getFileName() + "_fold"+(i)+".train";
+			String valSet = Dataset.getPath()+Dataset.getFileName() + "_fold"+(i)+".valid";
+			
+			if (Main.mlTask == 0)
+				ClusWrapper.initialization(trainSet,valSet, Main.targets,Main.randomForest,false);
+			else {
+				ClusWrapper.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
+			}
+					
 			System.out.println("fold = "+i);
 			new File(Main.path+"Fold"+i+"/").mkdir();
 			Main.fwTest = new FileWriter(Main.path+"Fold"+i+"/resultado-fold"+i+".csv");

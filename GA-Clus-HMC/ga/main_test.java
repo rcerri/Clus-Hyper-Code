@@ -25,10 +25,12 @@ public class main_test {
 		*/
 		
 		String dataFile = "water-quality";
-		String train = "/Volumes/Dados/Dropbox/datasets/Clus/regression/"+dataFile+"/"+dataFile+"-train.arff";
-		String test = "/Volumes/Dados/Dropbox/datasets/Clus/regression/"+dataFile+"/"+dataFile+"-test.arff";
 		int firstTarget = 17;
 		int lastTarget = 30;
+		
+		String train = "/Volumes/Dados/Dropbox/datasets/Clus/regression/"+dataFile+"/"+dataFile+"_train_fold_1.arff";
+		String test = "/Volumes/Dados/Dropbox/datasets/Clus/regression/"+dataFile+"/"+dataFile+"_test_fold_1.arff";
+		
 		
 		int nTargets = 1 + lastTarget - firstTarget; 
 		int all[] = new int[nTargets]; int independent[] = new int[nTargets];
@@ -41,9 +43,9 @@ public class main_test {
 		// Run this BEFORE the main loop of the GA,
 		// indicate: name of training and test datasets + range of output attributes (for Disable option)
 		
-		ClusWrapper.initialization(train, test, String.valueOf(firstTarget)+"-"+String.valueOf(lastTarget),false);	
-		myMeasures measures = ClusWrapper.evaluateIndividual(all,true);
-		//myMeasures measures = ClusWrapper.evaluateIndividual(independent,true);
+		ClusWrapper.initialization(train, test, String.valueOf(firstTarget)+"-"+String.valueOf(lastTarget),false,false);	
+		//myMeasures measures = ClusWrapper.evaluateIndividual(all,true);
+		myMeasures measures = ClusWrapper.evaluateIndividual(independent,true);
 		
 		double mae[] = new double[3];
 		double mse[] = new double[3];
