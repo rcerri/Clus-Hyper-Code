@@ -154,11 +154,6 @@ public class myProblem extends Problem implements SimpleProblemForm {
 
 			if (Main.mlTask == 1) { // classification
 
-				System.out.print("Genome = ["+genome[0]);
-				for (int i = 1; i < genome.length; i++)
-					System.out.print(","+genome[i]);
-				System.out.println("]");
-				
 				measures = ClusWrapper.evaluateIndividualClassification(genome,true);
 
 				double auroc = measures.getAUROC()[1];
