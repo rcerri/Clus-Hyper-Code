@@ -281,6 +281,19 @@ public class ClusErrorList implements Serializable {
 			err1.showModelError(out, ClusError.DETAIL_SMALL);
 		}
 	}
+	
+	public String showError() {
+		String out="";
+		int nb = m_Error.size();
+		out+="Number of examples: "+getNbTotal()+" (covered: "+getNbCover()+")\n";
+		for (int i = 0; i < nb; i++) {
+			ClusError err1 = getError(i);
+			out+=err1.getName()+": ";
+			out+=err1.showModelError( ClusError.DETAIL_SMALL);
+		}
+		
+		return out;
+	}
 
 	public static boolean checkCoverage(ClusModelInfoList models, int type, int nb) {
 		int nb_models = models.getNbModels();
@@ -438,10 +451,13 @@ public class ClusErrorList implements Serializable {
 						if (inf != null) {
 							
 							
-							ClusError err2 = inf.getError(type).getError(i);//OrNull(i);
+							ClusError err2 = inf.getError(type).getErrorOrNull(i);
+							
+						//	ClusError err2 = inf.getError(type).getError(i);//OrNull(i);
 							
 							//System.err.println("TYPE: "+type+ ", "+inf.getError(type).getError(i));
-							//System.exit(1);
+
+//							System.exit(1);
 							
 							if (err2 != null) {
 								if (err2.isMultiLine()) {

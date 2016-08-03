@@ -130,6 +130,36 @@ public class ClusWrapper {
 		return new ByteArrayInputStream(cad.getBytes(StandardCharsets.UTF_8));
 
 	}
+	
+	private static InputStream createInputStreamBaseConfigFileForClassification(String target, boolean trainErrors) throws IOException{
+
+		if(target.contains(",")) target = target.substring(0, target.length()-1); // I remove the last comma.
+
+		String cad = "";
+
+		cad += "[Data]\n";
+		cad += "File = "+train+"\n";
+		cad += "TestSet = "+test+"\n\n";
+		cad += "[Attributes]\nTarget = "+target+"\nDisable = "+disable+"\n"; // Disable = 17-30
+		cad += "Weights = 1\n";
+		
+		if(trainErrors)
+			cad += "[Output]\nOutputMultiLabelErrors=Yes\n"; //WritePredictions = {Test}
+		else
+			cad += "[Output]\nOutputMultiLabelErrors=Yes\n"; //\nWritePredictions = {Test}
+
+
+		if(forest){
+			cad += "[Ensemble]\nIterations = 50 \nEnsembleMethod = RForest\n";
+		}
+		
+	//	System.out.println(cad);
+
+		return new ByteArrayInputStream(cad.getBytes(StandardCharsets.UTF_8));
+
+	}
+
+	
 
 
 
@@ -428,13 +458,171 @@ public class ClusWrapper {
 		return errors;
 	}
 
+	/**
+	 * It will process a file that looks like:
+	 * 
+	 * 
+	Training error
+	--------------
+	
+	Number of examples: 129
+	Mean absolute error (MAE)
+	   Default        : [0.4997,0.4985,0.3882,0.3651,0.262]: 0.4027
+	   Original       : [0.2474,0.1969,0.1658,0.1582,0.1132]: 0.1763
+	   
+	   ...
+	   Multi-label error measures
+	   Default        : 
+	      Average AUROC:            0.5
+	      Average AUPRC:            0.4232558139534883
+	      Average AUPRC (weighted): 0.5242638498452452
+	      Pooled AUPRC:             0.6439182902362767
+	      0: blue:  AUROC: 0.5, AUPRC: 0.511628, Freq: 0.511628
+	      1: yellow:  AUROC: 0.5, AUPRC: 0.472868, Freq: 0.472868
+	      2: white:  AUROC: 0.5, AUPRC: 0.736434, Freq: 0.736434
+	      3: black:  AUROC: 0.5, AUPRC: 0.24031, Freq: 0.24031
+	      4: orange:  AUROC: 0.5, AUPRC: 0.155039, Freq: 0.155039
+	   Original       : 
+	      Average AUROC:            0.993548594927474
+	      Average AUPRC:            0.984322405776331
+	      Average AUPRC (weighted): 0.9912801770787876
+	      Pooled AUPRC:             0.9911930392757778
+	      0: blue:  AUROC: 0.987734, AUPRC: 0.989604, Freq: 0.511628
+	      1: yellow:  AUROC: 0.997107, AUPRC: 0.996936, Freq: 0.472868
+	      2: white:  AUROC: 0.996285, AUPRC: 0.998714, Freq: 0.736434
+	      3: black:  AUROC: 0.996708, AUPRC: 0.989781, Freq: 0.24031
+	      4: orange:  AUROC: 0.989908, AUPRC: 0.946578, Freq: 0.155039
+	 * @param train
+	 * @return
+	 */
 
+	public static Double[][][] processOutputClassification(boolean train){
+
+
+		//String cadena = Fichero.leeFichero(currentdir+"config.out");
+		String cadena = outputFile;
+		//System.out.println(cadena);
+		
+		StringTokenizer lineas = new StringTokenizer (cadena,"\n\r");
+		String linea = "";
+		Double errors[][][]=new Double[2][2][]; // dimension 0: tra/tst; dimension 1: Classification Error,AUROC,AUPRC; dimension 2: Measures. 
+
+
+		
+		
+		
+		if(train){
+
+			while(!linea.equalsIgnoreCase("Training error")){linea = lineas.nextToken();}  
+
+			while(!linea.equalsIgnoreCase("Multi-label error measures")){linea = lineas.nextToken();}   // To skip regression measures
+			 
+			
+			// To skip default result
+			if(!forest){
+				while(!linea.contains("Pruned")){linea = lineas.nextToken();}     // Pruned for single trees! 
+			}else{ 
+				
+				while(!linea.contains("Original")){linea = lineas.nextToken();}     
+			}
+			
+			String values[] = new String[2]; 
+
+			values[0]="";values[1]="";
+			
+			while(!linea.contains("Pooled AUPRC")){linea = lineas.nextToken();}
+			
+			boolean stop = false;
+			while(!linea.equalsIgnoreCase("Testing error") && !stop  ){
+				
+				linea = lineas.nextToken();
+				
+				if(linea.contains("AUROC")){
+					String results[] = linea.split(",");
+					
+					String clean [] =results[1].split(":");
+					
+					values[0]+= clean[1]+",";
+					clean =results[2].split(":");
+					values[1]+= clean[1]+",";
+				}else
+					stop = true;
+			}
+			
+		
+			// size of the previous computed list.
+		
+			String AUCROC[] = values[0].split(",");
+			String AUPRC[] = values[1].split(",");
+			
+			errors[0] = new Double[2][AUCROC.length];
+			
+			for(int i=0; i<errors[0][0].length; i++){
+				errors[0][0][i] = Double.parseDouble(AUCROC[i]);
+				errors[0][1][i] = Double.parseDouble(AUPRC[i]);
+				//System.out.print(errors[0][1][i]+", ");
+			}
+
+			//System.exit(1);
+		}
+
+		while(!linea.equalsIgnoreCase("Multi-label error measures")){linea = lineas.nextToken();}  
+		// To skip default result
+		if(!forest){
+			while(!linea.contains("Pruned")){linea = lineas.nextToken();}     // Pruned for single trees! 
+		}else{ 
+			
+			while(!linea.contains("Original")){linea = lineas.nextToken();}     
+		}
+		
+		while(!linea.contains("Pooled AUPRC")){linea = lineas.nextToken();}  // go ahead until Testing error (to make sure no training error is collected)	  
+
+		String values[] = new String[2]; 
+
+		values[0]="";values[1]="";
+		
+		boolean stop = false;
+		while(lineas.hasMoreTokens() && !stop){
+			
+			linea = lineas.nextToken();
+			
+			if(linea.contains("AUROC")){
+				String results[] = linea.split(",");
+				
+				String clean [] =results[1].split(":");
+				
+				values[0]+= clean[1]+",";
+				clean =results[2].split(":");
+				values[1]+= clean[1]+",";
+			}else{
+				stop = false; 
+			}
+		}
+		
+	
+		// size of the previous computed list.
+	
+		String AUCROC[] = values[0].split(",");
+		String AUPRC[] = values[1].split(",");
+		
+		errors[1] = new Double[2][AUCROC.length];
+		
+		for(int i=0; i<errors[1][0].length; i++){
+			errors[1][0][i] = Double.parseDouble(AUCROC[i]);
+			errors[1][1][i] = Double.parseDouble(AUPRC[i]);
+		//	System.out.print(errors[1][1][i]+", ");
+		}
+		
+		
+		return errors;
+	}
+	
 	/**
 	 * This function process the output from Clus as a classifier, it return the measure you want: Classification accuracy.
 	 * for a single classifier. 
 	 * 
 	 * If train == true, training errors are provided.
-	 */
+	 
 	public static Double[][][] processOutputClassification(boolean train){
 
 
@@ -547,8 +735,10 @@ public class ClusWrapper {
 
 		return errors;
 	}
+	
+	*/
 
-	public static void initialization(String trainName, String testName, String disableAtt, boolean Createforest) throws IOException{
+	public static void initialization(String trainName, String testName, String disableAtt, boolean Createforest, boolean classification) throws IOException{
 
 		// Load the dataset only ONCE. 
 
@@ -563,7 +753,12 @@ public class ClusWrapper {
 		FirstOutputIndex = Integer.parseInt(disable.split("-")[0]); // Compute the first index
 
 		//createBaseConfigFile(disable,false); // create initial config.s file
-		InputStream configFile = createInputStreamBaseConfigFile(disable,false); // create initial config.s file
+		InputStream configFile= null;
+		
+		if(classification)
+			configFile = createInputStreamBaseConfigFileForClassification(disable,false); // create initial config.s file
+		else
+			configFile = createInputStreamBaseConfigFile(disable,false); // create initial config.s file
 
 		String [] args;
 
@@ -894,11 +1089,12 @@ public class ClusWrapper {
 
 		for (int j=0; j<MaxClassifiers;j++){
 			Classifier[individual[j]-1]+= Integer.toString(FirstOutputIndex+j)+",";  // From FirstOutputIndex
+			
 		}
 
 		// 2nd, run every classifier.
 
-		double ErrorTarget[][][] = new double [2][3][individual.length];  // one error per target.
+		double ErrorTarget[][][] = new double [2][2][individual.length];  // one error per target.
 
 
 		for (int j=0; j<MaxClassifiers;j++){
@@ -922,30 +1118,41 @@ public class ClusWrapper {
 						if(train){
 							ErrorTarget[0][0][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][0][t]; // Assume targets start from FirstOutputIndex
 							ErrorTarget[0][1][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][1][t];
-							ErrorTarget[0][2][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][2][t];
+						//	ErrorTarget[0][2][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][2][t];
 						}
 						ErrorTarget[1][0][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][0][t]; // Assume targets start from FirstOutputIndex
 						ErrorTarget[1][1][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][1][t];
-						ErrorTarget[1][2][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][2][t];
+						//ErrorTarget[1][2][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][2][t];
 					}
 
 
 				}else{
 
 					//System.out.println("Classifier[j]: "+Classifier[j]);
+
+					// AFter new modification of Celine: 21/6/2016: we now have to determine the targets opposite to the Classifier target itself..
+					
+					/*String targetInverted = "";
+					
+					for(int m=0; m<MaxClassifiers; m++){
+						if(!Classifier[j].contains(Integer.toString(m+1)))
+							targetInverted+= (m+1)+",";
+					}*/
+				
+					//System.out.println(targetInverted);
+					// System.out.println(Classifier[j]);
+			
 					//System.exit(1);
 
-					// Create the proper config.s file:
-
-					// TODO: create a STring, instead of a file.
-					InputStream configFile = createInputStreamBaseConfigFile(Classifier[j],train);// createBaseConfigFile(Classifier[j],train); // create initial config.s file
+					InputStream configFile = createInputStreamBaseConfigFileForClassification(Classifier[j],train);
+					//InputStream configFile = createInputStreamBaseConfigFileForClassification(targetInverted,train);// createBaseConfigFile(Classifier[j],train); // create initial config.s file
 
 					// Run the classifier
 					runClassifier(args, configFile);
 
 					// Process outputs, for each target.
 					String targets[]=Classifier[j].split(",");
-					Double errors[][][] = new Double [2][4][targets.length]; // one error per performance measure, training and test
+					Double errors[][][] = new Double [2][2][targets.length]; // one error per performance measure, training and test
 					errors= processOutputClassification(train);
 
 					PreviousSolutions.put(Classifier[j], errors);
@@ -957,11 +1164,11 @@ public class ClusWrapper {
 						if(train){
 							ErrorTarget[0][0][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][0][t]; // Assume targets start from FirstOutputIndex
 							ErrorTarget[0][1][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][1][t];
-							ErrorTarget[0][2][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][2][t];
+							// ErrorTarget[0][2][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[0][2][t];
 						}
 						ErrorTarget[1][0][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][0][t]; // Assume targets start from FirstOutputIndex
 						ErrorTarget[1][1][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][1][t];
-						ErrorTarget[1][2][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][2][t];
+						// ErrorTarget[1][2][Integer.parseInt(targets[t])-FirstOutputIndex] = errors[1][2][t];
 					}
 				}
 			}
@@ -971,10 +1178,10 @@ public class ClusWrapper {
 
 		//	System.out.print("ERRORs: ");
 
-		double averageTrainingError[]  = new double [3];
+		double averageTrainingError[]  = new double [2];
 		Arrays.fill(averageTrainingError, 0);
 
-		double averageTestError[]  = new double [3];
+		double averageTestError[]  = new double [2];
 		Arrays.fill(averageTestError, 0);
 
 
@@ -984,7 +1191,7 @@ public class ClusWrapper {
 				averageTrainingError[m]+= ErrorTarget[0][m][e];
 				averageTestError[m]+= ErrorTarget[1][m][e];
 
-				//System.out.print(ErrorTarget[0][m][e]+", ");
+			//	System.out.print(ErrorTarget[0][m][e]+", ");
 			}
 			//System.out.println("----");
 
@@ -993,19 +1200,22 @@ public class ClusWrapper {
 		double [] measure= new double[2];
 		measure[0]= averageTrainingError[0]/ErrorTarget[0][0].length;
 		measure[1] = averageTestError[0]/ErrorTarget[1][0].length;
-		errorIndividuals.setAccuracy(measure);
-
+		//errorIndividuals.setAccuracy(measure);
+		errorIndividuals.setAUROC(measure);
+		
 		measure= new double[2];
 		measure[0]= averageTrainingError[1]/ErrorTarget[0][0].length;
 		measure[1] = averageTestError[1]/ErrorTarget[1][0].length;
-		errorIndividuals.setF1(measure);
+		//errorIndividuals.setF1(measure);
+		errorIndividuals.setAUPRC(measure);
 
+		/*
 		measure= new double[2];
 		measure[0]= averageTrainingError[2]/ErrorTarget[0][0].length;
 		measure[1] = averageTestError[2]/ErrorTarget[1][0].length;
 		errorIndividuals.setWMSEnominal(measure);
 
-
+*/
 		// System.exit(1);
 
 

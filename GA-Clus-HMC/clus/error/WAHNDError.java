@@ -54,6 +54,11 @@ public class WAHNDError extends ClusError {
 	public void showModelError(PrintWriter out, int detail) {
 		out.println(m_TreeErr/m_SumWeight);
 	}
+	
+	public String showModelError(int detail) {
+		String out = Double.toString(m_TreeErr/m_SumWeight);
+		return out;
+	}
 
 	public void addExample(ClusData data, int idx, ClusStatistic pred) {
 		System.out.println("WAHNDError: addExample/3 not implemented");

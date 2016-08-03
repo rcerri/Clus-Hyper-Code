@@ -58,6 +58,12 @@ public class RMSError extends MSError {
 		out.println(getPrefix() + "Mean over components RMSE: "+fr.format(getModelError()));
 	}
 
+	public String showSummaryError( boolean detail) {
+		NumberFormat fr = getFormat();
+		String out = getPrefix() + "Mean over components RMSE: "+fr.format(getModelError());
+		return out;
+	}
+	
 	public String getName() {
 		if (m_Weights == null) return "Root mean squared error (RMSE)";
 		else return "Weighted root mean squared error (RMSE) ("+m_Weights.getName(m_Attrs)+")";

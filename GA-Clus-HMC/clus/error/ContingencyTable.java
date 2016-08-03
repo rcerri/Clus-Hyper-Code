@@ -150,6 +150,17 @@ public class ContingencyTable extends ClusNominalError {
 		out.println();
 	}
 	
+	public String showAccuracy( int i) {
+		String out="";
+		int nbcorr = calcNbCorrect(i);
+		int nbtot = calcNbTotal(i);
+		double acc = (double)nbcorr/nbtot;
+		out+="Accuracy: "+ClusFormat.SIX_AFTER_DOT.format(acc);
+		//+" = "+nbcorr+"/"+nbtot);
+		out+="\n";
+		return out;
+	}
+	
 	public void add(ClusError other) {
 		ContingencyTable cont = (ContingencyTable)other;
 		for (int i = 0; i < m_Dim; i++) {
@@ -207,6 +218,33 @@ public class ContingencyTable extends ClusNominalError {
 				showContTable(out, i);
 			}
 		}
+	}
+
+	public String showModelError(int detail) {
+		String out="";
+		//if (detail == DETAIL_VERY_SMALL) {
+		if (true) {
+			out+=getPrefix()+"[";
+			double avgacc = 0.0;
+			for (int i = 0; i < m_Dim; i++) {
+				if (i != 0) out+=",";
+				double acc = calcAccuracy(i);
+				avgacc += acc;
+				out+=ClusFormat.SIX_AFTER_DOT.format(acc);
+			}
+			//out.println("]");
+			out+="]: ";
+			avgacc = avgacc / m_Dim;
+			out+=ClusFormat.SIX_AFTER_DOT.format(avgacc);	
+		} else {
+			for (int i = 0; i < m_Dim; i++) {
+				out+="\n";
+				out+=getPrefix()+"Attribute: "+m_Attrs[i].getName()+"\n";
+				out+=showContTable( i);
+			}
+		}
+		
+		return out;
 	}
 	
 	public void printF1(PrintWriter out) {
@@ -379,6 +417,85 @@ public class ContingencyTable extends ClusNominalError {
 		out.println("Cramer's coefficient: "+ClusFormat.SIX_AFTER_DOT.format(cramer));
 		out.println();
 	}
+	
+	public String showContTable(int i) {
+		String out = "";
+		int[][] table = m_ContTable[i];
+		int size = m_Attrs[i].getNbValues();
+		if (m_Attrs[i].hasMissing()) {
+			// also add a column for "?" for the semi-supervised setting
+			size++;
+		}
+		// Calculate sizes
+		int[] wds = new int[size+2];
+		// First column
+		wds[0] = REAL_PRED.length();
+		for (int j = 0; j < size; j++) {
+			wds[j+1] = m_Attrs[i].getValueOrMissing(j).length()+1;
+		}
+		// Middle columns
+		for (int j = 0; j < size; j++) {
+			wds[0] = Math.max(wds[0], m_Attrs[i].getValueOrMissing(j).length());
+			for (int k = 0; k < size; k++) {
+				String str = String.valueOf(table[j][k]);
+				wds[k+1] = Math.max(wds[k+1], str.length()+1);
+			}
+			String str = String.valueOf(sumRow(table, j));
+			wds[size+1] = Math.max(wds[size+1], str.length()+1);
+		}
+		// Bottom row
+		for (int k = 0; k < size; k++) {
+			String str = String.valueOf(sumColumn(table, k));
+			wds[k+1] = Math.max(wds[k+1], str.length()+1);
+		}
+		// Total sum
+		wds[size+1] = Math.max(wds[size+1], String.valueOf(getNbExamples()).length()+1);
+		// Calculate line width
+		int s = 0;
+		for (int j = 0; j < size+2; j++) s += wds[j];
+		String horiz = getPrefix()+"  "+StringUtils.makeString('-', s+(size+1)*2);
+		// Header
+		out+=getPrefix()+"  ";
+		out+=printString( wds[0], REAL_PRED);
+		out+=" |";
+		for (int j = 0; j < size; j++) {
+			out+=printString( wds[j+1], m_Attrs[i].getValueOrMissing(j));
+			out+=" |";
+		}
+		out+="\n";
+		out+=horiz;
+		// Data rows
+		for (int j = 0; j < size; j++) {
+			out+=getPrefix()+"  ";
+			printString( wds[0], m_Attrs[i].getValueOrMissing(j));
+			out+=" |";
+			for (int k = 0; k < size; k++) {
+				printString( wds[k+1], String.valueOf(table[j][k]));
+				out+=" |";
+			}
+			out+=printString( wds[size+1], String.valueOf(sumRow(table, j)));
+			out+="\n";
+		}
+		out+=horiz+"\n";
+		out+=getPrefix()+"  ";
+		out+=StringUtils.makeString(' ', wds[0]);
+		out+=" |";
+		for (int k = 0; k < size; k++) {
+			out+=printString( wds[k+1], String.valueOf(sumColumn(table, k)));
+			out+=" |";
+		}
+		out+=printString( wds[size+1], String.valueOf(getNbExamples()));
+		out+="\n";
+		out+=getPrefix()+"  ";
+		showAccuracy(i);
+		out+=getPrefix()+"  ";
+		double cramer = calcCramerV(i);
+		out+="Cramer's coefficient: "+ClusFormat.SIX_AFTER_DOT.format(cramer)+"\n";
+		out+="\n";
+		
+		return out;
+	}
+	
 
 	public void showSummaryError(PrintWriter out, boolean detail) {
 		if (!detail) {
@@ -388,11 +505,29 @@ public class ContingencyTable extends ClusNominalError {
 			}
 		}
 	}
+	
+	public String showSummaryError( boolean detail) {
+		String out="";
+		if (!detail) {
+			for (int i = 0; i < m_Dim; i++) {
+				out+=getPrefix()+"Attribute: "+m_Attrs[i].getName()+" - ";
+				out+=showAccuracy( i);
+			}
+		}
+		return out;
+	}
 
 	public void printString(PrintWriter out, int wd, String str) {
 		out.print(StringUtils.makeString(' ', wd-str.length()));
 		out.print(str);
 	}
+	
+	public String printString(int wd, String str) {
+		String out = StringUtils.makeString(' ', wd-str.length());
+		out+=str;
+		return out;
+	}
+
 
 	public String getName() {
 		//return "Classification Error";

@@ -151,12 +151,49 @@ public class HierErrorMeasures extends ClusError {
 		}
 	}
 
+	public String printResultsRec(NumberFormat fr,  ClassTerm node, boolean[] printed) {
+		int idx = node.getIndex();
+		String out="";
+		// avoid printing a given node several times
+		if (printed[idx]) return null;
+		printed[idx] = true;
+		if (isEvalClass(idx)) {
+			ClassesValue val = new ClassesValue(node);
+			out+="      "+idx+": "+val.toStringWithDepths(m_Hier);
+			out+=", AUROC: "+fr.format(m_ROCAndPRCurves[idx].getAreaROC());
+			out+=", AUPRC: "+fr.format(m_ROCAndPRCurves[idx].getAreaPR());
+			out+=", Freq: "+fr.format(m_ClassWisePredictions[idx].getFrequency());
+			if (m_RecallValues != null) {
+				int nbRecalls = m_RecallValues.length;
+				for (int i = 0; i < nbRecalls; i++) {
+					int rec = (int)Math.floor(100.0*m_RecallValues[i]+0.5);
+					out+=", P"+rec+"R: "+fr.format(100.0*m_ROCAndPRCurves[idx].getPrecisionAtRecall(i));
+				}
+			}
+			out+="\n";
+		}
+		for (int i = 0; i < node.getNbChildren(); i++) {
+			out+=printResultsRec(fr, (ClassTerm)node.getChild(i), printed);
+		}
+		
+		return out;
+	}
 	public void printResults(NumberFormat fr, PrintWriter out, ClassHierarchy hier) {
 		ClassTerm node = hier.getRoot();
 		boolean[] printed = new boolean[hier.getTotal()];
 		for (int i = 0; i < node.getNbChildren(); i++) {
 			printResultsRec(fr, out, (ClassTerm)node.getChild(i), printed);
 		}
+	}
+	
+	public String printResults(NumberFormat fr, ClassHierarchy hier) {
+		String out="";
+		ClassTerm node = hier.getRoot();
+		boolean[] printed = new boolean[hier.getTotal()];
+		for (int i = 0; i < node.getNbChildren(); i++) {
+			out+=printResultsRec(fr,  (ClassTerm)node.getChild(i), printed);
+		}
+		return out;
 	}
 
 	public boolean isMultiLine() {
@@ -308,6 +345,42 @@ public class HierErrorMeasures extends ClusError {
 			m_ROCCurves.close();
 			m_ROCCurves = null;
 		}
+	}
+
+	
+	public String showModelError( String bName, int detail) throws IOException {
+		String out="";
+		if (m_WriteCurves && bName != null) {
+			writeCSVFilesPR(bName+".pr.csv");
+			writeCSVFilesROC(bName+".roc.csv");
+		}
+		NumberFormat fr1 = ClusFormat.SIX_AFTER_DOT;
+		computeAll();
+		out+="\n";
+		out+="      Average AUROC:            "+m_AverageAUROC+"\n";
+		out+="      Average AUPRC:            "+m_AverageAUPRC+"\n";
+		out+="      Average AUPRC (weighted): "+m_WAvgAUPRC+"\n";
+		out+="      Pooled AUPRC:             "+m_PooledAUPRC+"\n";
+		if (m_RecallValues != null) {
+			int nbRecalls = m_RecallValues.length;
+			for (int i = 0; i < nbRecalls; i++) {
+				int rec = (int)Math.floor(100.0*m_RecallValues[i]+0.5);
+				out+="      P"+rec+"R: "+(100.0*m_AvgPrecisionAtRecall[i])+"\n";
+			}
+		}
+		if (detail != ClusError.DETAIL_VERY_SMALL) {
+			out+=printResults(fr1,  m_Hier);
+		}
+		if (m_PRCurves != null) {
+			m_PRCurves.close();
+			m_PRCurves = null;
+		}
+		if (m_ROCCurves != null) {
+			m_ROCCurves.close();
+			m_ROCCurves = null;
+		}
+		
+		return out;
 	}
 
 	public String getName() {

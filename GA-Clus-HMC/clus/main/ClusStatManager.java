@@ -729,9 +729,9 @@ public class ClusStatManager implements Serializable {
 			}
 			parent.addError(new PearsonCorrelation(parent, num));
 			// celine added
-			if(getSettings().isOutputMultiLabelErrors())
+			if(getSettings().isOutputMultiLabelErrors()){
 				parent.addError(new MultiLabelError(parent, num, getSettings().getCompatibility()));
-
+			}
 		}
 		if (ts.length != 0) {
 			ClusStatistic stat = createTargetStat();

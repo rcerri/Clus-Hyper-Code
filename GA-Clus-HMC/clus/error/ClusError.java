@@ -209,7 +209,7 @@ public abstract class ClusError implements Serializable {
 	}
 	
 	public String showModelError( int detail) {
-		//System.err.println("Here I am");
+	//	System.err.println("Here I am");
 
 		String out="[";
 		for (int i = 0; i < m_Dim; i++) {
