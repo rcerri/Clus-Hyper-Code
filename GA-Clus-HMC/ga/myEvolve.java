@@ -132,7 +132,16 @@ public class myEvolve extends Evolve{
 
 
 		//String[] measuresNames = {"MAE", "MSE", "RMSE", "WRMSE", "Total Nodes", "Total Leaves", "Balance", "AUC", "Gmean", "AvgClassAccuracy"};
-		String[] measuresNames = {"MAE", "MSE", "RMSE"};
+		String[] measuresNames;
+		if (Main.mlTask == 0) {
+			measuresNames = new String[3];
+			measuresNames[0] = "MAE"; measuresNames[1] = "MSE"; measuresNames[2] = "RMSE";
+		}
+		else {
+			measuresNames = new String[2];
+			measuresNames[0] = "AUROC"; measuresNames[1] = "AUPRC";
+		}
+		
 		int nMeasures = measuresNames.length;
 		Main.measuresSingle = new double[3][nMeasures][Dataset.getNumFolds()][numJobs]; //  3 types  = Train, Validation and Test
 
@@ -160,8 +169,8 @@ public class myEvolve extends Evolve{
 			Main.pwAll = new PrintWriter(Main.fwAll);
 
 			if (Main.mlTask == 1) {
-				Main.pwTest.println("Accuracy,F1,WMSEnominal");
-				Main.pwAll.println("Train Accuracy,Validation Accuracy,Test Accuracy,Train F1,Validation F1,Test F1,Train WMSEnominal,Validation WMSEnominal,Test WMSEnominal");
+				Main.pwTest.println("Accuracy,F1");
+				Main.pwAll.println("Train Accuracy,Validation Accuracy,Test Accuracy,Train F1,Validation F1,Test F1");
 			}
 			else {
 				Main.pwTest.println("MAE,MSE,RMSE");

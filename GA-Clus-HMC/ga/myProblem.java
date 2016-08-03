@@ -167,7 +167,6 @@ public class myProblem extends Problem implements SimpleProblemForm {
 				if(Main.fitnessType == 0){ // Accuracy fitness
 					if(Utils.eq(auroc,1)) isIdeal = true;		
 					else	isIdeal = false;
-					//f.setStandardizedFitness(state, mae);
 					((SimpleFitness)ind.fitness).setFitness(state, (float) auroc, isIdeal);
 				}
 				else if (Main.fitnessType == 1){ //F1 fitness
@@ -179,7 +178,7 @@ public class myProblem extends Problem implements SimpleProblemForm {
 				else {
 					if (Utils.eq(auroc,1)) isIdeal = true;		
 					else	isIdeal = false;
-					((SimpleFitness)ind.fitness).setFitness(state, (float) - auroc, isIdeal);
+					((SimpleFitness)ind.fitness).setFitness(state, (float) auroc, isIdeal);
 				}
 
 				ind.evaluated = true;
@@ -304,30 +303,38 @@ public class myProblem extends Problem implements SimpleProblemForm {
 
 		if (Main.mlTask == 1) {
 			
-			ClusWrapper.initialization(trainSet,testSet, Main.targets,Main.randomForest,true);
+			double auroc[] = new double[3];
+			double auprc[] = new double[3];
 			
+			// true = classification or false = regression
+			ClusWrapper.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
 			measures = ClusWrapper.evaluateIndividualClassification(genome,true);
-			double accuracy[] = new double[3];
-			double f1[] = new double[3];
-			double wmseNominal[] = new double[3];
-			//double wrmse[] = new double[3];
-
-			accuracy[0] = measures.getAccuracy()[0]; f1[0] = measures.getF1()[0]; wmseNominal[0] = measures.getWMSEnominal()[0];
-			accuracy[1] = measures.getAccuracy()[0]; f1[1] = measures.getF1()[0]; wmseNominal[1] = measures.getWMSEnominal()[0];
-			accuracy[2] = measures.getAccuracy()[1]; f1[2] = measures.getF1()[1]; wmseNominal[2] = measures.getWMSEnominal()[1];
+			auroc[1] = measures.getAUROC()[1]; auprc[1] = measures.getAUPRC()[1];;
 			
+			ClusWrapper.initialization(trainValidSet,testSet, Main.targets,Main.randomForest,true);
+			measures = ClusWrapper.evaluateIndividualClassification(genome,true);
 			
-			// mae[1] = measures.getMAE()[1]; mse[1] = measures.getMSE()[1]; rmse[1] = measures.getRMSE()[1]; wrmse[1] = measures.getWRMSE()[1];
-			// ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff", Dataset.getPath()+Dataset.getFileName() + "-test.arff", Main.targets,false);
-			// measures = ClusWrapper.evaluateIndividual(genome,true);
-			// mae[2] = measures.getMAE()[1]; mse[2] = measures.getMSE()[1]; rmse[2] = measures.getRMSE()[1]; wrmse[2] = measures.getWRMSE()[1];
+			auroc[0] = measures.getAUROC()[0]; auprc[0] = measures.getAUPRC()[0];			
+			auroc[2] = measures.getAUROC()[1]; auprc[2] = measures.getAUPRC()[1];;
 
 			for (int i = 0; i < 3; i++) {
-				Main.measuresSingle[i][0][Dataset.getCurrentFold()][(Integer)state.job[0]] = accuracy[i];
-				Main.measuresSingle[i][1][Dataset.getCurrentFold()][(Integer)state.job[0]] = f1[i];
-				Main.measuresSingle[i][2][Dataset.getCurrentFold()][(Integer)state.job[0]] = wmseNominal[i];
-				//Main.measuresSingle[i][3][Dataset.getCurrentFold()][(Integer)state.job[0]] = wrmse[i];	
+				Main.measuresSingle[i][0][Dataset.getCurrentFold()][(Integer)state.job[0]] = auroc[i];
+				Main.measuresSingle[i][1][Dataset.getCurrentFold()][(Integer)state.job[0]] = auprc[i];	
 			}
+			
+			// Printing results
+			String test = new String();
+			for (int i = 0; i < 2; i++)
+				test = test + Main.measuresSingle[2][i][Dataset.getCurrentFold()][(Integer)state.job[0]]+",";
+			Main.pwTest.println(test);
+
+			String full = new String();
+			for (int i = 0; i < 2; i++) {
+				for (int j = 0; j < 3; j++) {
+					full = full + Main.measuresSingle[j][i][Dataset.getCurrentFold()][(Integer)state.job[0]]+",";
+				}
+			}
+			Main.pwAll.println(full);
 		}
 
 		else {
@@ -351,25 +358,24 @@ public class myProblem extends Problem implements SimpleProblemForm {
 				Main.measuresSingle[i][0][Dataset.getCurrentFold()][(Integer)state.job[0]] = mae[i];
 				Main.measuresSingle[i][1][Dataset.getCurrentFold()][(Integer)state.job[0]] = mse[i];
 				Main.measuresSingle[i][2][Dataset.getCurrentFold()][(Integer)state.job[0]] = rmse[i];
-				//Main.measuresSingle[i][3][Dataset.getCurrentFold()][(Integer)state.job[0]] = wrmse[i];	
 			}
+			
+			// Printing results
+			String test = new String();
+			for (int i = 0; i < 3; i++)
+				test = test + Main.measuresSingle[2][i][Dataset.getCurrentFold()][(Integer)state.job[0]]+",";
+			Main.pwTest.println(test);
+
+			String full = new String();
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 3; j++) {
+					full = full + Main.measuresSingle[j][i][Dataset.getCurrentFold()][(Integer)state.job[0]]+",";
+				}
+			}
+			Main.pwAll.println(full);
 
 		}
 
-		// Printing results
-
-		String test = new String();
-		for (int i = 0; i < 3; i++)
-			test = test + Main.measuresSingle[2][i][Dataset.getCurrentFold()][(Integer)state.job[0]]+",";
-		Main.pwTest.println(test);
-
-		String full = new String();
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				full = full + Main.measuresSingle[j][i][Dataset.getCurrentFold()][(Integer)state.job[0]]+",";
-			}
-		}
-		Main.pwAll.println(full);
 
 		//Main.pEvolution.println(mae[0] +","+ mse[0] +","+ rmse[0] +","+ mae[1] +","+ mse[1] +","+ rmse[1]);
 
