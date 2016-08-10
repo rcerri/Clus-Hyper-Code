@@ -1,0 +1,57 @@
+% The same data set as 'plantanimal.arff'
+%
+% \bibitem{Dzeroskietal_2000}
+%   D\v{z}eroski, S., Dem\v{s}ar, D., and Grbovi\'{c}, J. (2000):
+%   Predicting chemical parameters of river water quality from bioindicator data.
+%   \emph{Applied Intelligence,} 13(1): 7--17.
+%
+% PLANTS
+% sifra( 25400, 'CHLOROPHYTA', 'Cladophora', 'sp.', 'b-a', 2, 2.3).
+% sifra( 29600, 'CHLOROPHYTA', 'Gongrosira', 'incrustans', 'b', 2, 2).
+% sifra( 30400, 'CHLOROPHYTA', 'Oedogonium', 'sp.', 'o-b', 3, 1.4).
+% sifra( 33400, 'CHLOROPHYTA', 'Stigeoclonium', 'tenue', 'a', 3, 2.8).
+% sifra( 17300, 'BACILLARIOPHYTA', 'Melosira', 'varians', 'b', 2, 1.7).
+% sifra( 19400, 'BACILLARIOPHYTA', 'Nitzschia', 'palea', 'b-a', 1, 2.6).
+% sifra( 34500, 'RHODOPHYTA', 'Audouinella(Chantransia)', 'chalybea', 'b-a', 3, 2.5).
+% ANIMALS
+% sifra( 38100, 'HIRUDINEA', 'Erpobdella', 'octoculata', 'a', 2, 3.0).
+% sifra( 49700, 'AMPHIPODA', 'Gammarus', 'fossarum', 'o-b', 2, 1.8).
+% sifra( 50390, 'EPHEMEROPTERA', 'Baetis', 'rhodani', 'o-b', 2, 1.6).
+% sifra( 55800, 'TRICHOPTERA', 'Hydropsyche', 'sp.', 'b-a', 3, 2.5).
+% sifra( 57500, 'TRICHOPTERA', 'Rhyacophila', 'sp.', 'o-b', 2, 1.7).
+% sifra( 59300, 'DIPTERA', 'Simulium', 'sp.', 'b', 2, 2).
+% sifra( 37880, 'OLIGOCHAETA', 'Tubifex', 'sp.', 'p', 3, 3.6).  
+@RELATION 'waterqual.arff'
+
+@ATTRIBUTE std_temp            numeric
+@ATTRIBUTE std_pH              numeric
+@ATTRIBUTE conduct             numeric
+@ATTRIBUTE o2                  numeric
+@ATTRIBUTE o2sat               numeric
+@ATTRIBUTE co2                 numeric
+@ATTRIBUTE hardness            numeric
+@ATTRIBUTE no2                 numeric
+@ATTRIBUTE no3                 numeric
+@ATTRIBUTE nh4                 numeric
+@ATTRIBUTE po4                 numeric
+@ATTRIBUTE cl                  numeric
+@ATTRIBUTE sio2                numeric
+@ATTRIBUTE kmno4               numeric
+@ATTRIBUTE k2cr2o7             numeric
+@ATTRIBUTE bod                 numeric
+@ATTRIBUTE 25400               numeric
+@ATTRIBUTE 29600               numeric
+@ATTRIBUTE 30400               numeric
+@ATTRIBUTE 33400               numeric
+@ATTRIBUTE 17300               numeric
+@ATTRIBUTE 19400               numeric
+@ATTRIBUTE 34500               numeric
+@ATTRIBUTE 38100               numeric
+@ATTRIBUTE 49700               numeric
+@ATTRIBUTE 50390               numeric
+@ATTRIBUTE 55800               numeric
+@ATTRIBUTE 57500               numeric
+@ATTRIBUTE 59300               numeric
+@ATTRIBUTE 37880               numeric
+
+@DATA
