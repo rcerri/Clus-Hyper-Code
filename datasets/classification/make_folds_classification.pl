@@ -1,9 +1,9 @@
 # LS: 19/07/2016
 # Strategy: retrieve all examples from train and test, make folds
 
-#$ex{"birds"} = 1;
-#$targetbegin{"birds"} = 261;
-#$targetend{"birds"} = 279;
+$ex{"birds"} = 1;
+$targetbegin{"birds"} = 261;
+$targetend{"birds"} = 279;
 
 $ex{"corel5k"} = 1;
 $targetbegin{"corel5k"} = 500;
@@ -21,13 +21,17 @@ $ex{"genbase"} = 1;
 $targetbegin{"genbase"} = 1187;
 $targetend{"genbase"} = 1213;
 
-#$ex{"mediamill"} = 1;
-#$targetbegin{"mediamill"} = 121;
-#$targetend{"mediamill"} = 221;
+$ex{"mediamill"} = 1;
+$targetbegin{"mediamill"} = 121;
+$targetend{"mediamill"} = 221;
 
 $ex{"yeast"} = 1;
 $targetbegin{"yeast"} = 104;
 $targetend{"yeast"} = 117;
+
+
+#scene
+#cal500
 
 
 foreach $k (keys %ex) {
@@ -105,7 +109,8 @@ for ($i=0;$i<10;$i++) {
      print TEST $hline;
    }
    close (HEADER);
-   open (FOLD, "10folds/${k}/iterative/${k}_${r}.arff") || die "Can't open FOLD: 10folds/${k}/iterative/${k}_${r}.arff";
+   #open (FOLD, "10folds/${k}/iterative/${k}_${r}.arff") || die "Can't open FOLD: 10folds/${k}/iterative/${k}_${r}.arff";
+   open (FOLD, "10folds/iterative/${k}_test_fold_${r}.arff") || die "Can't open FOLD: 10folds/iterative/${k}_test_fold_${r}.arff";
    $fline = <FOLD>;
    while (($fline !~ /^\@data/) && ($fline !~ /^\@DATA/)) {
      $fline = <FOLD>;    
@@ -129,7 +134,8 @@ for ($i=0;$i<10;$i++) {
      print VALID $hline;
    }
    close (HEADER);
-   open (FOLD, "10folds/${k}/iterative/${k}_${w}.arff") || die "Can't open 10folds/${k}/iterative/${k}_${w}.arff";
+   #open (FOLD, "10folds/${k}/iterative/${k}_${w}.arff") || die "Can't open 10folds/${k}/iterative/${k}_${w}.arff";
+   open (FOLD, "10folds/iterative/${k}_test_fold_${w}.arff") || die "Can't open 10folds/iterative/${k}_test_fold_${w}.arff";
    $fline = <FOLD>;
    while (($fline !~ /^\@data/) && ($fline !~ /^\@DATA/)) {
      $fline = <FOLD>;    
@@ -153,7 +159,8 @@ for ($i=0;$i<10;$i++) {
    for ($j=0;$j<10;$j++) {
      if (($i != $j) && ($v != $j)) {
        $l = $j+1; # Ricardo's format
-       open (FOLD, "10folds/${k}/iterative/${k}_${l}.arff") || die "Can't open 10folds/${k}/iterative/${k}_${w}.arff";
+       #open (FOLD, "10folds/${k}/iterative/${k}_${l}.arff") || die "Can't open 10folds/${k}/iterative/${k}_${w}.arff";
+       open (FOLD, "10folds/iterative/${k}_test_fold_${l}.arff") || die "Can't open 10folds/iterative/${k}_test_fold_${l}.arff";
        $fline = <FOLD>;
        while (($fline !~ /^\@data/) && ($fline !~ /^\@DATA/)) {
          $fline = <FOLD>;    
@@ -180,7 +187,8 @@ for ($i=0;$i<10;$i++) {
    for ($j=0;$j<10;$j++) {
      if ($i != $j) {
        $l = $j+1;
-       open (FOLD, "10folds/${k}/iterative/${k}_${l}.arff") || die "Can't open 10folds/${k}/iterative/${k}_${l}.arff";
+       #open (FOLD, "10folds/${k}/iterative/${k}_${l}.arff") || die "Can't open 10folds/${k}/iterative/${k}_${l}.arff";
+       open (FOLD, "10folds/iterative/${k}_test_fold_${l}.arff") || die "Can't open 10folds/iterative/${k}_test_fold_${l}.arff";
        $fline = <FOLD>;
        while (($fline !~ /^\@data/) && ($fline !~ /^\@DATA/)) {
          $fline = <FOLD>;    
