@@ -2,7 +2,7 @@
 # Strategy: retrieve all examples from train and test, make folds
 
 $ex{"oes10"} = 403;
-$ex{"oes97"} = 334;
+$ex{"oes97"} = 333;
 $ex{"rf1"} = 9125;
 $ex{"rf2"} = 9125;
 $ex{"scm1d"} = 9803;
