@@ -9,9 +9,9 @@ $ex{"corel5k"} = 1;
 $targetbegin{"corel5k"} = 500;
 $targetend{"corel5k"} = 873;
 
-#$ex{"emotions"} = 1;
-#$targetbegin{"emotions"} = 73;
-#$targetend{"emotions"} = 78;
+$ex{"emotions"} = 1;
+$targetbegin{"emotions"} = 73;
+$targetend{"emotions"} = 78;
 
 $ex{"flags"} = 1;
 $targetbegin{"flags"} = 20;
