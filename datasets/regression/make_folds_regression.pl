@@ -3,8 +3,8 @@
 
 $ex{"oes10"} = 403;
 $ex{"oes97"} = 334;
-$ex{"rf1"} = 9124;
-$ex{"rf2"} = 9126;
+$ex{"rf1"} = 9125;
+$ex{"rf2"} = 9125;
 $ex{"scm1d"} = 9803;
 $ex{"scm20d"} = 8966;
 $ex{"water-quality"} = 1060;
@@ -44,8 +44,18 @@ while (($line !~ /^\@data/) && ($line !~ /^\@DATA/)) {
   $line = <FILE>;
 }
 
+if ($k eq "rf1") {
+  print OUTE "\n";
+}
+
 while ($line = <FILE>) {
-  print OUTE $line;
+  chomp $line;
+  if ($line ne "") { 
+    print OUTE "$line\n";
+  }
+  else {
+    print "ERROR: found empty line in examples of $k/$k-test.arff\n";
+  }
 }
 
 close (FILE);
