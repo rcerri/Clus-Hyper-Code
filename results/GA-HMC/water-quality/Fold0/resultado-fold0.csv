@@ -1,3 +1,0 @@
-Accuracy,F-Measure,Precision,Recall,Total Nodes,Total Leaves,Balance,AUC,Gmean,AvgClassAccuracy
-0.8552785714285714,2.1170642857142856,1.4170500000000001,1.1566642857142857,
-=average(A2:A2),=average(B2:B2),=average(C2:C2),=average(D2:D2),=average(E2:E2),=average(F2:F2),=average(G2:G2),=average(H2:H2),=average(I2:I2),=average(J2:J2)
