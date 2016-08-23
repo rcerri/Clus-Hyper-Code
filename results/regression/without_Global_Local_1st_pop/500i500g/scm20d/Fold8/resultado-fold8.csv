@@ -1,0 +1,3 @@
+MAE,MSE,RMSE
+148.1296,43556.56404999999,201.94218125,
+=average(A2:A2),=average(B2:B2),=average(C2:C2)
