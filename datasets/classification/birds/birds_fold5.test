@@ -260,25 +260,25 @@
 @attribute std_rect_volume numeric
 @attribute hasSegments {0,1}
 @attribute location {2,10,1,7,5,4,17,15,16,8,13,11}
-@attribute 'Brown Creeper' numeric
-@attribute 'Pacific Wren' numeric
-@attribute 'Pacific-slope Flycatcher' numeric
-@attribute 'Red-breasted Nuthatch' numeric
-@attribute 'Dark-eyed Junco' numeric
-@attribute 'Olive-sided Flycatcher' numeric
-@attribute 'Hermit Thrush' numeric
-@attribute 'Chestnut-backed Chickadee' numeric
-@attribute 'Varied Thrush' numeric
-@attribute 'Hermit Warbler' numeric
-@attribute 'Swainson\'s Thrush' numeric
-@attribute 'Hammond\'s Flycatcher' numeric
-@attribute 'Western Tanager' numeric
-@attribute 'Black-headed Grosbeak' numeric
-@attribute 'Golden Crowned Kinglet' numeric
-@attribute 'Warbling Vireo' numeric
-@attribute 'MacGillivray\'s Warbler' numeric
-@attribute 'Stellar\'s Jay' numeric
-@attribute 'Common Nighthawk' numeric
+@attribute Brown_Creeper numeric
+@attribute Pacific_Wren numeric
+@attribute Pacific-slope_Flycatcher numeric
+@attribute Red-breasted_Nuthatch numeric
+@attribute Dark-eyed_Junco numeric
+@attribute Olive-sided_Flycatcher numeric
+@attribute Hermit_Thrush numeric
+@attribute Chestnut-backed_Chickadee numeric
+@attribute Varied_Thrush numeric
+@attribute Hermit_Warbler numeric
+@attribute Swainsons_Thrush numeric
+@attribute Hammonds_Flycatcher numeric
+@attribute Western_Tanager numeric
+@attribute Black-headed_Grosbeak numeric
+@attribute Golden_Crowned_Kinglet numeric
+@attribute Warbling_Vireo numeric
+@attribute MacGillivrays_Warbler numeric
+@attribute Stellars_Jay numeric
+@attribute Common_Nighthawk numeric
 
 @data
 0.004027,0.014086,0.029898,0.056806,0.089844,0.083576,0.075988,0.079231,0.061527,0.060117,0.061959,0.065288,0.071548,0.091623,0.122986,0.160394,0.166745,0.134061,0.087092,0.063781,0.039883,0.001094,0.000048,0.000281,0.000856,0.001565,0.002129,0.001846,0.001487,0.001117,0.000882,0.000664,0.000574,0.000565,0.00052,0.000622,0.000888,0.001135,0.001025,0.000541,0.000223,0.00014,0.000072,0,3.6157,1.896196,1.379092,0.79094,0.437444,0.454821,0.728383,0.431185,0.483247,0.559023,0.478347,0.325686,0.105716,0.257146,0.215112,0.207443,0.267998,0.259741,0.137149,0.022683,0.001955,9.853772,20.103591,6.805883,4.838561,3.282317,2.616583,2.797344,3.507417,3.497893,2.746872,3.072769,3.030445,2.813158,2.880028,2.724074,3.207651,2.832355,2.938404,3.67971,2.991571,2.932058,2.980185,116.364703,0.001066,0.007588,0.020276,0.050107,0.087326,0.080171,0.072418,0.080104,0.059132,0.057051,0.058759,0.064869,0.071579,0.090097,0.122557,0.159008,0.165512,0.13321,0.08684,0.063776,0.039954,0.001066,0.001066,0.001066,0.001066,0.001066,0.002769,0.003605,0.005659,0.001357,0.008006,0.009433,0.008463,0.01073,0.010487,0.031956,0.035629,0.071739,0.083168,0.060467,0.04601,0.032203,0.017865,0.060106,0.095115,0.155955,0.204314,0.226814,0.225977,0.217986,0.219246,0.159778,0.15114,0.14121,0.135236,0.140661,0.17618,0.214704,0.269936,0.262535,0.223026,0.135323,0.099334,0.066041,0.00409,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
