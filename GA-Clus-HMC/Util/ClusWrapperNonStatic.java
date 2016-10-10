@@ -46,7 +46,7 @@ public class ClusWrapperNonStatic {
 	private PrintStream realSystemErr = System.err;
 
 
-	private static class NullOutputStream extends OutputStream {
+	private class NullOutputStream extends OutputStream {
 		@Override
 		public void write(int b){
 			return;
