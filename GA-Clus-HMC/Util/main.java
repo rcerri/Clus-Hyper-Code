@@ -85,9 +85,10 @@ public class main {
 		 */
 		
 		
-		String train = "../datasets/classification/flags/flags-train.arff";
-		String test =  "../datasets/classification/flags/flags-test.arff";
-		
+		String train = "../datasets/classification/flags/flags_fold0.train";
+		String test =  "../datasets/classification/flags/flags_fold0.valid";
+	
+		/*
 		ClusWrapper.initialization(train, test, "20-26",false, true); 	
 		
 
@@ -100,32 +101,34 @@ public class main {
 		
 		System.out.println("AUROC: "+ measure.getAUROC()[0]); 
 		System.out.println("AUPRC: "+ measure.getAUPRC()[0]); 
-		/*System.out.println("Accuracy: "+ measure.getAccuracy()[0]);  // Give 0's, if false.
-		System.out.println("F1: "+ measure.getF1()[0]);
-		System.out.println("WMSE nominal: "+ measure.getWMSEnominal()[0]);
-		*/
+
         System.out.println("\nTest error: ");
 		System.out.println("AUROC: "+ measure.getAUROC()[1]); 
 		System.out.println("AUPRC: "+ measure.getAUPRC()[1]); 
-		/*System.out.println("Accuracy: "+ measure.getAccuracy()[1]);  // Give 0's, if false.
-		System.out.println("F1: "+ measure.getF1()[1]);
-		System.out.println("WMSE nominal: "+ measure.getWMSEnominal()[1]);
-		*/
-		
+
 		System.out.println("\nIndependent");
 		
         measure = ClusWrapper.evaluateIndividualClassification(independent,true);
 		
 		System.out.println("AUROC: "+ measure.getAUROC()[0]); 
 		System.out.println("AUPRC: "+ measure.getAUPRC()[0]); 
-		/*System.out.println("Accuracy: "+ measure.getAccuracy()[0]);  // Give 0's, if false.
-		System.out.println("F1: "+ measure.getF1()[0]);
-		System.out.println("WMSE nominal: "+ measure.getWMSEnominal()[0]);
-		*/
+
         System.out.println("\nTest error: ");
 		System.out.println("AUROC: "+ measure.getAUROC()[1]); 
 		System.out.println("AUPRC: "+ measure.getAUPRC()[1]); 
 		
+		*/
+		// Testing CLuswrapper version for parallelization
+		
+		ClusWrapperNonStatic object = new ClusWrapperNonStatic();
+		
+		object.initialization(train, test, "20-26",false, true); 	
+		
+		myMeasures measure2 = object.evaluateIndividualClassification(all,true);
+		
+        System.out.println("\nTest error: ");
+		System.out.println("AUROC: "+ measure2.getAUROC()[1]); 
+		System.out.println("AUPRC: "+ measure2.getAUPRC()[1]); 
 		
 		
 	}

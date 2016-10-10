@@ -503,7 +503,7 @@ public class ClusWrapperNonStatic {
 
 		//String cadena = Fichero.leeFichero(currentdir+"config.out");
 		String cadena = outputFile;
-		//System.out.println(cadena);
+		// System.out.println(cadena);
 		
 		StringTokenizer lineas = new StringTokenizer (cadena,"\n\r");
 		String linea = "";
@@ -539,18 +539,23 @@ public class ClusWrapperNonStatic {
 				
 				linea = lineas.nextToken();
 				
+			
 				if(linea.contains("AUROC")){
 					String results[] = linea.split(",");
 					
-					String clean [] =results[1].split(":");
+					String clean [] =results[0].split(":");
 					
-					values[0]+= clean[1]+",";
-					clean =results[2].split(":");
-					values[1]+= clean[1]+",";
+					values[0]+= clean[clean.length-1]+",";
+					clean =results[1].split(":");
+					values[1]+= clean[clean.length-1]+",";
 				}else
 					stop = true;
 			}
 			
+			//System.out.println(values[0]);
+			//System.out.println(values[1]);
+
+			// System.exit(1);
 		
 			// size of the previous computed list.
 		
@@ -591,11 +596,11 @@ public class ClusWrapperNonStatic {
 			if(linea.contains("AUROC")){
 				String results[] = linea.split(",");
 				
-				String clean [] =results[1].split(":");
+				String clean [] =results[0].split(":");
 				
-				values[0]+= clean[1]+",";
-				clean =results[2].split(":");
-				values[1]+= clean[1]+",";
+				values[0]+= clean[clean.length-1]+",";
+				clean =results[1].split(":");
+				values[1]+= clean[clean.length-1]+",";
 			}else{
 				stop = false; 
 			}
@@ -618,6 +623,7 @@ public class ClusWrapperNonStatic {
 		
 		return errors;
 	}
+	
 	public void initialization(String trainName, String testName, String disableAtt, boolean Createforest, boolean classification) throws IOException{
 
 		// Load the dataset only ONCE. 
