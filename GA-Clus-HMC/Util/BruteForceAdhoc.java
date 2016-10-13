@@ -41,118 +41,173 @@ public class BruteForceAdhoc {
 	
 	public static void main(String[] args) throws IOException, ClusException {
 		
-		if(args.length!=4){
-			System.err.println("The number of parameters is 4:  <training dataset> <test dataset> <attributes> <numOutputs>");
-			System.exit(1);
-		}
-		
-		
-		long timeStart=System.nanoTime();
-		String train = args[0]; // "../datasets/regression/rf1/rf1-train.arff";
-		String test = args[1]; // "../datasets/regression/rf1/rf1-test.arff";
-		
-		//rf1 -> [65-72]
-		// Run this BEFORE the main loop of the GA,
-		// indicate: name of training and test datasets + range of output attributes (for Disable option)
-		
-		ClusWrapper example = new ClusWrapper();
-		
-		example.initialization(train, test, args[2],false); 	
-		
-		int numOutputs= Integer.parseInt(args[3]);
-		
-		int cont=1;
-		
-		double minimumTRAError = Double.MAX_VALUE;
-		double TestErrorBestTrainingPartition=-1;
-		int betterTRAIndividual[] = new int [numOutputs];
-		
-		double minimumTSTError = Double.MAX_VALUE;
-		double TrainingErrorBestTrainingPartition=-1;
-		int betterTSTIndividual[]= new int [numOutputs];
-		
-		// Generate potential solutions:
-
-		int kappa[] = new int[numOutputs]; // k is usable as an array of indexes into a set.
-		int M[] = new int[numOutputs];
-		
-		// First: initialize
-		
-		for (int i=0; i<numOutputs; i++){
-			kappa[i]=1;
-			M[i]=1;			
-		}
-
-		/*
-		for(int j=0; j<numOutputs;j++){
-			System.out.print(kappa[j]+" ");
-		}
-		System.out.println("");
-		*/
-		myMeasures measure = example.evaluateIndividual(kappa,true);
-		
-		if(measure.getMAE()[0]<minimumTRAError){
-			minimumTRAError = measure.getMAE()[0];
-			TestErrorBestTrainingPartition = measure.getMAE()[1];
-			betterTRAIndividual = kappa.clone();
-		}
-		
-		if(measure.getMAE()[1]<minimumTSTError){
-			minimumTSTError = measure.getMAE()[1];
-			TrainingErrorBestTrainingPartition = measure.getMAE()[0];
-			betterTSTIndividual = kappa.clone();
-		}
-		
-		while(nextPartition(kappa,M)){
-			/*
-			for(int j=0; j<numOutputs;j++){
-				System.out.print(kappa[j]+" ");
-			}
-			System.out.println("");
-			*/
-			measure = example.evaluateIndividual(kappa,true);
-			
-			if(measure.getMAE()[0]<minimumTRAError){
-				minimumTRAError = measure.getMAE()[0];
-				TestErrorBestTrainingPartition = measure.getMAE()[1];
-				betterTRAIndividual = kappa.clone();
-			}
-			
-			if(measure.getMAE()[1]<minimumTSTError){
-				minimumTSTError = measure.getMAE()[1];
-				TrainingErrorBestTrainingPartition = measure.getMAE()[0];
-				betterTSTIndividual = kappa.clone();
-			}
-			
-			//System.out.println("\nMy hash table has : "+ClusWrapper.PreviousSolutions.size());
-		//	System.out.print(cont+", ");
-			cont++;
-		}
-
-
-		
-		
-		
-		long timeEnd=System.nanoTime();
-		
-		System.out.println("\n\nThe best training individual is: ");
-		
-		for(int i=0; i<numOutputs;i++) System.out.print(betterTRAIndividual[i]+" ");
-		
-		System.out.print(";  error: "+minimumTRAError +"; test error: "+TestErrorBestTrainingPartition);
-		
-		System.out.println("\n\nThe best test individual is: ");
-		
-		for(int i=0; i<numOutputs;i++) System.out.print(betterTSTIndividual[i]+" ");
-		
-		System.out.print(";  error: "+minimumTSTError +"; training error: "+TrainingErrorBestTrainingPartition);
-		
-		System.out.println("\nMy hash table has : "+example.PreviousSolutions.size());
-		
-		System.out.println("number of individuals evaluated: " + cont);
-		System.out.println("RunTime: "+(timeEnd-timeStart)/1e9);
-	}
+	       if (args.length != 5) {
+	            System.err.println("The number of parameters is 5:  <training dataset> <test dataset> <attributes> <numOutputs> <classification|regression>");
+	            System.exit(1);
+	        }
+	        boolean classification = false;
+	        if (args[4].equalsIgnoreCase("classification")) {
+	            classification = true;
+	        }
+	        long timeStart = System.nanoTime();
+	        String train = args[0];
+	        String test = args[1];
+	        ClusWrapper example = new ClusWrapper();
+	        ClusWrapper.initialization(train, test, args[2], false, classification);
+	        int numOutputs = Integer.parseInt(args[3]);
+	        int cont = 1;
+	        double minimumTRAError = Double.MAX_VALUE;
+	        double TestErrorBestTrainingPartition = -1.0;
+	        int[] betterTRAIndividual = new int[numOutputs];
+	        double minimumTSTError = Double.MAX_VALUE;
+	        double TrainingErrorBestTrainingPartition = -1.0;
+	        int[] betterTSTIndividual = new int[numOutputs];
+	        double maxTRA_AUCROC = Double.MIN_VALUE;
+	        double TestAUCROCBestTrainingPartition = -1.0;
+	        int[] betterTRA_AUCROCIndividual = new int[numOutputs];
+	        double maxTST_AUCROC = Double.MIN_VALUE;
+	        double TrainingAUCROCBestTrainingPartition = -1.0;
+	        int[] betterTST_AUCROCIndividual = new int[numOutputs];
+	        double maxTRA_AUPRC = Double.MIN_VALUE;
+	        double TestAUPRCBestTrainingPartition = -1.0;
+	        int[] betterTRA_AUPRCIndividual = new int[numOutputs];
+	        double maxTST_AUPRC = Double.MIN_VALUE;
+	        double TrainingAUPRCBestTrainingPartition = -1.0;
+	        int[] betterTST_AUPRCIndividual = new int[numOutputs];
+	        int[] kappa = new int[numOutputs];
+	        int[] M = new int[numOutputs];
+	        int i = 0;
+	        while (i < numOutputs) {
+	            kappa[i] = 1;
+	            M[i] = 1;
+	            ++i;
+	        }
+	        myMeasures measure = classification ? ClusWrapper.evaluateIndividualClassification(kappa, true) : ClusWrapper.evaluateIndividual(kappa, true);
+	        if (classification) {
+	            if (measure.getAUROC()[0] > maxTRA_AUCROC) {
+	                maxTRA_AUCROC = measure.getAUROC()[0];
+	                TestAUCROCBestTrainingPartition = measure.getAUROC()[1];
+	                betterTRA_AUCROCIndividual = (int[])kappa.clone();
+	            }
+	            if (measure.getAUROC()[1] > maxTST_AUCROC) {
+	                maxTST_AUCROC = measure.getAUROC()[1];
+	                TrainingAUCROCBestTrainingPartition = measure.getAUROC()[0];
+	                betterTST_AUCROCIndividual = (int[])kappa.clone();
+	            }
+	            if (measure.getAUPRC()[0] > maxTRA_AUPRC) {
+	                maxTRA_AUPRC = measure.getAUPRC()[0];
+	                TestAUPRCBestTrainingPartition = measure.getAUPRC()[1];
+	                betterTRA_AUPRCIndividual = (int[])kappa.clone();
+	            }
+	            if (measure.getAUPRC()[1] > maxTST_AUPRC) {
+	                maxTST_AUPRC = measure.getAUPRC()[1];
+	                TrainingAUPRCBestTrainingPartition = measure.getAUPRC()[0];
+	                betterTST_AUPRCIndividual = (int[])kappa.clone();
+	            }
+	        } else {
+	            if (measure.getMAE()[0] < minimumTRAError) {
+	                minimumTRAError = measure.getMAE()[0];
+	                TestErrorBestTrainingPartition = measure.getMAE()[1];
+	                betterTRAIndividual = (int[])kappa.clone();
+	            }
+	            if (measure.getMAE()[1] < minimumTSTError) {
+	                minimumTSTError = measure.getMAE()[1];
+	                TrainingErrorBestTrainingPartition = measure.getMAE()[0];
+	                betterTSTIndividual = (int[])kappa.clone();
+	            }
+	        }
+	        while (BruteForceAdhoc.nextPartition(kappa, M)) {
+	            measure = classification ? ClusWrapper.evaluateIndividualClassification(kappa, true) : ClusWrapper.evaluateIndividual(kappa, true);
+	            if (classification) {
+	                if (measure.getAUROC()[0] > maxTRA_AUCROC) {
+	                    maxTRA_AUCROC = measure.getAUROC()[0];
+	                    TestAUCROCBestTrainingPartition = measure.getAUROC()[1];
+	                    betterTRA_AUCROCIndividual = (int[])kappa.clone();
+	                }
+	                if (measure.getAUROC()[1] > maxTST_AUCROC) {
+	                    maxTST_AUCROC = measure.getAUROC()[1];
+	                    TrainingAUCROCBestTrainingPartition = measure.getAUROC()[0];
+	                    betterTST_AUCROCIndividual = (int[])kappa.clone();
+	                }
+	                if (measure.getAUPRC()[0] > maxTRA_AUPRC) {
+	                    maxTRA_AUPRC = measure.getAUPRC()[0];
+	                    TestAUPRCBestTrainingPartition = measure.getAUPRC()[1];
+	                    betterTRA_AUPRCIndividual = (int[])kappa.clone();
+	                }
+	                if (measure.getAUPRC()[1] > maxTST_AUPRC) {
+	                    maxTST_AUPRC = measure.getAUPRC()[1];
+	                    TrainingAUPRCBestTrainingPartition = measure.getAUPRC()[0];
+	                    betterTST_AUPRCIndividual = (int[])kappa.clone();
+	                }
+	            } else {
+	                if (measure.getMAE()[0] < minimumTRAError) {
+	                    minimumTRAError = measure.getMAE()[0];
+	                    TestErrorBestTrainingPartition = measure.getMAE()[1];
+	                    betterTRAIndividual = (int[])kappa.clone();
+	                }
+	                if (measure.getMAE()[1] < minimumTSTError) {
+	                    minimumTSTError = measure.getMAE()[1];
+	                    TrainingErrorBestTrainingPartition = measure.getMAE()[0];
+	                    betterTSTIndividual = (int[])kappa.clone();
+	                }
+	            }
+	            ++cont;
+	        }
+	        long timeEnd = System.nanoTime();
+	        if (classification) {
+	            System.out.println("\n****************AUCROC*************\n");
+	            System.out.println("The best training  AUCROC individual is: ");
+	            int i2 = 0;
+	            while (i2 < numOutputs) {
+	                System.out.print(String.valueOf(betterTRA_AUCROCIndividual[i2]) + " ");
+	                ++i2;
+	            }
+	            System.out.print(";  AUCROC: " + maxTRA_AUCROC + "; test AUCROC: " + TestAUCROCBestTrainingPartition);
+	            System.out.println("\n\nThe best test AUCROC individual is: ");
+	            i2 = 0;
+	            while (i2 < numOutputs) {
+	                System.out.print(String.valueOf(betterTST_AUCROCIndividual[i2]) + " ");
+	                ++i2;
+	            }
+	            System.out.print(";  AUCROC: " + maxTST_AUCROC + "; training AUCROC: " + TrainingAUCROCBestTrainingPartition);
+	            System.out.println("\n\n\n****************AUPRC*************\n");
+	            System.out.println("The best training  AUPRC individual is: ");
+	            i2 = 0;
+	            while (i2 < numOutputs) {
+	                System.out.print(String.valueOf(betterTRA_AUPRCIndividual[i2]) + " ");
+	                ++i2;
+	            }
+	            System.out.print(";  AUPRC: " + maxTRA_AUPRC + "; test AUPRC: " + TestAUPRCBestTrainingPartition);
+	            System.out.println("\n\nThe best test AUPRC individual is: ");
+	            i2 = 0;
+	            while (i2 < numOutputs) {
+	                System.out.print(String.valueOf(betterTST_AUPRCIndividual[i2]) + " ");
+	                ++i2;
+	            }
+	            System.out.print(";  AUPRC: " + maxTST_AUPRC + "; training AUPRC: " + TrainingAUPRCBestTrainingPartition);
+	        } else {
+	            System.out.println("\n\nThe best training individual is: ");
+	            int i3 = 0;
+	            while (i3 < numOutputs) {
+	                System.out.print(String.valueOf(betterTRAIndividual[i3]) + " ");
+	                ++i3;
+	            }
+	            System.out.print(";  error: " + minimumTRAError + "; test error: " + TestErrorBestTrainingPartition);
+	            System.out.println("\n\nThe best test individual is: ");
+	            i3 = 0;
+	            while (i3 < numOutputs) {
+	                System.out.print(String.valueOf(betterTSTIndividual[i3]) + " ");
+	                ++i3;
+	            }
+	            System.out.print(";  error: " + minimumTSTError + "; training error: " + TrainingErrorBestTrainingPartition);
+	        }
+	      //  System.out.println("\nMy hash table has : " + ClusWrapper.PreviousSolutions.size());
+	        System.out.println("number of individuals evaluated: " + cont);
+	        System.out.println("RunTime: " + (double)(timeEnd - timeStart) / 1.0E9);
+	    }
 }
+
+
 
 /*
  * 	/*

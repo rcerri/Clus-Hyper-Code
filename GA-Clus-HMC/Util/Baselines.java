@@ -18,12 +18,16 @@ public class Baselines {
 
 	public static void main(String[] args) throws IOException, ClusException {
 		
-		if(args.length!=4){
-			System.err.println("The number of parameters is 4:  <training dataset> <test dataset> <attributes> <numOutputs>");
+		if(args.length!=5){
+			System.err.println("The number of parameters is 4:  <training dataset> <test dataset> <attributes> <numOutputs> <classification|regression>");
 			System.exit(1);
 		}
 		
-		
+        boolean classification = false;
+        if (args[4].equalsIgnoreCase("classification")) {
+            classification = true;
+        }
+        
 		long timeStart=System.nanoTime();
 		String train = args[0]; //
 		String test = args[1]; // 
@@ -43,36 +47,72 @@ public class Baselines {
 			local[i]=i+1;			
 		}
 
+     	if(classification){
+			myMeasures measure = ClusWrapper.evaluateIndividualClassification(global,true);
+			
+			
+			System.out.println("\n***********GLOBAL************ ");
+			
+			System.out.println("AUROC-tra: "+ measure.getAUROC()[0]); 
+	        System.out.println("AUROC-tst: "+ measure.getAUROC()[1]); 
+	        
+			System.out.println("AUPRC-tra: "+ measure.getAUPRC()[0]); 
+			System.out.println("AUPRC-tst "+ measure.getAUPRC()[1]); 
+			
+	
+			System.out.println("\nRunTimeGlobal: "+(System.nanoTime()-timeStart)/1e9);
+	
+			timeStart=System.nanoTime();
+			
+			myMeasures measure2 = ClusWrapper.evaluateIndividualClassification(local,true);
+			
+			System.out.println("\n***********LOCAL************ ");
+			
+			System.out.println("AUROC-tra: "+ measure2.getAUROC()[0]); 
+	        System.out.println("AUROC-tst: "+ measure2.getAUROC()[1]); 
+	
+			System.out.println("AUPRC-tra: "+ measure2.getAUPRC()[0]); 
+			System.out.println("AUPRC-tst "+ measure2.getAUPRC()[1]); 
+			
+			
+			long timeEnd=System.nanoTime();
+			
+			System.out.println("\nRunTimeLocal: "+(timeEnd-timeStart)/1e9);
+			
+		
+     	}else{
+     		
+    		myMeasures measure = ClusWrapper.evaluateIndividual(global,true);
+    		
+    		
+    		System.out.println("\n***********GLOBAL************ ");
+    		
+    		System.out.println("MAE-tra: "+ measure.getMAE()[0]); 
+            System.out.println("MAE-tst: "+ measure.getMAE()[1]); 
+            
+    		System.out.println("MSE-tra: "+ measure.getMSE()[0]); 
+    		System.out.println("MSE-tst "+ measure.getMSE()[1]); 
+    		
 
-		myMeasures measure = ClusWrapper.evaluateIndividualClassification(global,true);
-		
-		
-		System.out.println("\n***********GLOBAL************ ");
-		
-		System.out.println("AUROC-tra: "+ measure.getAUROC()[0]); 
-        System.out.println("AUROC-tst: "+ measure.getAUROC()[1]); 
-        
-		System.out.println("AUPRC-tra: "+ measure.getAUPRC()[0]); 
-		System.out.println("AUPRC-tst "+ measure.getAUPRC()[1]); 
-		
+    		System.out.println("\nRunTimeGlobal: "+(System.nanoTime()-timeStart)/1e9);
 
-		System.out.println("\nRunTimeGlobal: "+(System.nanoTime()-timeStart)/1e9);
-
-		timeStart=System.nanoTime();
-		
-		myMeasures measure2 = ClusWrapper.evaluateIndividualClassification(local,true);
-		
-		System.out.println("\n***********LOCAL************ ");
-		
-		System.out.println("AUROC-tra: "+ measure2.getAUROC()[0]); 
-        System.out.println("AUROC-tst: "+ measure2.getAUROC()[1]); 
-
-		System.out.println("AUPRC-tra: "+ measure2.getAUPRC()[0]); 
-		System.out.println("AUPRC-tst "+ measure2.getAUPRC()[1]); 
-		
-		
-		long timeEnd=System.nanoTime();
-		
-		System.out.println("\nRunTimeLocal: "+(timeEnd-timeStart)/1e9);
+    		timeStart=System.nanoTime();
+    		
+    		myMeasures measure2 = ClusWrapper.evaluateIndividual(local,true);
+    		
+    		System.out.println("\n***********LOCAL************ ");
+    		
+    		System.out.println("MAE-tra: "+ measure2.getMAE()[0]); 
+            System.out.println("MAE-tst: "+ measure2.getMAE()[1]); 
+            
+    		System.out.println("MSE-tra: "+ measure2.getMSE()[0]); 
+    		System.out.println("MSE-tst "+ measure2.getMSE()[1]); 
+    		
+    		
+    		long timeEnd=System.nanoTime();
+    		
+    		System.out.println("\nRunTimeLocal: "+(timeEnd-timeStart)/1e9);
+    		
+     	}
 	}
 }
