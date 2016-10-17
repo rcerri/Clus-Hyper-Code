@@ -33,7 +33,7 @@ public class Baselines {
 		String test = args[1]; // 
 		
 		
-   	    ClusWrapper.initialization(train, test, args[2],false,true); 	
+   	    ClusWrapper.initialization(train, test, args[2],true,true); 	
 		
 		int numOutputs= Integer.parseInt(args[3]);
 		
