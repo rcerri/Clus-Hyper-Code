@@ -1,0 +1,50 @@
+# Copyright 2006 by Sean Luke and George Mason University
+# Licensed under the Academic Free License version 3.0
+# See the file "LICENSE" for more information
+
+parent.0	= ../ec/simple/simple.params
+pop.subpop.0.size = 10
+generations = 10
+
+init = ga.mySimpleInitializer
+
+pop.subpop.0.species		= ec.vector.IntegerVectorSpecies
+pop.subpop.0.species.ind	= ec.vector.IntegerVectorIndividual
+pop.subpop.0.species.fitness 	= ec.simple.SimpleFitness
+
+pop.subpop.0.species.pipe = ec.vector.breed.VectorMutationPipeline
+pop.subpop.0.species.pipe.prob = 0.3
+
+pop.subpop.0.species.pipe.source.0 = ec.vector.breed.VectorCrossoverPipeline
+pop.subpop.0.species.pipe.source.0.prob = 0.7
+
+pop.subpop.0.species.pipe.source.0.source.0 = ec.select.TournamentSelection
+pop.subpop.0.species.pipe.source.0.source.1 = same
+pop.subpop.0.species.pipe.source.0.source.0.size = 2
+pop.subpop.0.species.pipe.source.0.source.1.size = 2
+
+	#We could also just set the default parameter for all tournament selectors:
+	#select.tournament.size = 2
+
+pop.subpop.0.species.crossover-type = any
+pop.subpop.0.species.crossover-prob = 0.25
+pop.subpop.0.species.mutation-type = reset
+pop.subpop.0.species.mutation-prob = 0.10
+
+select.tournament.size = 2
+breed.elite.0 = 1
+
+eval = ga.mySimpleEvaluator
+eval.problem            = ga.myProblem
+stat = ga.myStatistics
+
+state = ga.mySimpleEvolutionState
+
+#print-params = true
+#print-used-params = true
+
+breedthreads = auto
+evalthreads = auto
+
+seed.0 = time
+seed.1 = time

@@ -1,0 +1,15 @@
+/ClusHeuristic.class
+/ClusHeuristicImpl.class
+/ClusStopCriterion.class
+/ClusStopCriterionMinNbExamples.class
+/ClusStopCriterionMinWeight.class
+/EncodingCost.class
+/FTest.class
+/GainHeuristic.class
+/GeneticDistanceHeuristic.class
+/GeneticDistanceHeuristicMatrix.class
+/ReducedErrorHeuristic.class
+/VarianceReductionHeuristic.class
+/VarianceReductionHeuristicCompatibility.class
+/VarianceReductionHeuristicEfficient.class
+/VarianceReductionHeuristicInclMissingValues.class

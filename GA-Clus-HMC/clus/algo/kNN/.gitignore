@@ -1,0 +1,16 @@
+/AttributeStatistic.class
+/BasicDistance.class
+/EuclidianDistance.class
+/KNNClassifier.class
+/KNNModel.class
+/KNNStatistics.class
+/KNNTree.class
+/KNNTreeClassifier.class
+/ManhattanDistance.class
+/NominalBasicDistance.class
+/NominalStatistic.class
+/NumericStatistic.class
+/NumericalBasicDistance.class
+/PriorityQueue.class
+/StoreExampleProcessor.class
+/VectorDistance.class
