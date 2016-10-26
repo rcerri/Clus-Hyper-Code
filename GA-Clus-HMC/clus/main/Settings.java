@@ -2502,7 +2502,7 @@ public class Settings implements Serializable {
 		if (cargs != null) preprocess(cargs);
 		if (loads) {
 			try {
-				String fname = getFileAbsolute(getAppName() + ".s");
+				//String fname = getFileAbsolute(getAppName() + ".s");
 				// m_Ini.load(fname, '%');
 				m_Ini.load(configFile, '%');
 			} catch (FileNotFoundException e) {

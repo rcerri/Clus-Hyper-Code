@@ -126,6 +126,8 @@ public class ClusWrapper {
 		if(forest){
 			cad += "[Ensemble]\nIterations = 50 \nEnsembleMethod = RForest\n";
 		}
+		
+		//System.out.println(cad);
 
 		return new ByteArrayInputStream(cad.getBytes(StandardCharsets.UTF_8));
 
@@ -153,7 +155,7 @@ public class ClusWrapper {
 			cad += "[Ensemble]\nIterations = 50 \nEnsembleMethod = RForest\n";
 		}
 		
-	//	System.out.println(cad);
+		 System.out.println(cad);
 
 		return new ByteArrayInputStream(cad.getBytes(StandardCharsets.UTF_8));
 
@@ -222,7 +224,7 @@ public class ClusWrapper {
 
 	public static void runClassifier(String[] args, InputStream ConfigFile) throws IOException, ClusException{
 
-		System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
+		// System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
 
 		// reinitialization:
 		Settings sett = clus.getSettings();
@@ -233,8 +235,11 @@ public class ClusWrapper {
 		sett.setAppName(cargs.getMainArg(0));
 
 		//clus.initSettings(cargs);
+		
 		clus.initSettingsNOFILE(cargs, ConfigFile);
+		//System.out.println("+++"+ConfigFile.toString());
 
+		//System.exit(1);
 
 		if (cargs.hasOption("forest")) {
 			sett.setEnsembleMode(true);
@@ -260,7 +265,7 @@ public class ClusWrapper {
 
 		outputFile= clus.singleRunNOFILES(clss); // to avoid writing any file.
 
-		//System.out.println("Output file: "+outputFile);
+		System.out.println("Output file: "+outputFile);
 
 		System.setOut(realSystemOut);
 	}

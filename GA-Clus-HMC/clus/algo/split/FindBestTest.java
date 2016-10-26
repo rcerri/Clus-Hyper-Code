@@ -156,8 +156,12 @@ public class FindBestTest {
 			m_BestTest.subtractMissing();
 		}
 		double prev = Double.NaN;
+		
+		// System.out.println("HELLO: " + sample.getSchema().getTarget().toString());
+		
 		for (int i = first; i < nb_rows; i++) {
 			tuple = sample.getTuple(i);
+			
 			double value = at.getNumeric(tuple);
 			if (value != prev) {
 				if (value != Double.NaN) {
@@ -294,6 +298,9 @@ public class FindBestTest {
 	}
 	
 	private RowData createSample(RowData original) {
+		
+		// System.out.println("\nCREATING SUBSAMPLING: "+getSettings().getTarget().toString());
+		
 		return original.sample(getSettings().getTreeSplitSampling());
 	}
 

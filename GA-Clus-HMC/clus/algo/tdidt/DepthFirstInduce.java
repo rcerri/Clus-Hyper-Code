@@ -170,6 +170,16 @@ public class DepthFirstInduce extends ClusInductionAlgorithm {
 	}
 	
 	public void induce(ClusNode node, RowData data) {
+		
+		//data.setSchema(m_Schema);
+		
+		//data.showTable();
+		
+		//System.out.println("***\nINSIDE INDUCE -TARGET: " + data.getSchema().getTarget().toString()+"; "+data.getSchema().getDisabled().toString()+";"+data.getSchema().getClustering().toString()+"\n");
+
+				
+	//	System.out.println("***\nINSIDE INDUCE2 -TARGET: " + m_Schema.getTarget().toString()+"; "+m_Schema.getDisabled().toString()+";"+m_Schema.getClustering().toString()+"\n");
+		
 		//System.out.println("nonsparse induce");
 		// Initialize selector and perform various stopping criteria
 		if (initSelectorAndStopCrit(node, data)) {
@@ -181,6 +191,7 @@ public class DepthFirstInduce extends ClusInductionAlgorithm {
 //		long start_time = System.currentTimeMillis();
 		
 		ClusAttrType[] attrs = getDescriptiveAttributes();
+		// System.out.println("attrs size: "+attrs.length);
 		for (int i = 0; i < attrs.length; i++) {
 			ClusAttrType at = attrs[i];
 			if (at instanceof NominalAttrType) m_FindBestTest.findNominal((NominalAttrType)at, data);
@@ -225,6 +236,9 @@ public class DepthFirstInduce extends ClusInductionAlgorithm {
 		} else {
 			makeLeaf(node);
 		}
+		
+		// System.out.println("***\nIm_StatManager -TARGET: " + getSettings().getTarget().toString()+"; "+ m_StatManager.getSettings().getDisabled().toString()+";"+ m_StatManager.getSettings().getClustering().toString()+"\n");
+
 	}
 
 	public void rankFeatures(ClusNode node, RowData data) throws IOException {

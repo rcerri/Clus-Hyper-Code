@@ -410,6 +410,9 @@ public class ClusStatManager implements Serializable {
 	}
 
 	public void initStatistic() throws ClusException {
+		
+		 System.out.println("***\nClusStatManager -TARGET: " + getSettings().getTarget().toString()+"; "+ getSettings().getDisabled().toString()+";"+ getSettings().getClustering().toString()+"\n");
+		 
 		m_StatisticAttrUse = new ClusStatistic[ClusAttrType.NB_ATTR_USE];
 		// Statistic over all attributes
 		NumericAttrType[] num1 = m_Schema.getNumericAttrUse(ClusAttrType.ATTR_USE_ALL);
@@ -419,6 +422,8 @@ public class ClusStatManager implements Serializable {
 		NumericAttrType[] num2 = m_Schema.getNumericAttrUse(ClusAttrType.ATTR_USE_TARGET);
 		NominalAttrType[] nom2 = m_Schema.getNominalAttrUse(ClusAttrType.ATTR_USE_TARGET);
 		m_StatisticAttrUse[ClusAttrType.ATTR_USE_TARGET] = createSuitableStat(num2, nom2);
+		
+		System.out.println("ClusStatManager CHECK: "+num2[0]);
 		// Statistic over clustering attributes
 		NumericAttrType[] num3 = m_Schema.getNumericAttrUse(ClusAttrType.ATTR_USE_CLUSTERING);
 		NominalAttrType[] nom3 = m_Schema.getNominalAttrUse(ClusAttrType.ATTR_USE_CLUSTERING);
@@ -429,6 +434,10 @@ public class ClusStatManager implements Serializable {
 				m_StatisticAttrUse[ClusAttrType.ATTR_USE_CLUSTERING] = createSuitableStat(num3, nom3);
 			}
 		}
+		
+		System.out.println("ClusStatManager CHECK num3: "+num3[0]);
+
+		
 		switch (m_Mode) {
 		case MODE_HIERARCHICAL:
 			if (getSettings().getHierDistance() == Settings.HIERDIST_WEIGHTED_EUCLIDEAN) {
