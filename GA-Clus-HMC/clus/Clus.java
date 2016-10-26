@@ -143,6 +143,8 @@ public class Clus implements CMDLineArgsProvider {
 		
 		m_Sett.updateTarget(m_Schema);
 		m_Schema.initializeSettings(m_Sett);
+		System.out.println("***\nTARGET: " + m_Schema.getTarget().toString()+"; "+m_Schema.getDisabled().toString()+";"+m_Schema.getClustering().toString()+"\n");
+		
 		m_Sett.setTarget(m_Schema.getTarget().toString());
 		m_Sett.setDisabled(m_Schema.getDisabled().toString());
 		m_Sett.setClustering(m_Schema.getClustering().toString());
@@ -154,6 +156,10 @@ public class Clus implements CMDLineArgsProvider {
 		}
 		ClusView view = m_Schema.createNormalView();
 		// m_Data_original = view.readData(reader, m_Schema); // we avoid this.
+		
+		m_Data_original.setSchema(m_Schema); // establish the schema
+		//m_Data_original.setSetting(m_Sett);
+		
 		reader.close();
 		if(m_Sett.getVerbose() > 0) System.out.println("Found " + m_Data.getNbRows() + " rows");
 
@@ -204,6 +210,9 @@ public class Clus implements CMDLineArgsProvider {
 					+ (ClusStat.m_LoadedMemory - ClusStat.m_InitialMemory)
 					+ " kB");
 		}
+		
+		System.out.println("***\nat the end: TARGET: " + m_Schema.getTarget().toString()+"; "+m_Schema.getDisabled().toString()+";"+m_Schema.getClustering().toString()+"\n");
+
 
 	}
 	

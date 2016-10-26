@@ -55,6 +55,11 @@ public class ClusDecisionTree extends ClusInductionAlgorithmType {
 
 	public ClusInductionAlgorithm createInduce(ClusSchema schema, Settings sett, CMDLineArgs cargs) throws ClusException, IOException {
 		
+		
+		System.out.println("***\nFROM DT: TARGET: " + schema.getTarget().toString()+"; "+schema.getDisabled().toString()+";"+schema.getClustering().toString()+"\n");
+		
+		System.out.println("***\nFROM DT: setting TARGET: " + sett.getTarget().toString()+"; "+sett.getDisabled().toString()+";"+sett.getClustering().toString()+"\n");
+
 		if (sett.hasConstraintFile()) {
 			boolean fillin = cargs.hasOption("fillin");
 			return new ConstraintDFInduce(schema, sett, fillin);

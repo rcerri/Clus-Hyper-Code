@@ -41,31 +41,9 @@ public class ClusWrapperNonStatic {
 	public  String currentdir = System.getProperty("user.dir")+"/";
 
 
-	// These variables help me to ignore the multiple outputs from Clus.. that are not really informative.
-	private  PrintStream realSystemOut = System.out;
-	private PrintStream realSystemErr = System.err;
 
 
-	private class NullOutputStream extends OutputStream {
-		@Override
-		public void write(int b){
-			return;
-		}
-		@Override
-		public void write(byte[] b){
-			return;
-		}
-		@Override
-		public void write(byte[] b, int off, int len){
-			return;
-		}
-		public NullOutputStream(){
-		}
-	}
 
-
-	Clus clus;
-	ClusInductionAlgorithmType clss = null;
 
 	private String train;
 
@@ -76,10 +54,16 @@ public class ClusWrapperNonStatic {
 	private  int FirstOutputIndex=0;
 
 	private  boolean forest=false;
+	
+	// the only three variables that need to be shared between threats.
 
-	public  Hashtable<String, Double[][][]> PreviousSolutions;
-
+	public static Hashtable<String, Double[][][]> PreviousSolutions = new Hashtable<String, Double[][][]>();;
+	Clus clus;
+	ClusInductionAlgorithmType clss = null;
+	
 	private  String outputFile="";
+	
+	public boolean initialized= false;
 	/*
 	private static void createBaseConfigFile(String target, boolean trainErrors) throws IOException{
 
@@ -223,7 +207,7 @@ public class ClusWrapperNonStatic {
 
 	public void runClassifier(String[] args, InputStream ConfigFile) throws IOException, ClusException{
 
-		System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
+		// System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
 
 		// reinitialization:
 		Settings sett = clus.getSettings();
@@ -263,7 +247,7 @@ public class ClusWrapperNonStatic {
 
 		//System.out.println("Output file: "+outputFile);
 
-		System.setOut(realSystemOut);
+	// 	System.setOut(realSystemOut);
 	}
 
 	/**
@@ -628,8 +612,10 @@ public class ClusWrapperNonStatic {
 
 		// Load the dataset only ONCE. 
 
-		PreviousSolutions = new Hashtable<String, Double[][][]>();
+		//PreviousSolutions = new Hashtable<String, Double[][][]>();
 
+		initialized = true;
+		
 		// copy into global variables
 		train = trainName;
 		test = testName;
@@ -657,10 +643,14 @@ public class ClusWrapperNonStatic {
 			args[0] = "config.s";
 		}
 
-		System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
+	// 	System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
 		InitializeClus(args, configFile); // load data into memory.
-		System.setOut(realSystemOut);
+	// 	System.setOut(realSystemOut);
+		
+	// 	initialisationRun = true;
 	}
+	
+	
 	
 	/**
 	 * Requires that the previous 'initalization function' is already run.
@@ -1035,6 +1025,11 @@ public class ClusWrapperNonStatic {
 					//InputStream configFile = createInputStreamBaseConfigFileForClassification(targetInverted,train);// createBaseConfigFile(Classifier[j],train); // create initial config.s file
 
 					// Run the classifier
+					
+					if(!initialized){
+						System.err.println("I DONT UNDERTSAND WHY.");
+						// System.exit(1);
+					}
 					runClassifier(args, configFile);
 
 					// Process outputs, for each target.

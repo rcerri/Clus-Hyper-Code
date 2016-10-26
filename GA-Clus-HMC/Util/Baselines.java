@@ -8,7 +8,7 @@ import Util.ClusWrapper;     // you need to import the ClusWrapper
 import Util.myMeasures;
 
 /** 
- * Example of use of ClusWrapper
+ * Example of use of ClusWrapper - version for regression and classification
  * @author isaact
  *
  */
@@ -33,7 +33,7 @@ public class Baselines {
 		String test = args[1]; // 
 		
 		
-   	    ClusWrapper.initialization(train, test, args[2],true,true); 	
+   	    ClusWrapper.initialization(train, test, args[2],false,true); 	
 		
 		int numOutputs= Integer.parseInt(args[3]);
 		
@@ -48,7 +48,7 @@ public class Baselines {
 		}
 
      	if(classification){
-			myMeasures measure = ClusWrapper.evaluateIndividualClassification(global,true);
+			/*myMeasures measure = ClusWrapper.evaluateIndividualClassification(global,true);
 			
 			
 			System.out.println("\n***********GLOBAL************ ");
@@ -60,7 +60,7 @@ public class Baselines {
 			System.out.println("AUPRC-tst "+ measure.getAUPRC()[1]); 
 			
 	
-			System.out.println("\nRunTimeGlobal: "+(System.nanoTime()-timeStart)/1e9);
+			System.out.println("\nRunTimeGlobal: "+(System.nanoTime()-timeStart)/1e9);*/
 	
 			timeStart=System.nanoTime();
 			

@@ -56,12 +56,27 @@ public class BruteForceAdhoc {
 	        ClusWrapper.initialization(train, test, args[2], false, classification);
 	        int numOutputs = Integer.parseInt(args[3]);
 	        int cont = 1;
-	        double minimumTRAError = Double.MAX_VALUE;
-	        double TestErrorBestTrainingPartition = -1.0;
-	        int[] betterTRAIndividual = new int[numOutputs];
-	        double minimumTSTError = Double.MAX_VALUE;
-	        double TrainingErrorBestTrainingPartition = -1.0;
-	        int[] betterTSTIndividual = new int[numOutputs];
+	        double minimumTRAMAE = Double.MAX_VALUE;
+	        double TestMAEBestTrainingPartition = -1.0;
+	        int[] betterMAETRAIndividual = new int[numOutputs];
+	        double minimumTSTMAE = Double.MAX_VALUE;
+	        double TrainingMAEBestTrainingPartition = -1.0;
+	        int[] betterMAETSTIndividual = new int[numOutputs];
+	        
+	        double minimumTRAMSE = Double.MAX_VALUE;
+	        double TestMSEBestTrainingPartition = -1.0;
+	        int[] betterMSETRAIndividual = new int[numOutputs];
+	        double minimumTSTMSE = Double.MAX_VALUE;
+	        double TrainingMSEBestTrainingPartition = -1.0;
+	        int[] betterMSETSTIndividual = new int[numOutputs];
+	        
+	        double minimumTRARMSE = Double.MAX_VALUE;
+	        double TestRMSEBestTrainingPartition = -1.0;
+	        int[] betterRMSETRAIndividual = new int[numOutputs];
+	        double minimumTSTRMSE = Double.MAX_VALUE;
+	        double TrainingRMSEBestTrainingPartition = -1.0;
+	        int[] betterRMSETSTIndividual = new int[numOutputs];
+	        
 	        double maxTRA_AUCROC = Double.MIN_VALUE;
 	        double TestAUCROCBestTrainingPartition = -1.0;
 	        int[] betterTRA_AUCROCIndividual = new int[numOutputs];
@@ -105,15 +120,15 @@ public class BruteForceAdhoc {
 	                betterTST_AUPRCIndividual = (int[])kappa.clone();
 	            }
 	        } else {
-	            if (measure.getMAE()[0] < minimumTRAError) {
-	                minimumTRAError = measure.getMAE()[0];
-	                TestErrorBestTrainingPartition = measure.getMAE()[1];
-	                betterTRAIndividual = (int[])kappa.clone();
+	            if (measure.getMAE()[0] < minimumTRAMAE) {
+	                minimumTRAMAE = measure.getMAE()[0];
+	                TestMAEBestTrainingPartition = measure.getMAE()[1];
+	                betterMAETRAIndividual = (int[])kappa.clone();
 	            }
-	            if (measure.getMAE()[1] < minimumTSTError) {
-	                minimumTSTError = measure.getMAE()[1];
-	                TrainingErrorBestTrainingPartition = measure.getMAE()[0];
-	                betterTSTIndividual = (int[])kappa.clone();
+	            if (measure.getMAE()[1] < minimumTSTMAE) {
+	                minimumTSTMAE = measure.getMAE()[1];
+	                TrainingMAEBestTrainingPartition = measure.getMAE()[0];
+	                betterMAETSTIndividual = (int[])kappa.clone();
 	            }
 	        }
 	        while (BruteForceAdhoc.nextPartition(kappa, M)) {
@@ -140,16 +155,39 @@ public class BruteForceAdhoc {
 	                    betterTST_AUPRCIndividual = (int[])kappa.clone();
 	                }
 	            } else {
-	                if (measure.getMAE()[0] < minimumTRAError) {
-	                    minimumTRAError = measure.getMAE()[0];
-	                    TestErrorBestTrainingPartition = measure.getMAE()[1];
-	                    betterTRAIndividual = (int[])kappa.clone();
-	                }
-	                if (measure.getMAE()[1] < minimumTSTError) {
-	                    minimumTSTError = measure.getMAE()[1];
-	                    TrainingErrorBestTrainingPartition = measure.getMAE()[0];
-	                    betterTSTIndividual = (int[])kappa.clone();
-	                }
+		            if (measure.getMAE()[0] < minimumTRAMAE) {
+		                minimumTRAMAE = measure.getMAE()[0];
+		                TestMAEBestTrainingPartition = measure.getMAE()[1];
+		                betterMAETRAIndividual = (int[])kappa.clone();
+		            }
+		            if (measure.getMAE()[1] < minimumTSTMAE) {
+		                minimumTSTMAE = measure.getMAE()[1];
+		                TrainingMAEBestTrainingPartition = measure.getMAE()[0];
+		                betterMAETSTIndividual = (int[])kappa.clone();
+		            }
+		            
+		            if (measure.getMSE()[0] < minimumTRAMSE) {
+		                minimumTRAMSE = measure.getMSE()[0];
+		                TestMSEBestTrainingPartition = measure.getMSE()[1];
+		                betterMSETRAIndividual = (int[])kappa.clone();
+		            }
+		            if (measure.getMSE()[1] < minimumTSTMSE) {
+		                minimumTSTMSE = measure.getMSE()[1];
+		                TrainingMSEBestTrainingPartition = measure.getMSE()[0];
+		                betterMSETSTIndividual = (int[])kappa.clone();
+		            }
+		            
+		            if (measure.getRMSE()[0] < minimumTRARMSE) {
+		                minimumTRARMSE = measure.getRMSE()[0];
+		                TestRMSEBestTrainingPartition = measure.getRMSE()[1];
+		                betterRMSETRAIndividual = (int[])kappa.clone();
+		            }
+		            if (measure.getRMSE()[1] < minimumTSTRMSE) {
+		                minimumTSTRMSE = measure.getRMSE()[1];
+		                TrainingRMSEBestTrainingPartition = measure.getRMSE()[0];
+		                betterRMSETSTIndividual = (int[])kappa.clone();
+		            }
+		            
 	            }
 	            ++cont;
 	        }
@@ -186,20 +224,60 @@ public class BruteForceAdhoc {
 	            }
 	            System.out.print(";  AUPRC: " + maxTST_AUPRC + "; training AUPRC: " + TrainingAUPRCBestTrainingPartition);
 	        } else {
+	        	
+	        	System.out.println("\n\n\n****************MAE*************\n");
+	        	
 	            System.out.println("\n\nThe best training individual is: ");
 	            int i3 = 0;
 	            while (i3 < numOutputs) {
-	                System.out.print(String.valueOf(betterTRAIndividual[i3]) + " ");
+	                System.out.print(String.valueOf(betterMAETRAIndividual[i3]) + " ");
 	                ++i3;
 	            }
-	            System.out.print(";  error: " + minimumTRAError + "; test error: " + TestErrorBestTrainingPartition);
+	            System.out.print(";  MAE: " + minimumTRAMAE + "; test MAE: " + TestMAEBestTrainingPartition);
 	            System.out.println("\n\nThe best test individual is: ");
 	            i3 = 0;
 	            while (i3 < numOutputs) {
-	                System.out.print(String.valueOf(betterTSTIndividual[i3]) + " ");
+	                System.out.print(String.valueOf(betterMAETSTIndividual[i3]) + " ");
 	                ++i3;
 	            }
-	            System.out.print(";  error: " + minimumTSTError + "; training error: " + TrainingErrorBestTrainingPartition);
+	            System.out.print(";  MAE: " + minimumTSTMAE + "; training MAE: " + TrainingMAEBestTrainingPartition);
+	            
+	        	System.out.println("\n\n\n****************MSE*************\n");
+	        	
+	            System.out.println("\n\nThe best training individual is: ");
+	           
+	            i3 = 0;
+	            while (i3 < numOutputs) {
+	                System.out.print(String.valueOf(betterMSETRAIndividual[i3]) + " ");
+	                ++i3;
+	            }
+	            System.out.print(";  MSE: " + minimumTRAMSE + "; test MSE: " + TestMSEBestTrainingPartition);
+	            System.out.println("\n\nThe best test individual is: ");
+	            i3 = 0;
+	            while (i3 < numOutputs) {
+	                System.out.print(String.valueOf(betterMSETSTIndividual[i3]) + " ");
+	                ++i3;
+	            }
+	            System.out.print(";  MSE: " + minimumTSTMSE + "; training MSE: " + TrainingMSEBestTrainingPartition);
+	            
+	        	System.out.println("\n\n\n****************RMSE*************\n");
+	        	
+	            System.out.println("\n\nThe best training individual is: ");
+	            
+	            i3 = 0;
+	            while (i3 < numOutputs) {
+	                System.out.print(String.valueOf(betterRMSETRAIndividual[i3]) + " ");
+	                ++i3;
+	            }
+	            System.out.print(";  RMSE: " + minimumTRARMSE + "; test RMSE: " + TestRMSEBestTrainingPartition);
+	            System.out.println("\n\nThe best test individual is: ");
+	            i3 = 0;
+	            while (i3 < numOutputs) {
+	                System.out.print(String.valueOf(betterRMSETSTIndividual[i3]) + " ");
+	                ++i3;
+	            }
+	            System.out.print(";  RMSE: " + minimumTSTRMSE + "; training RMSE: " + TrainingRMSEBestTrainingPartition);
+	            
 	        }
 	      //  System.out.println("\nMy hash table has : " + ClusWrapper.PreviousSolutions.size());
 	        System.out.println("number of individuals evaluated: " + cont);
