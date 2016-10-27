@@ -46,7 +46,7 @@ public class SimpleEvolutionState extends EvolutionState
     public void startFresh() 
         {
         output.message("Setting up");
-        setup(this,null);  // a garbage Parameter
+        setup(this,null,objectClus);  // a garbage Parameter
 
         // POPULATION INITIALIZATION
         output.message("Initializing Generation 0");
@@ -95,7 +95,7 @@ public class SimpleEvolutionState extends EvolutionState
 
         // EVALUATION
         statistics.preEvaluationStatistics(this);
-        evaluator.evaluatePopulation(this);
+        evaluator.evaluatePopulation(this, objectClus);
         statistics.postEvaluationStatistics(this);
 
         // SHOULD WE QUIT?
@@ -138,7 +138,7 @@ public class SimpleEvolutionState extends EvolutionState
         // BREEDING
         statistics.preBreedingStatistics(this);
 
-        population = breeder.breedPopulation(this);
+        population = breeder.breedPopulation(this, objectClus);
         
         // POST-BREEDING EXCHANGING
         statistics.postBreedingStatistics(this);

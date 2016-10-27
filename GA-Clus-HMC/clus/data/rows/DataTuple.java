@@ -57,14 +57,19 @@ public class DataTuple implements Serializable {
 		if (nb_double > 0) m_Doubles = new double[nb_double];
 		int nb_obj = schema.getNbObjects();
 		if (nb_obj > 0) m_Objects = new Object[nb_obj];
+		
+		//System.out.println("InfoDatTuple: "+nb_int+";"+nb_double+";"+nb_obj);
 		// Initialize weight
 		m_Weight = 1.0;
 		m_Schema = schema;
 	}
 
 	public final ClusSchema getSchema() {
+		
+
 		return m_Schema;
 	}
+	
 
 	public DataTuple cloneTuple() {
 		DataTuple res = new DataTuple();
@@ -198,14 +203,22 @@ public class DataTuple implements Serializable {
 		StringBuffer buf = new StringBuffer();
 		ClusSchema schema = getSchema();
 		if (schema != null) {
+			//System.out.println("schema.getNbAttributes(): "+schema.getNbAttributes());
 			for (int i = 0; i < schema.getNbAttributes(); i++) {
 				ClusAttrType type = schema.getAttrType(i);
+				//check this.
 				if (!type.isDisabled()) {
 					if (aidx != 0) buf.append(",");
+					// System.out.println(type.getString(this)+"; "+type.m_ArrayIndex + "; "+i);
 					buf.append(type.getString(this));
 					aidx++;
 				}
+				else{
+					//type.m_ArrayIndex = i;
+				 // System.out.print("Disable: "+(i+1)+"["+type.getString(this)+"],"); //
+				}
 			}
+			System.out.println("");
 		} else {
 			for (int i = 0; i < m_Objects.length; i++) {
 				if (i != 0) buf.append(",");

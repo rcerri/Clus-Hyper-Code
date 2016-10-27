@@ -32,6 +32,7 @@ import clus.main.ClusStatManager;
 import clus.main.Settings;
 import clus.model.ClusModel;
 import clus.util.*;
+import clus.data.rows.RowData;
 import clus.data.type.*;
 
 /**
@@ -88,6 +89,8 @@ public abstract class ClusInductionAlgorithmType {
 	 * @throws IOException
 	 */
 	public void induceAll(ClusRun cr) throws ClusException, IOException {
+		System.out.println("RUNNING induce: "+((RowData) cr.getTrainingSet()).getSchema().getTarget().toString());
+
 		long start_time = ResourceInfo.getTime();
 		getInduce().induceAll(cr); // Train the algorithms of this type.
 		long done_time = ResourceInfo.getTime();

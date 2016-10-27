@@ -96,6 +96,8 @@ public abstract class ClusInductionAlgorithm {
 	}
 
 	public void induceAll(ClusRun cr) throws ClusException, IOException {
+	//	System.out.println("RUNNING induceALL: "+((RowData) cr.getTrainingSet()).getSchema().getTarget().toString());
+
 		ClusModel model = induceSingleUnpruned(cr);
 		ClusModelInfo model_info = cr.addModelInfo(ClusModel.ORIGINAL);
 		model_info.setModel(model);

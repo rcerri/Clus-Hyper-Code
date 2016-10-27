@@ -6,6 +6,7 @@
 
 
 package ec.simple;
+import Util.ClusWrapperNonStatic;
 import ec.EvolutionState;
 import ec.Population;
 import ec.Exchanger;
@@ -34,7 +35,7 @@ import ec.steadystate.*;
 
 public final class SimpleExchanger extends Exchanger implements SteadyStateExchangerForm
     {
-    public void setup(final EvolutionState state, final Parameter base) { }
+    public void setup(final EvolutionState state, final Parameter base,final ClusWrapperNonStatic objectClus) { }
 
     /** Doesn't do anything. */
     public void initializeContacts(final EvolutionState state)
@@ -76,5 +77,6 @@ public final class SimpleExchanger extends Exchanger implements SteadyStateExcha
         {
         return null;
         }
+
 
     }

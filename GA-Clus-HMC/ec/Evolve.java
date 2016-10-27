@@ -10,6 +10,8 @@ import ec.util.*;
 import java.io.File;
 import java.io.PrintWriter;
 
+import Util.ClusWrapperNonStatic;
+
 /* 
  * Evolve.java
  * 
@@ -397,9 +399,9 @@ public class Evolve
         <p>This method works by first setting up an Output (using buildOutput), then calling initialize(ParameterDatabase, seed, output)
     */
                 
-    public static EvolutionState initialize(ParameterDatabase parameters, int randomSeedOffset)
+    public static EvolutionState initialize(ParameterDatabase parameters, int randomSeedOffset, ClusWrapperNonStatic objectClus)
         {
-        return initialize(parameters, randomSeedOffset, buildOutput());
+        return initialize(parameters, randomSeedOffset, buildOutput(),objectClus);
         }
 
 
@@ -409,9 +411,11 @@ public class Evolve
         do a new evolutionary run.  You are of course welcome to replace the random number generators after initialize(...)
         but before startFresh(...) */
                 
-    public static EvolutionState initialize(ParameterDatabase parameters, int randomSeedOffset, Output output)
+    public static EvolutionState initialize(ParameterDatabase parameters, int randomSeedOffset, Output output, ClusWrapperNonStatic objectClus)
         {
         EvolutionState state=null;
+        
+        
         MersenneTwisterFast[] random;
         int[] seeds;
         int breedthreads = 1;
@@ -474,6 +478,7 @@ public class Evolve
         state.evalthreads = evalthreads;
         state.breedthreads = breedthreads;
         state.randomSeedOffset = randomSeedOffset;
+        state.objectClus = objectClus; // Added by Isaac
 
         output.systemMessage("Threads:  breed/" + breedthreads + " eval/" + evalthreads);
         output.systemMessage(seedMessage);
@@ -668,9 +673,6 @@ public class Evolve
 
 
 
-
-
-
     /** Top-level evolutionary loop.  */
 
     public static void main(String[] args)
@@ -745,7 +747,7 @@ public class Evolve
                     parameters = loadParameterDatabase(args);
                             
                 // Initialize the EvolutionState, then set its job variables
-                state = initialize(parameters, job);                // pass in job# as the seed increment
+                state = initialize(parameters, job, null);                // pass in job# as the seed increment
                 state.output.systemMessage("Job: " + job);
                 state.job = new Object[1];                                  // make the job argument storage
                 state.job[0] = Integer.valueOf(job);                    // stick the current job in our job storage

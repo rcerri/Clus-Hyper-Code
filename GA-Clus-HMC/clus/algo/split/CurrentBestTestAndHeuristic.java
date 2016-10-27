@@ -252,7 +252,12 @@ public class CurrentBestTestAndHeuristic {
 	}
 
 	public final void updateNumeric(double val, ClusAttrType at) {
+		
+	//	System.out.println("UpdateNumeric: " + this..getSchema().getTarget().toString());
+		
+		
 		double heur = m_Heuristic.calcHeuristic(m_TotCorrStat, m_PosStat, m_MissingStat);
+		// System.err.println("Heur: " + heur + " nb: " + m_PosStat.m_SumWeight);
 		if (Settings.VERBOSE >= 2) System.err.println("Heur: " + heur + " nb: " + m_PosStat.m_SumWeight);
 		if (heur > m_BestHeur + ClusHeuristic.DELTA) {
 			if (Settings.VERBOSE >= 2) System.err.println("Better.");

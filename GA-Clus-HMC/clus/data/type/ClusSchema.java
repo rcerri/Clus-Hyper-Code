@@ -63,10 +63,12 @@ public class ClusSchema implements Serializable {
 	protected int[] m_NbVt;
 
 	public ClusSchema(String name) {
+		m_Attr = new ArrayList();
 		m_Relation = name;
 	}
 
 	public ClusSchema(String name, String descr) {
+		m_Attr = new ArrayList();
 		m_Relation = name;
 		addFromString(descr);
 	}
@@ -78,6 +80,7 @@ public class ClusSchema implements Serializable {
 	public void initializeSettings(Settings sett) throws ClusException, IOException {
 		setSettings(sett);
 		setTestSet(-1); /* Support ID for XVAL attribute later on? */
+	//	 System.out.println("ClusSchema: "+ClusSchema.getDisabled());
 		setTarget(new IntervalCollection(sett.getTarget()));
 		setDisabled(new IntervalCollection(sett.getDisabled()));
 		setClustering(new IntervalCollection(sett.getClustering()));
@@ -715,11 +718,15 @@ public class ClusSchema implements Serializable {
 			ClusAttrType at = (ClusAttrType)m_Attr.get(j);
 			int vtype = at.getValueType();
 			if (vtype == ClusAttrType.VALUE_TYPE_NONE || at.getStatus() == ClusAttrType.STATUS_DISABLED) {
+			//	 System.err.println("Set as disable: "+j);
 				at.setArrayIndex(-1);
 			} else {
 				if (vtype != ClusAttrType.VALUE_TYPE_BITWISEINT) {
 					int sidx = m_NbVt[vtype]++;
+					
+					// System.err.println("Pongo a attributo: "+j +"; el indice: "+sidx);
 					at.setArrayIndex(sidx);
+					// at.setArrayIndex(j);
 				} else { //vtype == ClusAttrType.VALUE_TYPE_BITWISEINT
 					nbBitwise++;
 					BitwiseNominalAttrType bat = (BitwiseNominalAttrType)at;
@@ -774,6 +781,7 @@ public class ClusSchema implements Serializable {
 			ClusAttrType at = getAttrType(j);
 			int status = at.getStatus();
 			if (status == ClusAttrType.STATUS_DISABLED) {
+				//System.out.println("j: "+j);
 				view.addAttribute(new DummySerializable());
 			} else {
 				view.addAttribute(at.createRowSerializable());

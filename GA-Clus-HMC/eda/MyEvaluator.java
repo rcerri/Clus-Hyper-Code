@@ -1,5 +1,6 @@
 package eda;
 
+import Util.ClusWrapperNonStatic;
 import ec.EvolutionState;
 import ec.Individual;
 import ec.simple.SimpleEvaluator;
@@ -13,10 +14,10 @@ public class MyEvaluator extends SimpleEvaluator {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public void evaluatePopulation(final EvolutionState state){
+	public void evaluatePopulation(final EvolutionState state, final ClusWrapperNonStatic object){
 
 		// do what superclass does 
-		super.evaluatePopulation(state);
+		super.evaluatePopulation(state, object);
 
 
 		// find out the population's size

@@ -6,6 +6,7 @@
 
 package ga;
 
+import Util.ClusWrapperNonStatic;
 import ec.EvolutionState;
 import ec.Individual;
 import ec.simple.SimpleEvolutionState;
@@ -19,9 +20,10 @@ public class mySimpleEvolutionState extends SimpleEvolutionState {
 	int noChange = 0;
 	double lastFitness = 0.0;
 	
+
 	int seed;
-	public void setup(final EvolutionState state, final Parameter base) {
-		super.setup(state, base);
+	public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic objectClus) {
+		super.setup(state, base, objectClus);
 		//System.out.println("numGenerations = "+super.numGenerations);
 		best_g = new Individual[this.numGenerations];
 		seed = 0;
@@ -38,7 +40,7 @@ public class mySimpleEvolutionState extends SimpleEvolutionState {
 
 		// EVALUATION
 		statistics.preEvaluationStatistics(this);
-		evaluator.evaluatePopulation(this);
+		evaluator.evaluatePopulation(this,objectClus);
 		statistics.postEvaluationStatistics(this);
 
 		
@@ -93,7 +95,7 @@ public class mySimpleEvolutionState extends SimpleEvolutionState {
 		// BREEDING
 		statistics.preBreedingStatistics(this);
 
-		population = breeder.breedPopulation(this);
+		population = breeder.breedPopulation(this, objectClus);
 
 		// POST-BREEDING EXCHANGING
 		statistics.postBreedingStatistics(this);

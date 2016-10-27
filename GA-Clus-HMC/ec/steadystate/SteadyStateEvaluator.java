@@ -10,7 +10,9 @@ package ec.steadystate;
 import ec.simple.*;
 import ec.*;
 import ec.util.Parameter;
-import java.util.*; 
+import java.util.*;
+
+import Util.ClusWrapperNonStatic;
 import ec.eval.MasterProblem;
 
 /* 
@@ -54,9 +56,9 @@ public class SteadyStateEvaluator extends SimpleEvaluator
     /** Our problem. */
     SimpleProblemForm problem; 
         
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
-        super.setup(state,base);
+        super.setup(state,base,object);
         if (!cloneProblem)
             state.output.fatal("cloneProblem must be true for SteadyStateEvaluator -- we'll use only one Problem anyway.");
         }
@@ -73,9 +75,9 @@ public class SteadyStateEvaluator extends SimpleEvaluator
         }
         
     /** Submits an individual to be evaluated by the Problem, and adds it and its subpopulation to the queue. */
-    public void evaluateIndividual(final EvolutionState state, Individual ind, int subpop)
+    public void evaluateIndividual(final EvolutionState state, Individual ind, int subpop, ClusWrapperNonStatic objectClus)
         {
-        problem.evaluate(state, ind, subpop, 0);
+        problem.evaluate(state, ind, subpop, 0,objectClus);
         queue.addLast(new QueueIndividual(ind, subpop));
         }
     

@@ -412,6 +412,7 @@ public class ClusStatManager implements Serializable {
 	public void initStatistic() throws ClusException {
 		
 		 System.out.println("***\nClusStatManager -TARGET: " + getSettings().getTarget().toString()+"; "+ getSettings().getDisabled().toString()+";"+ getSettings().getClustering().toString()+"\n");
+		// System.out.println("***\nClusStatManager -ClusAttrType: "+ClusAttrType.ATTR_USE_TARGET);
 		 
 		m_StatisticAttrUse = new ClusStatistic[ClusAttrType.NB_ATTR_USE];
 		// Statistic over all attributes
@@ -995,7 +996,12 @@ public class ClusStatManager implements Serializable {
 		m_TrainSetStatAttrUse = new ClusStatistic[ClusAttrType.NB_ATTR_USE];
 		if (getMode() != MODE_HIERARCHICAL) computeTrainSetStat(trainset, ClusAttrType.ATTR_USE_ALL);
 		computeTrainSetStat(trainset, ClusAttrType.ATTR_USE_CLUSTERING);
+		
+		//System.out.println("Using target: "+ClusAttrType.ATTR_USE_TARGET);
 		computeTrainSetStat(trainset, ClusAttrType.ATTR_USE_TARGET);
+		
+		// isaac
+		System.out.println("RUNNINGcomputeTrainSetStat: "+ trainset.getSchema().getTarget().toString());
 	}
 
 	public ClusHeuristic getHeuristic() {

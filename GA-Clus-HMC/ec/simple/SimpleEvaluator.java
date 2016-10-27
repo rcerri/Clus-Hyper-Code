@@ -6,8 +6,15 @@
 
 
 package ec.simple;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.util.*;
+import ga.Dataset;
+import ga.Main;
 
 /* 
  * SimpleEvaluator.java
@@ -58,11 +65,34 @@ public class SimpleEvaluator extends Evaluator
     public static final int C_AUTO = 0;
         
     public ThreadPool pool = new ThreadPool();
+    
+    
+ // These variables help me to ignore the multiple outputs from Clus.. that are not really informative.
+    private PrintStream realSystemOut = System.out;
+    private PrintStream realSystemErr = System.err;
+
+
+    private class NullOutputStream extends OutputStream {
+    	@Override
+    	public void write(int b){
+    		return;
+    	}
+    	@Override
+    	public void write(byte[] b){
+    		return;
+    	}
+    	@Override
+    	public void write(byte[] b, int off, int len){
+    		return;
+    	}
+    	public NullOutputStream(){
+    	}
+    }
 
     // checks to make sure that the Problem implements SimpleProblemForm
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base,  final ClusWrapperNonStatic object)
         {
-        super.setup(state,base);
+        super.setup(state,base, object);
         if (!(p_problem instanceof SimpleProblemForm))
             state.output.fatal("" + this.getClass() + " used, but the Problem is not of SimpleProblemForm",
                 base.push(P_PROBLEM));
@@ -169,7 +199,7 @@ public class SimpleEvaluator extends Evaluator
     /** A simple evaluator that doesn't do any coevolutionary
         evaluation.  Basically it applies evaluation pipelines,
         one per thread, to various subchunks of a new population. */
-    public void evaluatePopulation(final EvolutionState state)
+    public void evaluatePopulation(final EvolutionState state, ClusWrapperNonStatic objectClus)
         {
         if (numTests > 1)
             expand(state);
@@ -195,7 +225,7 @@ public class SimpleEvaluator extends Evaluator
                 prob = (SimpleProblemForm)(p_problem.clone());
             else 
                 prob = (SimpleProblemForm)(p_problem);  // just use the prototype
-            evalPopChunk(state, numinds, from, 0, prob);
+            evalPopChunk(state, numinds, from, 0, prob,objectClus);
             }
         else
             {
@@ -203,6 +233,27 @@ public class SimpleEvaluator extends Evaluator
             for(int i = 0; i < threads.length; i++)
                 {
                 SimpleEvaluatorThread run = new SimpleEvaluatorThread();
+                
+            	
+                ClusWrapperNonStatic perThread = new ClusWrapperNonStatic();
+            	int currentFold = Dataset.getCurrentFold();
+        		String trainSet = Dataset.getPath()+Dataset.getFileName() + "_fold"+(currentFold)+".train";
+        		String valSet = Dataset.getPath()+Dataset.getFileName() + "_fold"+(currentFold)+".valid";
+        		
+        		try {
+        			System.out.println("Initializing for thread");
+        			// System.exit(1);
+        			if (Main.mlTask > 0) 
+        				perThread.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
+        			else
+        				perThread.initialization(trainSet,valSet, Main.targets,Main.randomForest,false);
+        			
+        		} catch (IOException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
+        		
+                run.perThread = perThread; // Isaac added to prepare a objectClus per Thread
                 run.threadnum = i;
                 run.state = state;
                 run.prob = (SimpleProblemForm)(p_problem.clone());
@@ -240,13 +291,17 @@ public class SimpleEvaluator extends Evaluator
         protected, you should not call it. */
 
     protected void evalPopChunk(EvolutionState state, int[] numinds, int[] from,
-        int threadnum, SimpleProblemForm p)
+        int threadnum, SimpleProblemForm p, ClusWrapperNonStatic objectClus)
         {
         ((ec.Problem)p).prepareToEvaluate(state,threadnum);
         
         Subpopulation[] subpops = state.population.subpops;
         int len = subpops.length;
         
+        if(!objectClus.initialized){
+        	System.err.println("DONDE VASS!! ");
+        	System.exit(1);
+        }
         for(int pop=0;pop<len;pop++)
             {
             // start evaluatin'!
@@ -254,7 +309,7 @@ public class SimpleEvaluator extends Evaluator
             int upperbound = fp+numinds[pop];
             Individual[] inds = subpops[pop].individuals;
             for (int x=fp;x<upperbound;x++)
-                p.evaluate(state,inds[x], pop, threadnum);
+                p.evaluate(state,inds[x], pop, threadnum,objectClus);
             }
                         
         ((ec.Problem)p).finishEvaluating(state,threadnum);
@@ -285,8 +340,15 @@ public class SimpleEvaluator extends Evaluator
         public EvolutionState state;
         public SimpleProblemForm prob = null;
         
+    	// added by Isaac: Every single thread will have a different Clus Object to avoid problem with statics!!
+    	ClusWrapperNonStatic perThread = null;
+
+		
+        
         public void run() 
             {
+
+    		
             Subpopulation[] subpops = state.population.subpops;
 
             int[] numinds = new int[subpops.length];
@@ -296,8 +358,11 @@ public class SimpleEvaluator extends Evaluator
             int start = 0;
             int subpop = 0;
 
+            
             while (true)
                 {
+                System.setOut(new PrintStream(new NullOutputStream()));
+
                 // We need to grab the information about the next chunk we're responsible for.  This stays longer
                 // in the lock than I'd like :-(
                 synchronized(lock)
@@ -336,10 +401,18 @@ public class SimpleEvaluator extends Evaluator
                         
                 numinds[subpop] = count;
                 from[subpop] = start;
-                evalPopChunk(state, numinds, from, threadnum, prob);
+                evalPopChunk(state, numinds, from, threadnum, prob, perThread);
+                System.setOut(realSystemOut);
+
+
                 }
+            
+            
             }
         }
 
 
     }
+
+
+

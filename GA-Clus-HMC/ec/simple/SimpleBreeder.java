@@ -9,6 +9,7 @@ package ec.simple;
 import ec.Initializer;
 import ec.Individual;
 import ec.BreedingPipeline;
+import Util.ClusWrapperNonStatic;
 import ec.Breeder;
 import ec.EvolutionState;
 import ec.Population;
@@ -117,7 +118,7 @@ public class SimpleBreeder extends Breeder
             }
         }
     
-    public void setup(final EvolutionState state, final Parameter base) 
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object) 
         {
         Parameter p = new Parameter(Initializer.P_POP).push(Population.P_SIZE);
         int size = state.parameters.getInt(p,null,1);  // if size is wrong, we'll let Population complain about it -- for us, we'll just make 0-sized arrays and drop out.
@@ -222,7 +223,7 @@ public class SimpleBreeder extends Breeder
     /** A simple breeder that doesn't attempt to do any cross-
         population breeding.  Basically it applies pipelines,
         one per thread, to various subchunks of a new population. */
-    public Population breedPopulation(EvolutionState state) 
+    public Population breedPopulation(EvolutionState state, final ClusWrapperNonStatic object) 
         {
         Population newpop = null;
         if (clonePipelineAndPopulation)
@@ -513,6 +514,8 @@ public class SimpleBreeder extends Breeder
         // optionally force reevaluation
         unmarkElitesEvaluated(state, newpop);
         }
+
+
     }
 
 

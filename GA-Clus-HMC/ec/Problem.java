@@ -7,6 +7,7 @@
 
 package ec; 
 
+import Util.ClusWrapperNonStatic;
 import ec.util.*;
 
 /* 
@@ -68,7 +69,7 @@ public abstract class Problem implements Prototype
         }
 
     // default form does nothing
-    public void setup(final EvolutionState state, final Parameter base) 
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object) 
         {
         }
 

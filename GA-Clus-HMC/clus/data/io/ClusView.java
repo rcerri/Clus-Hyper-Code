@@ -50,18 +50,33 @@ public class ClusView {
 		schema.setReader(true);
 		ArrayList items = new ArrayList();
 		DataTuple tuple = readDataTupleFirst(reader, schema);
+		// System.out.println("tuple.toString(): "+tuple.toString());
 		while (tuple != null) {
 			items.add(tuple);
 			tuple = readDataTupleNext(reader, schema);
 		}
+		/*
+		for (int j = 0; j < m_Attr.size(); j++) {
+			ClusSerializable attr = (ClusSerializable)m_Attr.get(j);
+			attr.term(schema);  
+			
+		}*/
+		schema.setReader(false);
+		return new RowData(items, schema);
+		
+	}
+
+	
+	public void re_readData(ClusSchema schema) throws IOException, ClusException {
+				
+
+		System.out.println("m_Attr.size(): "+m_Attr.size());
 		for (int j = 0; j < m_Attr.size(); j++) {
 			ClusSerializable attr = (ClusSerializable)m_Attr.get(j);
 			attr.term(schema);
 		}
-		schema.setReader(false);
-		return new RowData(items, schema);
 	}
-
+	
 	public DataTuple readDataTupleFirst(ClusReader reader, ClusSchema schema) throws IOException, ClusException {
 		if (!reader.hasMoreTokens()) return null;
 		boolean sparse = reader.isNextChar('{');

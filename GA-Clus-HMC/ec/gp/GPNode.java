@@ -11,6 +11,8 @@ import ec.util.*;
 import java.io.*;
 import java.util.*;
 
+import Util.ClusWrapperNonStatic;
+
 /* 
  * GPNode.java
  * 
@@ -1566,6 +1568,7 @@ public abstract class GPNode implements GPNodeParent, Prototype
         final GPData input,
         final ADFStack stack,
         final GPIndividual individual,
-        final Problem problem);
+        final Problem problem,
+        final ClusWrapperNonStatic object);
     }
 

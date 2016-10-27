@@ -55,6 +55,7 @@ public class Main {
 		 * 				0 = labelset
 		 */
 		
+		
 		SAgen = Integer.valueOf(args[12]);
 		SAmax = Integer.valueOf(args[13]);
 		maxGenNoChange = Integer.valueOf(args[14]);
@@ -78,6 +79,7 @@ public class Main {
 		fitnessType = Integer.valueOf(args[4]);
 
 		path = args[2] + args[0] + "/";
+		
 		new File(path).mkdirs();
 
 		final File pFile = new File("ga/ga.params");
@@ -97,6 +99,7 @@ public class Main {
 		
 		myEvolve.mainSingleDataset(parameters);
 		
+
 	}
 }
 

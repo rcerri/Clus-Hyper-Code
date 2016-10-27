@@ -6,6 +6,7 @@
 
 
 package ec;
+import Util.ClusWrapperNonStatic;
 import ec.util.Parameter;
 
 /* 
@@ -151,7 +152,7 @@ public interface Prototype extends Cloneable, Setup
         called at least once on an instance or some "parent"
         object from which it was ultimately cloned. */
 
-    public void setup(final EvolutionState state, final Parameter base);
+    public void setup(final EvolutionState state, final Parameter base,final ClusWrapperNonStatic object);
 
     /** Returns the default base for this prototype.
         This should generally be implemented by building off of the static base()

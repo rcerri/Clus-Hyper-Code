@@ -8,6 +8,9 @@
 package ec;
 import ec.util.*;
 import java.util.*;
+
+import Util.ClusWrapperNonStatic;
+
 import java.io.*;
 
 /* 
@@ -274,6 +277,8 @@ public class EvolutionState implements Singleton
     public final static String P_CHECKPOINTDIRECTORY = "checkpoint-directory";
     public final static String P_CHECKPOINT = "checkpoint";
     final static String P_CHECKPOINTPREFIX_OLD = "prefix";
+    
+    public ClusWrapperNonStatic objectClus;
 
     /** This will be called to create your evolution state; immediately
         after the constructor is called,
@@ -286,8 +291,10 @@ public class EvolutionState implements Singleton
     /** Unlike for other setup() methods, ignore the base; it will always be null. 
         @see Prototype#setup(EvolutionState,Parameter)
     */
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, ClusWrapperNonStatic objectClus)
         {
+    	
+    	this.objectClus = objectClus;
         Parameter p;
         
         // set up the per-thread data
@@ -381,22 +388,22 @@ public class EvolutionState implements Singleton
         p=new Parameter(P_INITIALIZER);
         initializer = (Initializer)
             (parameters.getInstanceForParameter(p,null,Initializer.class));
-        initializer.setup(this,p);
+        initializer.setup(this,p,objectClus);
 
         p=new Parameter(P_FINISHER);
         finisher = (Finisher)
             (parameters.getInstanceForParameter(p,null,Finisher.class));
-        finisher.setup(this,p);
+        finisher.setup(this,p,objectClus);
 
         p=new Parameter(P_BREEDER);
         breeder = (Breeder)
             (parameters.getInstanceForParameter(p,null,Breeder.class));
-        breeder.setup(this,p);
+        breeder.setup(this,p,objectClus);
 
         p=new Parameter(P_EVALUATOR);
         evaluator = (Evaluator)
             (parameters.getInstanceForParameter(p,null,Evaluator.class));
-        evaluator.setup(this,p);
+        evaluator.setup(this,p,objectClus);
 
         p=new Parameter(P_STATISTICS);
         statistics = (Statistics)
@@ -406,7 +413,7 @@ public class EvolutionState implements Singleton
         p=new Parameter(P_EXCHANGER);
         exchanger = (Exchanger)
             (parameters.getInstanceForParameter(p,null,Exchanger.class));
-        exchanger.setup(this,p);
+        exchanger.setup(this,p,objectClus);
                 
         generation = 0;
         }
@@ -459,4 +466,6 @@ public class EvolutionState implements Singleton
         
         finish(result);
         }
+
+
     }

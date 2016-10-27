@@ -8,6 +8,7 @@
 package ec;
 import ec.util.ParamClassLoadException;
 import ec.util.Parameter;
+import Util.ClusWrapperNonStatic;
 import ec.eval.MasterProblem;
 
 /* 
@@ -65,19 +66,19 @@ public abstract class Evaluator implements Singleton
     /** Evaluates the fitness of an entire population.  You will
         have to determine how to handle multiple threads on your own,
         as this is a very domain-specific thing. */
-    public abstract void evaluatePopulation(final EvolutionState state);
+    public abstract void evaluatePopulation(final EvolutionState state, final ClusWrapperNonStatic objectClus);
 
     /** Returns true if an ideal individual has been found or some
         other run result has shortcircuited the run so that it should
         end prematurely right now. */
     public abstract boolean runComplete(final EvolutionState state);
 
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
         // Load my problem
         p_problem = (Problem)(state.parameters.getInstanceForParameter(
                 base.push(P_PROBLEM),null,Problem.class));
-        p_problem.setup(state,base.push(P_PROBLEM));
+        p_problem.setup(state,base.push(P_PROBLEM), object);
         
         // Am I a master problem and NOT a slave.  Note that the "eval.i-am-slave" parameter
         // is not set by the user but rather programmatically by the Slave.java class

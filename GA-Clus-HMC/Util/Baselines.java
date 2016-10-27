@@ -1,6 +1,7 @@
 package Util;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.StringTokenizer;
 
 import clus.util.ClusException;
@@ -18,8 +19,8 @@ public class Baselines {
 
 	public static void main(String[] args) throws IOException, ClusException {
 		
-		if(args.length!=5){
-			System.err.println("The number of parameters is 4:  <training dataset> <test dataset> <attributes> <numOutputs> <classification|regression>");
+		if(args.length!=6){
+			System.err.println("The number of parameters is 6:  <training dataset> <test dataset> <attributes> <numOutputs> <classification|regression> <DecisionTree|RandomForest>");
 			System.exit(1);
 		}
 		
@@ -28,12 +29,17 @@ public class Baselines {
             classification = true;
         }
         
+        boolean forest = false;
+        if (args[5].equalsIgnoreCase("RandomForest")) {
+        	forest = true;
+        }
+        
 		long timeStart=System.nanoTime();
 		String train = args[0]; //
 		String test = args[1]; // 
 		
 		
-   	    ClusWrapper.initialization(train, test, args[2],false,true); 	
+   	    
 		
 		int numOutputs= Integer.parseInt(args[3]);
 		
@@ -47,8 +53,33 @@ public class Baselines {
 			local[i]=i+1;			
 		}
 
+     	ClusWrapper.initialization(train, test, args[2],forest,classification); 
+     	
+     	// try a single classifier in Clus.
+     /*	ClusWrapper.initialization(train, test,"74", "73-78",false,true); 	//
+     	InputStream configFile = ClusWrapper.createInputStreamBaseConfigFileForClassification("74",true);
+	
+		args= new String[1]; args[0] = "config.s"; 
+		
+		// Run the classifier
+		ClusWrapper.runClassifier(args, configFile);
+		
+		
+     	
+     	ClusWrapper.initialization(train, test,"78","73-78",false,true); 	//
+		// ClusWrapper.disable="73-77";
+        configFile = ClusWrapper.createInputStreamBaseConfigFileForClassification("78",true);
+	
+		args= new String[1]; args[0] = "config.s"; 
+		
+		// Run the classifier
+		ClusWrapper.runClassifier(args, configFile);
+		
+     	System.exit(1);
+		
+     	*/
      	if(classification){
-			/*myMeasures measure = ClusWrapper.evaluateIndividualClassification(global,true);
+			myMeasures measure = ClusWrapper.evaluateIndividualClassification(global,true);
 			
 			
 			System.out.println("\n***********GLOBAL************ ");
@@ -60,7 +91,7 @@ public class Baselines {
 			System.out.println("AUPRC-tst "+ measure.getAUPRC()[1]); 
 			
 	
-			System.out.println("\nRunTimeGlobal: "+(System.nanoTime()-timeStart)/1e9);*/
+			System.out.println("\nRunTimeGlobal: "+(System.nanoTime()-timeStart)/1e9);
 	
 			timeStart=System.nanoTime();
 			

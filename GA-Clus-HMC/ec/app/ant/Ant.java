@@ -13,6 +13,8 @@ import ec.gp.*;
 import ec.gp.koza.*;
 import java.io.*;
 import java.util.*;
+
+import Util.ClusWrapperNonStatic;
 import ec.simple.*;
 
 /* 
@@ -110,10 +112,10 @@ public class Ant extends GPProblem implements SimpleProblemForm
         }
 
     public void setup(final EvolutionState state,
-        final Parameter base)
+        final Parameter base,final ClusWrapperNonStatic object)
         {
         // very important, remember this
-        super.setup(state,base);
+        super.setup(state,base,object);
 
         // No need to verify the GPData object
 
@@ -200,7 +202,7 @@ public class Ant extends GPProblem implements SimpleProblemForm
     public void evaluate(final EvolutionState state, 
         final Individual ind, 
         final int subpopulation,
-        final int threadnum)
+        final int threadnum,final ClusWrapperNonStatic objectClus)
         {
         if (!ind.evaluated)  // don't bother reevaluating
             {
@@ -211,7 +213,7 @@ public class Ant extends GPProblem implements SimpleProblemForm
 
             for(moves=0;moves<maxMoves && sum<food; )
                 ((GPIndividual)ind).trees[0].child.eval(
-                    state,threadnum,input,stack,((GPIndividual)ind),this);
+                    state,threadnum,input,stack,((GPIndividual)ind),this,objectClus);
                 
             // the fitness better be KozaFitness!
             KozaFitness f = ((KozaFitness)ind.fitness);
@@ -278,4 +280,6 @@ public class Ant extends GPProblem implements SimpleProblemForm
             }
 
         }
+
+
     }

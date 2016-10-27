@@ -79,6 +79,7 @@ public class INIFile extends INIFileSection {
 		while (true) {
 			String token = "";
 			while (token != null && !token.equals("[")) token = tokens.getToken();
+			
 			if (token == null) break;
 			int saveline = tokens.getLine();
 			String name = tokens.readTillEol();

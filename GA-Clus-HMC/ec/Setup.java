@@ -9,6 +9,8 @@ package ec;
 import ec.util.Parameter;
 import java.io.Serializable;
 
+import Util.ClusWrapperNonStatic;
+
 /* 
  * Setup.java
  * 
@@ -37,5 +39,5 @@ public strictfp interface Setup extends Serializable
         in <i>state</i>, built off of the parameter base <i>base</i>.
         If an ancestor implements this method, be sure to call
         super.setup(state,base);  before you do anything else. */
-    public void setup(final EvolutionState state, final Parameter base);
+    public void setup(final EvolutionState state, final Parameter base,final ClusWrapperNonStatic object);
     }

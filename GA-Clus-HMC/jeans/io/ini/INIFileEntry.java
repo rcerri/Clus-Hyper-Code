@@ -48,6 +48,8 @@ public abstract class INIFileEntry extends INIFileNode {
 
 	public void build(MStreamTokenizer tokens) throws IOException {
 		String line = tokens.readTillEol();
+		// System.out.println("\n---"+line);
+
 		if (line == null || line.equals("")) {
 			throw new IOException("Expected value for entry '"+getName()+"'"+tokens.getFileNameForErrorMsg());
 		}

@@ -63,14 +63,14 @@ public class ClusWrapper {
 	}
 
 
-	static Clus clus;
+	static Clus clus = null;
 	static ClusInductionAlgorithmType clss = null;
 
 	private static String train;
 
 	private static String test;
 
-	private static String disable;
+	public static String disable;
 
 	private static int FirstOutputIndex=0;
 
@@ -133,7 +133,7 @@ public class ClusWrapper {
 
 	}
 	
-	private static InputStream createInputStreamBaseConfigFileForClassification(String target, boolean trainErrors) throws IOException{
+	public static InputStream createInputStreamBaseConfigFileForClassification(String target, boolean trainErrors) throws IOException{
 
 		if(target.contains(",")) target = target.substring(0, target.length()-1); // I remove the last comma.
 
@@ -155,7 +155,8 @@ public class ClusWrapper {
 			cad += "[Ensemble]\nIterations = 50 \nEnsembleMethod = RForest\n";
 		}
 		
-		 System.out.println(cad);
+		
+		 //System.err.println(cad);
 
 		return new ByteArrayInputStream(cad.getBytes(StandardCharsets.UTF_8));
 
@@ -173,7 +174,13 @@ public class ClusWrapper {
 
 	public static void InitializeClus(String[] args, InputStream configFile) {
 		try {
-			clus = new Clus();
+			//if(clus==null)
+				clus = new Clus(null);
+			/*else{
+				clus = new Clus(clus.m_Data);
+				clus.resetClus();
+		    }*/
+			
 			Settings sett = clus.getSettings();
 			CMDLineArgs cargs = new CMDLineArgs(clus);
 			cargs.process(args);
@@ -224,19 +231,29 @@ public class ClusWrapper {
 
 	public static void runClassifier(String[] args, InputStream ConfigFile) throws IOException, ClusException{
 
-		// System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
+		 System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
 
+		InitializeClus(args,ConfigFile);
+		/*
+		// clus.resetClus();
 		// reinitialization:
+		//Clus temp = new Clus();
 		Settings sett = clus.getSettings();
+		//Settings sett = temp.getSettings();
+		
 		CMDLineArgs cargs = new CMDLineArgs(clus);
+		//CMDLineArgs cargs = new CMDLineArgs(temp);
 		cargs.process(args);
 
 		sett.setDate(new Date());
 		sett.setAppName(cargs.getMainArg(0));
 
+		
 		//clus.initSettings(cargs);
 		
 		clus.initSettingsNOFILE(cargs, ConfigFile);
+		//temp.initSettingsNOFILE(cargs, ConfigFile);
+		
 		//System.out.println("+++"+ConfigFile.toString());
 
 		//System.exit(1);
@@ -256,16 +273,19 @@ public class ClusWrapper {
 
 
 		// modify specific specific targets
-		clus.modifyOutputTargets(cargs, clss); 
+		// clus.modifyOutputTargets(cargs, clss); 
+	// 	clus.initializeMultipleRuns(cargs, clss);
+		//temp.modifyTargetsV2(cargs, clss, clus.m_Data);
 
 
 		// Run the classifier:
 		//clus.singleRun(clss);
 		//System.exit(1);
-
+*/
 		outputFile= clus.singleRunNOFILES(clss); // to avoid writing any file.
+		//outputFile= temp.singleRunNOFILES(clss); // to avoid writing any file.
 
-		System.out.println("Output file: "+outputFile);
+		// System.out.println("Output file: "+outputFile);
 
 		System.setOut(realSystemOut);
 	}
@@ -767,13 +787,16 @@ public class ClusWrapper {
 		FirstOutputIndex = Integer.parseInt(disable.split("-")[0]); // Compute the first index
 
 		//createBaseConfigFile(disable,false); // create initial config.s file
-		InputStream configFile= null;
+		
+		/*
+		 * InputStream configFile= null;
 		
 		if(classification)
-			configFile = createInputStreamBaseConfigFileForClassification(disable,false); // create initial config.s file
+			configFile = createInputStreamBaseConfigFileForClassification(targetAtt,false); // create initial config.s file
 		else
-			configFile = createInputStreamBaseConfigFile(disable,false); // create initial config.s file
+			configFile = createInputStreamBaseConfigFile(targetAtt,false); // create initial config.s file
 
+		
 		String [] args;
 
 		if(forest){
@@ -787,7 +810,7 @@ public class ClusWrapper {
 
 		System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
 		InitializeClus(args, configFile); // load data into memory.
-		System.setOut(realSystemOut);
+		System.setOut(realSystemOut);*/
 	}
 
 	/**

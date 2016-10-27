@@ -6,6 +6,7 @@
 
 
 package ec.app.tutorial1;
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.simple.*;
 import ec.vector.*;
@@ -15,7 +16,7 @@ public class MaxOnes extends Problem implements SimpleProblemForm
     public void evaluate(final EvolutionState state,
         final Individual ind,
         final int subpopulation,
-        final int threadnum)
+        final int threadnum, final ClusWrapperNonStatic objectClus)
         {
         if (ind.evaluated) return;
 

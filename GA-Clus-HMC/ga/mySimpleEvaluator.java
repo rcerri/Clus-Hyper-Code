@@ -2,6 +2,7 @@ package ga;
 
 import java.util.Random;
 
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.simple.SimpleEvaluator;
 import ec.simple.SimpleProblemForm;
@@ -13,20 +14,20 @@ public class mySimpleEvaluator extends SimpleEvaluator {
 	/** A simple evaluator that doesn't do any coevolutionary
         evaluation.  Basically it applies evaluation pipelines,
         one per thread, to various subchunks of a new population. */
-	public void evaluatePopulation(final EvolutionState state) {
-		super.evaluatePopulation(state);
+	public void evaluatePopulation(final EvolutionState state, ClusWrapperNonStatic objectClus ) {
+		super.evaluatePopulation(state, objectClus);
 
 		if (((mySimpleEvolutionState)state).seed != state.generation / Main.SAgen) {
 
 			System.out.println("starting Simulated Annealing: Generation "+state.generation);
 			((mySimpleEvolutionState)state).seed++; 
-			SimulatedAnnealing(state);
+			SimulatedAnnealing(state,objectClus);
 			System.out.println("finishing Simulated Annealing: Seed = " + ((mySimpleEvolutionState)state).seed);
 		}
 
 	}
 
-	public void SimulatedAnnealing(EvolutionState state) {
+	public void SimulatedAnnealing(EvolutionState state, ClusWrapperNonStatic objectClus ) {
 
 		// for now we just print the best fitness per subpopulation.
 		Individual[] best_i = new Individual[state.population.subpops.length];  // quiets compiler complaints
@@ -48,7 +49,7 @@ public class mySimpleEvaluator extends SimpleEvaluator {
 		
 		Individual newIndividual;
 		try {
-			newIndividual = run(state,(SimpleProblemForm)(p_problem.clone()), (Individual) best_i[0].clone(),Main.SAmax);
+			newIndividual = run(state,(SimpleProblemForm)(p_problem.clone()), (Individual) best_i[0].clone(),Main.SAmax,objectClus);
 			// substituir na população!!
 			state.population.subpops[i_worst[0]].individuals[i_worst[1]] = newIndividual;
 		} catch (Exception e) {
@@ -58,7 +59,7 @@ public class mySimpleEvaluator extends SimpleEvaluator {
 	}
 
 
-	public Individual run(EvolutionState state, SimpleProblemForm p, Individual x, int maxIter) throws Exception { // talvez passe um individuo já com o genoma e score
+	public Individual run(EvolutionState state, SimpleProblemForm p, Individual x, int maxIter, ClusWrapperNonStatic objectClus) throws Exception { // talvez passe um individuo já com o genoma e score
 
 		Random rand = new Random();
 
@@ -88,7 +89,7 @@ public class mySimpleEvaluator extends SimpleEvaluator {
 				System.out.print("," + mutatedX.genome[i]);
 			System.out.println();
 
-			p.evaluate(state,mutatedX, 0, 0);
+			p.evaluate(state,mutatedX, 0, 0,objectClus);
 			((ec.Problem)p).finishEvaluating(state,0);
 
 			double newF = mutatedX.fitness.fitness();
@@ -99,7 +100,7 @@ public class mySimpleEvaluator extends SimpleEvaluator {
 				((IntegerVectorIndividual) x).setGenome(mutatedX.getGenome());
 				x.evaluated = false;				
 				((ec.Problem)p).prepareToEvaluate(state,0);
-				p.evaluate(state,x, 0, 0);
+				p.evaluate(state,x, 0, 0,objectClus);
 				((ec.Problem)p).finishEvaluating(state,0);
 			}
 

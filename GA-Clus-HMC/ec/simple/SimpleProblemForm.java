@@ -6,6 +6,7 @@
 
 
 package ec.simple;
+import Util.ClusWrapperNonStatic;
 import ec.*;
 
 /* 
@@ -30,12 +31,19 @@ public interface SimpleProblemForm
         not evaluating them if their evaluated flags are true),
         and sets their fitness appropriately. 
     */
-
+/*
     public void evaluate(final EvolutionState state,
         final Individual ind,
         final int subpopulation,
         final int threadnum);
-
+*/
+    
+    public void evaluate(final EvolutionState state,
+            final Individual ind,
+            final int subpopulation,
+            final int threadnum,
+            final ClusWrapperNonStatic object);
+    
     /** "Reevaluates" an individual,
         for the purpose of printing out
         interesting facts about the individual in the context of the

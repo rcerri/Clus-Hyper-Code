@@ -2510,8 +2510,9 @@ public class Settings implements Serializable {
 			}
 		}
 		if (cargs != null) process(cargs);
-		updateDataFile(getAppName() + ".arff");
-		initHierarchical();
+	
+		// updateDataFile(getAppName() + ".arff");
+		// initHierarchical();
 	}
 	
 

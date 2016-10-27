@@ -96,10 +96,10 @@ public class Clus implements CMDLineArgsProvider {
 	protected MultiScore m_Score;
 	protected ClusInductionAlgorithmType m_Classifier;
 	protected ClusInductionAlgorithm m_Induce;
-	protected RowData m_Data;
+	public RowData m_Data = null;
 	
 	// added by Isaac not to duplicate data.
-	protected RowData m_Data_original;
+	// protected RowData m_Data_original;
 	
 	protected Date m_StartDate = new Date();
 	protected boolean isxval = false;
@@ -113,9 +113,26 @@ public class Clus implements CMDLineArgsProvider {
 	protected String dataTST;
 	
 	
+	public void resetClus(){
+	 m_Sett = new Settings();
+	 m_Summary = new ClusSummary();
+	 m_StartDate = new Date();
+	 isxval = false;
+	 m_Classifier = null;
+	 m_Induce = null;
+	 m_Score= null;
+	 m_Schema = null;
+	 m_CmdLine=null;
+	 NOFILE = false;
+	}
+	 
+	public Clus(RowData another){
+		// this.m_Sett = another.m_Sett;
+		this.m_Data = another;
+	}
 	/**
 	 * Addy by Isaac to modify the output targets, without loading the dataset every time.
-	 */
+	 
 	public void modifyOutputTargets(CMDLineArgs cargs,
 			ClusInductionAlgorithmType clss) throws IOException, ClusException {
 		m_CmdLine = cargs;
@@ -127,40 +144,52 @@ public class Clus implements CMDLineArgsProvider {
 		ARFFFile arff = null;
 		if(m_Sett.getVerbose() > 0) System.out.println("Loading '" + m_Sett.getAppName() + "'");
 		ClusRandom.initialize(m_Sett);
-		ClusReader reader = new ClusReader(m_Sett.getDataFile(), m_Sett);
-		if(m_Sett.getVerbose() > 0) System.out.println();
+		
+		// ClusReader reader = new ClusReader(m_Sett.getDataFile(), m_Sett);
+		/*if(m_Sett.getVerbose() > 0) System.out.println();
 		if (cargs.hasOption("c45")) {
 			if(m_Sett.getVerbose() > 0) System.out.println("Reading C45 .names/.data");
 		} else {
 			if(m_Sett.getVerbose() > 0) System.out.println("Reading ARFF Header");
-			arff = new ARFFFile(reader);
-			m_Schema = arff.read(m_Sett);
-		}
+			//arff = new ARFFFile(reader);
+			//m_Schema = arff.read(m_Sett);
+		}*
 		// Count rows and move to data segment
-		if(m_Sett.getVerbose() > 0) System.out.println();
-		if(m_Sett.getVerbose() > 0) System.out.println("Reading CSV Data");
+		//if(m_Sett.getVerbose() > 0) System.out.println();
+		// if(m_Sett.getVerbose() > 0) System.out.println("Reading CSV Data");
 		// Updata schema based on settings
 		
-		m_Sett.updateTarget(m_Schema);
+	// 	m_Sett.updateTarget(m_Schema);
 		m_Schema.initializeSettings(m_Sett);
-		System.out.println("***\nTARGET: " + m_Schema.getTarget().toString()+"; "+m_Schema.getDisabled().toString()+";"+m_Schema.getClustering().toString()+"\n");
-		
 		m_Sett.setTarget(m_Schema.getTarget().toString());
 		m_Sett.setDisabled(m_Schema.getDisabled().toString());
 		m_Sett.setClustering(m_Schema.getClustering().toString());
 		m_Sett.setDescriptive(m_Schema.getDescriptive().toString());
 		
+	    System.out.println("***\nTARGET: " + m_Schema.getTarget().toString()+"; "+m_Schema.getDisabled().toString()+";"+m_Schema.getClustering().toString()+"\n");
+
 		// Load data from file
 		if (ResourceInfo.isLibLoaded()) {
 			ClusStat.m_InitialMemory = ResourceInfo.getMemory();
 		}
 		ClusView view = m_Schema.createNormalView();
-		// m_Data_original = view.readData(reader, m_Schema); // we avoid this.
 		
-		m_Data_original.setSchema(m_Schema); // establish the schema
+		// from read Data, i think this part was missing:
+		
+		 // m_Data_original = view.readData(reader, m_Schema); // we avoid this.
+		
+		m_Data.setSchema(m_Schema); // establish the schema
+		view.re_readData(m_Schema);
+
 		//m_Data_original.setSetting(m_Sett);
 		
-		reader.close();
+		// reader.close();
+		
+		if (getSettings().getNormalizeData() != Settings.NORMALIZE_DATA_NONE) {
+			if(m_Sett.getVerbose() > 0) System.out.println("Normalizing numerical data");
+			m_Data = returnNormalizedData(m_Data);
+		}
+		
 		if(m_Sett.getVerbose() > 0) System.out.println("Found " + m_Data.getNbRows() + " rows");
 
 		m_Schema.printInfo();
@@ -169,7 +198,7 @@ public class Clus implements CMDLineArgsProvider {
 		}
 		if (getSettings().isRemoveMissingTarget()) {
 			System.out.println("Removing target");
-			m_Data = CriterionBasedSelection.removeMissingTarget(m_Data_original);
+			m_Data = CriterionBasedSelection.removeMissingTarget(m_Data);
 			CriterionBasedSelection.clearMissingFlagTargetAttrs(m_Schema);
 		}
 
@@ -215,16 +244,14 @@ public class Clus implements CMDLineArgsProvider {
 
 
 	}
+	*/
+	
 	
 	/**
-	 * Created by Isaac to run multiple times with the same data.
-	 * @param cargs
-	 * @param clss
-	 * @throws IOException
-	 * @throws ClusException
-	 */
-	public final void initializeMultipleRuns(CMDLineArgs cargs,
-			ClusInductionAlgorithmType clss) throws IOException, ClusException {
+	 * Addy by Isaac to modify the output targets, without loading the dataset every time.
+	 *
+	public void modifyTargetsV2(CMDLineArgs cargs,
+			ClusInductionAlgorithmType clss, RowData mPreviousData) throws IOException, ClusException {
 		m_CmdLine = cargs;
 		m_Classifier = clss;
 		// Load resource info (this measures among others CPU time on Linux)
@@ -250,29 +277,183 @@ public class Clus implements CMDLineArgsProvider {
 		
 		m_Sett.updateTarget(m_Schema);
 		m_Schema.initializeSettings(m_Sett);
+		System.out.println("***\nTARGET: " + m_Schema.getTarget().toString()+"; "+m_Schema.getDisabled().toString()+";"+m_Schema.getClustering().toString()+"\n");
+		
 		m_Sett.setTarget(m_Schema.getTarget().toString());
 		m_Sett.setDisabled(m_Schema.getDisabled().toString());
 		m_Sett.setClustering(m_Schema.getClustering().toString());
 		m_Sett.setDescriptive(m_Schema.getDescriptive().toString());
-
+		
 		// Load data from file
 		if (ResourceInfo.isLibLoaded()) {
 			ClusStat.m_InitialMemory = ResourceInfo.getMemory();
 		}
 		ClusView view = m_Schema.createNormalView();
-		m_Data_original = view.readData(reader, m_Schema);
+		// m_Data_original = view.readData(reader, m_Schema); // we avoid this.
+		
+		// m_Data_original.setSchema(m_Schema); // establish the schema
+		
+		mPreviousData.setSchema(m_Schema);
+		
+		m_Data = mPreviousData;
+		 
+		
 		reader.close();
-		if(m_Sett.getVerbose() > 0) System.out.println("Found " + m_Data_original.getNbRows() + " rows");
+		if(m_Sett.getVerbose() > 0) System.out.println("Found " + m_Data.getNbRows() + " rows");
 
 		m_Schema.printInfo();
 		if (ResourceInfo.isLibLoaded()) {
 			ClusStat.m_LoadedMemory = ResourceInfo.getMemory();
 		}
 		if (getSettings().isRemoveMissingTarget()) {
-			m_Data = CriterionBasedSelection.removeMissingTarget(m_Data_original);
+			System.out.println("Removing target");
+			m_Data = CriterionBasedSelection.removeMissingTarget(m_Data);
 			CriterionBasedSelection.clearMissingFlagTargetAttrs(m_Schema);
+		}
+
+		// Create induce
+		m_Induce = clss.createInduce(m_Schema, m_Sett, cargs);
+
+		// Preprocess and initialize induce
+		m_Sett.update(m_Schema);
+		// If not rule induction, reset some settings just to be sure
+		// in case rules from trees are used.
+		// I.e. this is used if the command line parameter is for decision trees
+		// but the transformation for rules is used.
+		// It is also possible to use command line parameter -rules and use
+		// trees as a covering method.
+		if (!m_Induce.getStatManager().isRuleInduceOnly())
+			m_Sett.disableRuleInduceParams();
+		// Set XVal field in Settings
+		if (isxval)
+			Settings.IS_XVAL = true;
+
+		preprocess(); // necessary in order to link the labels to the class
+		// hierarchy in HMC (needs to be before
+		// m_Induce.initialize())
+		m_Induce.initialize();
+		initializeAttributeWeights(m_Data);
+		m_Induce.initializeHeuristic();
+		loadConstraintFile();
+		initializeSummary(clss);
+		if(m_Sett.getVerbose() > 0) System.out.println();
+		// Sample data
+		if (cargs.hasOption("sample")) {
+			String svalue = cargs.getOptionValue("sample");
+			sample(svalue);
+		}
+		if(m_Sett.getVerbose() > 0) System.out.println("Has missing values: " + m_Schema.hasMissing());
+		if (ResourceInfo.isLibLoaded()) {
+			System.out.println("Memory usage: loading data took "
+					+ (ClusStat.m_LoadedMemory - ClusStat.m_InitialMemory)
+					+ " kB");
+		}
+		
+		System.out.println("***\nat the end: TARGET: " + m_Schema.getTarget().toString()+"; "+m_Schema.getDisabled().toString()+";"+m_Schema.getClustering().toString()+"\n");
+
+
+	}
+	*/
+	/**
+	 * Created by Isaac to run multiple times with the same data.
+	 * @param cargs
+	 * @param clss
+	 * @throws IOException
+	 * @throws ClusException
+	 */
+	public void initializeMultipleRuns(CMDLineArgs cargs,
+			ClusInductionAlgorithmType clss) throws IOException, ClusException {
+		m_CmdLine = cargs;
+		m_Classifier = clss;
+		// Load resource info (this measures among others CPU time on Linux)
+		boolean test = m_Sett.getResourceInfoLoaded() == Settings.RESOURCE_INFO_LOAD_TEST;
+		ResourceInfo.loadLibrary(test);
+		// Load settings file
+		ARFFFile arff = null;
+		if(m_Sett.getVerbose() > 0) System.out.println("Loading '" + m_Sett.getAppName() + "'");
+		ClusRandom.initialize(m_Sett);
+		
+		
+		ClusReader reader = new ClusReader(m_Sett.getDataFile(), m_Sett);
+		//if(m_Data == null){			
+			if(m_Sett.getVerbose() > 0) System.out.println();
+			if (cargs.hasOption("c45")) {
+				if(m_Sett.getVerbose() > 0) System.out.println("Reading C45 .names/.data");
+			} else {
+				if(m_Sett.getVerbose() > 0) System.out.println("Reading ARFF Header");
+				arff = new ARFFFile(reader);
+				m_Schema = arff.read(m_Sett);
+			}
+		/*
 		}else{
-			m_Data =m_Data_original;
+			m_Schema = new ClusSchema("dontCare");
+			m_Schema.setSettings(m_Sett);
+		}
+		*/
+		// Count rows and move to data segment
+		if(m_Sett.getVerbose() > 0) System.out.println();
+		if(m_Sett.getVerbose() > 0) System.out.println("Reading CSV Data");
+		// Updata schema based on settings
+		
+		m_Sett.updateTarget(m_Schema);
+		m_Schema.initializeSettings(m_Sett);
+
+		m_Sett.setTarget(m_Schema.getTarget().toString());
+		m_Sett.setDisabled(m_Schema.getDisabled().toString());
+		m_Sett.setClustering(m_Schema.getClustering().toString());
+		m_Sett.setDescriptive(m_Schema.getDescriptive().toString());
+
+
+		// Load data from file
+		if (ResourceInfo.isLibLoaded()) {
+			ClusStat.m_InitialMemory = ResourceInfo.getMemory();
+		}
+		ClusView view = m_Schema.createNormalView();
+		
+		// if null, it was initialised before!
+		if(m_Data == null){
+			// System.err.println("Reading DATA");
+			m_Data = view.readData(reader, m_Schema);
+			
+		}else{
+			 
+			//System.out.println("I DONT READ AGAIN THE DATA");
+		
+			// view.re_readData(m_Schema); useless
+			
+		//	System.out.println("***\nTARGET: " + m_Schema.getTarget().toString()+"; "+m_Schema.getDisabled().toString()+";"+m_Schema.getClustering().toString()+"\n");
+
+			m_Data.setSchema(m_Schema);
+			
+			// m_Schema.addIndices(0);
+			for (int j = 0; j < m_Data.getNbRows(); j++) {
+			     m_Data.m_Data[j].setSchema(m_Schema); // restablish schema in DATATUPLE!
+			     
+			}
+			
+			for (int j = 0; j < m_Schema.getNbAttributes(); j++) {
+				m_Schema.getAttrType(j).setSchema(m_Schema);
+			}
+			
+		//	 m_Data = view.readData(reader, m_Schema);
+			
+		}
+		
+		/*for(int i=72; i<78; i++){
+			 m_Schema.getAttrType(i).
+		}*/
+		
+
+		reader.close();
+		if(m_Sett.getVerbose() > 0) System.out.println("Found " + m_Data.getNbRows() + " rows");
+
+		m_Schema.printInfo();
+		if (ResourceInfo.isLibLoaded()) {
+			ClusStat.m_LoadedMemory = ResourceInfo.getMemory();
+		}
+		if (getSettings().isRemoveMissingTarget()) {
+			m_Data = CriterionBasedSelection.removeMissingTarget(m_Data);
+			CriterionBasedSelection.clearMissingFlagTargetAttrs(m_Schema);
 		}
 
 		// Create induce
@@ -312,6 +493,13 @@ public class Clus implements CMDLineArgsProvider {
 					+ (ClusStat.m_LoadedMemory - ClusStat.m_InitialMemory)
 					+ " kB");
 		}
+		
+		
+		
+		System.out.println("tuple.toString(): ");
+		for(int i=0; i<10; i++)
+			System.out.println(m_Data.m_Data[i].toString());
+		
 	}
 	
 	
@@ -655,6 +843,9 @@ public final void initialize2(CMDLineArgs cargs,
 	 */
 	public final void induce(ClusRun cr, ClusInductionAlgorithmType clss)
 			throws ClusException, IOException {
+		
+
+		
 		if (Settings.VERBOSE > 0) {
 			System.out.println("Run: " + cr.getIndexString());
 			clss.printInfo();
@@ -1594,6 +1785,9 @@ public final void initialize2(CMDLineArgs cargs,
 		ClusOutput output = null;
 		ClusRun cr = partitionData();
 		// Compute statistic on training data
+		
+	//	System.out.println("RUNNING: "+((RowData) cr.getTrainingSet()).getSchema().getTarget().toString());
+		
 		getStatManager().computeTrainSetStat((RowData) cr.getTrainingSet());
 		// Used for exporting data to CN2 and Orange formats
 		/*
@@ -2019,7 +2213,7 @@ public final void initialize2(CMDLineArgs cargs,
 	public static void main(String[] args) {
 		try {
 			ClusOutput.printHeader();
-			Clus clus = new Clus();
+			Clus clus = new Clus(null);
 			Settings sett = clus.getSettings();
 			CMDLineArgs cargs = new CMDLineArgs(clus);
 			cargs.process(args);

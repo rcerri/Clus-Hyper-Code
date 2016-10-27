@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Util.ClusWrapper;
+import Util.ClusWrapperNonStatic;
 import Util.myMeasures;
 import au.com.bytecode.opencsv.CSVReader;
 import weka.core.EuclideanDistance;
@@ -31,7 +32,7 @@ public class MedoidEvolution extends Problem implements SimpleProblemForm {
 	private static final long serialVersionUID = 1L;
 
 	public void evaluate(EvolutionState state, Individual ind,
-			int subpopulation, int threadnum) {
+			int subpopulation, int threadnum, ClusWrapperNonStatic object) {
 
 		if (ind.evaluated) return;
 		if (!(ind instanceof MyBitVectorIndividual))

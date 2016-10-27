@@ -7,6 +7,7 @@
 
 package ec.gp;
 import ec.util.*;
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.simple.*;
 
@@ -68,7 +69,7 @@ public abstract class GPProblem extends Problem implements SimpleProblemForm
         return GPDefaults.base().push(P_GPPROBLEM);
         }
 
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
         Parameter p = base.push(P_STACK);
         Parameter def = defaultBase();

@@ -11,6 +11,8 @@ import ec.*;
 import ec.util.*;
 import java.util.*;
 
+import Util.ClusWrapperNonStatic;
+
 /* 
  * SteadyStateBreeder.java
  * 
@@ -69,9 +71,9 @@ public class SteadyStateBreeder extends SimpleBreeder
     
     public SteadyStateBreeder() { bp = null; deselectors = null; }
         
-    public void setup(final EvolutionState state, final Parameter base) 
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object) 
         {
-        super.setup(state,base);
+        super.setup(state,base,object);
                 
         if (!clonePipelineAndPopulation)
             state.output.fatal("clonePipelineAndPopulation must be true for SteadyStateBreeder -- we'll use only one Pipeline anyway.");

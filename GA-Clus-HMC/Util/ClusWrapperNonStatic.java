@@ -154,7 +154,7 @@ public class ClusWrapperNonStatic {
 
 	public void InitializeClus(String[] args, InputStream configFile) {
 		try {
-			clus = new Clus();
+			clus = new Clus(null);
 			Settings sett = clus.getSettings();
 			CMDLineArgs cargs = new CMDLineArgs(clus);
 			cargs.process(args);
@@ -209,6 +209,10 @@ public class ClusWrapperNonStatic {
 
 		// System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
 
+		//  System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
+
+		InitializeClus(args,ConfigFile);
+		/*
 		// reinitialization:
 		Settings sett = clus.getSettings();
 		CMDLineArgs cargs = new CMDLineArgs(clus);
@@ -236,18 +240,18 @@ public class ClusWrapperNonStatic {
 
 
 		// modify specific specific targets
-		clus.modifyOutputTargets(cargs, clss); 
+	// 	clus.modifyOutputTargets(cargs, clss); 
 
 
 		// Run the classifier:
 		//clus.singleRun(clss);
 		//System.exit(1);
-
+*/
 		outputFile= clus.singleRunNOFILES(clss); // to avoid writing any file.
 
 		//System.out.println("Output file: "+outputFile);
 
-	// 	System.setOut(realSystemOut);
+	 	//System.setOut(realSystemOut);
 	}
 
 	/**
@@ -624,6 +628,7 @@ public class ClusWrapperNonStatic {
 
 		FirstOutputIndex = Integer.parseInt(disable.split("-")[0]); // Compute the first index
 
+		/*
 		//createBaseConfigFile(disable,false); // create initial config.s file
 		InputStream configFile= null;
 		
@@ -647,7 +652,7 @@ public class ClusWrapperNonStatic {
 		InitializeClus(args, configFile); // load data into memory.
 	// 	System.setOut(realSystemOut);
 		
-	// 	initialisationRun = true;
+	// 	initialisationRun = true;*/
 	}
 	
 	

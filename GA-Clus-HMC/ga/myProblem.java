@@ -14,6 +14,7 @@ import ec.Individual;
 import ec.Problem;
 import ec.simple.SimpleFitness;
 import ec.simple.SimpleProblemForm;
+import ec.util.Parameter;
 import ec.vector.IntegerVectorIndividual;
 
 public class myProblem extends Problem implements SimpleProblemForm {
@@ -127,7 +128,7 @@ public class myProblem extends Problem implements SimpleProblemForm {
 
 	/**Method for evaluating individuals **/
 	@Override
-	public void evaluate(EvolutionState state, Individual ind, int subpopulation, int threadnum) {
+	public void evaluate(EvolutionState state, Individual ind, int subpopulation, int threadnum, ClusWrapperNonStatic objectClusWrapperNonStatic) {
 		if (ind.evaluated) return;
 		if (!(ind instanceof IntegerVectorIndividual))
 			state.output.fatal("Whoa!  It's not an IntegerVectorIndividual!!!",null);
@@ -156,12 +157,19 @@ public class myProblem extends Problem implements SimpleProblemForm {
 			if (Main.mlTask > 0) { // classification
 
 				if (Main.mlTask == 2) { // multi-threads)
+					/*
 					int currentFold = Dataset.getCurrentFold();
 					String trainSet = Dataset.getPath()+Dataset.getFileName() + "_fold"+(currentFold)+".train";
 					String valSet = Dataset.getPath()+Dataset.getFileName() + "_fold"+(currentFold)+".valid";
-					ClusWrapperNonStatic object = new ClusWrapperNonStatic();
-					object.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
-					measures = object.evaluateIndividualClassification(genome,true);
+		
+				
+					if(objectClusWrapperNonStatic.initialisationRun){
+						System.out.println("I've been intialised already");
+					}else{
+						objectClusWrapperNonStatic.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
+					}
+					*/
+					measures = objectClusWrapperNonStatic.evaluateIndividualClassification(genome,true);
 					
 					//System.out.println("AUROC = " + measures.getAUROC()[1]);
 				}
@@ -404,5 +412,12 @@ public class myProblem extends Problem implements SimpleProblemForm {
 		//Main.pEvolution.println(mae[0] +","+ mse[0] +","+ rmse[0] +","+ mae[1] +","+ mse[1] +","+ rmse[1]);
 
 	}
+
+
+
+
+
+
+
 
 }

@@ -21,11 +21,14 @@ import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.coevolve.GroupedProblemForm;
 import ec.simple.SimpleProblemForm;
 import ec.simple.SimpleEvolutionState;
 import ec.util.*;
+import ga.Dataset;
+import ga.Main;
 
 /**
  * Slave.java
@@ -161,7 +164,7 @@ public class Slave
     /** My unique slave number. At present this is just used to define a unique name. */
     public static int slaveNum = -1;
 
-    public static void main(String[] args)
+    public static void main(String[] args, ClusWrapperNonStatic objectClus)
         {
         EvolutionState state = null;
         ParameterDatabase parameters = null;
@@ -378,7 +381,7 @@ public class Slave
                     state.evalthreads = evalthreads;
                     state.breedthreads = breedthreads;
         
-                    state.setup(state, null);
+                    state.setup(state, null,objectClus);
                     state.population = state.initializer.setupPopulation(state, 0);
                 
                     // 5. Optionally do further loading
@@ -398,7 +401,7 @@ public class Slave
                                 // as we've set up TWO EvolutionStates in a row with no good reason.
                                 ParameterDatabase coverDatabase = new ParameterDatabase();  // protect the underlying one
                                 coverDatabase.addParent(state.parameters);
-                                newState = (EvolutionState) Evolve.initialize(coverDatabase, 0);
+                                newState = (EvolutionState) Evolve.initialize(coverDatabase, 0,objectClus);
                                 newState.startFresh();
                                 newState.output.message("Replacing random number generators, ignore above seed message");
                                 newState.random = state.random;  // continue with RNG
@@ -420,7 +423,7 @@ public class Slave
                                     throw new Output.OutputExitException("SHUTDOWN");
                                 }
                                 case V_EVALUATESIMPLE:
-                                    evaluateSimpleProblemForm(newState, returnIndividuals, dataIn, dataOut, args);
+                                    evaluateSimpleProblemForm(newState, returnIndividuals, dataIn, dataOut, args,objectClus);
                                     break;
                                 case V_EVALUATEGROUPED:
                                     evaluateGroupedProblemForm(newState, returnIndividuals, dataIn, dataOut);
@@ -475,7 +478,7 @@ public class Slave
         }
                             
     public static void evaluateSimpleProblemForm( final EvolutionState state, boolean returnIndividuals,
-        DataInputStream dataIn, DataOutputStream dataOut, String[] args )
+        DataInputStream dataIn, DataOutputStream dataOut, String[] args, ClusWrapperNonStatic objectClus )
         {
         ParameterDatabase params=null; 
         
@@ -550,7 +553,11 @@ public class Slave
                     indForThread[t] = i;
                     threads[t] = pool.start(new Runnable()
                         {
-                        public void run() { problems[s].evaluate( state, inds[j], subpops[j], 0 ); }
+                        public void run() { 
+
+                        	problems[s].evaluate( state, inds[j], subpops[j], 0,objectClus ); 
+                        	
+                        }
                         }, "Evaluation of individual " + i);
                     t++;
                     }

@@ -64,7 +64,9 @@ public abstract class ClusAttrType implements Serializable, Comparable {
 	public final static int THIS_TYPE = -1;
 
 	protected String m_Name;
-	protected int m_Index, m_ArrayIndex;
+	protected int m_Index;
+
+	public int m_ArrayIndex;
 	protected int m_NbMissing;
 	protected ClusSchema m_Schema;
 	protected int m_Status = STATUS_NORMAL;

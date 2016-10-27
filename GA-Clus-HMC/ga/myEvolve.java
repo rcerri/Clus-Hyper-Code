@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
 import Util.ClusWrapper;
+import Util.ClusWrapperNonStatic;
 import ec.EvolutionState;
 import ec.Evolve;
 import ec.util.Output;
@@ -33,7 +34,7 @@ public class myEvolve extends Evolve{
 		}
 	}
 
-	public static void main(ParameterDatabase parameters) {
+	public static void main(ParameterDatabase parameters, ClusWrapperNonStatic objectClus) {
 		EvolutionState state;
 		//ParameterDatabase parameters;
 
@@ -73,7 +74,7 @@ public class myEvolve extends Evolve{
 				//	   parameters = loadParameterDatabase(args);
 
 				// Initialize the EvolutionState, then set its job variables
-				state = initialize(parameters, job);                // pass in job# as the seed increment
+				state = initialize(parameters, job, objectClus);                // pass in job# as the seed increment
 				state.output.systemMessage("Job: " + job);
 				state.job = new Object[1];                                  // make the job argument storage
 				state.job[0] = Integer.valueOf(job);                    // stick the current job in our job storage
@@ -157,6 +158,9 @@ public class myEvolve extends Evolve{
 			String trainSet = Dataset.getPath()+Dataset.getFileName() + "_fold"+(i)+".train";
 			String valSet = Dataset.getPath()+Dataset.getFileName() + "_fold"+(i)+".valid";
 			
+			ClusWrapperNonStatic objectClus = new ClusWrapperNonStatic();
+
+			
 			if (Main.mlTask == 0)
 				ClusWrapper.initialization(trainSet,valSet, Main.targets,Main.randomForest,false);
 			else if (Main.mlTask == 1) {
@@ -164,7 +168,10 @@ public class myEvolve extends Evolve{
 			}
 			else if (Main.mlTask == 2) {
 				// nothing. It is done in myProblem.evaluate()
-			}
+			 	objectClus.initialization(trainSet,valSet, Main.targets,Main.randomForest,true); // for the simulated annealing, this one has to be done.
+				
+
+		}
 					
 			System.out.println("fold = "+i);
 			new File(Main.path+"Fold"+i+"/").mkdir();
@@ -215,7 +222,7 @@ public class myEvolve extends Evolve{
 					//parameters = loadParameterDatabase(args);
 
 					// Initialize the EvolutionState, then set its job variables
-					state = initialize(parameters, job);                // pass in job# as the seed increment
+					state = initialize(parameters, job, objectClus);                // pass in job# as the seed increment
 					state.output.systemMessage("Job: " + job);
 					state.job = new Object[1];                                  // make the job argument storage
 					state.job[0] = new Integer(job);                    // stick the current job in our job storage

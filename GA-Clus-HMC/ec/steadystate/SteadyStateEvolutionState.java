@@ -12,7 +12,9 @@ import ec.util.Checkpoint;
 import ec.util.Output;
 import ec.simple.*;
 //import ec.eval.MasterProblem;
-import java.util.*; 
+import java.util.*;
+
+import Util.ClusWrapperNonStatic; 
 
 /* 
  * SteadyStateEvolutionState.java
@@ -86,9 +88,9 @@ public class SteadyStateEvolutionState extends EvolutionState
     /** First time calling evolve */
     protected boolean firstTime; 
         
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
-        super.setup(state,base);
+        super.setup(state,base,object);
                 
         // double check that we have valid evaluators and breeders and exchangers
         if (!(breeder instanceof SteadyStateBreeder))
@@ -132,7 +134,7 @@ public class SteadyStateEvolutionState extends EvolutionState
     public void startFresh() 
         {
         output.message("Setting up");
-        setup(this,null);  // a garbage Parameter
+        setup(this,null,objectClus);  // a garbage Parameter
 
         // POPULATION INITIALIZATION
         output.message("Initializing Generation 0");
@@ -228,7 +230,7 @@ public class SteadyStateEvolutionState extends EvolutionState
                 } // tried to cut down the duplicates 
                         
             // evaluate the new individual
-            ((SteadyStateEvaluator)evaluator).evaluateIndividual(this, ind, whichSubpop);
+            ((SteadyStateEvaluator)evaluator).evaluateIndividual(this, ind, whichSubpop, objectClus);
             }
         
         Individual ind = ((SteadyStateEvaluator)evaluator).getNextEvaluatedIndividual();
