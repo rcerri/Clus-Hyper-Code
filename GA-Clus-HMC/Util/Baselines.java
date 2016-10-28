@@ -53,10 +53,11 @@ public class Baselines {
 			local[i]=i+1;			
 		}
 
+
      	ClusWrapper.initialization(train, test, args[2],forest,classification); 
      	
      	// try a single classifier in Clus.
-     /*	ClusWrapper.initialization(train, test,"74", "73-78",false,true); 	//
+     	//ClusWrapper.initialization(train, test,"74",false,true); 	//
      	InputStream configFile = ClusWrapper.createInputStreamBaseConfigFileForClassification("74",true);
 	
 		args= new String[1]; args[0] = "config.s"; 
@@ -66,7 +67,7 @@ public class Baselines {
 		
 		
      	
-     	ClusWrapper.initialization(train, test,"78","73-78",false,true); 	//
+     	// ClusWrapper.initialization(train, test,"78",false,true); 	//
 		// ClusWrapper.disable="73-77";
         configFile = ClusWrapper.createInputStreamBaseConfigFileForClassification("78",true);
 	
@@ -77,7 +78,7 @@ public class Baselines {
 		
      	System.exit(1);
 		
-     	*/
+     	
      	if(classification){
 			myMeasures measure = ClusWrapper.evaluateIndividualClassification(global,true);
 			

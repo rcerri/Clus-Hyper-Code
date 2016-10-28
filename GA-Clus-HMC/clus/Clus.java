@@ -412,14 +412,14 @@ public class Clus implements CMDLineArgsProvider {
 		
 		// if null, it was initialised before!
 		if(m_Data == null){
-			// System.err.println("Reading DATA");
+			System.err.println("Reading DATA");
 			m_Data = view.readData(reader, m_Schema);
 			
 		}else{
 			 
-			//System.out.println("I DONT READ AGAIN THE DATA");
+			System.err.println("I DONT READ AGAIN THE DATA");
 		
-			// view.re_readData(m_Schema); useless
+			//m_Data= view.re_readData(reader,m_Schema,m_Data); 
 			
 		//	System.out.println("***\nTARGET: " + m_Schema.getTarget().toString()+"; "+m_Schema.getDisabled().toString()+";"+m_Schema.getClustering().toString()+"\n");
 
@@ -428,6 +428,10 @@ public class Clus implements CMDLineArgsProvider {
 			// m_Schema.addIndices(0);
 			for (int j = 0; j < m_Data.getNbRows(); j++) {
 			     m_Data.m_Data[j].setSchema(m_Schema); // restablish schema in DATATUPLE!
+			     
+			     Para los targets outputs, actualizar aquí el arrayIndex!
+			     
+			     m_Data.m_Data[j].setDoubleVal(val, getArrayIndex());
 			     
 			}
 			
