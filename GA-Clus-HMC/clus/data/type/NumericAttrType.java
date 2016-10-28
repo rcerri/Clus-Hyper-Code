@@ -139,6 +139,8 @@ public class NumericAttrType extends ClusAttrType {
 		public boolean read(ClusReader data, DataTuple tuple) throws IOException {
 			if (!data.readNoSpace()) return false;
 			double val = data.getFloat();
+			// aqui esta el truco
+			
 			tuple.setDoubleVal(val, getArrayIndex());
 			if (val == MISSING) {
 				incNbMissing();

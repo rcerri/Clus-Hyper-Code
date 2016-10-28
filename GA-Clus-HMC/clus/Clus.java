@@ -126,10 +126,11 @@ public class Clus implements CMDLineArgsProvider {
 	 NOFILE = false;
 	}
 	 
+	/*
 	public Clus(RowData another){
 		// this.m_Sett = another.m_Sett;
 		this.m_Data = another;
-	}
+	}*/
 	/**
 	 * Addy by Isaac to modify the output targets, without loading the dataset every time.
 	 
@@ -412,12 +413,12 @@ public class Clus implements CMDLineArgsProvider {
 		
 		// if null, it was initialised before!
 		if(m_Data == null){
-			System.err.println("Reading DATA");
+			//System.err.println("Reading DATA");
 			m_Data = view.readData(reader, m_Schema);
 			
 		}else{
 			 
-			System.err.println("I DONT READ AGAIN THE DATA");
+			// System.err.println("I DONT READ AGAIN THE DATA");
 		
 			//m_Data= view.re_readData(reader,m_Schema,m_Data); 
 			
@@ -429,9 +430,9 @@ public class Clus implements CMDLineArgsProvider {
 			for (int j = 0; j < m_Data.getNbRows(); j++) {
 			     m_Data.m_Data[j].setSchema(m_Schema); // restablish schema in DATATUPLE!
 			     
-			     Para los targets outputs, actualizar aquí el arrayIndex!
+			//     Para los targets outputs, actualizar aquí el arrayIndex!
 			     
-			     m_Data.m_Data[j].setDoubleVal(val, getArrayIndex());
+			  //   m_Data.m_Data[j].setDoubleVal(val, getArrayIndex());
 			     
 			}
 			
@@ -499,10 +500,10 @@ public class Clus implements CMDLineArgsProvider {
 		}
 		
 		
-		
+		/*
 		System.out.println("tuple.toString(): ");
 		for(int i=0; i<10; i++)
-			System.out.println(m_Data.m_Data[i].toString());
+			System.out.println(m_Data.m_Data[i].toString()); */
 		
 	}
 	
@@ -2217,7 +2218,7 @@ public final void initialize2(CMDLineArgs cargs,
 	public static void main(String[] args) {
 		try {
 			ClusOutput.printHeader();
-			Clus clus = new Clus(null);
+			Clus clus = new Clus();
 			Settings sett = clus.getSettings();
 			CMDLineArgs cargs = new CMDLineArgs(clus);
 			cargs.process(args);

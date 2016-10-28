@@ -158,7 +158,7 @@ public class ClusWrapper {
 		}
 		
 		
-		 System.err.println(cad);
+		// System.err.println(cad);
 
 		return new ByteArrayInputStream(cad.getBytes(StandardCharsets.UTF_8));
 
@@ -177,7 +177,7 @@ public class ClusWrapper {
 	public static void InitializeClus(String[] args, InputStream configFile) {
 		try {
 			if(clus==null)
-				clus = new Clus(null);
+				clus = new Clus();
 			/*else{
 				clus = new Clus(clus.m_Data);
 				clus.resetClus();
@@ -233,7 +233,7 @@ public class ClusWrapper {
 
 	public static void runClassifier(String[] args, InputStream ConfigFile) throws IOException, ClusException{
 
-		// System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
+		 System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
 
 		InitializeClus(args,ConfigFile);
 		/*
@@ -287,7 +287,7 @@ public class ClusWrapper {
 		outputFile= clus.singleRunNOFILES(clss); // to avoid writing any file.
 		//outputFile= temp.singleRunNOFILES(clss); // to avoid writing any file.
 
-		// System.out.println("Output file: "+outputFile);
+		 // System.out.println("Output file: "+outputFile);
 
 		System.setOut(realSystemOut);
 	}
