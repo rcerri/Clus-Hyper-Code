@@ -24,6 +24,7 @@ package clus.algo.tdidt;
 
 import clus.main.*;
 import clus.util.*;
+import jeans.util.IntervalCollection;
 import clus.algo.*;
 import clus.algo.split.*;
 import clus.data.rows.*;
@@ -77,7 +78,7 @@ public class DepthFirstInduce extends ClusInductionAlgorithm {
 		return m_FindBestTest.initSelectorAndStopCrit(node.getClusteringStat(), data);
 	}
 
-	public ClusAttrType[] getDescriptiveAttributes() {
+	/*public ClusAttrType[] getDescriptiveAttributes() {
 		ClusSchema schema = getSchema();
 		Settings sett = getSettings();
 		if (!sett.isEnsembleMode()) {
@@ -102,8 +103,73 @@ public class DepthFirstInduce extends ClusInductionAlgorithm {
 				return schema.getDescriptiveAttributes();
 			}
 		}
+	}*/
+	
+	// version to be used in combination with setting DisableMultipleRunsWithoutRereadingData
+	// in all other cases, use above method
+	public ClusAttrType[] getDescriptiveAttributes() {
+		ClusSchema schema = getSchema();
+		Settings sett = getSettings();
+		IntervalCollection coll = new IntervalCollection(getSettings().getDisabledMultipleRuns());
+		ClusAttrType[] alldescriptive = schema.getDescriptiveAttributes();
+//		for (int i=0;i<alldescriptive.length;i++) {
+//			System.err.println(alldescriptive[i].getName() + " " + alldescriptive[i].getIndex());
+//		}
+		boolean[] disabled = new boolean[schema.getNbAttributes()+1];
+		coll.toBits(disabled);
+//		for (int i=0;i<disabled.length;i++) {
+//			System.err.print(disabled[i] + " ");
+//		}
+//		System.err.println();
+		
+		ClusAttrType[] filteredDescriptive = filterDescriptiveAttributes(alldescriptive,disabled);
+//		for (int i=0;i<filteredDescriptive.length;i++) {
+//			System.err.print(filteredDescriptive[i].getIndex() + " ");
+//		}
+//		System.err.println();
+		
+		if (!sett.isEnsembleMode()) {
+			return filteredDescriptive;
+		} else {
+			switch (sett.getEnsembleMethod()) {
+			case Settings.ENSEMBLE_BAGGING:
+				return schema.getDescriptiveAttributes();
+			case Settings.ENSEMBLE_RFOREST:
+				ClusEnsembleInduce.setRandomSubspaces(filteredDescriptive, schema.getSettings().getNbRandomAttrSelected());
+				return ClusEnsembleInduce.getRandomSubspaces();
+			case Settings.ENSEMBLE_RSUBSPACES:
+				return ClusEnsembleInduce.getRandomSubspaces();
+			case Settings.ENSEMBLE_BAGSUBSPACES:
+				return ClusEnsembleInduce.getRandomSubspaces();
+			case Settings.ENSEMBLE_NOBAGRFOREST:
+				ClusEnsembleInduce.setRandomSubspaces(filteredDescriptive, schema.getSettings().getNbRandomAttrSelected());
+				return ClusEnsembleInduce.getRandomSubspaces();
+			default:
+				return filteredDescriptive;
+			}
+		}
 	}
-
+	
+	public ClusAttrType[] filterDescriptiveAttributes(ClusAttrType[] original, boolean[] disable) {
+		// disable is an array of booleans of length (original.length+1)
+		// the first value of disable should be discarded
+		
+		// calculate how many should be kept !! this assumes that the target is also disabled !!
+		int count = 0;
+		for (int i=0; i<disable.length; i++) {
+			if (!disable[i]) count++;
+		}
+		
+		ClusAttrType[] filtered = new ClusAttrType[count-1];
+		int nextindex = 0;
+		for (int i=0; i<original.length; i++) {
+			if (! disable[original[i].getIndex()+1]) filtered[nextindex]=original[i];
+			nextindex++;
+		}
+		
+		return filtered;
+	}
+	
 	
 	public void filterAlternativeSplits(ClusNode node, RowData data, RowData[] subsets) {
 		boolean removed = false;

@@ -22,6 +22,7 @@
 
 package clus.ext.hierarchical;
 
+import jeans.util.IntervalCollection;
 import jeans.util.array.*;
 
 import java.io.*;

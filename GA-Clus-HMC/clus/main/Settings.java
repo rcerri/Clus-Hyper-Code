@@ -266,6 +266,7 @@ public class Settings implements Serializable {
 	protected INIFileString m_Descriptive;
 	protected INIFileString m_Key;
 	protected INIFileString m_Disabled;
+	protected INIFileString m_DisabledMultipleRuns;
 	protected INIFileNominalOrDoubleOrVector m_Weights;
 	protected INIFileNominalOrDoubleOrVector m_ClusteringWeights;
 	protected INIFileBool m_ReduceMemoryNominal;
@@ -312,6 +313,10 @@ public class Settings implements Serializable {
 
 	public void setDisabled(String str) {
 		m_Disabled.setValue(str);
+	}
+	
+	public String getDisabledMultipleRuns() {
+		return m_DisabledMultipleRuns.getValue();
 	}
 
 	public INIFileNominalOrDoubleOrVector getNormalizationWeights() {
@@ -2190,6 +2195,7 @@ public class Settings implements Serializable {
 		attrs.addNode(m_Descriptive = new INIFileString("Descriptive", DEFAULT));
 		attrs.addNode(m_Key = new INIFileString("Key", NONE));
 		attrs.addNode(m_Disabled = new INIFileString("Disable", NONE));
+		attrs.addNode(m_DisabledMultipleRuns = new INIFileString("DisableMultipleRunsWithoutRereadingData", NONE));
 		attrs.addNode(m_Weights = new INIFileNominalOrDoubleOrVector("Weights",	NORMALIZATIONS));
 		m_Weights.setNominal(NORMALIZATION_DEFAULT);
 		attrs.addNode(m_ClusteringWeights = new INIFileNominalOrDoubleOrVector("ClusteringWeights", EMPTY));

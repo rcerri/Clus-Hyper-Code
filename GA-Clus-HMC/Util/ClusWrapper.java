@@ -115,7 +115,8 @@ public class ClusWrapper {
 		cad += "[Data]\n";
 		cad += "File = "+train+"\n";
 		cad += "TestSet = "+test+"\n\n";
-		cad += "[Attributes]\nTarget = "+target+"\nDisable = "+disable+"\n"; // Disable = 17-30
+		//cad += "[Attributes]\nTarget = "+target+"\nDisable = "+disable+"\n"; // Disable = 17-30
+		cad += "[Attributes]\nTarget = "+target+"\nDisableMultipleRunsWithoutRereadingData = "+disable+"\n"; // Disable = 17-30
 
 		if(trainErrors)
 			cad += "[Output]\nTrainErrors = Yes\nWriteModelFile = No\nWriteOutFile = Yes\n\n"; //WritePredictions = {Test}
@@ -142,7 +143,8 @@ public class ClusWrapper {
 		cad += "[Data]\n";
 		cad += "File = "+train+"\n";
 		cad += "TestSet = "+test+"\n\n";
-		cad += "[Attributes]\nTarget = "+target+"\nDisable = "+disable+"\n"; // Disable = 17-30
+		//cad += "[Attributes]\nTarget = "+target+"\nDisable = "+disable+"\n"; // Disable = 17-30
+		cad += "[Attributes]\nTarget = "+target+"\nDisableMultipleRunsWithoutRereadingData = "+disable+"\n"; // Disable = 17-30
 		cad += "Weights = 1\n";
 		
 		if(trainErrors)
