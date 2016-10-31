@@ -280,7 +280,7 @@ public class BruteForceAdhoc {
 	            
 	        }
 	      //  System.out.println("\nMy hash table has : " + ClusWrapper.PreviousSolutions.size());
-	        System.out.println("number of individuals evaluated: " + cont);
+	        System.out.println("\nnumber of individuals evaluated: " + cont);
 	        System.out.println("RunTime: " + (double)(timeEnd - timeStart) / 1.0E9);
 	    }
 }
