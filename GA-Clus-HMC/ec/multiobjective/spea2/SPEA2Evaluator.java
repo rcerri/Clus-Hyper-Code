@@ -6,6 +6,7 @@
 
 package ec.multiobjective.spea2;
 
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.util.*;
 import ec.multiobjective.*;
@@ -26,9 +27,9 @@ import ec.simple.*;
 
 public class SPEA2Evaluator extends SimpleEvaluator
     {
-    public void evaluatePopulation(final EvolutionState state)
+    public void evaluatePopulation(final EvolutionState state, final ClusWrapperNonStatic object)
         {
-        super.evaluatePopulation(state);
+        super.evaluatePopulation(state, object);
                 
         // build SPEA2 fitness values
         for(int x = 0;x<state.population.subpops.length;x++)

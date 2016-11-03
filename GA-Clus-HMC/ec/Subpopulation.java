@@ -8,6 +8,9 @@
 
 package ec;
 import java.util.*;
+
+import Util.ClusWrapperNonStatic;
+
 import java.io.*;
 import ec.util.*;
 
@@ -161,7 +164,7 @@ public class Subpopulation implements Group
             individuals[i] = null;
         }
 
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
         Parameter def = defaultBase();
 
@@ -177,7 +180,7 @@ public class Subpopulation implements Group
         species = (Species) state.parameters.getInstanceForParameter(
             base.push(P_SPECIES),def.push(P_SPECIES),
             Species.class);
-        species.setup(state,base.push(P_SPECIES));
+        species.setup(state,base.push(P_SPECIES), object);
 
         // how big should our subpopulation be?
         // Note that EvolutionState.setup() has similar code, so if you change this, change it there too.

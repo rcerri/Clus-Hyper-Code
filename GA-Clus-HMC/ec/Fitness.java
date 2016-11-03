@@ -10,6 +10,8 @@ import java.io.*;
 import ec.util.*;
 import java.util.*;
 
+import Util.ClusWrapperNonStatic;
+
 /*
  * Fitness.java
  *
@@ -395,7 +397,7 @@ public abstract class Fitness implements Prototype, Comparable
         }
 
 
-    public void setup(EvolutionState state, Parameter base)
+    public void setup(EvolutionState state, Parameter base ,ClusWrapperNonStatic object)
         {
         // by default does nothing
         }

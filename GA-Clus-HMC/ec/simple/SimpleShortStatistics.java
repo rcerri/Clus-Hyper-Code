@@ -8,6 +8,8 @@
 package ec.simple;
 import ec.*;
 import java.io.*;
+
+import Util.ClusWrapperNonStatic;
 import ec.util.*;
 import ec.eval.*;
 
@@ -112,9 +114,9 @@ public class SimpleShortStatistics extends Statistics
     // timings
     public long lastTime;
         
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
-        super.setup(state,base);
+        super.setup(state,base, object);
         File statisticsFile = state.parameters.getFile(
             base.push(P_STATISTICS_FILE),null);
 

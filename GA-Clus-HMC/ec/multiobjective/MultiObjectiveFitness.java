@@ -13,6 +13,8 @@ import ec.util.Code;
 import ec.Fitness;
 import ec.EvolutionState;
 import java.util.*;
+
+import Util.ClusWrapperNonStatic;
 import ec.*;
 
 /* 
@@ -234,9 +236,9 @@ public class MultiObjectiveFitness extends Fitness
      * instantiating any fitnesses that will actually be used in evolution.
      */
 
-    public void setup(EvolutionState state, Parameter base)
+    public void setup(EvolutionState state, Parameter base,ClusWrapperNonStatic object)
         {
-        super.setup(state, base); // unnecessary really
+        super.setup(state, base, object); // unnecessary really
 
         Parameter def = defaultBase();
         int numFitnesses;

@@ -9,6 +9,8 @@ package ec.simple;
 import ec.*;
 import ec.steadystate.*;
 import java.io.IOException;
+
+import Util.ClusWrapperNonStatic;
 import ec.util.*;
 import java.io.File;
 
@@ -81,9 +83,9 @@ public class SimpleStatistics extends Statistics implements SteadyStateStatistic
     public boolean doDescription;
     public boolean doPerGenerationDescription;
 
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
-        super.setup(state,base);
+        super.setup(state,base, object);
         
         compress = state.parameters.getBoolean(base.push(P_COMPRESS),null,false);
                 

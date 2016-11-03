@@ -1,5 +1,6 @@
 package ga;
 
+import Util.ClusWrapperNonStatic;
 import ec.EvolutionState;
 import ec.Population;
 import ec.simple.SimpleInitializer;
@@ -63,11 +64,11 @@ public class mySimpleInitializer extends SimpleInitializer
 
 
 
-	public Population setupPopulation(final EvolutionState state, int thread)
+	public Population setupPopulation(final EvolutionState state, int thread, ClusWrapperNonStatic object)
 	{
 		Parameter base = new Parameter(P_POP);
 		Population p = (Population) state.parameters.getInstanceForParameterEq(base,null,Population.class);  // Population.class is fine
-		p.setup(state,base);
+		p.setup(state,base, object);
 		return p;
 	}
 }

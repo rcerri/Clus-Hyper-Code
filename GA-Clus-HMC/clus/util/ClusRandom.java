@@ -42,6 +42,8 @@ public class ClusRandom {
 	public final static int RANDOM_INT_RANFOR_TREE_DEPTH = 5;
 	/** Used for sampling in RowData */
 	public final static int RANDOM_SAMPLE = 6;
+	
+	public static boolean PreviouslyInitialised = false;
 
 	public static Random[] m_Random;
 
@@ -58,18 +60,21 @@ public class ClusRandom {
 	}
 
 	public static void initialize(Settings sett) {
-		m_Random = new Random[NB_RANDOM];
-		if (sett.hasRandomSeed()) {
-			m_IsPreset = true;
-			m_Preset = sett.getRandomSeed();
-			for (int i = 0; i < NB_RANDOM; i++) {
-				m_Random[i] = new Random(m_Preset);
-			}
-		} else {
-			for (int i = 0; i < NB_RANDOM; i++) {
-				m_Random[i] = new Random();
+		if(!PreviouslyInitialised){
+			m_Random = new Random[NB_RANDOM];
+			if (sett.hasRandomSeed()) {
+				m_IsPreset = true;
+				m_Preset = sett.getRandomSeed();
+				for (int i = 0; i < NB_RANDOM; i++) {
+					m_Random[i] = new Random(m_Preset);
+				}
+			} else {
+				for (int i = 0; i < NB_RANDOM; i++) {
+					m_Random[i] = new Random();
+				}
 			}
 		}
+		PreviouslyInitialised = true; // to avoid multiple reinitialisaion of the different threads.. 
 	}
 
 	public static void initialize(int initial) {

@@ -9,6 +9,8 @@ package ec.vector;
 
 import ec.util.*;
 import java.io.*;
+
+import Util.ClusWrapperNonStatic;
 import ec.*;
 
 /* 
@@ -82,7 +84,7 @@ public class BitVectorSpecies extends VectorSpecies
         }
 
 
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
         Parameter def = defaultBase();
         
@@ -120,7 +122,7 @@ public class BitVectorSpecies extends VectorSpecies
         // to get set up first, and also prior to the prototypical individual
         // getting setup at the end of super.setup(...).
 
-        super.setup(state, base);
+        super.setup(state, base, object);
         }
 
 

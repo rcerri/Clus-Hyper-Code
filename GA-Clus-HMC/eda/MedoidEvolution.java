@@ -52,7 +52,7 @@ public class MedoidEvolution extends Problem implements SimpleProblemForm {
 			System.out.println("]");
 			*/
 			
-			ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff", Dataset.getPath()+Dataset.getFileName() + "-train.arff", Main.targets,false);
+			ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff", Dataset.getPath()+Dataset.getFileName() + "-train.arff", Main.targets, Main.randomForest,false);
 
 			myMeasures measures = new myMeasures();
 			measures = ClusWrapper.evaluateIndividual(genome,true);
@@ -242,7 +242,7 @@ public class MedoidEvolution extends Problem implements SimpleProblemForm {
 		int[] genome = ((MyBitVectorIndividual)ind).genome;
 		// ajustar com parametros "globais"
 		//ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff",Dataset.getPath()+Dataset.getFileName() + "-train.arff", Main.targets,false);
-		ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff", Dataset.getPath()+Dataset.getFileName() + "-test.arff", Main.targets,false);
+		ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff", Dataset.getPath()+Dataset.getFileName() + "-test.arff", Main.targets,Main.randomForest,false);
 		myMeasures measures = ClusWrapper.evaluateIndividual(genome,true);
 		double mae[] = new double[3];
 		double mse[] = new double[3];

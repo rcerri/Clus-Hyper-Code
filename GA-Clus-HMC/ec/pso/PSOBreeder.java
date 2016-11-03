@@ -1,5 +1,6 @@
 package ec.pso;
 
+import Util.ClusWrapperNonStatic;
 import ec.* ;
 import ec.util.* ;
 import ec.vector.* ;
@@ -177,5 +178,17 @@ public class PSOBreeder extends Breeder
         // we return the same population
         return state.population ;
         }
+
+	@Override
+	public void setup(EvolutionState state, Parameter base, ClusWrapperNonStatic object) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Population breedPopulation(EvolutionState state, ClusWrapperNonStatic object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     }
 

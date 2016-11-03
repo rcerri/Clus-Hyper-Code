@@ -162,13 +162,14 @@ public class myProblem extends Problem implements SimpleProblemForm {
 					String trainSet = Dataset.getPath()+Dataset.getFileName() + "_fold"+(currentFold)+".train";
 					String valSet = Dataset.getPath()+Dataset.getFileName() + "_fold"+(currentFold)+".valid";
 		
-				
+			
 					if(objectClusWrapperNonStatic.initialisationRun){
 						System.out.println("I've been intialised already");
-					}else{
-						objectClusWrapperNonStatic.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
 					}
-					*/
+					/*else{
+						objectClusWrapperNonStatic.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
+					}*/
+					
 					measures = objectClusWrapperNonStatic.evaluateIndividualClassification(genome,true);
 					
 					//System.out.println("AUROC = " + measures.getAUROC()[1]);

@@ -14,6 +14,7 @@ package ec.vector.breed;
  */
  
 import ec.vector.*;
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.util.*;
 
@@ -380,6 +381,11 @@ public class ListCrossoverPipeline extends BreedingPipeline
         {
         return true;
         }
+	@Override
+	public void setup(EvolutionState state, Parameter base, ClusWrapperNonStatic object) {
+		// TODO Auto-generated method stub
+		
+	}
 
     }
     

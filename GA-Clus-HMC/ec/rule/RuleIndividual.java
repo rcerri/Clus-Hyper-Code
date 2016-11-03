@@ -10,6 +10,8 @@ import ec.*;
 import ec.util.*;
 import java.io.*;
 
+import Util.ClusWrapperNonStatic;
+
 /* 
  * RuleIndividual.java
  * 
@@ -153,7 +155,7 @@ public class RuleIndividual extends Individual
         return hash;
         }
 
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
         super.setup(state,base);  // actually unnecessary (Individual.setup() is empty)
 
@@ -172,7 +174,7 @@ public class RuleIndividual extends Individual
             rulesets[x] = (RuleSet)(state.parameters.getInstanceForParameterEq(
                     base.push(P_RULESET).push(""+x),defaultBase().push(P_RULESET),
                     RuleSet.class));
-            rulesets[x].setup(state,base.push(P_RULESET).push(""+x));
+            rulesets[x].setup(state,base.push(P_RULESET).push(""+x), object);
             }
         }
 

@@ -11,6 +11,8 @@ import ec.EvolutionState;
 import ec.util.*;
 import java.io.*;
 
+import Util.ClusWrapperNonStatic;
+
 /*
  * SimpleFitness.java
  *
@@ -75,9 +77,9 @@ public class SimpleFitness extends Fitness
         return fitness;
         }
 
-    public void setup(final EvolutionState state, Parameter base) 
+    public void setup(final EvolutionState state, Parameter base,ClusWrapperNonStatic object) 
         {
-        super.setup(state,base);  // unnecessary but what the heck
+        super.setup(state,base, object);  // unnecessary but what the heck
         }
 
     public boolean isIdealFitness()

@@ -40,7 +40,7 @@ public class BruteForce {
 		// Run this BEFORE the main loop of the GA,
 		// indicate: name of training and test datasets + range of output attributes (for Disable option)
 		
-		ClusWrapper.initialization(train, test, args[2],false); 	
+		ClusWrapper.initialization(train, test, args[2],false,false); 	
 		
 
 		// brute force

@@ -8,6 +8,8 @@
 package ec;
 import ec.util.Parameter;
 import java.io.*;
+
+import Util.ClusWrapperNonStatic;
 import ec.util.*;
 
 /*
@@ -161,6 +163,15 @@ public abstract class Individual implements Prototype, Comparable
         // loads me but before it calls setup on me.
         }
 
+    
+    public void setup(final EvolutionState state, final Parameter base, ClusWrapperNonStatic object)
+    {
+    // does nothing by default.
+    // So where is the species set?  The Species does so after it
+    // loads me but before it calls setup on me.
+    }
+
+    
     /** Should print the individual out in a pleasing way for humans,
         with a verbosity of Output.V_NO_GENERAL.
     */

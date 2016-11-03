@@ -9,6 +9,7 @@ package ec.spatial;
 import ec.Initializer;
 import ec.Individual;
 import ec.BreedingPipeline;
+import Util.ClusWrapperNonStatic;
 import ec.Breeder;
 import ec.simple.*;
 import ec.EvolutionState;
@@ -40,9 +41,9 @@ import ec.util.*;
 
 public class SpatialBreeder extends SimpleBreeder
     {
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
-        super.setup(state, base);
+        super.setup(state, base, object);
                 
         // check for elitism and warn about it
         for(int i = 0 ; i < elite.length; i++)   // we use elite.length here instead of pop.subpops.length because the population hasn't been made yet.

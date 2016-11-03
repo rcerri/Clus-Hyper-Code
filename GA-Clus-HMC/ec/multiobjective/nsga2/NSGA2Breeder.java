@@ -6,6 +6,7 @@
 
 package ec.multiobjective.nsga2;
 
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.util.*;
 import ec.simple.*;
@@ -30,9 +31,9 @@ import ec.simple.*;
 
 public class NSGA2Breeder extends SimpleBreeder
     {
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
-        super.setup(state, base);
+        super.setup(state, base, object);
         // make sure SimpleBreeder's elites facility isn't being used
         for (int i = 0; i < elite.length; i++)  // we use elite.length here instead of pop.subpops.length because the population hasn't been made yet.
             if (usingElitism(i))
@@ -58,10 +59,10 @@ public class NSGA2Breeder extends SimpleBreeder
      * <code>NSGA2Evaluator.evaluatePopulation()</code> will be passed a
      * population of 2x<code>originalPopSize</code> individuals.
      */
-    public Population breedPopulation(EvolutionState state)
+    public Population breedPopulation(EvolutionState state,ClusWrapperNonStatic object)
         {
         Population oldPop = (Population) state.population;
-        Population newPop = super.breedPopulation(state);
+        Population newPop = super.breedPopulation(state, object);
         Individual[] combinedInds;
         Subpopulation[] subpops = oldPop.subpops;
         Subpopulation oldSubpop;

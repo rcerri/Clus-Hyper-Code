@@ -3,7 +3,7 @@
 # See the file "LICENSE" for more information
 
 parent.0	= ../ec/simple/simple.params
-pop.subpop.0.size = 100
+pop.subpop.0.size = 12
 generations = 200
 
 init = ga.mySimpleInitializer

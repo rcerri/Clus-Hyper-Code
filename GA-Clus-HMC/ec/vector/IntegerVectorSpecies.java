@@ -6,6 +6,7 @@
 
 
 package ec.vector;
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.util.*;
 
@@ -220,7 +221,7 @@ public class IntegerVectorSpecies extends VectorSpecies
         else return false;  // dunno what the individual is...
         }
     
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
         Parameter def = defaultBase();
 
@@ -277,7 +278,7 @@ public class IntegerVectorSpecies extends VectorSpecies
             }
 
 
-        super.setup(state, base);
+        super.setup(state, base, object);
 
 
         // VERIFY

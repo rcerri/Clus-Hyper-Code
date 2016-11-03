@@ -9,6 +9,8 @@ package ec;
 import ec.util.*;
 import java.io.*;
 
+import Util.ClusWrapperNonStatic;
+
 /* 
  * Species.java
  * 
@@ -193,7 +195,7 @@ public abstract class Species implements Prototype
         @see Prototype#setup(EvolutionState,Parameter)
     */
  
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
         Parameter def = defaultBase();
 
@@ -218,8 +220,11 @@ public abstract class Species implements Prototype
         f_prototype = (Fitness) state.parameters.getInstanceForParameter(
             base.push(P_FITNESS),def.push(P_FITNESS),
             Fitness.class);
-        f_prototype.setup(state,base.push(P_FITNESS));
+        f_prototype.setup(state,base.push(P_FITNESS), object);
         }
-    }
+ 
+
+}
+
 
 

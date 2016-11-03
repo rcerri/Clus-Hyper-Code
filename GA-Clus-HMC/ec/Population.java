@@ -9,6 +9,8 @@ package ec;
 import ec.util.*;
 import java.io.*;
 
+import Util.ClusWrapperNonStatic;
+
 /* 
  * Population.java
  * 
@@ -105,7 +107,7 @@ public class Population implements Group
             subpops[i].clear();
         }
 
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base,final ClusWrapperNonStatic object)
         {
         // how big should subpops be?  Don't have a default base
 
@@ -139,7 +141,7 @@ public class Population implements Group
                 // else an error will occur on the next line anyway.
                 }
             subpops[x] = (Subpopulation)(state.parameters.getInstanceForParameterEq(p,null,Subpopulation.class));  // Subpopulation.class is fine
-            subpops[x].setup(state,p);
+            subpops[x].setup(state,p, object);
             
             // test for loadinds
             if (loadInds && subpops[x].loadInds)  // uh oh

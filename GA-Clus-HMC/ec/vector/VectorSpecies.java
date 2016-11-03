@@ -9,6 +9,8 @@ package ec.vector;
 
 import ec.util.*;
 import java.io.*;
+
+import Util.ClusWrapperNonStatic;
 import ec.*;
 
 /* 
@@ -332,7 +334,7 @@ public class VectorSpecies extends Species
         }
 
 
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
         Parameter def = defaultBase();        
 
@@ -493,7 +495,7 @@ public class VectorSpecies extends Species
             
             
         // NOW call super.setup(...), which will in turn set up the prototypical individual
-        super.setup(state,base);
+        super.setup(state,base, object);
         }
 
 

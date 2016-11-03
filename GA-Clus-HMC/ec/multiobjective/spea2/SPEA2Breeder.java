@@ -12,6 +12,8 @@ import ec.multiobjective.*;
 import ec.simple.*;
 import java.util.*;
 
+import Util.ClusWrapperNonStatic;
+
 /* 
  * SPEA2Breeder.java
  * 
@@ -27,9 +29,9 @@ import java.util.*;
 
 public class SPEA2Breeder extends SimpleBreeder
     {
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
-        super.setup(state, base);
+        super.setup(state, base, object);
 
         for (int i = 0; i < state.population.subpops.length; i++)
             if (reduceBy[i] != 0)

@@ -6,6 +6,7 @@
 
 package ec.spatial;
 
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.util.*;
 
@@ -53,9 +54,9 @@ public class Spatial1DSubpopulation extends Subpopulation implements Space
     /**
        Read additional parameters for the spatially-embedded subpopulation.
     */
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
-        super.setup(state,base);
+        super.setup(state,base, object);
 
         // by default, the space is toroidal
         toroidal = state.parameters.getBoolean(base.push(P_TOROIDAL),null,true);

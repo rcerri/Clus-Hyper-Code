@@ -230,6 +230,12 @@ public class SimpleEvaluator extends Evaluator
         else
             {
             ThreadPool.Worker[] threads = new ThreadPool.Worker[state.evalthreads];
+           // System.err.println("NUMBER OF THREADS:"+ threads.length);
+            
+            System.setOut(new PrintStream(new NullOutputStream()));
+
+            // ISAAC: Warning: when runnning RF, there is a STATIC class which is shared between all threads - ClusRandom.
+            
             for(int i = 0; i < threads.length; i++)
                 {
                 SimpleEvaluatorThread run = new SimpleEvaluatorThread();
@@ -241,7 +247,7 @@ public class SimpleEvaluator extends Evaluator
         		String valSet = Dataset.getPath()+Dataset.getFileName() + "_fold"+(currentFold)+".valid";
         		
         		try {
-        			System.out.println("Initializing for thread");
+        		// 	System.out.println("Initializing for thread");
         			// System.exit(1);
         			if (Main.mlTask > 0) 
         				perThread.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
@@ -262,6 +268,8 @@ public class SimpleEvaluator extends Evaluator
                         
             // join
             pool.joinAll();
+            
+          //  System.setOut(realSystemOut);
             }
 
         if (numTests > 1)
@@ -308,6 +316,11 @@ public class SimpleEvaluator extends Evaluator
             int fp = from[pop];
             int upperbound = fp+numinds[pop];
             Individual[] inds = subpops[pop].individuals;
+            
+            if(objectClus==null){
+            	System.err.println("Error, object Clus has not been properly initialised.");
+            	System.exit(1);
+            }
             for (int x=fp;x<upperbound;x++)
                 p.evaluate(state,inds[x], pop, threadnum,objectClus);
             }
@@ -361,7 +374,6 @@ public class SimpleEvaluator extends Evaluator
             
             while (true)
                 {
-                System.setOut(new PrintStream(new NullOutputStream()));
 
                 // We need to grab the information about the next chunk we're responsible for.  This stays longer
                 // in the lock than I'd like :-(
@@ -402,7 +414,7 @@ public class SimpleEvaluator extends Evaluator
                 numinds[subpop] = count;
                 from[subpop] = start;
                 evalPopChunk(state, numinds, from, threadnum, prob, perThread);
-                System.setOut(realSystemOut);
+                //System.setOut(realSystemOut);
 
 
                 }

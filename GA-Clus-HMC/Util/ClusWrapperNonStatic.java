@@ -40,11 +40,6 @@ public class ClusWrapperNonStatic {
 
 	public  String currentdir = System.getProperty("user.dir")+"/";
 
-
-
-
-
-
 	private String train;
 
 	private  String test;
@@ -54,6 +49,8 @@ public class ClusWrapperNonStatic {
 	private  int FirstOutputIndex=0;
 
 	private  boolean forest=false;
+	
+	private int IdClusWrapper; //for debuggin purposes.
 	
 	// the only three variables that need to be shared between threats.
 
@@ -171,12 +168,15 @@ public class ClusWrapperNonStatic {
 				clus.initSettingsNOFILE(cargs, configFile);
 
 				if (cargs.hasOption("forest")) {
+					// System.err.println("runnning forest for thread "+this.IdClusWrapper);
 					sett.setEnsembleMode(true);
 					clss = new ClusEnsembleClassifier(clus);
 					if (sett.getFTestArray().isVector())
 						clss = new CDTTuneFTest(clss, sett.getFTestArray()
 								.getDoubleVector());
 				} else {
+				//	System.err.println("runnning TREE for thread "+this.IdClusWrapper);
+
 					clss = new ClusDecisionTree(clus);
 				//	System.exit(1);
 					if (sett.getFTestArray().isVector())
@@ -211,48 +211,9 @@ public class ClusWrapperNonStatic {
 	public void runClassifier(String[] args, InputStream ConfigFile) throws IOException, ClusException{
 
 		// System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
-
-		//  System.setOut(new PrintStream(new NullOutputStream()));  // To ignore outputs from Clus
-
 		InitializeClus(args,ConfigFile);
-		/*
-		// reinitialization:
-		Settings sett = clus.getSettings();
-		CMDLineArgs cargs = new CMDLineArgs(clus);
-		cargs.process(args);
 
-		sett.setDate(new Date());
-		sett.setAppName(cargs.getMainArg(0));
-
-		//clus.initSettings(cargs);
-		clus.initSettingsNOFILE(cargs, ConfigFile);
-
-
-		if (cargs.hasOption("forest")) {
-			sett.setEnsembleMode(true);
-			clss = new ClusEnsembleClassifier(clus);
-			if (sett.getFTestArray().isVector())
-				clss = new CDTTuneFTest(clss, sett.getFTestArray()
-						.getDoubleVector());
-		} else {
-			clss = new ClusDecisionTree(clus);
-			if (sett.getFTestArray().isVector())
-				clss = new CDTTuneFTest(clss, sett.getFTestArray()
-						.getDoubleVector());
-		}
-
-
-		// modify specific specific targets
-	// 	clus.modifyOutputTargets(cargs, clss); 
-
-
-		// Run the classifier:
-		//clus.singleRun(clss);
-		//System.exit(1);
-*/
 		outputFile= clus.singleRunNOFILES(clss); // to avoid writing any file.
-
-		//System.out.println("Output file: "+outputFile);
 
 	 	//System.setOut(realSystemOut);
 	}
@@ -1035,8 +996,8 @@ public class ClusWrapperNonStatic {
 					// Run the classifier
 					
 					if(!initialized){
-						System.err.println("I DONT UNDERTSAND WHY.");
-						// System.exit(1);
+						System.err.println("ClusWrapperNonStatic: Clus has not been properly initialised ");
+						System.exit(1);
 					}
 					runClassifier(args, configFile);
 

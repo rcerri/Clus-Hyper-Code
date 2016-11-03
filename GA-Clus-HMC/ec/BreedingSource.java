@@ -6,6 +6,7 @@
 
 
 package ec;
+import Util.ClusWrapperNonStatic;
 import ec.util.*;
 
 /* 
@@ -102,6 +103,19 @@ public abstract class BreedingSource implements Prototype, RandomChoiceChooserD
             if (probability<0.0) state.output.error("Breeding Source's probability must be a double floating point value >= 0.0, or empty, which represents NO_PROBABILITY.",base.push(P_PROB),def.push(P_PROB));
             }
         }
+    
+    public void setup(final EvolutionState state, final Parameter base, ClusWrapperNonStatic object)
+    {
+    Parameter def = defaultBase();
+
+    if (!state.parameters.exists(base.push(P_PROB),def.push(P_PROB)))
+        probability = NO_PROBABILITY;
+    else
+        {
+        probability = state.parameters.getDouble(base.push(P_PROB),def.push(P_PROB),0.0);
+        if (probability<0.0) state.output.error("Breeding Source's probability must be a double floating point value >= 0.0, or empty, which represents NO_PROBABILITY.",base.push(P_PROB),def.push(P_PROB));
+        }
+    }
 
     public final double getProbability(final Object obj)
         {

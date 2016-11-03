@@ -10,6 +10,8 @@ import ec.*;
 import ec.util.*;
 import java.io.*;
 
+import Util.ClusWrapperNonStatic;
+
 /* 
  * RuleSet.java
  * 
@@ -464,7 +466,7 @@ public class RuleSet implements Prototype
         return RuleDefaults.base().push(P_RULESET);
         }
 
-    public void setup(EvolutionState state, Parameter base)
+    public void setup(EvolutionState state, Parameter base,ClusWrapperNonStatic object)
         {        
         String constraintname = state.parameters.getString(
             base.push( P_CONSTRAINTS ),defaultBase().push(P_CONSTRAINTS));
@@ -519,5 +521,8 @@ public class RuleSet implements Prototype
 
         return true;
         }
+
+
+
 
     }

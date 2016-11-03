@@ -7,6 +7,8 @@
 package ec.multiobjective.nsga2;
 
 import java.util.*;
+
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.multiobjective.*;
 import ec.simple.*;
@@ -45,9 +47,9 @@ public class NSGA2Evaluator extends SimpleEvaluator
         population larger to include the children. */
     public int originalPopSize[];
 
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
-        super.setup(state, base);
+        super.setup(state, base, object);
 
         Parameter p = new Parameter(Initializer.P_POP);
         int subpopsLength = state.parameters.getInt(p.push(Population.P_SIZE), null, 1);
@@ -64,9 +66,9 @@ public class NSGA2Evaluator extends SimpleEvaluator
     /**
      * Evaluates the population, then builds the archive and reduces the population to just the archive.
      */
-    public void evaluatePopulation(final EvolutionState state)
+    public void evaluatePopulation(final EvolutionState state, final ClusWrapperNonStatic object)
         {
-        super.evaluatePopulation(state);
+        super.evaluatePopulation(state, object);
         for (int x = 0; x < state.population.subpops.length; x++)
             state.population.subpops[x].individuals = 
                 buildArchive(state, x);

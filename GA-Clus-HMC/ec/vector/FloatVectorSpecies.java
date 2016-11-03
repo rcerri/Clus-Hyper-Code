@@ -1,5 +1,6 @@
 package ec.vector;
 
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.util.*;
 
@@ -345,7 +346,7 @@ public class FloatVectorSpecies extends VectorSpecies
         }
 
 
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
         Parameter def = defaultBase();
         
@@ -463,7 +464,7 @@ public class FloatVectorSpecies extends VectorSpecies
         // to get set up first, and also prior to the prototypical individual
         // getting setup at the end of super.setup(...).
 
-        super.setup(state, base);
+        super.setup(state, base, object);
 
 
 

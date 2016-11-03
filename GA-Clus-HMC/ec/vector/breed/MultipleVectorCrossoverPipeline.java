@@ -7,6 +7,7 @@
 package ec.vector.breed;
 
 import ec.vector.*;
+import Util.ClusWrapperNonStatic;
 import ec.*;
 import ec.util.Parameter;
 
@@ -806,4 +807,19 @@ public class MultipleVectorCrossoverPipeline extends BreedingPipeline {
             }       
         return n;       
         }
+
+	@Override
+	public void setup(EvolutionState state, Parameter base, ClusWrapperNonStatic object) {
+		// TODO Auto-generated method stub
+		
+	      super.setup(state,base,object);
+	        
+	        Parameter def = defaultBase(); 
+
+	        if (sources.length <= 2)  // uh oh
+	            state.output.fatal("num-sources must be provided and > 2 for MultipleVectorCrossoverPipeline",
+	                base.push(P_NUMSOURCES), def.push(P_NUMSOURCES));
+
+	        parents = new VectorIndividual[sources.length];
+	}
     }

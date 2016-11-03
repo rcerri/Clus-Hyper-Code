@@ -10,6 +10,7 @@ package ec.rule;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+import Util.ClusWrapperNonStatic;
 import ec.simple.SimpleInitializer;
 import ec.util.Parameter;
 import ec.EvolutionState;
@@ -56,9 +57,9 @@ public class RuleInitializer extends SimpleInitializer
     public byte numRuleSetConstraints;
     
     /** Sets up the RuleConstraints and RuleSetConstraints cliques. */
-    public void setup(final EvolutionState state, final Parameter base)
+    public void setup(final EvolutionState state, final Parameter base, final ClusWrapperNonStatic object)
         {
-        super.setup(state,base);
+        super.setup(state,base, object);
 
         ruleConstraintRepository = new Hashtable();
         ruleConstraints = new RuleConstraints[SIZE_OF_BYTE];
@@ -72,9 +73,9 @@ public class RuleInitializer extends SimpleInitializer
         // This is done in a very specific order, don't change it or things
         // will break.
         setupConstraints(
-            state, RuleDefaults.base().push( P_RULECONSTRAINTS ) );
+            state, RuleDefaults.base().push( P_RULECONSTRAINTS ), object );
         setupRuleSetConstraints(
-            state, RuleDefaults.base().push( P_RULESETCONSTRAINTS ) );
+            state, RuleDefaults.base().push( P_RULESETCONSTRAINTS ), object );
         }
 
     /** Sets up all the RuleConstraints, loading them from the parameter
@@ -82,7 +83,7 @@ public class RuleInitializer extends SimpleInitializer
         to a type by name. */
     
     public void setupConstraints(final EvolutionState state,
-        final Parameter base)
+        final Parameter base, final ClusWrapperNonStatic object)
         {
         state.output.message("Processing Rule Constraints");
         
@@ -104,7 +105,7 @@ public class RuleInitializer extends SimpleInitializer
                 state.output.message("No Rule Constraints specified, assuming the default class: ec.rule.RuleConstraints for " + base.push(""+y));
                 c = new RuleConstraints();
                 }
-            c.setup(state,base.push(""+y));
+            c.setup(state,base.push(""+y), object);
             }
         
         // set our constraints array up
@@ -119,7 +120,7 @@ public class RuleInitializer extends SimpleInitializer
         }
     
     public void setupRuleSetConstraints(final EvolutionState state,
-        final Parameter base)
+        final Parameter base, final ClusWrapperNonStatic object)
         {
         state.output.message("Processing Ruleset Constraints");
         // How many RuleSetConstraints do we have?
@@ -140,7 +141,7 @@ public class RuleInitializer extends SimpleInitializer
                 state.output.message("No RuleSetConstraints specified, assuming the default class: ec.gp.RuleSetConstraints for " + base.push(""+y));
                 c = new RuleSetConstraints();
                 }
-            c.setup(state,base.push(""+y));
+            c.setup(state,base.push(""+y), object);
             }
 
         // set our constraints array up

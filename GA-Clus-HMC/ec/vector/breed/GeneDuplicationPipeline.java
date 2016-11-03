@@ -6,6 +6,7 @@
 
 package ec.vector.breed;
 
+import Util.ClusWrapperNonStatic;
 import ec.BreedingPipeline;
 import ec.EvolutionState;
 import ec.Individual;
@@ -111,5 +112,7 @@ public class GeneDuplicationPipeline extends BreedingPipeline
             }
         return n;  // number of individuals produced, 1 here.
         }
+
+
 
     }

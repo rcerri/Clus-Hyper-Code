@@ -408,7 +408,7 @@ public class EvolutionState implements Singleton
         p=new Parameter(P_STATISTICS);
         statistics = (Statistics)
             (parameters.getInstanceForParameterEq(p,null,Statistics.class));
-        statistics.setup(this,p);
+        statistics.setup(this,p, objectClus);
         
         p=new Parameter(P_EXCHANGER);
         exchanger = (Exchanger)
