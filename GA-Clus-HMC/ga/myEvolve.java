@@ -161,13 +161,16 @@ public class myEvolve extends Evolve{
 			ClusWrapperNonStatic objectClus = new ClusWrapperNonStatic();
 
 			
-			if (Main.mlTask == 0)
+			if (Main.mlTask == 0){
+				ClusWrapper.clus = null;
 				ClusWrapper.initialization(trainSet,valSet, Main.targets,Main.randomForest,false);
-			else if (Main.mlTask == 1) {
+			}else if (Main.mlTask == 1) {
+				ClusWrapper.clus = null;
 				ClusWrapper.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
 			}
 			else if (Main.mlTask == 2) {
 				// nothing. It is done in myProblem.evaluate()
+				objectClus.clus = null;
 			 	objectClus.initialization(trainSet,valSet, Main.targets,Main.randomForest,true); // for the simulated annealing, this one has to be done.
 				
 

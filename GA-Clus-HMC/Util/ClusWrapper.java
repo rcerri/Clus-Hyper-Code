@@ -63,7 +63,7 @@ public class ClusWrapper {
 	}
 
 
-	static Clus clus = null;
+	static public Clus clus = null;
 	static ClusInductionAlgorithmType clss = null;
 
 	private static String train;

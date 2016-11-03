@@ -55,7 +55,7 @@ public class ClusWrapperNonStatic {
 	// the only three variables that need to be shared between threats.
 
 	public static Hashtable<String, Double[][][]> PreviousSolutions = new Hashtable<String, Double[][][]>();;
-	Clus clus;
+	public Clus clus;
 	ClusInductionAlgorithmType clss = null;
 	
 	private  String outputFile="";
@@ -137,7 +137,8 @@ public class ClusWrapperNonStatic {
 		if(forest){
 			cad += "[Ensemble]\nIterations = 50 \nEnsembleMethod = RForest\n";
 		}
-	//	System.out.println(cad);
+	
+		//System.err.println(cad);
 
 		return new ByteArrayInputStream(cad.getBytes(StandardCharsets.UTF_8));
 

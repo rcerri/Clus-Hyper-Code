@@ -36,8 +36,8 @@ public class mySimpleInitializer extends SimpleInitializer
         Obviously, this is an expensive method.  It should only
         be called once typically in a run. */
 
-	public Population initialPopulation(final EvolutionState state, int thread) {
-		Population p = setupPopulation(state, thread); 
+	public Population initialPopulation(final EvolutionState state, int thread, ClusWrapperNonStatic object) {
+		Population p = setupPopulation(state, thread, object); 
 		p.populate(state, thread);
 		
 		int size = ((IntegerVectorIndividual)p.subpops[0].individuals[0]).genome.length;

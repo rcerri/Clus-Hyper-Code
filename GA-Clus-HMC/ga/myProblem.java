@@ -323,33 +323,48 @@ public class myProblem extends Problem implements SimpleProblemForm {
 			double auprc[] = new double[3];
 			
 			
-			if (Main.mlTask == 2) { // multi-threads)
+			/*if (Main.mlTask == 2) { // multi-threads)
+				
 				ClusWrapperNonStatic object = new ClusWrapperNonStatic();
 				object.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
 				measures = object.evaluateIndividualClassification(genome,true);
 			}
 			else { // ==1, single thread
 				// true = classification or false = regression
+				*/
+			
+			ClusWrapper.clus=null;
 				ClusWrapper.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
 				measures = ClusWrapper.evaluateIndividualClassification(genome,true);
-			}
+		//	}
 			auroc[1] = measures.getAUROC()[1]; auprc[1] = measures.getAUPRC()[1];
 			
-			if (Main.mlTask == 2) { // multi-threads)
+			/*if (Main.mlTask == 2) { // multi-threads)
 				ClusWrapperNonStatic object = new ClusWrapperNonStatic();
+				
 				object.initialization(trainValidSet,testSet, Main.targets,Main.randomForest,true);
 				measures = object.evaluateIndividualClassification(genome,true);
 			}
 			else { // ==1, single thread
-				// true = classification or false = regression
+				*/// true = classification or false = regression
+			
+			    ClusWrapper.clus=null; // we really need to do this! otherwise, cluswrapper does not re-read the corresponding partition.
+			    
 				ClusWrapper.initialization(trainValidSet,testSet, Main.targets,Main.randomForest,true);
 				measures = ClusWrapper.evaluateIndividualClassification(genome,true);
-			}
+//		}
 
 			
 			auroc[0] = measures.getAUROC()[0]; auprc[0] = measures.getAUPRC()[0];			
 			auroc[2] = measures.getAUROC()[1]; auprc[2] = measures.getAUPRC()[1];;
 
+		/*	System.err.println("trainValidSet: "+ trainValidSet);
+			System.err.println("testSet: "+ testSet);
+			
+			System.err.println("auroc[0]: "+ auroc[0]);
+			System.err.println("auroc[2]: "+ auroc[2]);
+*/
+			
 			for (int i = 0; i < 3; i++) {
 				Main.measuresSingle[i][0][Dataset.getCurrentFold()][(Integer)state.job[0]] = auroc[i];
 				Main.measuresSingle[i][1][Dataset.getCurrentFold()][(Integer)state.job[0]] = auprc[i];	
