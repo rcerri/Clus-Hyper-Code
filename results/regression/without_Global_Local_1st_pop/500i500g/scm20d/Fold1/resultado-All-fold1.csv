@@ -1,3 +1,0 @@
-Train MAE,Validation MAE,Test MAE,Train MSE,Validation MSE,Test MSE,Train RMSE,Validation RMSE,Test RMSE
-61.73706875,151.8771875,147.64820625,9001.53231875,44776.21248125,42575.3018,93.34824375,205.23626875,199.6132875,
-=average(A2:A2),=average(B2:B2),=average(C2:C2),=average(D2:D2),=average(E2:E2),=average(F2:F2)
