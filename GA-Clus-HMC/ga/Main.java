@@ -15,7 +15,7 @@ public class Main {
 	public static double measuresMultiple[][][][][]; // [metaTraining,metaTest] -- [train or test] -- [measure] -- [execution] ... obs: nao tem resultado por folds
 	public static int fitnessType, fitnessAggregationScheme, metaTrainingEvaluationType, multiObjectiveType, numJobs, evaluationType;
 	public static boolean weightedMeasures, randomForest;
-	public static int startFold = 0, initialPopBaselines, mlTask;
+	public static int startFold = 0, initialPopBaselines, mlTask, parallel;
 	public static int SAgen = 10, SAmax = 50, maxGenNoChange = 30;
 
 	/**
@@ -44,21 +44,26 @@ public class Main {
 		 * 
 		 * args[11] = ML task
 		 * 				0 = regression
-		 * 				> 0 = classification (1 single thread; 2 - multi-threads)    
+		 * 				1 = classification     
 		 * 
+		 * args[12] = Parallelisation (0  single thread; 1 - multi-threads)  
 		 * 
-		 * args[12] = each SAgen generations, apply Simulated Annealing  
-		 * args[13] = SAmax : max number of iterations in SA algorithm
-		 * args[14] = maxGenNoChange : max number of generations without changing the best individual
+		 * WARNING: CHECK ga.params file as well:
+ 		 * If this argument is equal to 0, evalthreads and breedthreads are expected to be 1
+		 * If this argument is equal to 1, evalthreads and breedthreads are expected to be auto
 		 * 
-		 * args[15] = if ML task = classification, stratified type
+		 * args[13] = each SAgen generations, apply Simulated Annealing  
+		 * args[14] = SAmax : max number of iterations in SA algorithm
+		 * args[15] = maxGenNoChange : max number of generations without changing the best individual
+		 * 
+		 * args[16] = if ML task = classification, stratified type
 		 * 				0 = labelset
 		 */
 		
 		
-		SAgen = Integer.valueOf(args[12]);
-		SAmax = Integer.valueOf(args[13]);
-		maxGenNoChange = Integer.valueOf(args[14]);
+		SAgen = Integer.valueOf(args[13]);
+		SAmax = Integer.valueOf(args[14]);
+		maxGenNoChange = Integer.valueOf(args[15]);
 		
 		randomForest = Integer.valueOf(args[9]) == 0 ? false : true;
 		initialPopBaselines = Integer.valueOf(args[10]);
@@ -67,6 +72,7 @@ public class Main {
 		numJobs = Integer.valueOf(args[3]);
 		
 		mlTask = Integer.valueOf(args[11]); // 0 = regression, 1 = classification
+		parallel = Integer.valueOf(args[12]);
 		if (mlTask == 1) { // classification
 			//stratifiedMethod = Integer.valueOf(args[15]) == 0 ? "labelset" : "iterative";
 			//new Dataset(args[1]+stratifiedMethod+"/",args[0],Integer.valueOf(args[6]));

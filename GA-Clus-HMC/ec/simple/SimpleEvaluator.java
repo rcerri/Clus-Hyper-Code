@@ -249,7 +249,7 @@ public class SimpleEvaluator extends Evaluator
         		try {
         		// 	System.out.println("Initializing for thread");
         			// System.exit(1);
-        			if (Main.mlTask > 0) 
+        			if (Main.mlTask == 1) 
         				perThread.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
         			else
         				perThread.initialization(trainSet,valSet, Main.targets,Main.randomForest,false);
@@ -306,7 +306,7 @@ public class SimpleEvaluator extends Evaluator
         Subpopulation[] subpops = state.population.subpops;
         int len = subpops.length;
         
-        if(!objectClus.initialized){
+        if(!objectClus.initialized && Main.parallel == 1){
         	System.err.println("DONDE VASS!! ");
         	System.exit(1);
         }

@@ -161,20 +161,23 @@ public class myEvolve extends Evolve{
 			ClusWrapperNonStatic objectClus = new ClusWrapperNonStatic();
 
 			
-			if (Main.mlTask == 0){
+			if (Main.mlTask == 0 && Main.parallel == 0){
 				ClusWrapper.clus = null;
 				ClusWrapper.initialization(trainSet,valSet, Main.targets,Main.randomForest,false);
-			}else if (Main.mlTask == 1) {
+			}else if (Main.mlTask == 1 && Main.parallel == 0) {
 				ClusWrapper.clus = null;
 				ClusWrapper.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
+			//	System.out.println("HEre I am"); System.exit(1);
 			}
-			else if (Main.mlTask == 2) {
+			else if (Main.mlTask == 1 && Main.parallel == 1) { // Classification in parallel
 				// nothing. It is done in myProblem.evaluate()
 				objectClus.clus = null;
 			 	objectClus.initialization(trainSet,valSet, Main.targets,Main.randomForest,true); // for the simulated annealing, this one has to be done.
-				
-
-		}
+			}else if (Main.mlTask == 0 && Main.parallel == 1) {  // Regression in parallel
+				// nothing. It is done in myProblem.evaluate()
+				objectClus.clus = null;
+			 	objectClus.initialization(trainSet,valSet, Main.targets,Main.randomForest,false); // for the simulated annealing, this one has to be done.
+			}
 					
 			System.out.println("fold = "+i);
 			new File(Main.path+"Fold"+i+"/").mkdir();
@@ -184,7 +187,7 @@ public class myEvolve extends Evolve{
 			Main.pwTest = new PrintWriter(Main.fwTest);
 			Main.pwAll = new PrintWriter(Main.fwAll);
 
-			if (Main.mlTask > 0) {
+			if (Main.mlTask == 1) {
 				Main.pwTest.println("AUROC,AUPRC,Executio Time");
 				Main.pwAll.println("Train AUROC,Validation AUROC,Test AUROC,Train AUPRC,Validation AUPRC,Test AUPRC, Execution Time");
 			}
@@ -207,7 +210,7 @@ public class myEvolve extends Evolve{
 					Main.pEvolution = new PrintWriter(Main.fEvolution);
 
 
-					if (Main.mlTask > 0) { // classification
+					if (Main.mlTask == 1) { // classification
 						Main.pFirstGen.println("Train AUROC, Train AUPRC, Test AUROC, Test AUPRC, Execution Time");
 						Main.pLastGen.println("Train AUROC, Train AUPRC, Test AUROC, Test AUPRC, Execution Time");
 					}

@@ -154,9 +154,9 @@ public class myProblem extends Problem implements SimpleProblemForm {
 
 			myMeasures measures = new myMeasures();
 
-			if (Main.mlTask > 0) { // classification
+			if (Main.mlTask == 1) { // classification
 
-				if (Main.mlTask == 2) { // multi-threads)
+				if (Main.parallel == 1) { // multi-threads)
 					/*
 					int currentFold = Dataset.getCurrentFold();
 					String trainSet = Dataset.getPath()+Dataset.getFileName() + "_fold"+(currentFold)+".train";
@@ -221,8 +221,12 @@ public class myProblem extends Problem implements SimpleProblemForm {
 
 			else { // regression
 				
-				//System.out.println("Main.targes = " + Main.targets);
-				measures = ClusWrapper.evaluateIndividual(genome,true);
+				if (Main.parallel == 1) { // multi-threads)
+					measures = objectClusWrapperNonStatic.evaluateIndividual(genome,true);
+				}
+				else { 
+					measures = ClusWrapper.evaluateIndividual(genome,true);
+				}
 				
 				double mae = measures.getMAE()[1];
 				double mse = measures.getMSE()[1];
@@ -317,7 +321,7 @@ public class myProblem extends Problem implements SimpleProblemForm {
 		//ClusWrapper.initialization(Dataset.getPath()+Dataset.getFileName() + "-train.arff", Dataset.getPath()+Dataset.getFileName() + "-test.arff", Main.targets,Main.randomForest);
 		myMeasures measures = new myMeasures();
 
-		if (Main.mlTask > 0) {
+		if (Main.mlTask ==1) {
 			
 			double auroc[] = new double[3];
 			double auprc[] = new double[3];
