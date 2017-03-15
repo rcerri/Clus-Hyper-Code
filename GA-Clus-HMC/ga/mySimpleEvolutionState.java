@@ -28,7 +28,6 @@ public class mySimpleEvolutionState extends SimpleEvolutionState {
 		best_g = new Individual[this.numGenerations];
 		seed = 0;
 		lastGeneration = -1;
-
 	}
 
 
@@ -36,7 +35,7 @@ public class mySimpleEvolutionState extends SimpleEvolutionState {
 	{
 		if (generation > 0) 
 			output.message("Generation " + generation);
-		//System.out.println("Seed = "+seed + "---- nGenerations = "+numGenerations);
+		System.err.println("Seed = "+seed + "---- nGenerations = "+numGenerations);
 
 		// EVALUATION
 		statistics.preEvaluationStatistics(this);

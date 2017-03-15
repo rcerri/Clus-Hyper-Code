@@ -16,7 +16,7 @@ public class mySimpleEvaluator extends SimpleEvaluator {
         one per thread, to various subchunks of a new population. */
 	public void evaluatePopulation(final EvolutionState state, ClusWrapperNonStatic objectClus ) {
 		super.evaluatePopulation(state, objectClus);
-
+		
 		if (((mySimpleEvolutionState)state).seed != state.generation / Main.SAgen) {
 
 			System.out.println("starting Simulated Annealing: Generation "+state.generation);
