@@ -1,0 +1,895 @@
+
+Generation: 0
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8109686374664307
+1 2 3 4 2 3 1 4 3 3 1 2 2 4 4 1 4 3 1 4 3 2 2 1 3 4 1
+
+Generation: 1
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8109686374664307
+1 2 2 3 4 5 6 6 7 8 1 9 10 11 12 13 14 2 2 15 2 5 6 9 5 16 8
+
+Generation: 2
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8109686374664307
+1 2 2 3 4 5 6 6 7 8 1 9 10 11 12 13 14 2 2 15 2 5 6 9 5 16 8
+
+Generation: 3
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8109686374664307
+1 2 2 3 4 5 6 6 7 8 1 9 4 10 1 11 12 2 2 13 2 14 8 15 5 13 4
+
+Generation: 4
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.811253547668457
+1 2 2 3 4 5 6 7 2 2 7 8 3 9 8 7 8 10 11 10 2 11 12 11 11 13 14
+
+Generation: 5
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.811253547668457
+1 2 2 3 4 5 6 6 7 2 7 8 9 8 10 2 11 12 6 7 2 7 10 1 8 13 4
+
+Generation: 6
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8121082782745361
+1 2 1 2 3 4 5 6 1 2 7 8 2 2 9 10 11 12 13 8 2 9 5 11 10 14 14
+
+Generation: 7
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8121082782745361
+1 2 1 2 3 4 5 6 1 2 7 8 2 2 9 10 11 12 13 8 2 9 5 11 10 14 14
+
+Generation: 8
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8121082782745361
+1 2 1 2 3 4 5 6 1 2 7 8 2 2 9 10 11 12 13 8 2 9 5 11 10 14 14
+
+Generation: 9
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8121082782745361
+1 2 1 2 3 4 5 6 1 2 7 8 2 2 9 10 11 12 13 8 2 9 5 11 10 14 14
+
+Generation: 10
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8126780986785889
+1 2 3 2 3 4 5 2 6 7 8 2 2 9 10 10 9 11 12 13 2 9 9 9 14 15 16
+
+Generation: 11
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8126780986785889
+1 2 2 3 3 4 3 2 5 2 6 7 7 8 3 9 3 10 1 4 2 11 12 13 14 3 11
+
+Generation: 12
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8126780986785889
+1 2 2 3 3 4 3 2 5 2 6 7 7 8 3 9 3 10 1 4 2 11 12 13 14 3 11
+
+Generation: 13
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8126780986785889
+1 2 2 3 3 4 3 2 5 2 6 7 7 8 3 9 3 10 1 4 2 11 12 13 14 3 11
+
+Generation: 14
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8126780986785889
+1 2 2 3 3 4 3 2 5 2 6 7 7 8 3 9 3 10 1 4 2 11 12 13 14 3 11
+
+Generation: 15
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8138176798820496
+1 2 2 3 4 5 4 2 6 2 7 6 5 8 3 3 3 2 1 4 2 9 10 9 11 12 13
+
+Generation: 16
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8138176798820496
+1 2 2 3 4 5 4 2 6 2 7 6 5 8 3 3 3 2 1 4 2 9 10 9 11 12 13
+
+Generation: 17
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8138176798820496
+1 2 2 3 4 5 4 2 6 2 7 6 5 8 3 3 3 2 1 4 2 9 10 9 11 12 13
+
+Generation: 18
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8138176798820496
+1 2 2 3 4 5 4 2 6 2 7 6 5 8 3 3 3 2 1 4 2 9 10 9 11 12 13
+
+Generation: 19
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8138176798820496
+1 2 2 3 4 5 4 2 6 2 7 6 5 8 3 3 3 2 1 4 2 9 10 9 11 12 13
+
+Generation: 20
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8138176798820496
+1 2 2 3 3 4 5 2 6 2 7 8 9 1 10 11 3 2 12 5 2 13 14 13 15 1 8
+
+Generation: 21
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8138176798820496
+1 2 2 3 4 1 5 2 6 2 7 8 9 10 11 12 13 2 14 13 2 15 11 14 16 3 9
+
+Generation: 22
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8138176798820496
+1 2 2 3 4 1 5 2 6 2 7 8 9 10 11 12 13 2 14 13 2 15 11 14 16 3 9
+
+Generation: 23
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8138176798820496
+1 2 2 3 4 1 5 2 6 2 7 8 9 10 11 12 13 2 14 13 2 15 11 14 16 3 9
+
+Generation: 24
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8138176798820496
+1 2 2 3 4 1 5 2 6 2 7 8 9 10 11 12 13 2 14 13 2 15 11 14 16 3 9
+
+Generation: 25
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8138176798820496
+1 2 2 3 4 1 5 2 6 2 7 8 9 10 11 12 13 2 14 13 2 15 11 14 16 3 9
+
+Generation: 26
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 27
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 28
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 29
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 30
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 31
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 32
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 33
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 34
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 35
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 36
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 37
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 38
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8143875002861023
+1 2 2 3 4 2 5 2 6 2 7 8 9 10 11 2 11 2 12 13 2 14 11 12 15 16 13
+
+Generation: 39
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8149572610855103
+1 2 2 3 4 2 5 2 6 2 7 8 9 2 10 10 7 2 11 7 2 12 10 11 13 14 15
+
+Generation: 40
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8149572610855103
+1 2 2 3 4 2 5 2 6 2 7 8 9 2 10 10 7 2 11 7 2 12 10 11 13 14 15
+
+Generation: 41
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8149572610855103
+1 2 2 3 4 2 5 2 6 2 7 8 9 2 10 10 7 2 11 7 2 12 10 11 13 14 15
+
+Generation: 42
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8149572610855103
+1 2 2 3 4 2 5 2 6 2 7 8 9 2 10 10 7 2 11 7 2 12 10 11 13 14 15
+
+Generation: 43
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8149572610855103
+1 2 2 3 4 2 5 2 6 2 7 8 9 2 10 10 7 2 11 7 2 12 10 11 13 14 15
+
+Generation: 44
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8149572610855103
+1 2 2 3 4 2 5 2 6 2 7 8 9 2 10 10 7 2 11 7 2 12 10 11 13 14 15
+
+Generation: 45
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 4 8 9 10 11 12 2 13 9 2 8 6 13 14 14 11
+
+Generation: 46
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 4 8 9 10 11 12 2 13 9 2 8 6 13 14 14 11
+
+Generation: 47
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 4 8 9 10 11 12 2 13 9 2 8 6 13 14 14 11
+
+Generation: 48
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 4 8 9 10 11 12 2 13 9 2 8 6 13 14 14 11
+
+Generation: 49
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 4 8 9 10 11 12 2 13 9 2 8 6 13 14 14 11
+
+Generation: 50
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 4 8 9 10 11 12 2 13 9 2 8 6 13 14 14 11
+
+Generation: 51
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 10 11 12 13 2 13 8 2 12 13 14 15 14 12
+
+Generation: 52
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 53
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 54
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 55
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 56
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 57
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 58
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 59
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 60
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 61
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 62
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 63
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 64
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 65
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 66
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 67
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 68
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8152421712875366
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 10 9 2 4 12 12 13 12 14
+
+Generation: 69
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.815527081489563
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 2 12 2 4 13 13 10 13 14
+
+Generation: 70
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.815527081489563
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 2 12 2 4 13 13 10 13 14
+
+Generation: 71
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.815527081489563
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 2 12 2 4 13 13 10 13 14
+
+Generation: 72
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.815527081489563
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 2 12 2 4 13 13 10 13 14
+
+Generation: 73
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.815527081489563
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 2 12 2 4 13 13 10 13 14
+
+Generation: 74
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.815527081489563
+1 2 2 2 3 4 5 2 6 2 7 8 9 6 10 2 11 2 2 12 2 4 13 13 10 13 14
+
+Generation: 75
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 6 9 10 11 2 2 12 2 12 13 13 9 13 14
+
+Generation: 76
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 6 9 10 11 2 2 12 2 12 13 13 9 13 14
+
+Generation: 77
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 6 9 10 11 2 2 12 2 12 13 13 9 13 14
+
+Generation: 78
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 6 9 10 11 2 2 12 2 12 13 13 9 13 14
+
+Generation: 79
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 6 9 10 11 2 2 12 2 12 13 13 9 13 14
+
+Generation: 80
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 6 9 10 11 2 2 12 2 12 13 13 9 13 14
+
+Generation: 81
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 3 4 2 5 2 6 6 2 7 8 9 10 2 2 11 2 7 12 13 14 15 14
+
+Generation: 82
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 3 4 2 5 2 6 6 2 7 8 9 10 2 2 11 2 7 12 13 14 15 14
+
+Generation: 83
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 14 15 16 15
+
+Generation: 84
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 85
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 86
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 87
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 88
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 89
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 90
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 91
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 92
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 93
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 94
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 95
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 96
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 1 10 11 2 2 12 2 9 13 5 14 15 15
+
+Generation: 97
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 98
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 99
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 100
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 101
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 102
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 103
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 104
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 105
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 106
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 107
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 108
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 109
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 110
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 111
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 112
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 113
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 114
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 9 10 11 12 2 2 13 2 4 14 15 7 2 16
+
+Generation: 115
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 1 2 4 6 2 7 8 9 10 2 2 11 2 4 12 13 14 11 13
+
+Generation: 116
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 1 2 4 6 2 7 8 9 10 2 2 11 2 4 12 13 14 11 13
+
+Generation: 117
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 1 2 4 6 2 7 8 9 10 2 2 11 2 4 12 13 14 11 13
+
+Generation: 118
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 1 2 4 6 2 7 8 9 10 2 2 11 2 4 12 13 14 11 13
+
+Generation: 119
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 3 2 5 2 6 7 2 8 9 10 10 2 2 5 2 8 11 12 12 13 12
+
+Generation: 120
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 3 2 5 2 6 7 2 8 9 10 10 2 2 5 2 8 11 12 12 13 12
+
+Generation: 121
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 3 2 5 2 6 7 2 8 9 10 10 2 2 5 2 8 11 12 12 13 12
+
+Generation: 122
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 3 2 5 2 6 7 2 8 9 10 10 2 2 5 2 8 11 12 12 13 12
+
+Generation: 123
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 3 2 5 2 6 7 2 8 9 10 10 2 2 5 2 8 11 12 12 13 12
+
+Generation: 124
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 3 2 5 2 6 7 2 8 9 10 10 2 2 5 2 8 11 12 12 13 12
+
+Generation: 125
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 3 2 5 2 6 7 2 8 9 10 10 2 2 5 2 8 11 12 12 13 12
+
+Generation: 126
+Best Individual:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 3 2 5 2 6 7 2 8 9 10 10 2 2 5 2 8 11 12 12 13 12
+
+Best Individual of Run:
+Subpopulation 0:
+Evaluated: T
+Fitness: 0.8166666626930237
+1 2 2 2 3 4 5 2 6 2 7 8 2 6 9 10 11 2 2 12 2 12 13 13 9 13 14
