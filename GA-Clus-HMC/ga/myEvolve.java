@@ -189,11 +189,11 @@ public class myEvolve extends Evolve{
 
 			if (Main.mlTask == 1) {
 				Main.pwTest.println("AUROC,AUPRC,Executio Time");
-				Main.pwAll.println("Train AUROC,Validation AUROC,Test AUROC,Train AUPRC,Validation AUPRC,Test AUPRC, Execution Time");
+				Main.pwAll.println("TrainVal AUROC,Validation AUROC,Test AUROC,TrainVal AUPRC,Validation AUPRC,Test AUPRC, Execution Time");
 			}
 			else {
 				Main.pwTest.println("MAE,MSE,RMSE,Execution Time");
-				Main.pwAll.println("Train MAE,Validation MAE,Test MAE,Train MSE,Validation MSE,Test MSE,Train RMSE,Validation RMSE,Test RMSE,Execution Time");
+				Main.pwAll.println("TrainVal MAE,Validation MAE,Test MAE,TrainVal MSE,Validation MSE,Test MSE,TrainVal RMSE,Validation RMSE,Test RMSE,Execution Time");
 			}
 
 			for(int job = currentJob ; job < numJobs; job++){
@@ -211,12 +211,12 @@ public class myEvolve extends Evolve{
 
 
 					if (Main.mlTask == 1) { // classification
-						Main.pFirstGen.println("Train AUROC, Train AUPRC, Test AUROC, Test AUPRC, Execution Time");
-						Main.pLastGen.println("Train AUROC, Train AUPRC, Test AUROC, Test AUPRC, Execution Time");
+						Main.pFirstGen.println("TrainVal AUROC, TrainVal AUPRC, Test AUROC, Test AUPRC, Execution Time");
+						Main.pLastGen.println("TrainVal AUROC, TrainVal AUPRC, Test AUROC, Test AUPRC, Execution Time");
 					}
 					else { // regression
-						Main.pFirstGen.println("Train MAE, Train MSE, Train RMSE, Test MAE, Test MSE, Test RMSE, Execution Time");
-						Main.pLastGen.println("Train MAE, Train MSE, Train RMSE, Test MAE, Test MSE, Test RMSE, Execution Time");
+						Main.pFirstGen.println("TrainVal MAE, TrainVal MSE, TrainVal RMSE, Test MAE, Test MSE, Test RMSE, Execution Time");
+						Main.pLastGen.println("TrainVal MAE, TrainVal MSE, TrainVal RMSE, Test MAE, Test MSE, Test RMSE, Execution Time");
 					}
 
 					//Main.pEvolution.println("Train MAE, Train MSE, Train RMSE, Test MAE, Test MSE, Test RMSE");
