@@ -137,6 +137,20 @@ public class myProblem extends Problem implements SimpleProblemForm {
 
 			((IntegerVectorIndividual)ind).genome = genomeAdjustment(((IntegerVectorIndividual)ind).genome);			
 			int[] genome = ((IntegerVectorIndividual)ind).genome;
+			
+			
+			int[] teste = {1,2,1,1,3,1};
+			
+			boolean equals = true;
+			for (int i = 0; i < teste.length; i++) {
+				if (genome[i] != teste[i])
+					equals = false;
+			}
+			int currentFold = Dataset.getCurrentFold();
+			if (currentFold == 1 && equals) {
+				System.err.println("ENCONTROU O CARA PARA O FOLD 1");
+			}
+			
 
 			/*
 			System.out.print("Genome = ["+genome[0]);
@@ -169,13 +183,22 @@ public class myProblem extends Problem implements SimpleProblemForm {
 					/*else{
 						objectClusWrapperNonStatic.initialization(trainSet,valSet, Main.targets,Main.randomForest,true);
 					}*/
-
+					
+					
 					measures = objectClusWrapperNonStatic.evaluateIndividualClassification(genome,true);
+					
+					if (currentFold == 1 && equals) {
+						System.err.println("AUROC = " + measures.getAUROC()[1]);
+					}
 
 					//System.out.println("AUROC = " + measures.getAUROC()[1]);
 				}
 				else { // == 1 (single thread)
 					measures = ClusWrapper.evaluateIndividualClassification(genome,true);
+					if (currentFold == 1 && equals) {
+						System.out.println("AUROC = " + measures.getAUROC()[1]);
+					}
+					
 					//System.out.println("static AUROC = " + measures.getAUROC()[1]);
 				}
 
