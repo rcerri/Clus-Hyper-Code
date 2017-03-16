@@ -189,6 +189,10 @@ public class myProblem extends Problem implements SimpleProblemForm {
 					
 					if (currentFold == 1 && equals) {
 						System.err.println("AUROC = " + measures.getAUROC()[1]);
+						
+						//System.err.println("datos: "+ objectClusWrapperNonStatic.train + ", "+ objectClusWrapperNonStatic.test); 
+						
+						//System.exit(1);
 					}
 
 					//System.out.println("AUROC = " + measures.getAUROC()[1]);

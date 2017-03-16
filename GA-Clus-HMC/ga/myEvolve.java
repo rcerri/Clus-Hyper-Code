@@ -8,6 +8,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
+import java.util.Hashtable;
+
 import Util.ClusWrapper;
 import Util.ClusWrapperNonStatic;
 import ec.EvolutionState;
@@ -172,10 +174,12 @@ public class myEvolve extends Evolve{
 			else if (Main.mlTask == 1 && Main.parallel == 1) { // Classification in parallel
 				// nothing. It is done in myProblem.evaluate()
 				objectClus.clus = null;
+				objectClus.PreviousSolutions = new Hashtable<String, Double[][][]>();
 			 	objectClus.initialization(trainSet,valSet, Main.targets,Main.randomForest,true); // for the simulated annealing, this one has to be done.
 			}else if (Main.mlTask == 0 && Main.parallel == 1) {  // Regression in parallel
 				// nothing. It is done in myProblem.evaluate()
 				objectClus.clus = null;
+				objectClus.PreviousSolutions =  new Hashtable<String, Double[][][]>();
 			 	objectClus.initialization(trainSet,valSet, Main.targets,Main.randomForest,false); // for the simulated annealing, this one has to be done.
 			}
 					

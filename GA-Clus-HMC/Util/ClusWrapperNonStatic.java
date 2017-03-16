@@ -40,11 +40,11 @@ public class ClusWrapperNonStatic {
 
 	public  String currentdir = System.getProperty("user.dir")+"/";
 
-	private String train;
+	public String train;
 
-	private  String test;
+	public  String test;
 
-	private  String disable;
+	public  String disable;
 
 	private  int FirstOutputIndex=0;
 
