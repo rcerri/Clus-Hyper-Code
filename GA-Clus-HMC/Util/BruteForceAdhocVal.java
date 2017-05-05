@@ -312,7 +312,8 @@ public class BruteForceAdhocVal {
 	        // Final classification phase:
 	        
 	        timeStart=System.nanoTime();
-	        
+			ClusWrapper.clus=null;
+
 	        ClusWrapper.initialization(trainval, test, args[4], false, classification);
 
 	        
