@@ -1,0 +1,2135 @@
+
+===========================================
+oes10/Fold0/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9825.0368 
+1 2 3 4 5 6 7 1 4 8 4 9 2 9 7 2 
+oes10/Fold0/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9824.1019125 
+1 2 2 2 1 3 1 3 4 3 5 6 5 6 7 7 
+oes10/Fold0/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9821.2768375 
+1 2 3 3 4 5 6 5 7 5 8 9 3 9 4 2 
+oes10/Fold0/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9825.49956875 
+1 2 3 4 4 4 5 2 6 3 2 7 1 7 1 4 
+oes10/Fold0/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9824.9196 
+1 2 3 4 4 4 5 5 6 2 7 8 7 8 9 4 
+oes10/Fold1/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9670.362875 
+1 2 3 1 4 4 5 5 3 6 7 5 6 5 4 8 
+oes10/Fold1/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9665.22613125 
+1 2 3 4 1 4 5 5 3 6 7 1 8 5 4 9 
+oes10/Fold1/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9669.17081875 
+1 2 3 3 4 3 5 5 6 7 8 7 9 5 3 9 
+oes10/Fold1/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9675.1464375 
+1 2 3 1 4 4 5 5 3 6 7 6 8 5 4 8 
+oes10/Fold1/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9670.30175 
+1 2 3 1 4 5 6 6 3 7 8 9 10 6 9 10 
+oes10/Fold2/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9757.3852125 
+1 2 2 2 3 4 4 5 4 6 1 4 4 4 7 4 
+oes10/Fold2/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9750.0818875 
+1 2 3 3 3 2 4 2 5 6 7 8 2 4 4 2 
+oes10/Fold2/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9758.4737875 
+1 2 3 2 4 3 2 5 6 7 1 8 6 2 2 8 
+oes10/Fold2/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9749.78089375 
+1 2 3 3 3 2 4 5 6 7 8 7 6 8 9 4 
+oes10/Fold2/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9749.20931875 
+1 1 2 3 2 4 5 5 1 6 7 1 2 7 4 4 
+oes10/Fold3/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9795.54955625 
+1 2 3 4 5 4 1 2 1 6 7 4 2 8 7 4 
+oes10/Fold3/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9799.08785625 
+1 2 3 4 4 3 5 6 5 7 8 5 9 10 8 3 
+oes10/Fold3/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9798.8657375 
+1 2 3 4 4 3 5 3 5 6 7 5 8 9 1 8 
+oes10/Fold3/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9800.91425625 
+1 2 3 1 2 2 3 1 4 5 6 6 7 8 9 7 
+oes10/Fold3/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9797.15051875 
+1 2 3 1 2 2 3 1 3 4 5 5 6 7 8 9 
+oes10/Fold4/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9795.66875 
+1 2 3 4 2 2 5 6 7 8 2 6 9 7 10 9 
+oes10/Fold4/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9791.765925 
+1 2 2 3 4 5 4 6 7 8 5 5 9 7 10 9 
+oes10/Fold4/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9794.3138875 
+1 2 3 4 5 1 1 6 3 1 5 3 7 3 8 7 
+oes10/Fold4/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9793.1691125 
+1 2 2 3 4 5 6 7 8 5 9 5 9 8 5 7 
+oes10/Fold4/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9792.01565 
+1 2 3 4 3 2 2 2 5 6 7 2 7 5 8 8 
+oes10/Fold5/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9724.87764375 
+1 2 2 3 4 5 6 7 5 8 9 10 10 4 3 3 
+oes10/Fold5/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9726.84273125 
+1 2 3 1 4 5 2 1 5 6 7 8 9 4 8 8 
+oes10/Fold5/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9728.12419375 
+1 2 3 1 4 5 6 2 3 2 7 3 8 5 1 5 
+oes10/Fold5/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9726.2801125 
+1 2 2 1 3 4 5 2 4 6 7 8 9 3 10 7 
+oes10/Fold5/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9725.125575 
+1 2 3 2 4 5 6 2 7 8 9 3 7 4 5 9 
+oes10/Fold6/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9808.50685 
+1 2 3 4 5 6 2 7 4 8 1 9 5 3 6 9 
+oes10/Fold6/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9808.656825 
+1 2 3 2 4 5 4 4 2 6 1 4 5 3 6 7 
+oes10/Fold6/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9806.08038125 
+1 2 3 4 4 5 4 5 5 6 1 2 4 3 6 4 
+oes10/Fold6/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9808.7559125 
+1 2 3 2 4 5 4 6 7 6 1 8 5 3 7 8 
+oes10/Fold6/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9805.40454375 
+1 2 3 4 5 5 5 6 4 6 7 2 5 3 7 5 
+oes10/Fold7/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9724.28390625 
+1 2 3 4 5 4 5 6 7 8 3 5 4 5 9 9 
+oes10/Fold7/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9724.358075 
+1 2 3 4 1 4 5 1 5 6 7 7 4 1 8 8 
+oes10/Fold7/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9722.90315625 
+1 1 2 3 4 5 6 7 3 8 7 9 5 1 1 7 
+oes10/Fold7/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9724.332225 
+1 2 3 4 1 4 2 1 2 5 6 6 4 1 7 7 
+oes10/Fold7/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9725.03103125 
+1 2 3 4 5 4 6 5 7 8 3 1 4 5 1 2 
+oes10/Fold8/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9831.0024625 
+14 12 10 4 10 13 9 15 1 0 2 0 2 13 3 10 
+oes10/Fold8/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9831.0024625 
+1 2 3 4 5 4 5 6 2 6 7 8 9 2 10 4 
+oes10/Fold8/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9831.80124375 
+1 2 3 4 1 4 5 6 2 5 7 8 9 2 8 2 
+oes10/Fold8/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9833.902875 
+1 2 3 4 5 4 5 6 2 6 7 8 9 2 8 2 
+oes10/Fold8/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9831.17666875 
+1 1 2 3 4 3 5 6 6 5 7 6 6 6 8 6 
+oes10/Fold9/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9749.6121625 
+1 2 3 4 1 1 5 2 2 4 6 1 7 8 1 8 
+oes10/Fold9/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9747.44785 
+1 2 3 4 5 1 6 7 2 8 9 4 3 10 5 2 
+oes10/Fold9/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9752.128675 
+1 2 2 3 4 1 5 6 6 7 8 3 6 9 6 6 
+oes10/Fold9/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9746.13181875 
+1 2 2 3 4 1 5 6 4 4 7 3 8 9 8 9 
+oes10/Fold9/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9745.6943875 
+1 2 3 4 5 1 6 2 2 7 7 4 8 9 5 3 
+Mean all:
+[1] "Train MAE, Validation MAE, Test MAE, Train MSE, Validation MSE, Test MSE, Train RMSE, Validation RMSE, Test RMSE, Train Execution Time, Validation Execution Time, Test Execution Time"                            
+[2] "192.11603412500003,228.94127225000003,293.04720425,399247.408179125,447034.1923095,969418.822309125,443.9327824999999,444.3659466250001,617.7212415000001,101.53999999999999,101.53999999999999,101.53999999999999"
+
+===========================================
+oes97/Fold0/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9621.82904375 
+1 2 3 4 5 6 7 5 3 1 8 5 9 5 10 8 
+oes97/Fold0/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9618.42628125 
+1 2 3 4 5 5 6 6 3 1 7 8 8 8 9 7 
+oes97/Fold0/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9621.0003375 
+1 2 3 4 5 2 6 7 3 1 8 9 8 9 5 2 
+oes97/Fold0/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9626.13565 
+1 2 3 3 4 5 6 7 7 1 8 9 9 9 7 8 
+oes97/Fold0/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9621.95865 
+1 2 3 4 5 2 6 5 3 1 7 8 8 8 9 2 
+oes97/Fold1/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9465.8898 
+1 2 3 4 5 6 7 8 8 7 5 6 1 9 9 10 
+oes97/Fold1/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9463.98263125 
+1 2 3 4 5 6 7 8 8 5 9 9 1 10 10 11 
+oes97/Fold1/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9461.17734375 
+1 2 3 4 5 6 7 8 8 3 5 6 1 5 9 10 
+oes97/Fold1/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9462.4274 
+1 2 3 4 5 6 7 8 8 7 4 6 4 9 9 10 
+oes97/Fold1/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9464.97176875 
+1 2 3 4 5 5 6 7 7 5 8 8 4 9 9 10 
+oes97/Fold2/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9353.12320625 
+1 2 3 4 3 5 6 6 6 7 1 3 8 1 6 8 
+oes97/Fold2/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9358.8255 
+1 2 2 3 4 5 6 6 6 7 1 1 8 1 6 8 
+oes97/Fold2/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9385.43231875 
+1 2 3 4 5 6 7 7 7 3 3 3 5 1 7 5 
+oes97/Fold2/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9320.15865625 
+1 2 3 4 5 6 7 8 1 7 9 9 10 9 8 10 
+oes97/Fold2/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9340.681468750001 
+1 2 3 1 1 4 5 5 5 6 3 7 6 7 5 8 
+oes97/Fold3/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9485.7213375 
+1 1 2 3 3 4 3 5 2 6 7 3 8 8 8 2 
+oes97/Fold3/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9483.981325 
+1 2 3 4 5 6 2 1 7 4 5 6 8 8 8 1 
+oes97/Fold3/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9491.97569375 
+1 1 1 2 2 3 4 1 1 5 6 7 7 7 8 6 
+oes97/Fold3/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9488.82223125 
+1 2 3 4 3 5 6 1 3 2 7 8 8 8 9 1 
+oes97/Fold3/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9492.56663125 
+1 2 1 1 3 4 5 1 1 2 3 6 6 6 7 1 
+oes97/Fold4/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9702.93119375 
+1 2 3 4 5 3 6 7 8 2 1 3 9 9 10 4 
+oes97/Fold4/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9707.40589375 
+1 2 3 3 4 5 1 6 7 2 8 5 3 5 9 3 
+oes97/Fold4/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9708.5065 
+1 2 3 4 5 4 6 7 8 2 1 4 9 9 10 4 
+oes97/Fold4/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9710.150875 
+1 2 3 4 5 6 7 2 8 9 1 6 3 6 5 3 
+oes97/Fold4/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9708.6244375 
+1 2 3 4 5 6 1 5 7 2 6 6 5 8 8 8 
+oes97/Fold5/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9750.75000625 
+1 2 3 3 4 5 3 6 3 4 6 1 7 4 7 6 
+oes97/Fold5/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9750.0202375 
+1 2 3 4 4 5 6 7 8 8 4 1 4 9 9 8 
+oes97/Fold5/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9749.95005625 
+1 2 3 4 5 6 7 8 8 7 8 1 3 9 9 8 
+oes97/Fold5/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9754.6555375 
+6 2 8 11 0 13 1 7 11 3 11 12 15 2 1 1 
+oes97/Fold5/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9751.15831875 
+1 2 3 4 5 6 7 4 8 8 6 1 8 9 9 7 
+oes97/Fold6/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9717.24924375 
+1 2 3 4 2 5 4 6 6 7 8 6 7 7 7 8 
+oes97/Fold6/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9710.56795 
+1 2 3 4 5 6 5 7 7 8 9 5 8 8 9 7 
+oes97/Fold6/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9710.1065 
+1 2 3 4 2 5 6 7 7 5 4 4 8 5 8 7 
+oes97/Fold6/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9711.3811 
+1 2 3 4 5 6 7 8 8 9 7 8 9 9 9 10 
+oes97/Fold6/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9717.60074375 
+1 2 3 4 5 6 7 8 8 9 4 4 9 9 9 8 
+oes97/Fold7/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9597.78550625 
+1 2 2 3 1 4 5 4 6 7 2 7 8 4 1 8 
+oes97/Fold7/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9606.2154875 
+1 2 3 1 4 4 5 1 6 7 3 7 8 3 2 8 
+oes97/Fold7/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9598.2503 
+1 1 2 3 4 5 6 1 7 8 5 9 4 9 10 11 
+oes97/Fold7/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9600.68760625 
+1 2 3 4 5 5 1 2 6 7 1 8 2 8 2 9 
+oes97/Fold7/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9598.8352125 
+1 2 3 4 5 5 1 1 6 7 3 8 9 8 1 10 
+oes97/Fold8/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9730.519025 
+1 2 3 3 2 4 4 5 6 1 7 6 5 2 2 7 
+oes97/Fold8/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9730.9204375 
+1 1 2 2 3 4 1 5 6 2 7 6 5 3 2 7 
+oes97/Fold8/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9731.12189375 
+1 2 3 4 5 2 1 6 7 8 4 7 9 5 9 8 
+oes97/Fold8/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9730.22310625 
+1 2 3 4 5 3 2 6 7 1 8 7 9 8 9 6 
+oes97/Fold8/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9729.15585625 
+1 2 3 4 5 6 2 7 8 1 5 8 9 2 9 7 
+oes97/Fold9/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9703.1846875 
+1 2 3 1 4 4 2 2 5 6 4 7 1 7 3 8 
+oes97/Fold9/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9701.77244375 
+1 1 2 1 2 2 3 4 5 6 7 1 7 6 8 9 
+oes97/Fold9/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9701.48704375 
+1 2 3 1 4 4 5 6 7 3 4 3 1 2 6 8 
+oes97/Fold9/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9701.6151625 
+1 2 3 4 5 6 1 7 8 5 3 6 6 4 2 9 
+oes97/Fold9/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9708.54495625 
+1 2 3 4 5 6 4 2 7 5 3 6 6 1 1 8 
+Mean all:
+[1] "Train MAE, Validation MAE, Test MAE, Train MSE, Validation MSE, Test MSE, Train RMSE, Validation RMSE, Test RMSE, Train Execution Time, Validation Execution Time, Test Execution Time"
+[2] "309.58508062499993,381.883818875,477.02404349999995,601035.0818395,1015624.9573145002,1921188.99825175,573.37990425,673.890093875,901.095704875,73.26,73.26,73.26"                     
+
+===========================================
+rf1/Fold0/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.2683375 
+1 2 3 4 3 4 1 4 
+rf1/Fold0/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.2683375 
+1 2 3 4 3 4 1 4 
+rf1/Fold0/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.2683375 
+1 2 3 4 3 4 1 4 
+rf1/Fold0/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.2683375 
+1 2 3 4 3 4 1 4 
+rf1/Fold0/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.2683375 
+1 2 3 4 3 4 1 4 
+rf1/Fold1/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3172875 
+1 2 3 4 4 5 6 3 
+rf1/Fold1/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3172875 
+1 2 3 4 4 5 6 3 
+rf1/Fold1/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3172875 
+1 2 3 4 4 5 6 3 
+rf1/Fold1/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3172875 
+1 2 3 4 4 5 6 3 
+rf1/Fold1/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3172875 
+1 2 3 4 4 5 6 3 
+rf1/Fold2/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.323075 
+1 2 3 4 5 3 4 5 
+rf1/Fold2/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.323075 
+1 2 3 4 5 3 4 5 
+rf1/Fold2/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.323075 
+1 2 3 4 5 3 4 5 
+rf1/Fold2/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.323075 
+1 2 3 4 5 3 4 5 
+rf1/Fold2/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.323075 
+1 2 3 4 5 3 4 5 
+rf1/Fold3/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3537625 
+1 2 1 1 1 3 4 1 
+rf1/Fold3/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3537625 
+1 2 1 1 1 3 4 1 
+rf1/Fold3/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3537625 
+1 2 1 1 1 3 4 1 
+rf1/Fold3/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3537625 
+1 2 1 1 1 3 4 1 
+rf1/Fold3/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3537625 
+1 2 1 1 1 3 4 1 
+rf1/Fold4/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3195875 
+1 2 3 1 4 5 1 1 
+rf1/Fold4/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3195875 
+1 2 3 1 4 5 1 1 
+rf1/Fold4/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3195875 
+1 2 3 1 4 5 1 1 
+rf1/Fold4/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3195875 
+1 2 3 1 4 5 1 1 
+rf1/Fold4/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3195875 
+1 2 3 1 4 5 1 1 
+rf1/Fold5/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.327475 
+1 2 3 4 5 5 3 6 
+rf1/Fold5/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.327475 
+1 2 3 4 5 5 3 6 
+rf1/Fold5/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.327475 
+1 2 3 4 5 5 3 6 
+rf1/Fold5/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.327475 
+1 2 3 4 5 5 3 6 
+rf1/Fold5/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.327475 
+1 2 3 4 5 5 3 6 
+rf1/Fold6/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3038 
+1 2 3 4 5 3 1 3 
+rf1/Fold6/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3038 
+1 2 3 4 5 3 1 3 
+rf1/Fold6/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3038 
+1 2 3 4 5 3 1 3 
+rf1/Fold6/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3038 
+1 2 3 4 5 3 1 3 
+rf1/Fold6/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3038 
+1 2 3 4 5 3 1 3 
+rf1/Fold7/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3213 
+1 2 3 4 4 4 1 5 
+rf1/Fold7/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3213 
+1 2 3 4 4 4 1 5 
+rf1/Fold7/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3213 
+1 2 3 4 4 4 1 5 
+rf1/Fold7/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3213 
+1 2 3 4 4 4 1 5 
+rf1/Fold7/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3213 
+1 2 3 4 4 4 1 5 
+rf1/Fold8/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3071 
+1 2 3 4 3 4 1 4 
+rf1/Fold8/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3071 
+1 2 3 4 3 4 1 4 
+rf1/Fold8/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3071 
+1 2 3 4 3 4 1 4 
+rf1/Fold8/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3071 
+1 2 3 4 3 4 1 4 
+rf1/Fold8/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3071 
+1 2 3 4 3 4 1 4 
+rf1/Fold9/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.31695 
+1 2 3 1 3 4 3 5 
+rf1/Fold9/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.31695 
+1 2 3 1 3 4 3 5 
+rf1/Fold9/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.31695 
+1 2 3 1 3 4 3 5 
+rf1/Fold9/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.31695 
+1 2 3 1 3 4 3 5 
+rf1/Fold9/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.31695 
+1 2 3 1 3 4 3 5 
+Mean all:
+[1] "Train MAE, Validation MAE, Test MAE, Train MSE, Validation MSE, Test MSE, Train RMSE, Validation RMSE, Test RMSE, Train Execution Time, Validation Execution Time, Test Execution Time"  
+[2] "0.36178125,0.6864712499999999,0.6008137499999999,0.73562875,3.83205375,3.576215,0.7649075,1.6257424999999999,1.5472887499999999,16.360000000000003,16.360000000000003,16.360000000000003"
+
+===========================================
+rf2/Fold0/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.2753 
+1 2 3 3 4 5 3 3 
+rf2/Fold0/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.2753 
+1 2 3 3 4 5 3 3 
+rf2/Fold0/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.2753 
+1 2 3 3 4 5 3 3 
+rf2/Fold0/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.2753 
+1 2 3 3 4 5 3 3 
+rf2/Fold0/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.2753 
+1 2 3 3 4 5 3 3 
+rf2/Fold1/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.307625 
+1 2 3 4 5 5 6 3 
+rf2/Fold1/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.307625 
+1 2 3 4 5 5 6 3 
+rf2/Fold1/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.307625 
+1 2 3 4 5 5 6 3 
+rf2/Fold1/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.307625 
+1 2 3 4 5 5 6 3 
+rf2/Fold1/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.307625 
+1 2 3 4 5 5 6 3 
+rf2/Fold2/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.325975 
+1 2 1 3 1 1 1 1 
+rf2/Fold2/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.325975 
+1 2 1 3 1 1 1 1 
+rf2/Fold2/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.325975 
+1 2 1 3 1 1 1 1 
+rf2/Fold2/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.325975 
+1 2 1 3 1 1 1 1 
+rf2/Fold2/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.325975 
+1 2 1 3 1 1 1 1 
+rf2/Fold3/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.35355 
+1 2 1 1 1 3 4 1 
+rf2/Fold3/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.35355 
+1 2 1 1 1 3 4 1 
+rf2/Fold3/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.35355 
+1 2 1 1 1 3 4 1 
+rf2/Fold3/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.35355 
+1 2 1 1 1 3 4 1 
+rf2/Fold3/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.35355 
+1 2 1 1 1 3 4 1 
+rf2/Fold4/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3287125 
+1 2 3 1 4 5 1 1 
+rf2/Fold4/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3287125 
+1 2 3 1 4 5 1 1 
+rf2/Fold4/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3287125 
+1 2 3 1 4 5 1 1 
+rf2/Fold4/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3287125 
+1 2 3 1 4 5 1 1 
+rf2/Fold4/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3287125 
+1 2 3 1 4 5 1 1 
+rf2/Fold5/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.319325 
+1 2 1 3 4 5 1 1 
+rf2/Fold5/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.319325 
+1 2 1 3 4 5 1 1 
+rf2/Fold5/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.319325 
+1 2 1 3 4 5 1 1 
+rf2/Fold5/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.319325 
+1 2 1 3 4 5 1 1 
+rf2/Fold5/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.319325 
+1 2 1 3 4 5 1 1 
+rf2/Fold6/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.28595 
+1 2 1 1 3 4 1 3 
+rf2/Fold6/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.28595 
+1 2 1 1 3 4 1 3 
+rf2/Fold6/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.28595 
+1 2 1 1 3 4 1 3 
+rf2/Fold6/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.28595 
+1 2 1 1 3 4 1 3 
+rf2/Fold6/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.28595 
+1 2 1 1 3 4 1 3 
+rf2/Fold7/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.316375 
+1 2 3 4 4 4 1 3 
+rf2/Fold7/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.316375 
+1 2 3 4 4 4 1 3 
+rf2/Fold7/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.316375 
+1 2 3 4 4 4 1 3 
+rf2/Fold7/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.316375 
+1 2 3 4 4 4 1 3 
+rf2/Fold7/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.316375 
+1 2 3 4 4 4 1 3 
+rf2/Fold8/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3314875 
+1 2 3 4 4 5 1 1 
+rf2/Fold8/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3314875 
+1 2 3 4 4 5 1 1 
+rf2/Fold8/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3314875 
+1 2 3 4 4 5 1 1 
+rf2/Fold8/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3314875 
+1 2 3 4 4 5 1 1 
+rf2/Fold8/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3314875 
+1 2 3 4 4 5 1 1 
+rf2/Fold9/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3067375 
+1 2 3 4 3 4 3 4 
+rf2/Fold9/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3067375 
+1 2 3 4 3 4 3 4 
+rf2/Fold9/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3067375 
+1 2 3 4 3 4 3 4 
+rf2/Fold9/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3067375 
+1 2 3 4 3 4 3 4 
+rf2/Fold9/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.3067375 
+1 2 3 4 3 4 3 4 
+Mean all:
+[1] "Train MAE, Validation MAE, Test MAE, Train MSE, Validation MSE, Test MSE, Train RMSE, Validation RMSE, Test RMSE, Train Execution Time, Validation Execution Time, Test Execution Time"
+[2] "0.393535,0.70312875,0.6127,1.03715875,4.177135,3.6086300000000002,0.8748650000000001,1.70056625,1.5709450000000003,108.52000000000001,108.52000000000001,108.52000000000001"           
+
+===========================================
+scm1d/Fold0/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9927.7990875 
+1 2 1 3 4 3 3 3 5 5 6 7 8 9 10 10 
+scm1d/Fold0/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9927.87146875 
+1 2 1 3 4 3 3 3 5 6 7 6 8 9 10 10 
+scm1d/Fold0/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9927.63455625 
+1 2 1 3 4 3 3 3 5 6 7 8 9 6 10 10 
+scm1d/Fold0/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9927.33941875 
+1 2 1 2 3 3 4 5 6 7 8 7 9 10 10 11 
+scm1d/Fold0/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9927.5736 
+1 2 1 3 4 3 3 3 5 6 7 6 8 7 8 9 
+scm1d/Fold1/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.1851125 
+1 2 3 3 4 5 4 5 6 7 2 8 9 9 10 10 
+scm1d/Fold1/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.28550625 
+1 2 3 3 4 5 4 5 6 7 2 7 8 8 9 9 
+scm1d/Fold1/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.1707625 
+1 2 3 3 4 5 4 5 6 7 7 7 8 9 9 9 
+scm1d/Fold1/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.21464375 
+1 2 3 3 4 5 4 5 6 7 8 8 9 9 10 10 
+scm1d/Fold1/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.06538125 
+1 2 3 3 4 5 4 5 6 7 8 8 9 10 10 10 
+scm1d/Fold2/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.61170625 
+1 2 2 3 4 5 4 5 6 7 8 7 9 9 9 10 
+scm1d/Fold2/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.45945 
+1 1 2 3 4 5 4 5 6 7 7 7 2 8 9 8 
+scm1d/Fold2/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.68641875 
+1 2 2 3 4 5 4 5 6 7 7 8 9 9 9 10 
+scm1d/Fold2/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.5115625 
+1 2 2 3 4 5 4 5 6 7 7 6 8 9 10 9 
+scm1d/Fold2/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.30019375 
+1 2 3 2 4 5 4 5 6 1 7 8 3 9 10 11 
+scm1d/Fold3/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.58995 
+1 2 3 3 1 4 4 4 5 6 2 7 8 5 9 9 
+scm1d/Fold3/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.52410625 
+1 2 3 3 2 4 4 4 5 6 7 6 8 5 7 9 
+scm1d/Fold3/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.63065 
+1 2 3 3 2 4 4 5 6 7 7 8 9 6 10 5 
+scm1d/Fold3/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.52005 
+1 2 3 3 2 4 4 5 6 7 7 8 9 9 9 5 
+scm1d/Fold3/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.51686875 
+1 2 3 3 2 4 4 5 6 7 8 8 9 10 11 5 
+scm1d/Fold4/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.7581 
+1 2 3 3 4 5 5 5 6 7 8 8 9 2 10 11 
+scm1d/Fold4/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.7581 
+1 2 3 3 4 5 5 5 6 7 8 8 9 2 10 11 
+scm1d/Fold4/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.47345 
+1 2 3 3 4 5 4 6 7 8 9 8 10 2 11 12 
+scm1d/Fold4/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.8846875 
+1 2 3 3 4 5 4 4 6 7 8 8 9 2 10 11 
+scm1d/Fold4/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.7581 
+1 2 3 3 4 5 5 5 6 7 8 8 9 2 10 11 
+scm1d/Fold5/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.15405625 
+1 2 3 2 4 5 6 4 7 7 7 8 9 10 6 11 
+scm1d/Fold5/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.96189375 
+1 2 3 3 4 5 6 4 7 7 8 7 9 10 6 11 
+scm1d/Fold5/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.14114375 
+1 1 2 3 4 5 6 4 7 7 8 7 9 3 6 10 
+scm1d/Fold5/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.0820875 
+1 1 2 3 4 5 6 4 7 7 8 7 9 10 6 11 
+scm1d/Fold5/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.00055 
+1 2 1 1 3 4 5 3 6 6 7 6 8 9 5 10 
+scm1d/Fold6/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.6276125 
+1 2 1 3 4 5 5 4 6 7 7 8 9 10 9 11 
+scm1d/Fold6/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.05885 
+1 2 3 3 4 5 4 4 6 7 7 8 9 1 9 10 
+scm1d/Fold6/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.6709125 
+1 2 3 3 4 5 4 4 6 7 8 9 10 6 10 11 
+scm1d/Fold6/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.05885 
+1 2 3 3 4 5 4 4 6 7 7 8 9 1 9 10 
+scm1d/Fold6/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.88700625 
+1 2 1 3 4 5 4 4 6 7 7 8 9 10 9 11 
+scm1d/Fold7/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9930.17195 
+1 1 2 3 4 4 5 5 6 6 7 8 9 9 10 10 
+scm1d/Fold7/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9930.331525 
+1 2 3 2 1 4 5 5 6 6 7 8 9 9 10 10 
+scm1d/Fold7/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9930.27528125 
+1 1 2 3 4 4 5 5 6 6 7 7 8 8 9 9 
+scm1d/Fold7/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9930.43485625 
+1 2 3 2 1 4 5 5 6 6 7 7 8 8 9 9 
+scm1d/Fold7/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9929.9466125 
+1 2 3 2 4 4 5 5 6 6 7 8 9 9 10 10 
+scm1d/Fold8/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.35050625 
+1 2 3 3 4 4 4 5 6 7 8 7 9 10 9 11 
+scm1d/Fold8/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.37914375 
+1 2 3 4 5 5 5 6 7 8 9 8 10 10 11 10 
+scm1d/Fold8/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.48043125 
+1 2 3 4 5 5 5 6 7 8 9 8 10 10 4 10 
+scm1d/Fold8/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.3290625 
+1 2 3 4 5 5 5 6 7 8 9 8 10 11 4 12 
+scm1d/Fold8/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.170175 
+1 2 3 3 4 5 5 5 6 7 8 7 9 10 9 11 
+scm1d/Fold9/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.5756 
+1 2 3 4 5 6 6 6 7 7 8 9 10 10 11 5 
+scm1d/Fold9/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.58785 
+1 1 2 2 3 4 4 4 5 5 6 7 8 8 9 3 
+scm1d/Fold9/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.73871875 
+1 2 3 4 5 5 5 5 6 7 6 8 9 9 10 4 
+scm1d/Fold9/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.43995625 
+1 2 1 3 4 4 4 4 5 5 6 7 8 9 10 10 
+scm1d/Fold9/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9928.51056875 
+1 2 3 4 5 6 6 6 7 7 8 9 10 10 11 4 
+Mean all:
+[1] "Train MAE, Validation MAE, Test MAE, Train MSE, Validation MSE, Test MSE, Train RMSE, Validation RMSE, Test RMSE, Train Execution Time, Validation Execution Time, Test Execution Time"
+[2] "41.5171255,71.13023737500001,68.18765149999999,4425.647312374999,13317.962181625004,12721.214303125,65.018042,113.58232175,111.00385987500002,3171.46,3171.46,3171.46"                 
+
+===========================================
+scm20d/Fold0/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.68990625 
+1 2 1 3 4 5 6 7 8 8 9 5 3 7 3 3 
+scm20d/Fold0/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.9001875 
+1 2 1 3 4 4 5 5 6 7 6 7 3 8 3 3 
+scm20d/Fold0/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.06764375 
+1 1 2 3 4 5 5 5 6 7 6 7 3 8 3 3 
+scm20d/Fold0/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.4401125 
+1 2 1 3 4 2 5 5 6 7 6 7 3 8 4 5 
+scm20d/Fold0/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.98215 
+1 2 1 3 4 5 6 7 8 9 8 5 3 7 3 3 
+scm20d/Fold1/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.9558875 
+1 2 3 4 5 1 5 1 2 2 3 6 7 6 8 8 
+scm20d/Fold1/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.98670625 
+1 2 3 4 5 1 2 1 6 6 5 7 3 8 9 9 
+scm20d/Fold1/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.18833125 
+1 2 3 4 2 1 5 1 6 6 6 7 8 3 8 3 
+scm20d/Fold1/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.29233125 
+1 1 1 2 3 3 4 2 5 6 7 7 8 9 1 9 
+scm20d/Fold1/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.3341125 
+1 2 3 3 4 1 2 1 5 4 6 6 7 8 7 8 
+scm20d/Fold2/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.76075 
+1 1 2 3 4 5 6 6 7 7 7 8 1 9 10 8 
+scm20d/Fold2/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.12575 
+1 2 3 4 5 6 7 7 8 8 9 9 3 3 10 2 
+scm20d/Fold2/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.374325 
+1 2 2 3 4 5 6 6 7 7 8 3 2 9 9 9 
+scm20d/Fold2/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.16785625 
+1 2 3 4 1 5 6 6 7 7 8 4 1 9 9 9 
+scm20d/Fold2/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.3329125 
+1 2 3 4 5 6 7 7 8 8 9 9 3 3 10 11 
+scm20d/Fold3/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.87520625 
+1 2 2 3 4 4 1 3 5 6 4 4 7 8 7 8 
+scm20d/Fold3/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.2317125 
+1 2 3 3 4 5 1 2 4 6 7 8 9 10 9 10 
+scm20d/Fold3/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.14434375 
+1 2 3 2 2 2 4 2 3 5 6 7 8 9 8 9 
+scm20d/Fold3/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.8765625 
+1 2 1 3 3 3 4 4 2 5 6 6 7 8 7 8 
+scm20d/Fold3/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.35701875 
+1 2 1 3 4 2 3 2 5 6 4 7 8 9 8 9 
+scm20d/Fold4/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.0534 
+1 2 3 4 4 2 5 5 6 6 6 7 7 8 8 8 
+scm20d/Fold4/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.48065 
+1 1 2 3 4 5 6 6 7 7 3 3 4 8 9 8 
+scm20d/Fold4/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.8923125 
+1 2 3 4 4 2 5 5 6 6 6 7 8 9 8 9 
+scm20d/Fold4/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.40945625 
+1 2 2 2 3 3 4 4 5 5 5 4 3 6 7 3 
+scm20d/Fold4/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.24631875 
+1 2 3 4 5 6 7 7 8 8 8 4 5 9 10 9 
+scm20d/Fold5/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.68056875 
+1 2 3 4 5 4 6 6 7 8 9 5 7 10 3 11 
+scm20d/Fold5/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.55638125 
+1 2 3 4 5 3 6 7 2 8 2 2 6 9 4 10 
+scm20d/Fold5/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.48994375 
+1 2 3 4 2 5 6 4 7 8 9 6 5 5 3 10 
+scm20d/Fold5/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.4920625 
+1 2 3 4 3 5 6 5 7 8 5 6 2 9 4 9 
+scm20d/Fold5/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.57624375 
+1 2 3 4 5 6 7 6 8 9 6 7 8 10 4 11 
+scm20d/Fold6/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.7490375 
+1 2 3 4 3 4 4 4 5 6 5 7 8 8 9 10 
+scm20d/Fold6/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.0461125 
+1 1 2 3 2 3 3 3 4 5 4 6 7 7 8 9 
+scm20d/Fold6/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.8772875 
+1 2 2 1 1 3 4 4 5 3 5 6 7 7 8 9 
+scm20d/Fold6/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.04839375 
+1 2 3 4 3 4 4 4 5 6 5 7 8 8 9 9 
+scm20d/Fold6/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.32143125 
+1 2 3 1 3 4 5 5 6 7 6 8 9 9 10 10 
+scm20d/Fold7/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.32205 
+1 2 3 4 5 5 5 5 2 6 7 7 8 9 1 8 
+scm20d/Fold7/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.4331 
+1 2 3 4 5 5 5 5 2 6 6 6 7 8 9 7 
+scm20d/Fold7/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.67696875 
+1 2 3 4 5 5 5 5 2 6 6 6 3 7 8 7 
+scm20d/Fold7/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.02675625 
+1 2 3 4 5 5 5 5 6 6 7 7 8 9 10 8 
+scm20d/Fold7/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9913.37150625 
+1 2 3 4 5 5 5 5 6 7 7 7 2 8 9 3 
+scm20d/Fold8/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.0921 
+1 2 3 2 4 4 5 1 4 6 6 6 7 8 7 8 
+scm20d/Fold8/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.6452625 
+1 2 3 4 4 5 6 6 7 1 8 4 9 10 11 10 
+scm20d/Fold8/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.54466875 
+1 1 1 2 3 3 4 4 3 5 6 7 8 9 8 9 
+scm20d/Fold8/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.92989375 
+1 2 3 4 1 4 4 1 5 6 7 7 8 9 8 9 
+scm20d/Fold8/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.75928125 
+1 1 1 2 2 3 4 4 5 6 7 2 8 9 8 9 
+scm20d/Fold9/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.6097625 
+1 2 3 2 4 3 4 5 6 4 7 7 8 8 9 9 
+scm20d/Fold9/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.13850625 
+1 2 3 2 4 3 4 5 6 4 7 7 8 9 8 9 
+scm20d/Fold9/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9912.1869625 
+1 2 3 2 4 3 4 5 6 4 7 6 8 9 10 8 
+scm20d/Fold9/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.512825 
+1 2 3 4 5 6 5 7 8 5 3 8 9 9 4 9 
+scm20d/Fold9/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9911.8074125 
+1 2 3 2 4 5 4 6 7 4 8 7 9 9 10 9 
+Mean all:
+[1] "Train MAE, Validation MAE, Test MAE, Train MSE, Validation MSE, Test MSE, Train RMSE, Validation RMSE, Test RMSE, Train Execution Time, Validation Execution Time, Test Execution Time"
+[2] "53.24965875,87.57879075,84.200227125,7123.901500124999,19775.012101249995,18963.374284375,82.95068037499999,138.909313,135.92165362500003,665.72,665.72,665.72"                        
+
+===========================================
+water-quality/Fold0/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.14725 
+1 2 3 4 3 5 1 4 6 4 7 7 8 7 
+water-quality/Fold0/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.14785 
+1 2 3 4 3 5 1 4 6 4 5 7 7 7 
+water-quality/Fold0/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.146692857143 
+1 2 3 4 3 5 1 6 7 4 8 8 9 8 
+water-quality/Fold0/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.145135714285 
+1 2 3 4 5 6 1 4 7 4 5 5 8 5 
+water-quality/Fold0/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.144557142858 
+1 2 3 4 5 6 1 7 8 4 9 9 10 9 
+water-quality/Fold1/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.143864285714 
+1 2 3 2 4 5 6 7 8 7 5 3 7 9 
+water-quality/Fold1/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.141635714286 
+1 2 3 2 4 3 4 5 6 5 7 8 5 7 
+water-quality/Fold1/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.14372857143 
+1 2 3 2 4 3 5 6 5 6 5 7 6 8 
+water-quality/Fold1/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.143864285714 
+1 2 3 2 4 5 6 7 8 7 5 3 7 9 
+water-quality/Fold1/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.143828571428 
+1 2 3 2 4 3 5 6 7 6 8 8 6 9 
+water-quality/Fold2/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.15682142857 
+1 2 3 4 4 5 6 6 1 3 7 1 7 4 
+water-quality/Fold2/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.154228571428 
+1 2 3 4 5 6 7 8 6 3 8 7 9 5 
+water-quality/Fold2/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.155985714286 
+1 2 3 4 5 6 7 7 1 3 8 1 8 5 
+water-quality/Fold2/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.155657142857 
+1 2 3 4 4 5 6 7 5 3 7 8 4 1 
+water-quality/Fold2/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.154028571429 
+1 2 3 4 4 5 6 6 5 3 7 8 4 1 
+water-quality/Fold3/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.194321428571 
+1 2 3 4 5 2 5 3 6 7 8 6 9 7 
+water-quality/Fold3/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.195907142857 
+1 1 2 3 4 5 4 6 7 5 8 7 9 5 
+water-quality/Fold3/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.192935714285 
+1 2 3 4 5 2 1 4 6 7 8 6 9 4 
+water-quality/Fold3/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.196528571429 
+1 2 3 4 5 2 1 5 6 7 8 6 9 7 
+water-quality/Fold3/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.1966 
+1 2 1 3 4 2 4 1 5 6 7 5 8 6 
+water-quality/Fold4/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.171514285714 
+1 2 3 1 4 5 4 5 6 7 8 6 5 2 
+water-quality/Fold4/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.171192857142 
+1 2 3 3 4 5 4 5 6 7 8 6 5 2 
+water-quality/Fold4/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.169778571428 
+1 2 3 1 4 5 4 6 7 8 9 7 10 6 
+water-quality/Fold4/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.171192857142 
+1 2 3 3 4 5 4 5 6 7 8 6 5 2 
+water-quality/Fold4/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.171185714285 
+1 1 2 3 3 4 1 5 6 7 8 6 4 5 
+water-quality/Fold5/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.133242857142 
+1 2 2 3 4 4 5 6 3 3 7 6 1 8 
+water-quality/Fold5/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.132521428572 
+1 2 2 3 4 4 5 6 3 3 6 5 1 7 
+water-quality/Fold5/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.131157142858 
+1 2 3 4 5 1 1 4 6 5 7 4 8 9 
+water-quality/Fold5/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.12995 
+1 2 1 3 4 4 5 3 6 4 1 3 7 8 
+water-quality/Fold5/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.132257142857 
+1 2 3 4 5 5 6 7 4 4 8 7 1 9 
+water-quality/Fold6/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.167642857143 
+1 2 3 4 5 6 7 8 9 7 10 5 1 2 
+water-quality/Fold6/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.166692857143 
+1 2 3 4 5 6 7 8 9 7 10 1 3 5 
+water-quality/Fold6/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.168728571429 
+1 2 3 4 3 5 6 7 8 6 9 4 10 4 
+water-quality/Fold6/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.167642857143 
+1 2 3 4 5 6 7 8 9 7 10 5 1 2 
+water-quality/Fold6/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.168728571429 
+1 2 3 4 3 5 6 7 8 6 9 4 10 4 
+water-quality/Fold7/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.174285714285 
+1 2 2 3 4 1 5 6 7 3 4 8 8 9 
+water-quality/Fold7/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.1751 
+1 2 3 2 4 5 3 6 7 2 5 8 4 9 
+water-quality/Fold7/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.17565 
+1 2 3 2 3 4 5 6 5 3 4 7 5 8 
+water-quality/Fold7/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.17565 
+1 2 3 2 3 4 5 6 5 3 4 7 5 8 
+water-quality/Fold7/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.176428571429 
+1 2 3 2 4 1 5 6 7 3 4 8 5 9 
+water-quality/Fold8/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.15127142857 
+1 2 3 4 5 4 2 2 6 3 6 6 7 5 
+water-quality/Fold8/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.149592857142 
+1 2 3 4 5 4 6 5 7 3 6 7 8 9 
+water-quality/Fold8/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.15 
+1 2 3 4 5 6 7 5 8 3 7 8 5 5 
+water-quality/Fold8/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.149364285715 
+1 2 3 4 5 6 4 5 2 3 2 2 7 8 
+water-quality/Fold8/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.149057142857 
+1 2 3 4 5 6 7 5 8 3 7 8 9 10 
+water-quality/Fold9/job.0.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.201842857143 
+1 1 2 3 4 5 6 7 8 7 9 3 10 6 
+water-quality/Fold9/job.1.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.201842857143 
+1 1 2 3 4 5 6 7 8 7 9 3 10 6 
+water-quality/Fold9/job.2.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.19965 
+1 1 2 3 4 5 6 7 8 3 9 7 10 6 
+water-quality/Fold9/job.3.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.196621428571 
+1 1 2 3 4 5 6 7 8 7 9 2 10 6 
+water-quality/Fold9/job.4.out.stat 
+Best Individual of Run: 
+Subpopulation 0: 
+Evaluated: T 
+Fitness: 9999.201842857143 
+1 1 2 3 4 5 6 7 8 7 9 3 10 6 
+Mean all:
+[1] "Train MAE, Validation MAE, Test MAE, Train MSE, Validation MSE, Test MSE, Train RMSE, Validation RMSE, Test RMSE, Train Execution Time, Validation Execution Time, Test Execution Time"      
+[2] "0.8073177142857142,0.8363389999999999,0.8674418571428572,1.3147995714285714,1.4481771428571428,1.5287017142857144,1.1186315714285713,1.1692617142857145,1.2008802857142857,23.82,23.82,23.82"
