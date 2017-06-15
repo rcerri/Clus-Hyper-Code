@@ -61,7 +61,10 @@ public class BruteForceAdhocVal {
 	        
 	        long timeStart=System.nanoTime();
 	        
-	        ClusWrapper.initialization(train, validation, args[4], false, classification);
+	        boolean CreateForest = true;
+	        
+	        
+	        ClusWrapper.initialization(train, validation, args[4], CreateForest, classification);
 	        
 	
 	        
@@ -314,7 +317,7 @@ public class BruteForceAdhocVal {
 	        timeStart=System.nanoTime();
 			ClusWrapper.clus=null;
 
-	        ClusWrapper.initialization(trainval, test, args[4], false, classification);
+	        ClusWrapper.initialization(trainval, test, args[4], CreateForest, classification);
 
 	        
 	        if (classification) {
