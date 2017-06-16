@@ -1,0 +1,3 @@
+MAE,MSE,RMSE,Execution Time
+294.17811875,239756.5512625,391.53330624999995,
+=average(A2:A2),=average(B2:B2),=average(C2:C2),=average(D2:D2)

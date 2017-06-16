@@ -1,0 +1,3 @@
+MAE,MSE,RMSE,Execution Time
+0.8214428571428571,1.3400285714285711,1.1231642857142856,
+=average(A2:A2),=average(B2:B2),=average(C2:C2),=average(D2:D2)
