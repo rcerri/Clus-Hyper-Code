@@ -117,7 +117,10 @@ public class ClusWrapper {
 		cad += "TestSet = "+test+"\n\n";
 		//cad += "[Attributes]\nTarget = "+target+"\nDisable = "+disable+"\n"; // Disable = 17-30
 		cad += "[Attributes]\nTarget = "+target+"\nDisableMultipleRunsWithoutRereadingData = "+disable+"\n"; // Disable = 17-30
-
+		
+		//cad += "[Attributes]\nKey = 1\n%Disable = 1\nTarget = 4871-5899\n"; // Disable = 17-30
+		//cad += "[Output]\nWritePredictions = Test\n";
+		
 		if(trainErrors)
 			cad += "[Output]\nTrainErrors = Yes\nWriteModelFile = No\nWriteOutFile = Yes\n\n"; //WritePredictions = {Test}
 		else
@@ -128,7 +131,7 @@ public class ClusWrapper {
 			cad += "[Ensemble]\nIterations = 50 \nEnsembleMethod = RForest\n";
 		}
 		
-		//System.out.println(cad);
+	//	System.out.println(cad);
 
 		return new ByteArrayInputStream(cad.getBytes(StandardCharsets.UTF_8));
 
