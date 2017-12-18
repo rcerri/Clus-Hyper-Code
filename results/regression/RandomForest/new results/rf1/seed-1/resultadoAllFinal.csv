@@ -1,0 +1,2 @@
+Train MAE, Validation MAE, Test MAE, Train MSE, Validation MSE, Test MSE, Train RMSE, Validation RMSE, Test RMSE, Train Execution Time, Validation Execution Time, Test Execution Time
+0.2509,0.4863362499999999,0.41597999999999996,1.4071175,2.322675,1.90941375,1.0047912500000002,1.2811525,1.1492125000000002,429.8,429.8,429.8

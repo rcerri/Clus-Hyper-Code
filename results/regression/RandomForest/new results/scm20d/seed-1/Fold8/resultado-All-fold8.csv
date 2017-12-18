@@ -1,0 +1,3 @@
+TrainVal MAE,Validation MAE,Test MAE,TrainVal MSE,Validation MSE,Test MSE,TrainVal RMSE,Validation RMSE,Test RMSE,Execution Time
+30.293556250000005,70.3483125,65.4041375,2223.016675,11326.12248125,9916.179843750002,46.505843750000004,105.20834374999998,98.61585000000001,
+=average(A2:A2),=average(B2:B2),=average(C2:C2),=average(D2:D2),=average(E2:E2),=average(F2:F2),=average(G2:G2)

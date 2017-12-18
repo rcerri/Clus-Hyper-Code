@@ -1,0 +1,3 @@
+TrainVal AUROC,Validation AUROC,Test AUROC,TrainVal AUPRC,Validation AUPRC,Test AUPRC, Execution Time
+0.9828945555555555,0.8716154074074074,0.8182191111111111,0.8216747037037038,0.6853335185185185,0.5619425925925926,
+=average(A2:A2),=average(B2:B2),=average(C2:C2),=average(D2:D2),=average(E2:E2),=average(F2:F2),=average(G2:G2)

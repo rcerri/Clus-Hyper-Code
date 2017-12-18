@@ -1,0 +1,3 @@
+AUROC,AUPRC,Executio Time
+0.6693382112299465,0.06904308288770059,
+=average(A2:A2),=average(B2:B2),=average(C2:C2),=average(D2:D2)
