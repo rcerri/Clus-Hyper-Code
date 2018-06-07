@@ -53,7 +53,7 @@ public class BruteForceAdhoc {
 	        String train = args[0];
 	        String test = args[1];
 	        ClusWrapper example = new ClusWrapper();
-	        ClusWrapper.initialization(train, test, args[2], false, classification);
+	        ClusWrapper.initialization(train, test, args[2], true, classification); // define true or false to use RF or DecisionTree
 	        int numOutputs = Integer.parseInt(args[3]);
 	        int cont = 1;
 	        double minimumTRAMAE = Double.MAX_VALUE;
