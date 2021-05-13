@@ -65,7 +65,7 @@ public class BruteForceAdhocVal {
 	public static void main(String[] args) throws IOException, ClusException {
 		
 	       if (args.length != 8) {
-	            System.err.println("The number of parameters is 7:  <training dataset> <validation dataset> <trainval data> <test dataset> <attributes> <numOutputs> <classification|regression> <dt|rf>");
+	            System.err.println("The number of parameters is 8:  <training dataset> <validation dataset> <trainval data> <test dataset> <attributes> <numOutputs> <classification|regression> <dt|rf>");
 	            System.exit(1);
 	        }
 	        boolean classification = false;
