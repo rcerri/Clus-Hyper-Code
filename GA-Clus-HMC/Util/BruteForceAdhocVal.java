@@ -39,11 +39,33 @@ public class BruteForceAdhocVal {
 	}
 	
 	
+	public static String printPartition (int [] partition) {
+		String part = "";
+		
+		for (int i=0; i< partition.length-1; i++) {
+			part+= Integer.toString(partition[i]) + ",";
+		}
+		
+		return part += Integer.toString(partition[partition.length-1]);
+	}
+	
+	
+	public static int count (int [] partition) {
+		int max = Integer.MIN_VALUE;
+		
+		for (int i=0; i< partition.length; i++) {
+			if(partition[i]>max)
+				max = partition[i];
+		}
+		
+		return max;
+	}
+	
 	
 	public static void main(String[] args) throws IOException, ClusException {
 		
-	       if (args.length != 7) {
-	            System.err.println("The number of parameters is 5:  <training dataset> <validation dataset> <trainval data> <test dataset> <attributes> <numOutputs> <classification|regression>");
+	       if (args.length != 8) {
+	            System.err.println("The number of parameters is 7:  <training dataset> <validation dataset> <trainval data> <test dataset> <attributes> <numOutputs> <classification|regression> <dt|rf>");
 	            System.exit(1);
 	        }
 	        boolean classification = false;
@@ -61,7 +83,11 @@ public class BruteForceAdhocVal {
 	        
 	        long timeStart=System.nanoTime();
 	        
-	        boolean CreateForest = true;
+	        boolean CreateForest = false;
+	        
+	        if (args[7].equalsIgnoreCase("rf")) {
+	        	CreateForest = true;
+	        }
 	        
 	        
 	        ClusWrapper.initialization(train, validation, args[4], CreateForest, classification);
@@ -112,9 +138,23 @@ public class BruteForceAdhocVal {
 	        	M[i]=1;			
 	        }
 	        
+	        // I am printing the header for Exhaustive search... training and validation metrics.
 	        
+	        if(classification)
+	        	System.out.println("Partitions, AUCROC train, AUCROC val, AUPRC train, AUPRC val");
+	        else
+	        	System.out.println("Partitions, MAE train, MAE val, MSE train, MSE val");
+	        
+	        	        
 	        myMeasures measure = classification ? ClusWrapper.evaluateIndividualClassification(kappa, true) : ClusWrapper.evaluateIndividual(kappa, true);
+	        
+	        String individual = printPartition(kappa);
+	        
+	        System.out.print("'["+individual+"]',");
+
 	        if (classification) {
+	        	System.out.println(measure.getAUROC()[0]+","+measure.getAUROC()[1]+","+measure.getAUPRC()[0]+","+measure.getAUPRC()[1]);
+	        	
 	            if (measure.getAUROC()[0] > maxTRA_AUCROC) {
 	                maxTRA_AUCROC = measure.getAUROC()[0];
 	                TestAUCROCBestTrainingPartition = measure.getAUROC()[1];
@@ -136,6 +176,9 @@ public class BruteForceAdhocVal {
 	                betterTST_AUPRCIndividual = (int[])kappa.clone();
 	            }
 	        } else {
+	        	
+	        	System.out.println(measure.getMAE()[0]+","+measure.getMAE()[1]+","+measure.getMSE()[0]+","+measure.getMSE()[1]);
+	        	
 	            if (measure.getMAE()[0] < minimumTRAMAE) {
 	                minimumTRAMAE = measure.getMAE()[0];
 	                TestMAEBestTrainingPartition = measure.getMAE()[1];
@@ -147,6 +190,10 @@ public class BruteForceAdhocVal {
 	                betterMAETSTIndividual = (int[])kappa.clone();
 	            }
 	        }
+	        
+
+	        
+	        
 	        while (nextPartition(kappa, M)) {
 	        	
 	        	/*
@@ -159,7 +206,14 @@ public class BruteForceAdhocVal {
 	        	
 	            measure = classification ? ClusWrapper.evaluateIndividualClassification(kappa, true) : ClusWrapper.evaluateIndividual(kappa, true);
 	            
+	            individual = printPartition(kappa);
+
+            	System.out.print("'["+individual+"]',");
+
+            	
 	            if (classification) {
+	            	System.out.println(measure.getAUROC()[0]+","+measure.getAUROC()[1]+","+measure.getAUPRC()[0]+","+measure.getAUPRC()[1]);
+	            	
 	                if (measure.getAUROC()[0] > maxTRA_AUCROC) {
 	                    maxTRA_AUCROC = measure.getAUROC()[0];
 	                    TestAUCROCBestTrainingPartition = measure.getAUROC()[1];
@@ -181,6 +235,9 @@ public class BruteForceAdhocVal {
 	                    betterTST_AUPRCIndividual = (int[])kappa.clone();
 	                }
 	            } else {
+	            	
+	            	System.out.println(measure.getMAE()[0]+","+measure.getMAE()[1]+","+measure.getMSE()[0]+","+measure.getMSE()[1]);
+	            	
 		            if (measure.getMAE()[0] < minimumTRAMAE) {
 		                minimumTRAMAE = measure.getMAE()[0];
 		                TestMAEBestTrainingPartition = measure.getMAE()[1];
@@ -217,7 +274,11 @@ public class BruteForceAdhocVal {
 	            }
 	            cont++;
 	        }
+	        
+	        
+	        System.out.println("\nEND EXHAUSTIVE SEARCH \n");
 	   
+	        /*
 	        if (classification) {
 	            System.out.println("\n****************AUCROC*************\n");
 	            System.out.println("The best training  AUCROC individual is: ");
@@ -307,9 +368,11 @@ public class BruteForceAdhocVal {
 	        }
 	      //  System.out.println("\nMy hash table has : " + ClusWrapper.PreviousSolutions.size());
 	        
+	        */
+	        
 	        long timeEnd = System.nanoTime();
-	        System.out.println("\n\nnumber of individuals evaluated: " + cont);
-	        System.out.println("\nRunTime BruteForce (TRA vs. VAL): " + (double)(timeEnd - timeStart) / 1.0E9);
+	        //System.out.println("\n\nnumber of individuals evaluated: " + cont);
+	        //System.out.println("\nRunTime BruteForce (TRA vs. VAL): " + (double)(timeEnd - timeStart) / 1.0E9);
 	        
 	        
 	        // Final classification phase:
@@ -320,19 +383,51 @@ public class BruteForceAdhocVal {
 	        ClusWrapper.initialization(trainval, test, args[4], CreateForest, classification);
 
 	        
-	        if (classification) {
-	        	 measure = ClusWrapper.evaluateIndividualClassification(betterTST_AUPRCIndividual, true);
+	        if(classification)
+	        	System.out.println("Best Partitions AUCROC, NumPartitions, AUCROC test, Best Partitions AUPRC, NumPartitions, AUPRC test");
+	        else
+	        	System.out.println("Best Partitions MAE, NumPartitions, MAE test, Best Partitions MSE, NumPartitions, MSE test");
 	        
-	        	 System.out.println("\nAUROC Test results with best AUPRC individual is: "+measure.getAUROC()[1]);
-	        	 System.out.println("\nAUPRC Test results with best AUPRC individual is: "+measure.getAUPRC()[1]);
-	        	
-	        	
-	        	 measure = ClusWrapper.evaluateIndividualClassification(betterTST_AUCROCIndividual, true);
+	        
+	        
+	        String individual1, individual2;
+	        myMeasures measure1, measure2;
+	        
+	        int count1, count2;
+	        
+	        if (classification) {
+	             individual1 = printPartition(betterTST_AUCROCIndividual);
+            	 individual2 = printPartition(betterTST_AUPRCIndividual);
 
-	        	 System.out.println("\nAUROC Test results with best AUROC individual is: "+measure.getAUROC()[1]);
-	        	 System.out.println("\nAUPRC Test results with best AUROC individual is: "+measure.getAUPRC()[1]);
+	        	 measure1 = ClusWrapper.evaluateIndividualClassification(betterTST_AUCROCIndividual, true);
+	        	 measure2 = ClusWrapper.evaluateIndividualClassification(betterTST_AUPRCIndividual, true);
+	        
+	        	 count1 = count(betterTST_AUCROCIndividual);
+	        	 count2 = count(betterTST_AUPRCIndividual);
+	        	 
+	        	 System.out.println("'["+individual1+"]'"+","+count1+","+measure1.getAUROC()[1]+","+"'["+individual2+"]'"+","+count2+","+measure2.getAUPRC()[1]);
+	        	 
+	        	 //System.out.println("\nAUROC Test results with best AUPRC individual is: "+measure.getAUROC()[1]);
+	        	 // System.out.println("\nAUPRC Test results with best AUPRC individual is: "+measure.getAUPRC()[1]);
+	        	        	 
+	        	 // System.out.println("\nAUROC Test results with best AUROC individual is: "+measure.getAUROC()[1]);
+	        	 // System.out.println("\nAUPRC Test results with best AUROC individual is: "+measure.getAUPRC()[1]);
 	        	
 	        }else{
+	             individual1 = printPartition(betterMAETSTIndividual);
+           	     individual2 = printPartition(betterMSETSTIndividual);
+
+	        	 measure1 = ClusWrapper.evaluateIndividual(betterMAETSTIndividual, true);
+	        	 measure2 = ClusWrapper.evaluateIndividual(betterMSETSTIndividual, true);
+	        
+	        	 count1 = count(betterMAETSTIndividual);
+	        	 count2 = count(betterMSETSTIndividual);
+	        	 
+	        	 
+	        	 System.out.println("'["+individual1+"]'"+","+count1+","+measure1.getMAE()[1]+","+"'["+individual2+"]'"+","+count2+","+measure2.getMSE()[1]);
+	        	
+	        	
+	        	/*
 	        	 measure =ClusWrapper.evaluateIndividual(betterMAETSTIndividual, true);
 	        	 
 	        	 System.out.println("\nMAE Test results with best MAE individual is: "+measure.getMAE()[1]);
@@ -345,19 +440,20 @@ public class BruteForceAdhocVal {
 	        	 System.out.println("\nMSE Test results with best MSE individual is: "+measure.getMSE()[1]);
 	        	 System.out.println("\nRMSE Test results with best MSE individual is: "+measure.getRMSE()[1]);
 	        	
+	        
 	        	 measure =ClusWrapper.evaluateIndividual(betterRMSETSTIndividual, true);
 	        	 
 	        	 System.out.println("\nMAE Test results with best RMSE individual is: "+measure.getMAE()[1]);
 	        	 System.out.println("\nMSE Test results with best RMSE individual is: "+measure.getMSE()[1]);
 	        	 System.out.println("\nRMSE Test results with best RMSE individual is: "+measure.getRMSE()[1]);
-	        	 
+	        */	 
 	        	 
 	        }
 	        
 	        timeEnd = System.nanoTime();
 
 	        
-	        System.out.println("\nRunTime (TRAVAL vs. TEST): " + (double)(timeEnd - timeStart) / 1.0E9);
+	        //System.out.println("\nRunTime (TRAVAL vs. TEST): " + (double)(timeEnd - timeStart) / 1.0E9);
 
 	        
 	        
