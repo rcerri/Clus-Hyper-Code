@@ -382,6 +382,17 @@ public class BruteForceAdhocVal {
 
 	        ClusWrapper.initialization(trainval, test, args[4], CreateForest, classification);
 
+	        // global and local as baselines
+			int global[] = new int[numOutputs]; 
+			int local[] = new int[numOutputs];
+			
+	     	for (int i=0; i<numOutputs; i++){
+				global[i]=1;
+				local[i]=i+1;			
+			}
+	     	
+	        myMeasures measureD = classification ? ClusWrapper.evaluateIndividualClassification(global, true) : ClusWrapper.evaluateIndividual(global, true);
+
 	        
 	        if(classification)
 	        	System.out.println("Best Partitions AUCROC, NumPartitions, AUCROC test, Best Partitions AUPRC, NumPartitions, AUPRC test");

@@ -69,6 +69,15 @@ public class FullRanking {
 	        String train = args[0];
 	        String test = args[1];
 	        ClusWrapper example = new ClusWrapper();
+	        
+	     	
+	     	System.out.println(train);
+
+	     	System.out.println(test);
+
+	     	System.out.println(args[2]);
+	     	System.out.println(classification);
+	     	
 	        ClusWrapper.initialization(train, test, args[2], forest, classification); // define true or false to use RF or DecisionTree
 	        int numOutputs = Integer.parseInt(args[3]);
 	        int cont = 1;
